@@ -1,3 +1,18 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.14.7
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
 # EG-151: Microcontrollers Laboratory Introduction
 
 In this laboratory introduction, you will do the following:                                                                                 
@@ -26,13 +41,13 @@ You should work through each of these activities in order.
 * {ref}`lab_instruments`
 * {ref}`lab_safety`
 * **External Link to Canvas**: Obtain and Keep a Lab Diary
-* Experiment: to construct an oscillator
-* Simulation Exercise
-* Questions
-* Construction Exercise - Continuity Tester
-* Safe Soldering
+* {ref}`experiment0`
+* {ref}`simulation_exercise`
+* {ref}`questions`
+* {ref}`construction`
+* {ref}`soldering`
 
-If you would prefer a document version of the lab introduction, it is available as a PDF: which you are welcome to download and use. 
+If you would prefer a document version of the lab introduction, it is available as a PDF which you are welcome to download and use. 
 
 However, so your progress in the lab can be monitored, you are expected to work through the sections on Canvas.
 

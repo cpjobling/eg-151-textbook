@@ -12,12 +12,18 @@ parts:
     - file: lectures/index
     - file: lectures/intro
   - caption: Laboratory Introduction
+    numbered: true
     chapters:
     - file: lab_intro/index
     - file: lab_intro/intro
     - file: lab_intro/lab_work
     - file: lab_intro/lab_instruments
     - file: lab_intro/lab_safety
+    - file: lab_intro/experiment0
+    - file: lab_intro/simulation
+    - file: lab_intro/questions
+    - file: lab_intro/construction
+    - file: lab_intro/soldering
   - caption: Laboratories
     chapters:
     - file: labs/index 
