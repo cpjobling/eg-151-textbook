@@ -1,0 +1,26 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+parts:
+  - caption: Introduction
+    chapters:
+     - file: intro/about
+  - caption: Introduction to Microcontrollers
+    chapters:
+    - file: lectures/index
+    - file: lectures/intro
+  - caption: Laboratory Introduction
+    chapters:
+    - file: lab_intro/index
+    - file: lab_intro/intro
+    - file: lab_intro/lab_work
+    - file: lab_intro/lab_instruments
+    - file: lab_intro/lab_safety
+  - caption: Laboratories
+    chapters:
+    - file: labs/index 
+  - caption: Mini Projects
+    chapters:
+    - file: projects/index
