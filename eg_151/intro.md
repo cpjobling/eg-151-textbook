@@ -9,9 +9,18 @@
 **Citing this Document**: When referencing this document please use the following format based on the library supported [Swansea Vancouver Style](https://libguides.swansea.ac.uk/Vancouver):
 
 
-## Module Aims
+## Welcome to EG-151 Microcontrollers
 
-This online book introduces basic microcontroller structure and operation. It consists of a lecture course on the architecture and operation of the target microcontroller, a laboratory introduction, and a series of laboratories culminating in a mini project in which you will apply your experience to a simple practical problem.
+EG-151 Mocrocontrollers is a first year engineering course for those studying Electrical and Electronic Engineering and General Engineering which introduces basic microcontroller structure and operation designed to teach you both theoretical and practical skills in microcontrollers. It consists of an introduction to the Electronic and Electrical Engineering laboratory, a lecture course on the architecture and operation of the Atmega 328 microcontroller (from Microchip Technology), and a series of Arduino programming laboratories culminating in a mini-project in which students will apply their experience to a simple practical problem.
+
+The full table of contents for this course is given below.
+
+## Table of Contents
 
 ```{tableofcontents}
+
 ```
+
+## Tour of the Canvas site
+
+During the first class meeting we will introduce this online textbook and how the course materials are presented to you via Canvas.
