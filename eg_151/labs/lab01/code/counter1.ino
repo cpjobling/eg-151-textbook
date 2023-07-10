@@ -1,6 +1,6 @@
 // the setup function runs once when you press reset or power the board
 
-byte counter1 = 0; // we need to define the variable &ldquo;counter1&rdquo;
+byte counter1 = 0; // we need to define the variable counter1
 
 void setup()
 {
@@ -15,7 +15,7 @@ void loop() {
     // we could replace the next line with: counter1++;
     counter1 = counter1 + 1;
 
-    // Uncomment the following x lines for a modulus of 60: 
+    // Uncomment the following 3 lines for a modulus of 60: 
     // if(counter1 < 59) {
     //     counter1 = 0;
     // }
