@@ -29,6 +29,7 @@ parts:
   - caption: Laboratories
     chapters:
     - file: labs/index 
+    - file: labs/get_started/index
   - caption: Mini Projects
     chapters:
     - file: projects/index
