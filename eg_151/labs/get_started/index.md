@@ -85,6 +85,7 @@ There will follow quite a lengthy installation procedure, involving unpacking th
 
 Once again, go to [arduino.cc](https://arduino.cc) and select the tab &ldquo;Software&rdquo;. This will bring up the Arduiono IDE 2 page ({numref}`fig:2`). Move past the instructions for &ldquo;Arduino Web Editor&rdquo; and look at the section titled &ldquo;Downloads&rdquo;. In the section marked &ldquo;Arduino IDE 2.1.1&rdquo; you will see the words &ldquo;For more details, please refer to the Arduino IDE 2.0 documentation.&rdquo; . Click on the link labelled **Arduino IDE 2.0 documentation** to open the **Arduino IDE 2** dicumentation page (highlighted in {numref}`fig:3`) and then select **Downloading and installing the Arduino IDE 2** from the table of contents to open the **Downloading and installing the Arduino IDE 2** page ({numref:fig:4}). Follow the detailed instructions for MacOS to start the installer. 
 
+(set_up_arduino)=
 ## Initial set up
 
 When you are satisfied that the Arduino IDE has been successfully installed, run the application. Assuming that the installation procedure described above has gone to plan, and after the splash screen, the Arduino IDE main screen ({numref}`fig:5`) appears. 
