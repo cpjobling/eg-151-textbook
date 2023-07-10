@@ -14,7 +14,7 @@ parts:
     - file: lectures/index
     - file: lectures/intro
   - caption: Laboratory Introduction
-    numbered: true
+    numbered: false
     chapters:
     - file: lab_intro/index
     - file: lab_intro/intro
@@ -26,10 +26,15 @@ parts:
     - file: lab_intro/questions
     - file: lab_intro/construction
     - file: lab_intro/soldering
-  - caption: Laboratories
+  - caption: Laboratory Experiments
     chapters:
     - file: labs/index 
     - file: labs/get_started/index
+    - file: labs/lab01/index
+    - file: labs/lab02/index
+    - file: labs/lab03/index
+    - file: labs/lab04/index
+    - file: labs/lab05/index
   - caption: Mini Projects
     chapters:
     - file: projects/index

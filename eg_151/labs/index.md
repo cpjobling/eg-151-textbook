@@ -1,18 +1,27 @@
 # Microcontroller Programming Laboratory
 
-## Lab Exercises
+Our colleague Dr Timothy Davies designed the Microcontroller Programming laboratory to teach you the fundamentals of programming microcontrollers. 
+
+Associated with this Laboratory is a Getting Started Guide, and five microcontroller experiments designed to give you the experience of programming a microprocessor (in this case an [Arduino Nano](https://store.arduino.cc/products/arduino-nano) based on the [Atmel ATMega32 microcontroller](https://www.microchip.com/en-us/product/ATmega32)) in the [C-language](https://en.wikipedia.org/wiki/C_(programming_language)) and interfacing it to digital and analogue signals. We expect you to record the results of your experiments using a Lab Diary which will be submitted in at the end of the laboratory for assessment. 
+
+## Lab Experiments
 
 The Microcontroller Laboratory consists of a getting started introduction, plus the five assessable experiments listed below.
 
 * {ref}`getting_started`
-*
+* {ref}`lab_1`
+* {ref}`lab_2`
+* {ref}`lab_3`
+* {ref}`lab_4`
+* {ref}`lab_5`
 
 ## Assessment of the Microcontroller Laboratory
 
 The mark for each of the experiments is a maximum of five points, making a total of 25 marks &ndash; 25% of the assessment for the whole module.
 
-Assessment will be based on a <strong>Laboratory (Lab) Diary</strong>. Many other lab-based modules are assessed this way, including EG-152 Electronic Circuits next term, and the two practical labs in second year, EGA222 and EGA223.
+Assessment will be based on a **Laboratory (Lab) Diary**. Many other lab-based modules are assessed this way, including EG-152 Electronic Circuits next term, and the two practical labs in second year, EGA222 and EGA223.
 
+(lab_diary)=
 ## About the Lab Diary
 
 What is a laboratory diary?

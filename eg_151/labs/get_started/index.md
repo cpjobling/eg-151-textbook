@@ -15,7 +15,7 @@ kernelspec:
 
 
 (getting_started)=
-# Microcontroller Programming Laboratory: Getting Started
+# Getting Started
 
 ## Introduction
 
@@ -39,7 +39,7 @@ Follow the detailed instructions for Windows to start the installer. There will 
 
 ```{figure} pictures/arduino_home.png
 :name: fig:1
-:align:center
+:align: center
 :alt: a screenshot of the web page arduino.cc with software selected in the page menu.
 :width: 100%
 
@@ -48,7 +48,7 @@ The homepage arduino.cc with software selected
 
 ```{figure} pictures/arduino_ide_select.png
 :name: fig:2
-:align:center
+:align: center
 :alt: a screenshot of the software page on arduino.cc with downloads highlighted.
 :width: 100%
 
@@ -57,7 +57,7 @@ The software page on arduino.cc
 
 ```{figure} pictures/downloading.png
 :name: fig:3
-:align:center
+:align: center
 :alt: a screenshot of the Arduino IDE 2 page with the link to downloading and installing the Arduiono IDE 2 highlighted.
 :width: 100%
 
@@ -66,7 +66,7 @@ The Arduino IDE 2 page
 
 ```{figure} pictures/install.png
 :name: fig:4
-:align:center
+:align: center
 :alt: a screenshot of the Arduino IDE 2 downloading and installation instructions page.
 :width: 100%
 
@@ -171,9 +171,9 @@ Next, we need to transfer the executable file to the Arduino Nano board. This is
 ## Modifying Blink
 So far, so good. 
 
-Now, let us try changing the program. Look at the text screen, the &ldquo;source code&rdquo;. You will find two instances of the instruction &ldquo;delay(1000)&rdquo;. 
+Now, let us try changing the program. Look at the text screen, the &ldquo;source code&rdquo;. You will find two instances of the instruction `delay(1000)`. 
 
-Move the cursor and change the argument of the two instructions to &ldquo;100&rdquo;. Now, with your new-found knowledge, re-compile the program and upload it to the Nano. 
+Move the cursor and change the argument of the two instructions to `100`. Now, with your new-found knowledge, re-compile the program and upload it to the Nano. 
 
 When the message &ldquo;Done Uploading&rdquo; appears, look at the LED on the Nano. It should be flashing at ten times the previous rate. 
 
