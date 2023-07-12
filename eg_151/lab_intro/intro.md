@@ -40,7 +40,7 @@ You should work through each of these activities in order.
 * {ref}`depteee_labwork`
 * {ref}`lab_instruments`
 * {ref}`lab_safety`
-* **External Link to Canvas**: Obtain and Keep a Lab Diary
+* [Obtain and Keep a Lab Diary](https://canvas.swansea.ac.uk/courses/44971/pages/to-do-obtain-and-keep-a-lab-diary?module_item_id=2258048) - External Link to Canvas
 * {ref}`experiment0`
 * {ref}`simulation_exercise`
 * {ref}`questions`
