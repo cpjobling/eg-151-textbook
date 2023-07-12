@@ -9,7 +9,6 @@ parts:
      - file: intro/about
      - file: intro/course_aims
      - file: intro/course_delivery
-     - file: intro/assessment
   - caption: Introduction to Microcontrollers
     chapters:
     - file: lectures/index
@@ -18,6 +17,7 @@ parts:
     numbered: false
     chapters:
     - file: lab_intro/intro
+    - file: lab_intro/assessment
     - file: lab_intro/lab_work
     - file: lab_intro/lab_instruments
     - file: lab_intro/lab_safety
