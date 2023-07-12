@@ -17,7 +17,7 @@ kernelspec:
 (lab_1)=
 # Experiment 1: Binary Counter
 
-## Introduction: How can the microcontroller make something happen?
+## How can the microcontroller make something happen?
 
 The microcontroller on the Nano board has a number of *parallel ports*, which can be used to make something happen in the world outside the plastic package. Parallel ports are usually groups of eight pins, however on the Arduino Nano not all the pins are brought out to the edge of the board. So, working within this constraint, Experiment 1 will begin with the construction and programming of a six-bit binary counter, which can count from zero to $63$ ($2^6 - 1$).</p>
 

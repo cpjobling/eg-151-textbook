@@ -15,7 +15,7 @@ kernelspec:
 
 # Assessment of the Laboratory Introduction
 
-**Start date**: TBC
+**Start date**: 29th September 2023
 
 The laboratory introduction is assessed according to the following:
 
@@ -37,6 +37,6 @@ and the chief Electronics technician.
 -   Answers to questions - Canvas Quiz (5 marks)
 -   Inspection of Tic-Tac box continuity tester (5 marks)
 
-**Deadline for submission**: TBC
-**Deadline for feedback**: TBC or fifteen working days
+**Deadline for submission**: 26th October 2023
+**Deadline for feedback**: 16th November 2023 or fifteen working days
 after submission.
