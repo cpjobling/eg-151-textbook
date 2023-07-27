@@ -4,3 +4,6 @@ numpy
 ghp-import
 jupytext
 jupyterlab
+jupyterlab_myst
+notebook
+
