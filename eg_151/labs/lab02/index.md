@@ -105,19 +105,21 @@ The Arduino version of "C" includes some commands which allow individual
 bits to be interrogated. The mask operation is still there but it is
 "behind the scenes".
 
-## 2.2. Connecting a switch to a port
++++
+
+## Connecting a switch to a port
 
 How do we connect a switch to a port pin? There are various
-possibilities as shown in Fig. 2.1.
+possibilities as shown in {numref}`fig:ex2:1`.
 
-<figure>
-<img
-src="https://canvas.swansea.ac.uk/courses/44971/files/4630674/preview"
-data-api-endpoint="https://canvas.swansea.ac.uk/api/v1/courses/44971/files/4630674"
-data-api-returntype="File" alt="Connecting a switch to a port" />
-<figcaption><strong>Figure 2.1</strong>: Three ways to connect a switch
-to a port.</figcaption>
-</figure>
+```{figure} pictures/switch_to_port_connections.png
+:name: fig:ex2:1
+:align: center
+:alt: Illustration of the three ways to connect a switch to a port.
+:width: 70%
+
+Three ways to connect a switch to a port.
+```
 
 Option "A" looks good, but there are several problems. It requires a
 "change over" switch, with connections to both contacts. In addition,
@@ -139,15 +141,16 @@ switching. In fact, this option is supported by the internal hardware of
 the microcontroller, which has built-in resistors so all that is
 required is an external switch connected between the port and logic "0".
 
-<figure>
-<img
-src="https://canvas.swansea.ac.uk/courses/44971/files/4630669/preview"
-data-api-endpoint="https://canvas.swansea.ac.uk/api/v1/courses/44971/files/4630669"
-data-api-returntype="File"
-alt="Connecting a switch to a microcontroller" />
-<figcaption><strong>Figure 2.2</strong>: Active low switching for a
-microcontroller.</figcaption>
-</figure>
+This is the case for the hardware that we are using and is illustrated in {numref}`fig:ex2:2`.
+
+```{figure} pictures/active_low_switching.png
+:name: fig:ex2:2
+:align: center
+:alt: Connecting a switch to a microcontroller.
+:width: 70%
+
+Active low switching for a microcontroller.
+```
 
 Each port has an associated pull-up register, which allows individual
 bits of the port to be "tied" to logic "1" through a high-value
@@ -160,16 +163,24 @@ enable" registers to perform the same task.
 
  
 
++++
+
 ## 2.3. Using a switch in a programme
 
-The demonstration programme in Appendix 1 is, in fact, the very first
+The demonstration programme in [Listing 4](#listing:ex2:1) is, in fact, the very first
 programme we tried in Experiment 1. There is one refinement; a switch is
 tested and if the logic input is "0", the counter does not advance.
 Notice the `pinmode()` instruction in setup, which turns on the internal
 pull-up resistor. This is a one-off instruction at the start of
 programme execution.
 
-Create an Arduino sketch, and copy/paste the code from Appendix 2.1 into
+(listing:ex2:1)=
+**Listing 4**: digi_input1.ino - binary counter with stop/start
+control. (View and download code as a GitHub gist:
+[digi_input1.ino).](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f))
+<script src="https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f.js"></script>
+
+Create an Arduino sketch, and copy/paste the code from [Listing 1](#listing:ex2:1) into
 it.
 
 The testing of the switch input could be done using an Arduino-specific
@@ -195,15 +206,13 @@ if ( digitalRead(2) != 0 ) {
 }
 ```
 
- 
-
 The argument of the `digitalRead() `operation, 2, is part of the
 "shorthand" used by Arduino programmers to designate a particular port
 pin. It has the advantage of being consistent over a wide range of
 boards in the Arduino family.
 
 Add the two push button switches to the plug-in breadboard, using
-pin-to-pin leads. Take great care when mounting the switches on the
+pin-to-pin leads ans shown in {numref}`fig:ex2:3`. Take great care when mounting the switches on the
 breadboard, to orient them correctly, and to avoid bending the little
 tabs!
 
@@ -211,15 +220,33 @@ When the programme runs, the LEDs on Port C will count up as before.
 When the left-hand button is pressed, the counter stops and resumes when
 the button is released. We are "in control" of the counter!
 
+```{figure} pictures/exp2_wiring_diagram.png
+:name: fig:ex2:3
+:align: center
+:alt: Wiring diagram for prototype board.
+:width: 70% 
+
+Wiring diagram for Experiment
+```
+
++++
+
 ## 2.4. Let's go faster
 
-The next programme, in Appendix 2.2, uses both buttons. The left-hand
+The next programme, in [Listing 5](#listing:ex2:2), uses both buttons. The left-hand
 button, as before, stops the counter. The right-hand button is a "turbo"
-button, and makes the counter speed up by a factor of 10! A new
-programme structure, if...else is used to decide on a delay of 1000 ms
+button, and makes the counter speed up by a factor of 10! 
+
+(listing:ex2:2)=
+**Listing 5**: digi_input2.ino - binary counter with stop/start and
+turbo button. (View and download code as a GitHub gist:
+[digi_input2.ino](https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2)).
+<script src="https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2.js"></script>
+
+A new programme structure, `if...else` has been introduced in [Listing 5](#listing:ex2:2) (lines 28&mdash;33) is used to decide on a delay of 1000 ms
 or a delay of 100 ms, depending on the condition of the button.
 
-The `if…else` structure is as follows:
+The general `if…else` structure is as follows:
 
 ```c
 if (condition 1) {
@@ -229,27 +256,18 @@ if (condition 1) {
 }
 ```
 
- 
-
-An additional programme structure, `else if`, can replace else if there
+An additional programme structure, `else if`, can replace `else` if there
 are multiple decisions.
 
-<figure>
-<img
-src="https://canvas.swansea.ac.uk/courses/44971/files/4630677/preview"
-data-api-endpoint="https://canvas.swansea.ac.uk/api/v1/courses/44971/files/4630677"
-data-api-returntype="File" alt="Wiring diagram for prototype board" />
-<figcaption><strong>Figure 2.3</strong>: Wiring diagram for Experiment
-2.</figcaption>
-</figure>
++++
 
 ## 2.5. An exercise for the reader...
 
 The last part of Experiment 2 is an exercise for the reader. Do not
-despair, all the programme elements needed gave been covered in this
+despair, all the programme elements needed have been covered in this
 Experiment and Experiment 1.
 
-Modify the programme in Appendix 2 so that the two buttons have this
+Modify the programme in [Listing 5](listing:ex2:2) so that the two buttons have this
 effect:
 
 1.  If no buttons are pressed, a counter on Port C and a counter on Port
@@ -265,9 +283,11 @@ effect:
 A hint: there are four distinct parts inside` loop()`; first of all,
 update both sets of LEDs. Then test one button and make a decision to
 increment counter 1 or not. Then test the other button and do the same
-for counter 2. Finally, the delay.
+for counter 2. Finally, adjust the delay.
 
  
+
++++
 
 ## 2.6. Assessment of Experiment 2
 
@@ -280,100 +300,17 @@ This follows the pattern set in Experiment 1.
 
  
 
-## Appendix 2.1: Binary counter with stop/start control
++++
 
-**Listing 2.1**: digi_input1.ino - binary counter with stop/start
-control. (View and download code as a GitHub gist:
-[digi_input1.ino).](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f){.inline_disabled
-target="_blank" rel="noopener"}
+## Appendix: Photograph of Experiment 2
 
-```c
-// the setup function runs once when you press reset or power the board
+The following photograph ({numref}`photo:ex2:1` ) has been provided by Dr Davies who created this experiment.
 
-byte counter1 = 0; // define variables
-byte counter2 = 0; // not used in this programme
+```{figure} pictures/Expt3A1-1.jpg
+:name: photo:ex2:1
+:align: center
+:alt: Photograph of the prototype board after completing experiment 2.
+:width: 70% 
 
-void setup() {
-
-    // initialize Ports B and C pins 0-5 as outputs.
-
-    DDRB = 0b00111111;
-    DDRC = 0b00111111;
-    PORTB = 0; // both ports start from zero
-    PORTC = 0;
-    pinMode(2, INPUT_PULLUP); // Make bit 2 of Port D an input
-}
-
-// the loop function runs over and over again forever
-
-void loop() {
-    PORTC = counter1;
-    // if (digitalRead(2) != 0){counter1++;}
-
-    if ((PIND & 0b00000100) != 0) {
-        counter1++;
-    }
-
-    // either of the two lines above can be used
-
-    delay(1000); // reduce this delay for faster counting
-}
+Photograph of the completed prototype board for Experiment 2.
 ```
-
-
-## Appendix 2.2: Binary counter with stop/start and "turbo" button
-
-**Listing 2.2**: digi_input2.ino - binary counter with stop/start and
-turbo button. (View and download code as a GitHub gist:
-[digi_input2.ino](https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2){.inline_disabled
-target="_blank" rel="noopener"}).
-
-```c
-// the setup function runs once when you press reset or power the board
-
-byte counter1 = 0; // define variables
-byte counter2 = 0; // not used in this programme
-
-void setup() {
-    // initialize Ports B and C pins 0-5 as outputs.
-
-    DDRB = 0b00111111;
-    DDRC = 0b00111111;
-    PORTB = 0; // both ports start from zero
-    PORTC = 0;
-
-    pinMode(2, INPUT_PULLUP); // Make bit 2 of Port D an input
-    pinMode(3, INPUT_PULLUP); // Make bit 3 of Port D an input
-}
-
-// the loop function runs over and over again forever
-
-void loop() {
-
-    PORTC = counter1;
-
-    if (digitalRead(2) != 0) {
-        counter1++;
-    } // same decision as previous
-
-    if (digitalRead(3) != 0) {
-        delay(1000);
-    } // long delay is default
-    else {
-        delay(100);
-    } // short delay if button is pressed
-}
-
-```
-
-## Appendix 2.3: Photograph of Experiment 2
-
-<figure>
-<img
-src="https://canvas.swansea.ac.uk/courses/44971/files/4630666/preview"
-data-api-endpoint="https://canvas.swansea.ac.uk/api/v1/courses/44971/files/4630666"
-data-api-returntype="File"
-alt="Photograph of the prototype board after completing experiment 2." />
-<figcaption><strong>Figure 2.4</strong>: Photograph of the completed
-prototype board for Experiment 2.</figcaption>
-</figure>

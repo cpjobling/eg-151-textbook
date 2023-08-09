@@ -16,9 +16,13 @@ kernelspec:
 (lab_1)=
 # Experiment 1: Binary Counter
 
++++
+
 ## How can the microcontroller make something happen?
 
 The microcontroller on the Nano board has a number of *parallel ports*, which can be used to make something happen in the world outside the plastic package. Parallel ports are usually groups of eight pins, however on the Arduino Nano not all the pins are brought out to the edge of the board. So, working within this constraint, Experiment 1 will begin with the construction and programming of a six-bit binary counter, which can count from zero to $63$ ($2^6 - 1$).</p>
+
++++
 
 ## Parallel ports and data direction registers
 
@@ -52,6 +56,8 @@ There are two ways of setting the bits in the DDR. Individual bits can be set us
 
 Writing a number to the port register itself will cause a binary pattern to appear on the corresponding pins of the designated port, according to their binary weights. For example, bit 0 has a binary weight of $2^0 = 1$, bit 1 has a binary weight of $2^11 = 2$, bit 2 has a binary weight of $2^2 = 4$, all the way up to bit 7 which has a binary weight of $2^7 = 128$.</p>
 
++++
+
 ## Method
 
 Construct the circuit shown in {numref}`fig:ex1:1` using the components supplied in your laboratory kit:
@@ -65,11 +71,13 @@ Construct the circuit shown in {numref}`fig:ex1:1` using the components supplied
 Counter circuit.
 ```
 
++++
+
 ## Our First Programme
 
 Now you are familiar with the Arduino IDE from running &ldquo;Blink&rdquo; in {doc}`../get_started/index`, the next step is to write a new programme. 
 
-[Listing 1][#listing1] shows the text of a programme which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a &ldquo;time wasting&rdquo; delay, using the Arduino specific command `delay()`.</p>
+[Listing 1](#listing1) shows the text of a programme which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a &ldquo;time wasting&rdquo; delay, using the Arduino specific command `delay()`.</p>
 
 (listing1)=
 **Listing 1**: Basic counter (counter.ino) (View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b).)
@@ -102,6 +110,8 @@ If the upload fails, there are a number of things to check. Under &ldquo;tools&r
 * Port: `/dev/ttyUSB0` (for example only; this will differ for PC and Mac)
 
 If the above are wrong, then the upload will fail. Ask a demonstrator for help!
+
++++
 
 ## Let&rsquo;s make a decision
 
@@ -142,6 +152,8 @@ counter1 = counter1 + 1;
 ```
 does.
 
++++
+
 ## Let&rsquo;s do it again!
 
 Now that we are masters of the modulus counter, let&rsquo;s repeat the operation by connecting another set of LEDs to port B, and adding extra lines to the programme as shown in Listing 2.
@@ -165,6 +177,8 @@ Circuit board for a cascaded counter.
 ```
 
 Modify the programme to include the extra lines and compile then upload. If this is successful, then the LEDs on port B will count as far as 59 (`0b0111011`) and then all go out and start counting again. At the instant the LEDs on port B go out, the LEDs on port C will advance by one. So, if we have the patience, after an hour the LEDs will reach their maximum value of 59 minutes, 59 seconds (`0b0111011` `0b0111011`) and all go out. Then the counter starts counting again from all zeros.
+
++++
 
 ## Let&rsquo;s do it differently&hellip;
 
@@ -208,6 +222,7 @@ Modify the programme as shown in Listing 3, compile and upload, and check that i
 **Listing 3**: Counter using for loop. (counter3.ino) (View and download the code from GitHub gist [counter3.ino](https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95).)
 <script src="https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95.js"></script>
 
++++
 
 ## Assessment of Experiment 1
 
@@ -218,6 +233,8 @@ Take a photograph of the completed breadboard, with the twelve LEDs and resistor
 When you have finished modifying the programme to correspond with Listing 3, add some comments (preceded by the double oblique stroke &ldquo;//&rdquo;) and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
 
 We shall be looking for comments which show your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the programme, the comments aid understanding. Also, if you return to working on a programme after a couple of weeks, it is much easier to pick up where you left off. A programme without comments is incomplete!
+
++++
 
 ## Appendix: Photographs of Plug-in Breadboard
 
