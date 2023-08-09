@@ -1,9 +1,3 @@
 _build
-**/.ipynb_checkpoints
-eg_151/labs/.ipynb_checkpoints/index-checkpoint.md
-eg_151/lab_intro/.ipynb_checkpoints/lab_instruments-checkpoint.md
-eg_151/lab_intro/.ipynb_checkpoints/lab_safety-checkpoint.md
-eg_151/lab_intro/.ipynb_checkpoints/lab_work-checkpoint.md
-eg_151/lectures/.ipynb_checkpoints/index-checkpoint.md
-eg_151/lectures/.ipynb_checkpoints/intro-checkpoint.md
-
+.ipynb_checkpoints
+.DS_Store
