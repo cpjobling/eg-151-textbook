@@ -1,23 +1,24 @@
 name: eg-151-textbook
 channels:
+  - conda-forge
   - defaults
-  - condaforge
 dependencies:
-  - bzip2=1.0.8=h620ffc9_4
-  - ca-certificates=2023.05.30=hca03da5_0
-  - libffi=3.4.4=hca03da5_0
-  - ncurses=6.4=h313beb8_0
-  - openssl=3.0.9=h1a28f6b_0
-  - pip=23.2.1=py311hca03da5_0
-  - python=3.11.4=hb885b13_0
-  - readline=8.2=h1a28f6b_0
-  - setuptools=68.0.0=py311hca03da5_0
-  - sqlite=3.41.2=h80987f9_0
-  - tk=8.6.12=hb8d0fd4_0
-  - tzdata=2023c=h04d1e81_0
-  - wheel=0.38.4=py311hca03da5_0
-  - xz=5.4.2=h80987f9_0
-  - zlib=1.2.13=h5a0b063_0
+  - bzip2=1.0.8=h3422bc3_4
+  - ca-certificates=2023.7.22=hf0a4a13_0
+  - libexpat=2.5.0=hb7217d7_1
+  - libffi=3.4.2=h3422bc3_5
+  - libsqlite=3.42.0=hb31c410_0
+  - libzlib=1.2.13=h53f4e23_5
+  - ncurses=6.4=h7ea286d_0
+  - openssl=3.1.1=h53f4e23_1
+  - pip=23.2.1=pyhd8ed1ab_0
+  - python=3.11.4=h47c9636_0_cpython
+  - readline=8.2=h92ec313_1
+  - setuptools=68.0.0=pyhd8ed1ab_0
+  - tk=8.6.12=he1e0b03_0
+  - tzdata=2023c=h71feb2d_0
+  - wheel=0.41.0=pyhd8ed1ab_0
+  - xz=5.2.6=h57fd34a_0
   - pip:
       - accessible-pygments==0.0.4
       - alabaster==0.7.13
@@ -27,7 +28,7 @@ dependencies:
       - argon2-cffi-bindings==21.2.0
       - arrow==1.2.3
       - asttokens==2.2.1
-      - async-lru==2.0.3
+      - async-lru==2.0.4
       - attrs==23.1.0
       - babel==2.12.1
       - backcall==0.2.0
@@ -55,7 +56,7 @@ dependencies:
       - ipykernel==6.25.0
       - ipython==8.14.0
       - isoduration==20.11.0
-      - jedi==0.18.2
+      - jedi==0.19.0
       - jinja2==3.1.2
       - json5==0.9.14
       - jsonpointer==2.4
@@ -65,15 +66,15 @@ dependencies:
       - jupyter-cache==0.6.1
       - jupyter-client==8.3.0
       - jupyter-core==5.3.1
-      - jupyter-events==0.6.3
+      - jupyter-events==0.7.0
       - jupyter-lsp==2.2.0
       - jupyter-server==2.7.0
       - jupyter-server-terminals==0.4.4
-      - jupyterlab==4.0.3
+      - jupyterlab==4.0.4
       - jupyterlab-myst==2.0.1
       - jupyterlab-pygments==0.2.2
       - jupyterlab-server==2.24.0
-      - jupytext==1.14.7
+      - jupytext==1.15.0
       - kiwisolver==1.4.4
       - latexcodec==2.0.1
       - linkify-it-py==2.0.2
@@ -88,11 +89,11 @@ dependencies:
       - myst-parser==0.18.1
       - nbclient==0.7.4
       - nbconvert==7.7.3
-      - nbformat==5.9.1
-      - nest-asyncio==1.5.6
-      - notebook==7.0.0
+      - nbformat==5.9.2
+      - nest-asyncio==1.5.7
+      - notebook==7.0.2
       - notebook-shim==0.2.3
-      - numpy==1.25.1
+      - numpy==1.25.2
       - overrides==7.3.1
       - packaging==23.1
       - pandocfilters==1.5.0
@@ -100,7 +101,7 @@ dependencies:
       - pexpect==4.8.0
       - pickleshare==0.7.5
       - pillow==10.0.0
-      - platformdirs==3.9.1
+      - platformdirs==3.10.0
       - prometheus-client==0.17.1
       - prompt-toolkit==3.0.39
       - psutil==5.9.5
@@ -160,4 +161,4 @@ dependencies:
       - webencodings==0.5.1
       - websocket-client==1.6.1
       - zipp==3.16.2
-prefix: /Users/eechris/anaconda3/envs/eg-151-textbook
+prefix: /Users/eechris/.miniconda/envs/eg-151-textbook
