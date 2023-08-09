@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -50,5 +50,3 @@ You should work through each of these activities in order.
 If you would prefer a document version of the lab introduction, it is available as a PDF which you are welcome to download and use. 
 
 However, so your progress in the lab can be monitored, you are expected to work through the sections on Canvas.
-
-

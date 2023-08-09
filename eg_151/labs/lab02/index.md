@@ -6,13 +6,12 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
-
 
 (lab_2)=
 # Experiment 2: Digital Input
@@ -378,5 +377,3 @@ alt="Photograph of the prototype board after completing experiment 2." />
 <figcaption><strong>Figure 2.4</strong>: Photograph of the completed
 prototype board for Experiment 2.</figcaption>
 </figure>
-
- 

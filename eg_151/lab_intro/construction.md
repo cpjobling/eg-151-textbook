@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.14.7
+    jupytext_version: 1.15.0
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -68,4 +68,3 @@ When the board is fitted into its case, make a small mark on the plastic corresp
 The only test required is to touch the metal ends of the test clips together. If a high-pitched tone is heard, then congratulations! You have built a useful instrument and demonstrated your dexterity. If by chance, the circuit does not function, ask one of the demonstrators to help identify the problem. Try testing a silicon diode; the tester should sound only if the black lead is clipped to the banded end of the diode. Try clipping the tester across resistors of 100 Ohms and 1k Ohms; they will produce a fainter tone because the external resistance reduces the test current. Finally, borrow an NPN transistor and connect the red lead to the collector and the black lead to the emitter. Touch a 10k resistor between the base and collector leads; the tone should be heard. This shows that the transistor is amplifying the tiny current flowing through the base and allowing enough current to pass between collector and emitter to power our continuity tester.
 
 When the tester is not in use, it is recommended that you attach the clips to a small piece of card so that they cannot accidentally touch and run the battery down. Anticipated battery life is 1000 hours of continuous operation and five years of intermittent use.
-
