@@ -161,26 +161,19 @@ instruction, `pinmode().` Another microcontroller used in our
 undergraduate labs, the "AW60", has special registers called "pull-up
 enable" registers to perform the same task.
 
- 
-
 +++
 
 ## 2.3. Using a switch in a programme
 
-The demonstration programme in [Listing 4](#listing:ex2:1) is, in fact, the very first
+The demonstration programme in {ref}`listing:ex2:1` is, in fact, the very first
 programme we tried in Experiment 1. There is one refinement; a switch is
 tested and if the logic input is "0", the counter does not advance.
 Notice the `pinmode()` instruction in setup, which turns on the internal
 pull-up resistor. This is a one-off instruction at the start of
 programme execution.
 
-(listing:ex2:1)=
-**Listing 4**: digi_input1.ino - binary counter with stop/start
-control. (View and download code as a GitHub gist:
-[digi_input1.ino).](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f))
-<script src="https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f.js"></script>
 
-Create an Arduino sketch, and copy/paste the code from [Listing 1](#listing:ex2:1) into
+Create an Arduino sketch, and copy/paste the code from {ref}`listing:ex2:1` into
 it.
 
 The testing of the switch input could be done using an Arduino-specific
@@ -233,15 +226,9 @@ Wiring diagram for Experiment
 
 ## 2.4. Let's go faster
 
-The next programme, in [Listing 5](#listing:ex2:2), uses both buttons. The left-hand
+The next programme, in {ref}`listing:ex2:2`, uses both buttons. The left-hand
 button, as before, stops the counter. The right-hand button is a "turbo"
 button, and makes the counter speed up by a factor of 10! 
-
-(listing:ex2:2)=
-**Listing 5**: digi_input2.ino - binary counter with stop/start and
-turbo button. (View and download code as a GitHub gist:
-[digi_input2.ino](https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2)).
-<script src="https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2.js"></script>
 
 A new programme structure, `if...else` has been introduced in [Listing 5](#listing:ex2:2) (lines 28&mdash;33) is used to decide on a delay of 1000 ms
 or a delay of 100 ms, depending on the condition of the button.
@@ -285,8 +272,6 @@ update both sets of LEDs. Then test one button and make a decision to
 increment counter 1 or not. Then test the other button and do the same
 for counter 2. Finally, adjust the delay.
 
- 
-
 +++
 
 ## 2.6. Assessment of Experiment 2
@@ -298,11 +283,24 @@ This follows the pattern set in Experiment 1.
 -   A listing of your final programme (as specified in Section 5 above)
     with suitable comments.
 
- 
-
 +++
 
-## Appendix: Photograph of Experiment 2
+## Appendix A: Code Listings
+
+(listing:ex2:1)=
+### Listing 4: Binary counter with stop/start control
+View and download code as a GitHub gist:
+[digi_input1.ino).](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f).
+<script src="https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f.js"></script>
+
+
+(listing:ex2:2)=
+### Listing 5: Binary counter with stop/start and turbo button
+View and download code as a GitHub gist:
+[digi_input2.ino](https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2).
+<script src="https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2.js"></script>
+
+## Appendix B: Photograph of Experiment 2
 
 The following photograph ({numref}`photo:ex2:1` ) has been provided by Dr Davies who created this experiment.
 

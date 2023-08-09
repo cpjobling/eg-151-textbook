@@ -77,12 +77,7 @@ Counter circuit.
 
 Now you are familiar with the Arduino IDE from running &ldquo;Blink&rdquo; in {doc}`../get_started/index`, the next step is to write a new programme. 
 
-[Listing 1](#listing1) shows the text of a programme which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a &ldquo;time wasting&rdquo; delay, using the Arduino specific command `delay()`.</p>
-
-(listing1)=
-**Listing 1**: Basic counter (counter.ino) (View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b).)
-<script src="https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b.js"></script>
-
+{ref}`listing1` shows the text of a programme which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a &ldquo;time wasting&rdquo; delay, using the Arduino specific command `delay()`.</p>
 
 First connect your Arduino Nano board to your PC with the cable provided. Next open Arduino IDE 2 and select the connection and board as described in {ref}`set_up_arduino`. From the file menu select &ldquo;New Sketch&rdquo;. Press the `view raw` button to view the code without line numbers, copy the whole of the code given in Listing 1 and paste it into the code window of the new sketch. Save the  sketch file as `counter1`.
 
@@ -156,10 +151,7 @@ does.
 
 ## Let&rsquo;s do it again!
 
-Now that we are masters of the modulus counter, let&rsquo;s repeat the operation by connecting another set of LEDs to port B, and adding extra lines to the programme as shown in Listing 2.
-
-**Listing 2**: Canscaded counter (counter2.ino) (View and download the code from GitHub gist [counter2.ino](https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b).)
-<script src="https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b.js"></script>
+Now that we are masters of the modulus counter, let&rsquo;s repeat the operation by connecting another set of LEDs to port B, and adding extra lines to the programme as shown in {ref}`listing2`.
 
 This will require another variable, for example &ldquo;counter2&rdquo;.
 
@@ -203,7 +195,7 @@ for (counter2 = 0; counter2 < 60; counter2++) {
 
 In just three lines of code, the start and end values of the loop are set up, and the increment defined, followed by the code to be executed each time around the loop. This illustrates the compact nature of the &ldquo;C&rdquo; language.
 
-This `for(;;)` loop only executes once, so we still need to make it repeat, which is made possible by the `loop` function in the Arduino programme. Suppose we embed this `for(;;)` loop in an outer `for(;;)` loop, which increments a different variable and writes to a different port? Then we will have achieved the same result as the programme in Listing 2, but in a more elegant fashion:
+This `for(;;)` loop only executes once, so we still need to make it repeat, which is made possible by the `loop` function in the Arduino programme. Suppose we embed this `for(;;)` loop in an outer `for(;;)` loop, which increments a different variable and writes to a different port? Then we will have achieved the same result as the programme in {ref}`listing2`, but in a more elegant fashion:
 
 ```c
 for (counter1 = 0; counter1 < 60; counter1++) {
@@ -217,10 +209,7 @@ for (counter1 = 0; counter1 < 60; counter1++) {
 
 The &ldquo;heart&rdquo; of the programme is just a few lines of code!
 
-Modify the programme as shown in Listing 3, compile and upload, and check that it really does what we expect. You may find it convenient to reduce the delay from 1000 to speed up the operation of the counters.
-
-**Listing 3**: Counter using for loop. (counter3.ino) (View and download the code from GitHub gist [counter3.ino](https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95).)
-<script src="https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95.js"></script>
+Modify the programme as shown in {ref}`listing3`, compile and upload, and check that it really does what we expect. You may find it convenient to reduce the delay from 1000 to speed up the operation of the counters.
 
 +++
 
@@ -230,13 +219,30 @@ Open the document you are using as a laboratory diary and add a new section &ldq
 
 Take a photograph of the completed breadboard, with the twelve LEDs and resistors fitted. Include in your photo some means of identification, such as your student card.
 
-When you have finished modifying the programme to correspond with Listing 3, add some comments (preceded by the double oblique stroke &ldquo;//&rdquo;) and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
+When you have finished modifying the programme to correspond with {ref}`listing3`, add some comments (preceded by the double oblique stroke &ldquo;//&rdquo;) and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
 
 We shall be looking for comments which show your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the programme, the comments aid understanding. Also, if you return to working on a programme after a couple of weeks, it is much easier to pick up where you left off. A programme without comments is incomplete!
 
 +++
 
-## Appendix: Photographs of Plug-in Breadboard
+## Appendix A: Code Listings
+
+(listing1)=
+#### Listing 1: Basic counter
+View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b).
+<script src="https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b.js"></script>
+
+(listing2)=
+#### Listing 2: Cascaded counter
+View and download the code from GitHub gist [counter2.ino](https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b).
+<script src="https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b.js"></script>
+
+(listing3)=
+#### Listing 3: Counter using for loop
+View and download the code from GitHub gist [counter3.ino](https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95).
+<script src="https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95.js"></script>
+
+## Appendix B: Photographs of Plug-in Breadboard
 
 The following photographs ({numref}`photo:ex1:1` and {numref}`photo:ex1:2`) were provided by Dr Davies who created this experiment.
 
@@ -256,4 +262,8 @@ Photograph of partially wired prototype board.
 :align: center
 
 Photograph of completed prototype board for experiment 1.
+```
+
+```{code-cell} ipython3
+
 ```
