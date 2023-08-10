@@ -220,6 +220,7 @@ following:
 
 View or download code from GitHub Gist
 [analog.ino](https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a)
+<script src="https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a.js"></script>
 
 +++
 
@@ -234,7 +235,7 @@ or download code from GitHub Gist
 
 ## Appendix B: Photographs
 
-The following photograph ({numref}`photo:ex3:1` ) has been provided by Dr Davies who created this experiment.
+The following photograph ({numref}`photo:ex3:1`) has been provided by Dr Davies who created this experiment.
 
 ```{figure} pictures/Expt4A1-1.jpg
 :name: photo:ex3:1
