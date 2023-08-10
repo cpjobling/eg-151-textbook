@@ -111,4 +111,4 @@ double oblique stroke, "//".)
 View or
 download code from GitHub
 Gist [arrays.ino](https://gist.github.com/cpjobling/2170231c0092f07d3aa0495f8220098d)
-<script src="https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a.js"></script>
+<script src="https://gist.github.com/cpjobling/2170231c0092f07d3aa0495f8220098d.js"></script>
