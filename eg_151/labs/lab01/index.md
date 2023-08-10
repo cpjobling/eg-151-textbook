@@ -64,8 +64,7 @@ Construct the circuit shown in {numref}`fig:ex1:1` using the components supplied
 
 ```{figure} pictures/fig1.png
 :name: fig:ex1:1
-:align: center
-:width: 100%
+:width: 70%
 :alt: Wiring diagram for experiment 1.
 
 Counter circuit.
@@ -163,7 +162,7 @@ Add another set of six LEDs and resistors to the Breadboard as shown in {numref}
 :name: fig:ex1:3
 :align: center
 :alt: Wiring diagram for cascaded counter.
-:width: 100%
+:width: 70%
 
 Circuit board for a cascaded counter.
 ```
@@ -249,7 +248,7 @@ The following photographs ({numref}`photo:ex1:1` and {numref}`photo:ex1:2`) were
 ```{figure} pictures/photo1.jpg
 :name: photo:ex1:1
 :alt: Photograph of partially wired prototype board.
-:width: 100%
+:width: 60%
 :align: center
 
 Photograph of partially wired prototype board.
@@ -258,7 +257,7 @@ Photograph of partially wired prototype board.
 ```{figure} pictures/photo2.jpg
 :name: photo:ex1:2
 :alt: Photograph of completed prototype board for experiment 1.
-:width: 100%
+:width: 60%
 :align: center
 
 Photograph of completed prototype board for experiment 1.
