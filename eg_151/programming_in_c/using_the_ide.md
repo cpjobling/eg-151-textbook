@@ -49,10 +49,4 @@ The first of these functions is called “`setup`” and takes no input argument
 The second function is called “`loop`” and takes no input arguments and has no return type as above. This function is where the bulk of the code is written and as its name suggests will repeatedly execute the code inside the function block.
 
 
-## Notes
-
 [^note1]: The IDE set-up instructions given here are for windows. Additional hardware specific intructions are given in {ref}`set_up_arduino` and in the [Platform specific guides](https://www.arduino.cc/en/Guidehttps://www.arduino.cc/en/Guide).
-
-```python
-
-```

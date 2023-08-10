@@ -14,10 +14,6 @@ Referencing the pinout of the Arduino nano in {numref}`
   - Looking at {numref}`fig:ccode:1` and the two pins we have used above, connections `D0` &ndash; `D7` can be used which corresponds to Port D bits 0-7[^note3].
  
 A possible assembly is illustrated in {numref}`fig:ccode:2`[^note4]
- 
-
-
-## Figures
 
 ```{figure} pictures/ArduinoNanoPinout.png
 :name: fig:ccode:1
@@ -38,8 +34,6 @@ The circuit assembled on breadboard
 ```
 
 
-## Notes
-
 [^note1]: the programmer could also use `D9`, `D10`, `D11`, `D12` etc.
 
 [^note2]: the programmer could also use `A1`, `A2`, `A3`, `A4`, etc.)
@@ -47,8 +41,3 @@ The circuit assembled on breadboard
 [^note3]: pins across multiple ports *can* be used but this will make the programming more complicated.
 
 [^note4]: When building this circuit, it is advised that the red wire from the 5V output of the Arduino nano board to the bottom rail of the breadboard is replaced with a 220 Ohm resistor, this will protect the USB circuitry within the PC in the event of any wiring faults/short circuits between the rails.  
-
-
-```python
-
-```

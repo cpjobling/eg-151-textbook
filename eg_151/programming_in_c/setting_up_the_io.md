@@ -86,10 +86,7 @@ digitalWrite(ledPin7, LOW);
 ```
 
 
-## Notes
-
 [^const]: If a value will not change, it can be stored as part of the programme in read-only-memory. This will release a small amount of space in working memory which is often limited in a microcontroller.
 
-```python
 
-```
+

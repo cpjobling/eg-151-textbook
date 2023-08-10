@@ -41,9 +41,6 @@ In this task, there are three pieces of external hardware involved, an analogue 
 - The default state of the LEDs should be off or `LOW`
 - As the task states the value shown by the LEDs should represent the value of the analogue input relative to the maximum voltage, this will be easier to Implement in software if all of the LEDs are on the same port.
 
-
-## Notes
-
 [^note1]: When considering the physical set up of this the programmer/engineer must ensure that the maximum possible value seen at the microcontroller input is less than or equal to the reference voltage of our Analogue to Digital Converter (ADC) to prevent an overvoltage. 
 
 [^note2]: In order to clearly detect the button press and avoid floating voltages the programmer needs to ensure the pull up resistor for the specific pin is enabled (or that this has been implemented separately in hardware).
