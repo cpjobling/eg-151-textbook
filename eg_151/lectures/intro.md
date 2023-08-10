@@ -121,7 +121,7 @@ Applications of microcontrollers, and programming in both assembly and 'C' langu
 
 
 (welcome:course_assessment)=
-## Course Assessment
+### Course Assessment
 
 There are four formal assessment components to this course:
 
