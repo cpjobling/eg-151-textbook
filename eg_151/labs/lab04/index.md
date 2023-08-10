@@ -94,7 +94,7 @@ programme as follows:
 
 +++
 
-## 4.3. Assessment of Experiment 4
+## Assessment of Experiment 4
 
 When you are satisfied with the programme, copy and paste it into you
 lab diary. Don't forget to put in plenty of comments (preceded by the
