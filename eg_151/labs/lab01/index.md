@@ -263,7 +263,3 @@ Photograph of partially wired prototype board.
 
 Photograph of completed prototype board for experiment 1.
 ```
-
-```{code-cell} ipython3
-
-```
