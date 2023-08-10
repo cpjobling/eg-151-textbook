@@ -94,8 +94,21 @@ programme as follows:
 
 +++
 
-## Assessment of Experiment 4
+## 4.3. Assessment of Experiment 4
 
 When you are satisfied with the programme, copy and paste it into you
 lab diary. Don't forget to put in plenty of comments (preceded by the
 double oblique stroke, "//".)
+
+ 
+
++++
+
+## Appendix A: Code Listing
+
+(listing8)=
+### Listing 8: Programme using an array.
+View or
+download code from GitHub
+Gist [arrays.ino](https://gist.github.com/cpjobling/2170231c0092f07d3aa0495f8220098d)
+<script src="https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a.js"></script>
