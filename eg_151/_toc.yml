@@ -13,6 +13,16 @@ parts:
     chapters:
     - file: lectures/index
     - file: lectures/intro
+  - caption: Programming in C
+    numbered: false
+    chapters:
+    - file: programming_in_c/index
+    - file: programming_in_c/the_task
+    - file: programming_in_c/understanding_the_task
+    - file: programming_in_c/wiring_the_circuit
+    - file: programming_in_c/using_the_ide
+    - file: programming_in_c/setting_up_the_io
+    - file: programming_in_c/detecting_and_reacting_to_a_button_press
   - caption: Laboratory Introduction
     numbered: false
     chapters:

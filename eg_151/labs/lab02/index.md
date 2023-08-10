@@ -230,7 +230,7 @@ The next programme, in {ref}`listing:ex2:2`, uses both buttons. The left-hand
 button, as before, stops the counter. The right-hand button is a "turbo"
 button, and makes the counter speed up by a factor of 10! 
 
-A new programme structure, `if...else` has been introduced in [Listing 5](#listing:ex2:2) (lines 28&mdash;33) is used to decide on a delay of 1000 ms
+A new programme structure, `if...else` has been introduced in [Listing 5](listing:ex2:2) (lines 28&mdash;33) is used to decide on a delay of 1000 ms
 or a delay of 100 ms, depending on the condition of the button.
 
 The general `if…else` structure is as follows:

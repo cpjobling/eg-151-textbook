@@ -227,17 +227,17 @@ We shall be looking for comments which show your understanding of the way the ne
 ## Appendix A: Code Listings
 
 (listing1)=
-#### Listing 1: Basic counter
+### Listing 1: Basic counter
 View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b).
 <script src="https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b.js"></script>
 
 (listing2)=
-#### Listing 2: Cascaded counter
+### Listing 2: Cascaded counter
 View and download the code from GitHub gist [counter2.ino](https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b).
 <script src="https://gist.github.com/cpjobling/d0b1b4bfc77c28a4284b7fcff13d5d1b.js"></script>
 
 (listing3)=
-#### Listing 3: Counter using for loop
+### Listing 3: Counter using for loop
 View and download the code from GitHub gist [counter3.ino](https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95).
 <script src="https://gist.github.com/cpjobling/0dcf2eeb620a1e2228502d67cc1aeb95.js"></script>
 

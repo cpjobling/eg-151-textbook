@@ -1,0 +1,49 @@
+(programming_in_c_2)=
+# Understanding the task and first thoughts
+
+
+## Understanding the Brief
+The first step in writing any program is ensuring you understand the task or brief, the hardware that will be involved and what the outputs/results should be. 
+
+
+## The Task
+The program written needs to detect when a push button is pressed, at each button press the voltage from an analogue signal needs to be read. Once the signal voltage has been read, the value must be processed and the value displayed visually on a bank of LEDs.
+
+ 
+
+
+## The Hardware
+In this task, there are three pieces of external hardware involved, an analogue signal from a sensor, a push button switch and a bank of LEDs.
+
+- The analogue input &ndash; this can be created using a potentiometer connected between the supply voltage and ground with the centre tap connected to an input on the microcontroller[^note1]. For the built in ADC of the Atmel ATmega328 this is 5V.
+- The push button switch &ndash; this can be connected to ground on one side of the switch and to a microcontroller input on the other[^note2]. 
+- The bank of LEDs (with current limiting resistors) – for simplicity it is easiest to use 8 LEDs connected to the 8 pins of a single port. Since each port is linked to an output register which is 8 bits wide (PORTx) this will make it simpler to program the output part of the task.
+ 
+
+
+## First thoughts on Implementation
+
+### Push Button
+
+- The pin that the push button will be connected to will need to be configured as an input.
+- The pull-up resistor for this pin will also need to be enabled.
+  - This will be a digital signal with a value of 5V or `HIGH` when the button is not pressed and a value of 0V or `LOW` when the button is pressed
+
+### Analogue Input
+
+- The pin that the analogue input is connected to will need to be one that is also connected to the ADC.
+- The pin will also need to be configured as an input.
+- The ADC registers will need to be configured as required.
+
+### LEDs
+
+- The pins that the LEDs are connected to will need to be configured as outputs.
+- The default state of the LEDs should be off or `LOW`
+- As the task states the value shown by the LEDs should represent the value of the analogue input relative to the maximum voltage, this will be easier to Implement in software if all of the LEDs are on the same port.
+
+
+## Notes
+
+[^note1]: When considering the physical set up of this the programmer/engineer must ensure that the maximum possible value seen at the microcontroller input is less than or equal to the reference voltage of our Analogue to Digital Converter (ADC) to prevent an overvoltage. 
+
+[^note2]: In order to clearly detect the button press and avoid floating voltages the programmer needs to ensure the pull up resistor for the specific pin is enabled (or that this has been implemented separately in hardware).

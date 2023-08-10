@@ -53,8 +53,6 @@ A copy of the data sheet for the
 display and a list of ASCII characters]
 can be found on [Canvas](https://canvas.swansea.ac.uk/courses/44971/files/4630684?module_item_id=2258159).
 
- 
-
 +++
 
 ## Pinout of the Alphanumeric Display module
@@ -227,7 +225,7 @@ As with previous exercises, the plug-in breadboard should be
 photographed with your student card and added to your laboratory diary.
 A listing of your programme should be included, with plenty of comments.
 A programme without comments is of only limited value, as nobody else
-can follow it! 
+can follow it!
 
 +++
 

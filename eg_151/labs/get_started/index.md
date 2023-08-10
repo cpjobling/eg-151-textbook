@@ -98,7 +98,7 @@ When you are satisfied that the Arduino IDE has been successfully installed, run
 The Ardino IDE 2 Main Screen on First Run
 :::
 
-Plug in the Arduino Nano board ({numref}`fig:6`) using the supplied lead. Next look at the dropdown control labelled **Select Board*. Identify the connection which depends on your operating system but will be identified as a USB connection on MAcOS and Linux, or may be labelled COM 5 (or some other number) on Windows (see {numref}`fig:7`).
+Plug in the Arduino Nano board ({numref}`fig:6`) using the supplied lead. Next look at the dropdown control labelled **Select Board*. Identify the connection which depends on your operating system but will be identified as a USB connection on MacOS and Linux, or may be labelled COM 5 (or some other number) on Windows (see {numref}`fig:7`).
 
 ::: {figure} pictures/arduino_nano_breadboard.png
 :name: fig:6
@@ -182,3 +182,7 @@ Congratulations! You have successfully edited the program.
 If you like, you can save the edited program by clicking on File, selecting &ldquo;Save As&rdquo; and when the dialogue appears, give the program a new name, for example &ldquo;myblink&rdquo;.
 
 You are now ready to attempt the first laboratory exercise {ref}`lab_1`.
+
+```{code-cell} ipython3
+
+```

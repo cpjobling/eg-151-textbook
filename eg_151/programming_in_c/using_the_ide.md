@@ -1,0 +1,58 @@
+(programming_in_c_4)=
+# Using the Arduino Integrated Development Environment
+
+
+Initially this guide will look at programming this task using the Arduino Integrated Development Environment (IDE) with the predefined functions detailed in the [Arduino Language Reference](https://www.arduino.cc/reference/en/).
+
+(step1)=
+## Step 1
+
+Open the Arduino software and set up the IDE by selecting which device is being used and which communication interface it is connected to. Within the "Tools" menu option, locate the menu item “Board” and select Arduino Nano, also in the “Tools” menu select the port that the Arduino Nano is connected to (COMx) under the “Port” menu item (note the Arduino must be connected to do this)[^note1]. After setting these parameters , under the “Tools” menu the “Get Board Info” menu item can be pressed which will attempt to communicate with the Arduino board and get the board name and serial number of the USB communication chip if successful.
+
+ 
+
+
+(step2)=
+## Step 2
+
+With the IDE now setup, we can begin writing the code that will be uploaded to run on the microcontroller. By default, when a new file is started in the Arduino IDE, there are two existing function blocks as shown below and in {numref}`fig:ccode:3`.
+
+```c
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+
+```{figure} pictures/ArduinoScreenshot1.png
+:name: fig:ccode:3
+:align: center
+:width: 100%
+:alt:  A screenshot of the Arduino IDE when first opened showing the "setup" and "loop" functions.
+
+ A screenshot of the Arduino IDE when first opened showing the "setup" and "loop" functions.
+```
+
+
+### Setup function
+
+The first of these functions is called “`setup`” and takes no input arguments and has no return type indicated by the empty brackets and `void` data type. This function is where the programmer can put any code that only needs to be run once, examples include USB communication setup and port data direction configuration.
+
+
+### Loop function
+
+The second function is called “`loop`” and takes no input arguments and has no return type as above. This function is where the bulk of the code is written and as its name suggests will repeatedly execute the code inside the function block.
+
+
+## Notes
+
+[^note1]: The IDE set-up instructions given here are for windows. Additional hardware specific intructions are given in {ref}`set_up_arduino` and in the [Platform specific guides](https://www.arduino.cc/en/Guidehttps://www.arduino.cc/en/Guide).
+
+```python
+
+```

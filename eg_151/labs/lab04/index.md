@@ -90,8 +90,6 @@ programme as follows:
 5.  When the display operation is complete, return to examining the
     switches.
 
- 
-
 +++
 
 ## Assessment of Experiment 4
@@ -99,8 +97,6 @@ programme as follows:
 When you are satisfied with the programme, copy and paste it into you
 lab diary. Don't forget to put in plenty of comments (preceded by the
 double oblique stroke, "//".)
-
- 
 
 +++
 

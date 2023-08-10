@@ -38,3 +38,4 @@ html:
 
 only_build_toc_files: true
 
+myst_footnote_transition: false
