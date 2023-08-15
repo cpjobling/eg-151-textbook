@@ -16,7 +16,7 @@ standards original implementation with Teletype machines -- most of
 these are now obsolete but some are still used including carriage
 return (`\r` in C), line feed (`\n` in C), tab (`\t` in C).
 
-- As microprocessors evolved to 8-bit and higher the ASCII standard has
+As microprocessors evolved to 8-bit and higher the ASCII standard has
 also evolved to use the eighth bit allowing a further 127 characters
 (extended ASCII).[^note2]
 
@@ -495,6 +495,10 @@ The final result (in hexadecimal) is
 00
 ```
 
-[^note2]: As ASCII was only designed to represent English, extended ASCII was developed been used to extend the coding so that displays could print accented European characters, some Greek symbols used in mathematics, and some symbols that could be used to draw boxes on a simple display screen. In order to support the rest of the human languages and alphabets, and for other purposes such as Emojis, ASCII has been extended to a standard called UTF. This uses more bytes to represent each character and therefore greatly extends the types of texts that can be stored and manipulated inside a computer.
+[^note2]: As ASCII was only designed to represent English, extended ASCII was developed been used to extend the coding so that displays could print accented European characters, some Greek symbols used in mathematics, and some symbols that could be used to draw boxes on a simple display screen. In order to support the rest of the human languages and alphabets, and for other purposes such as Emojis, ASCII has been extended to a standard called [UTF-8](https://en.wikipedia.org/wiki/UTF-8). This uses more bytes to represent each character and therefore greatly extends the types of texts that can be stored and manipulated inside a computer.
 
 [^note3]: the null character (`\0` in C) is used in C to mark the end of a string.
+
+```python
+
+```
