@@ -51,3 +51,11 @@ parts:
   - caption: Mini Projects
     chapters:
     - file: projects/index
+  - caption: Appendices
+    chapters:
+    - file: appendix/appendix_a
+      sections: 
+      - file: appendix/2scomp
+      - file: appendix/bcd
+      - file: appendix/binary_fractions
+      - file: appendix/ascii

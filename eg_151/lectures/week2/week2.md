@@ -580,6 +580,10 @@ The condition of the status register after completing the sum $110_{10} + 227_{1
 ```
 <!-- #endregion -->
 
+## Other Data Representations
+
+We have provided notes and videos that introduce other commonly used data representations in {ref}`appendix_a`. These notes are examinable, but we encourage you to study these for yourself.
+
 ```python
 
 ```
