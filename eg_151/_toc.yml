@@ -15,6 +15,7 @@ parts:
     - file: lectures/intro
     - file: lectures/week1/week1
     - file: lectures/week2/week2
+    - file: lectures/week3/week3
   - caption: Programming in C
     numbered: false
     chapters:

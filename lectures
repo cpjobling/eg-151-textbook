@@ -1,0 +1,411 @@
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image3.jpeg){width="8.1949989063867in"
+> height="7.4998611111111115in"}EG-151
+>
+> Microcontrollers
+>
+> Week 2: Self-Directed Study --
+>
+> Introduction to Data Representation
+
+![](media/image4.png){width="1.1425437445319335in" height="9.375e-2in"}
+
+![](media/image5.png){width="13.333333333333334in"
+height="7.5in"}![](media/image6.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}![](media/image7.png){width="0.1166940069991251in"
+height="0.1723611111111111in"}![](media/image8.png){width="4.222415791776028in"
+height="0.22777777777777777in"}![](media/image9.png){width="0.15869422572178477in"
+height="0.174582239720035in"}![](media/image10.png){width="1.9967913385826772in"
+height="0.23in"}![](media/image11.png){width="0.15124890638670166in"
+height="0.17486001749781277in"}![](media/image12.png){width="3.1893186789151358in"
+height="0.23in"}![](media/image13.png){width="3.595in"
+height="3.571665573053368in"}![](media/image14.png){width="2.953333333333333in"
+height="2.9449989063867017in"}![](media/image15.png){width="2.5033333333333334in"
+height="2.52in"}
+
+> Topics
+
+![](media/image16.png){width="13.333333333333334in"
+height="7.5in"}![](media/image17.png){width="3.12663823272091in"
+height="0.25624890638670167in"}
+
+> Introduction
+>
+> How is Data stored Digitally?
+>
+> Modern digital processors and microcontrollers contain millions of
+> solid state devices known as transistors.
+>
+> ![](media/image18.jpeg){width="3.8033333333333332in"
+> height="2.2016666666666667in"}With one transistor we can control the
+> flow of electrons creating an object with two states -- on or off,
+> this is known as a binary system.
+>
+> We can use the output (or input if wired to ground) of this transistor
+> to connect to other transistors forming logic gates and eventually a
+> bit of memory.
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}With many transistors we can use this
+> to create memory
+>
+> and store data as bits.
+>
+> SRAM vs DRAM : How SRAM Works? How DRAM Works? Why SRAM is faster than
+> DRAM?
+>
+> All About Electronics - YouTube
+>
+> ![](media/image5.png){width="13.333333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}Terminology
+>
+> 1 Bit = 1 Data Unit
+>
+> 1 Nybble = 4 Data Units
+>
+> 1 Byte = 8 Data Units
+
+1 Word = 16 Data Units
+
+![](media/image19.png){width="13.333333333333334in"
+height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}
+
+> Numbering Systems and Base Conversion
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}Decimal Number Representation
+>
+> Take the decimal number (Base 10) 4623, what does this representation
+> mean? 4623
+>
+> 4000 + 600 + 20 + 3
+>
+> (4·1000) + (6·100) + (2·10) + (3·1) 4·103 + 6·102 + 2·101 + 3·100
+>
+> We can break down any base 10 (decimal) number in the same way using
+> the expression:
+>
+> ... + X·103 + X·102 + X·101 + X·100
+>
+> Where X is any numeral/symbol in the set {0, 1, 2, 3, 4, 5, 6, 7, 8,
+> 9}
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}What About Other Bases?
+>
+> We can apply the same techniques to any other base to convert the
+> value into decimal (base 10)
+>
+> For programming binary (base 2), octal (base 8) and hexadecimal (base
+> 16) representations are commonly used.
+>
+> Binary:
+>
+> ... + X·25 + X·24 + X·23 + X·22 + X·21 + X·20
+>
+> Where X is any numeral/symbol in the set {0, 1}
+>
+> Consider the binary representation 10010011
+>
+> 1·27 + 0·26 + 0·25 + 1·24 + 0·23 + 0·22 + 1·21 + 1·20
+>
+> 1·128 + 0·64 + 0·32 + 1·16 + 0·8 + 0·4 + 1·2 + 1·1
+>
+> 128 + 16 + 2 + 1
+>
+> 14710
+>
+> What About Other Bases?
+
++------------------+---+---+---+------+-------------------------------------+
+| > Octal:         |   |   |   |      | > Hexadecimal:                      |
++==================+===+===+===+======+=====================================+
+| > ... + X·85 +   | > | > | > | >    | > ... + X·165 + X·164 + X·163 +     |
+| > X·84 + X·83 +  |   |   |   | X·80 | > X·162 + X·161 + X·160             |
+| > X·82           | \ | X | \ |      |                                     |
+|                  | + | · | + |      |                                     |
+|                  |   | 8 |   |      |                                     |
+|                  |   | 1 |   |      |                                     |
++------------------+---+---+---+------+-------------------------------------+
+| > X is any       |   |   |   |      | > X is any numeral/symbol in the    |
+| > numeral/symbol |   |   |   |      | > set                               |
+| > in the set     |   |   |   |      |                                     |
++------------------+---+---+---+------+-------------------------------------+
+| > {0, 1, 2, 3,   |   |   |   |      | > {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, |
+| > 4, 5, 6, 7}    |   |   |   |      | > B, C, D, E, F}                    |
++------------------+---+---+---+------+-------------------------------------+
+
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}Consider the octal representation 712
+>
+> 7·82 + 1·81 + 2·80
+>
+> 7·64 + 1·8 + 2·1
+>
+> 448 + 8 + 2
+>
+> 45810
+>
+> Consider the hexadecimal representation 3C4
+>
+> 3·162 + C·161 + 4·160
+>
+> 3·256 + 12·16 + 4·1
+>
+> 768 + 192 + 4
+>
+> 96410
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image20.png){width="0.10708333333333334in"
+> height="9.652777777777778e-2in"}![](media/image21.png){width="7.215in"
+> height="2.7983344269466315in"}Decimal Number Conversion
+>
+> A decimal number can be converted into any other base using the
+> divide-by-n method where n represents the desired base
+>
+> Step 1 − Divide the decimal number by the value of the new base and
+> get the quotient and a remainder Step 2 − Keep dividing the quotient
+> of the previous divide by the new base and record the remainder.
+>
+> Step 3 − Repeat Step 2, until the quotient becomes zero
+>
+> Step 4 -- Read the remainders from bottom (MSB) to top (LSB).
+>
+> Decimal Number Conversion Examples
+>
+> Convert 2810 into binary (base 2) Convert 2810 into hexadecimal (base
+> 16)
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image22.png){width="8.347112860892389e-2in"
+> height="9.436023622047245e-2in"}2 28
+>
+> 14 Remainder 0
+>
+> 7 Remainder 0
+>
+> 3 Remainder 1
+>
+> 1 Remainder 1
+>
+> 0 Remainder 1
+>
+> Binary Value: 1 1 1 0 0
+>
+> Proof:
+>
+> 1·24 + 1·23 + 1·22 + 0·21 + 0·20
+>
+> 1·16 + 1·8 + 1·4 + 0·2 + 0·1
+>
+> 16 + 8 + 4 = 28~10~
+>
+> 16 28
+>
+> 1 Remainder C (12)
+>
+> 0 Remainder 1
+>
+> Hexadecimal Value: 1 C Proof:
+>
+> 1·161 + 12·160
+>
+> 1·16 + 12·1
+>
+> 16 + C = 2810
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image23.png){width="0.10638779527559056in"
+> height="9.556867891513561e-2in"}Tips and Tricks
+>
+> Hexadecimal:
+>
+> Octal:
+>
+> ![](media/image5.png){width="13.333333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image24.png){width="0.10069444444444445in"
+> height="9.679133858267716e-2in"}Review of Number Systems
+
+![](media/image25.png){width="13.333333333333334in"
+height="7.5in"}![](media/image26.png){width="0.10722222222222222in"
+height="9.556867891513561e-2in"}![](media/image27.png){width="4.814832677165354in"
+height="0.19208333333333333in"}![](media/image4.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}
+
+> Binary Addition and Subtraction
+>
+> Binary Arithmetic
+>
+> Microcontrollers work with 0's and 1's (binary)
+>
+> In order to add or subtract two binary numbers there are a series of
+> rules similar to in decimal arithmetic.
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image28.png){width="0.10263779527559055in"
+> height="9.531933508311462e-2in"}[Rules for Binary
+> Addition]{.underline} 0 + 0 = 0
+>
+> 0 + 1 or 1 + 0 = 1
+>
+> 1 + 1 = 10 i.e. 0 + carry 1
+>
+> 1 + 1 + 1 = 11 i.e. 1 + carry 1
+>
+> Rules for Binary Subtraction
+>
+> 0 - 0 = 0
+>
+> 1 - 0 = 1
+>
+> 1 - 1 = 0
+>
+> 0 - 1 = 10 - 1 + borrow = 1+ borrow
+>
+> Binary Addition
+>
+> Rules for Binary Addition 0 + 0 = 0
+>
+> 0 + 1 or 1 + 0 = 1
+>
+> 1 + 1 = 10 i.e. 0 + carry 1
+>
+> 1 + 1 + 1 = 11 i.e. 1 + carry 1
+
+![](media/image1.png){width="13.333333333333334in"
+height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}![](media/image29.png){width="0.10638779527559056in"
+height="9.665244969378828e-2in"}
+
++---------------------+-------------------------------------+---------+
+| > Augend            | 0 0 1 0 1 1 1 0                     | 4610    |
++=====================+=====================================+=========+
+| > Addend            | 1 0 0 1 0 0 1 1                     | 14710   |
++---------------------+-------------------------------------+---------+
+| > Sum               | 1 1 0 0 0 0 0 1                     | 19310   |
++---------------------+-------------------------------------+---------+
+
+> Binary Subtraction
+
++----------------------------+-------------------------------+---------+
+| > Minuend                  | 1 1 0 1 1                     | 2710    |
++============================+===============================+=========+
+| > Subtrahend               | 0 1 1 1 0                     | 1410    |
++----------------------------+-------------------------------+---------+
+| > Sum                      | 0 1 1 0 1                     | 1310    |
++----------------------------+-------------------------------+---------+
+
+> Binary Arithmetic and Flags
+>
+> Rules for Binary Subtraction
+>
+> 0 - 0 = 0
+>
+> 1 - 0 = 1
+>
+> 1 - 1 = 0
+>
+> 0 - 1 = 10 - 1 + borrow = 1+ borrow
+
+![](media/image1.png){width="13.333333333333334in"
+height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}![](media/image30.png){width="0.10986001749781277in"
+height="9.547134733158355e-2in"}
+
++-----------------------+-----------------------------------+---------+
+| > Minuend             | 1 0 1 0 1 1 1 1                   | 17510   |
++=======================+===================================+=========+
+| > Subtrahend          | 0 1 0 1 0 0 1 1                   | 8310    |
++-----------------------+-----------------------------------+---------+
+| > Sum                 | 0 1 0 1 1 1 0 0                   | 9210    |
++-----------------------+-----------------------------------+---------+
+
+> Binary Arithmetic and Flags
+>
+> What happens when the result is larger that 8-bits?
+>
+> Rules for Binary Addition 0 + 0 = 0
+>
+> 0 + 1 or 1 + 0 = 1
+>
+> 1 + 1 = 10 i.e. 0 + carry 1
+>
+> 1 + 1 + 1 = 11 i.e. 1 + carry 1
+
+![](media/image1.png){width="13.333333333333334in"
+height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+height="9.544400699912511e-2in"}![](media/image31.png){width="0.10666666666666667in"
+height="9.665244969378828e-2in"}
+
++-------------------+---------------------------------------+---------+
+| > Augend          | 0 1 1 0 1 1 1 0                       | 11010   |
++===================+=======================================+=========+
+| > Addend          | 1 1 1 0 0 0 1 1                       | 22710   |
++-------------------+---------------------------------------+---------+
+| > Sum             | 1 0 1 0 1 0 0 0 1                     | 33710   |
++-------------------+---------------------------------------+---------+
+
+> The overflow is acknowledged in the status register by the carry flag
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image32.png){width="0.10583333333333333in"
+> height="9.665244969378828e-2in"}Introduction to the Status Register
+>
+> The microcontroller has an 8-bit register containing a number of flags
+> which can be set based on the condition of the microcontroller
+
+![](media/image33.png){width="7.423333333333333in"
+height="1.6266666666666667in"}![](media/image34.png){width="5.365in"
+height="0.25in"}
+
+-   The Half Carry Flag 'H' is set if there was a carry from bit 3;
+    cleared otherwise.
+
+-   The Zero Flag 'Z' is set if the result is 0x00; cleared otherwise.
+
+-   The Carry Flag 'C' is set if there was a carry from the MSB of the
+    result; cleared otherwise.
+
+> We will look at the status register in detail in week 3 of the course
+>
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image35.png){width="0.13027668416447943in"
+> height="9.652777777777778e-2in"}Binary Arithmetic Example 1
+
+![](media/image36.png){width="4.6866666666666665in"
+height="2.9266666666666667in"}
+
+> ![](media/image1.png){width="13.333333333333334in"
+> height="1.185in"}![](media/image2.png){width="9.843333333333334in"
+> height="7.5in"}![](media/image4.png){width="1.1631944444444444in"
+> height="9.544400699912511e-2in"}![](media/image37.png){width="0.10666557305336832in"
+> height="9.556867891513561e-2in"}Binary Arithmetic Example 1
+
+![](media/image38.jpeg){width="4.62in" height="2.86125in"}
