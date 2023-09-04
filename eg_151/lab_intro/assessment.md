@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.14.7
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -37,6 +37,6 @@ and the chief Electronics technician.
 -   Answers to questions - Canvas Quiz (5 marks)
 -   Inspection of Tic-Tac box continuity tester (5 marks)
 
-**Deadline for submission**: 26th October 2023
-**Deadline for feedback**: 16th November 2023 or fifteen working days
+**Deadline for submission**: 16:00 27th October 2023
+**Deadline for feedback**: 17th November 2023 or fifteen working days
 after submission.
