@@ -1,6 +1,180 @@
+---
+jupytext:
+  cell_metadata_filter: -all
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.15.1
+kernelspec:
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
+---
+
 (appendixa:2scomp)=
-# Appendix A.1: Two's Compliment
+# Appendix A.1: Twos Compliment
 
-```python
+## Negative Numbers!
 
+Up until now, we have only considered positive or unsigned values, how can we handle negative numbers?
+
+An unsigned number itself contains no indication whether it is negative or positive. 
+
+A number is said to be signed when the most significant bit (MSB) is used to indicate the sign of the number
+‘0’ being used if the number is positive and ‘1’ being used if the number is negative
+
+Whilst this technique can be used to represent a negative number it is not a practical approach.
+
++++
+
+### Example 
+Try the following simple sum $2 + -1 = ?$
+
++++
+
+Start with the two numbers 
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 010 & 2\\
+\mathrm{Augend} & 001 & 1\\
+\hline
+\mathrm{Sum} & &
+\end{array}$$
+
++++
+
+Chamge the MSB of number 2 to 1 to indicate that it is negative
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 0010 & 2 \\
+\mathrm{Augend} & 1001 & -1 \\
+\hline
+\mathrm{Sum} & &
+\end{array}$$
+
++++
+
+Now add the addend to the augend
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 0010 & 2 \\
+\mathrm{Augend} & 1001 & -1 \\
+\hline
+\mathrm{Sum} & 1011 & -3
+\end{array}$$
+
++++
+
+The answer comes out as $-3$ which is clearly wrong. We must use a different approach.
+
++++
+
+## Twos Complement
+
+A more useful way to represent negative numbers is to use the twos complement method. 
+
+A binary number has two complements - a ones complement and a twos complement.
+
+- To get the ones complement, change all 1’s of the unsigned number to 0’s and all 0’s to 1’s, then
+- To get the twos complement add 1 to the ones complement.
+
+{numref}`fig:appa1:2scomplement` shows the twos complement numbers for all the four bit integers.
+
++++
+
+```{figure} pictures/2scomplement.png
+:name: fig:appa1:2scomplement
+:width: 50%
+:alt: Twos complement
+
+Twos complement
 ```
+
++++
+
+## Example
+
+Consider the representation of the decimal number $-1$
+
+$$\begin{array}{lr}
+\mathrm{Unsigned\ binary\ number} & 0001\\
+\mathrm{Ones\ complement} & 1110\\
+\mathrm{Add\ one} & 1\\
+\hline
+\mathrm{Signed\ twos\ complement}& \mathrm{c}1111
+\end{array}$$
+
++++
+
+Now try the addition with the twos complement value ($1111$) of $-1$:
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 0010 & 2 \\
+\mathrm{Augend} & 1111 & -1 \\
+\hline
+\mathrm{Sum} & \mathrm{c}0001 & -3
+\end{array}$$
+
++++
+
+When performing addition with twos complement, if the MSB is a `carry bit`, it is dropped.
+
++++
+
+## More examples
+
++++
+
+Use the twos complement method to represent the decimal number $-27$
+
++++
+
+$$\begin{array}{lr}
+\mathrm{Unsigned\ value} & 00011011 \\
+\mathrm{Ones\ complement} & 11100100 \\
+\hline
+\mathrm{Twos\ complement} & 11100101 \\
+\hline
+\end{array}$$
+
++++
+
+Check
+
++++
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 00011011 & 27_{10}\\
+\mathrm{Augend} & 11100101 & -27_{10}\\
+\hline
+\mathrm{Signed\ twos\ complement}& \mathrm{c}00000000 & 0_{10}
+\end{array}$$
+
++++
+
+Use the twos complement method to represent the decimal number $-84$
+
++++
+
+$$\begin{array}{lr}
+\mathrm{Unsigned\ value} &  01010100 \\
+\mathrm{Ones\ complement} & 10101011 \\
+\hline
+\mathrm{Twos\ complement} & 10101100 \\
+\hline
+\end{array}$$
+
++++
+
+Check
+
++++
+
+$$\begin{array}{lrr}
+\mathrm{Addend} & 01010100 & 84_{10}\\
+\mathrm{Augend} & 10101100 & -84_{10}\\
+\hline
+\mathrm{Signed\ twos\ complement}& \mathrm{c}00000000 & 0_{10}
+\end{array}$$
