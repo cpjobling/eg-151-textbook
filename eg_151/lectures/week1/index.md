@@ -37,10 +37,10 @@ In this week's lecture, you will be given an introduction to microcontrollers fo
 :width: 50%
 ```
 
-- [](#week1:what_is_a_uc)
-- [](#week1:where_are_uc_used)
-- [](#week1:architecture)
-- [](#atmel_atmega328)
+- {ref}`week1:what_is_a_uc`
+- {ref}`week1:where_are_uc_used`
+- {ref}`week1:architecture`
+- {ref}`atmel_atmega328`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -266,11 +266,11 @@ As an example, in an 8-bit MC
 
 Microcontrollers with more bits, for example 16- and 32-bit MCUs have correspondingly more bits per register, more available memory addresses, and can handle larger numbers compared with their 8-bit counterparts.
 
-An introduction to data representation follows in [Week 2](week2/index.md).
+An introduction to data representation follows in {ref}`week2`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-[](#memmap) shows the data memory map of the Atmel Atmega328 which is an 8- bit MCU.
+{numref}`memmap` shows the data memory map of the Atmel Atmega328 which is an 8- bit MCU.
 
 It has $2^8$ or 256 available memory addresses
 from 0x0000 – 0x00FF which covers:
@@ -327,7 +327,7 @@ For most microcontroller-based applications, the internal memory is enough, howe
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-A Raspberry Pi 4 Model B is illustrated in [](#raspberrypi4b). It has both internal and external memory.
+A Raspberry Pi 4 Model B is illustrated in {numref}`raspberrypi4b`. It has both internal and external memory.
 
 
 ```{figure} https://www.hackatronic.com/wp-content/uploads/2021/11/raspberry-pi-4-specifications-.jpg
@@ -351,7 +351,7 @@ Broadly speaking embedded memory that is found in a microcontroller can be class
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-Volatile and non-volatile memory can be further classified as illustrated in [](#vol-non-vol-memory).
+Volatile and non-volatile memory can be further classified as illustrated in {numref}`vol-non-vol-memory`.
 
 ```{figure} pictures/memory_types.png
 :name: vol-non-vol-memory
@@ -430,7 +430,7 @@ There are two categories, *Von-Neumann* and *Harvard*.
 
 ##### Von-Neumann (Princeton) architecture
 
-In a Von-Neumann architecture, the same memory and bus are used for both data and instructions used by the CPU and peripherals as illustrated in [](#fig:week1:vonneuman).
+In a Von-Neumann architecture, the same memory and bus are used for both data and instructions used by the CPU and peripherals as illustrated in {numref}`fig:week1:vonneuman`.
 
 ```{figure} pictures/von_neuman_arch.png
 :name: fig:week1:vonneuman
@@ -445,7 +445,7 @@ The Von Neumann architecture
 
 ##### Harvard architecture
 
-The Harvard architecture stores machine instructions and data in separate memory units that are connected to the CPU and peripherals by different busses as illustrated in [](#fig:week1:harvard).
+The Harvard architecture stores machine instructions and data in separate memory units that are connected to the CPU and peripherals by different busses as illustrated in {numref}`fig:week1:harvard`.
 
 ```{figure} pictures/harvard_arch.jpg
 :name: fig:week1:harvard
@@ -468,7 +468,7 @@ Most modern microcontrollers don't have a physical separation between the memory
 
 ### How is a Microcontroller Described?
 
-In summary, the final MCU classification shown in [](#mcu_architecture) represents some of categories under microcontroller architecture which are focussed around the system itself.
+In summary, the final MCU classification shown in {numref}`mcu_architecture` represents some of categories under microcontroller architecture which are focussed around the system itself.
 
 There are further classifications as you move towards either the circuit design or the embedded system application.
 
@@ -491,7 +491,7 @@ In general, most microcontroller manufacturers will present a system wide, or *c
 
 ##### Atmel ATMega328P AVR
 
-For example, [](#fig:week1:avr) is taken from Atmel ATMega328 data sheet[^atmega328_data_sheet] and shows a block diagram of the Advanced Virtual RISC (AVR) architecture.
+For example, {numref}`fig:week1:avr` is taken from Atmel ATMega328 data sheet[^atmega328_data_sheet] and shows a block diagram of the Advanced Virtual RISC (AVR) architecture.
 
 ```{figure} pictures/avr_architecture.png
 :name: fig:week1:avr
@@ -508,7 +508,7 @@ Block Diagram of the AVR Architecture (Source: Figure 6.1, Page 9 of the Atmel A
 
 ##### NXP HCS08 MCU
 
-As another example, the block diagram shown in [](#fig:week1:hcs08) represents the architecture of the NXP (formally Motorola) HCS08 MCU.
+As another example, the block diagram shown in {numref}`fig:week1:hcs08` represents the architecture of the NXP (formally Motorola) HCS08 MCU.
 
 This MCU, which was used on this module before the Arduino was adopted, does not have a bank of general purpose registers. Instead it has a single working register, known as the *accumulator*, which is involved in most computations that the MCU performs.
 
@@ -552,7 +552,7 @@ The Atmel&reg; ATMega328/P is a low-power CMOS 8-bit microcontroller based on th
 
 #### Arithmetic Logic Unit
 
-The **Arithmetic Logic Unit** (ALU) ([](#fig:week1:alu)), is the part of the processor that performs arithmetic and logic operations on numbers from the storage area &ndash; it is essentially the &ldquo;brain&rdquo; of the microcontroller.
+The **Arithmetic Logic Unit** (ALU) ({numref}`fig:week1:alu`), is the part of the processor that performs arithmetic and logic operations on numbers from the storage area &ndash; it is essentially the &ldquo;brain&rdquo; of the microcontroller.
 
 ```{figure} pictures/alu.png
 :name: fig:week1:alu
@@ -583,7 +583,7 @@ General purpose arithmetic logic unit (ALU)
 
 The 74LS181 is a 4-bit microcontroller that supports 16 logical and 16 arithmetic operations.
 
-You do not need to understand [](#74LS181), it is just and example to show that an ALU isn't just a black box. Rather it contains complex logic circuitry by means of which it performs its operations.
+You do not need to understand {numref}`74LS181`, it is just and example to show that an ALU isn't just a black box. Rather it contains complex logic circuitry by means of which it performs its operations.
 
 ```{figure} pictures/74LS181_ALU.png
 :name: 74LS181
@@ -613,7 +613,7 @@ locations address the Register File, the next 64 location the standard
 I/O memory and then the remaining 160 locations for Extended I/O
 memory.
 
-[](#memmap) summarizes the memory map of the ATMega328 MCU. {numref}`mem_map2` shows part of the full memory map that is given in pages 275-280 of the Atmel ATMega280/P data sheet.
+{numref}`memmap` summarizes the memory map of the ATMega328 MCU. {numref}`mem_map2` shows part of the full memory map that is given in pages 275-280 of the Atmel ATMega280/P data sheet.
 
 ```{figure} pictures/mem_map_atmel.png
 :name: mem_map2
@@ -628,7 +628,7 @@ Part of the memory map of the Atmel ATMega328/P MCU
 
 #### The Register File
 
-he Register file contains 32 x 8-bit wide registers that are often referred to as general purpose or working registers in the CPU.
+The Register file (see {numref}`reg_file`) contains 32 x 8-bit wide registers that are often referred to as general purpose or working registers in the CPU.
 
 ```{figure} pictures/reg_file.jpg
 :name: reg_file
@@ -698,4 +698,4 @@ There is a quiz which tests your recall of the topics covered in this lecture
 
 ## Next week
 
-Next week we will look at [Introduction to Data Representation](week2/index.md).
+Next week we will look at {ref}(week2).

@@ -22,16 +22,16 @@ kernelspec:
 (week2:introduction)= 
 ## Introduction
 
-The week's lecture provides a background to data representation introducing some of the different terminologies used such as 'bit', 'byte', and 'word' before looking at different numbering systems, including binary and hexadecimal, that are used in computing and microcontrollers. The presentation covers a number of methods such as exponentiation and divide-by-n which can be used to convert between number bases and finishes with looking at how microcontrollers perform addition and subtraction. 
+The week's lecture provides a background to data representation introducing some of the different terminologies used such as 'bit', 'byte', and 'word' before looking at different numbering systems, including binary and hexadecimal, that are used in computing and microcontrollers. The presentation covers a number of methods such as exponentiation and divide-by-n which can be used to convert between number bases and finishes with looking at how microcontrollers perform addition and subtraction.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (week2:toc)=
 ## Topics Covered in this Lecture
 
-- [](#week2:intro2dr)
-- [](#week2:numbering)
-- [](#week2:addition_and_subtraction)
+- {ref}`week2:intro2dr`
+- {ref}`week2:numbering`
+- {ref}`week2:addition_and_subtraction`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -40,7 +40,7 @@ The week's lecture provides a background to data representation introducing some
 
 ### How is Data stored Digitally?
 
-Modern digital processors and microcontrollers contain millions of solid state devices known as transistors ([](#fig:week2:transistor)).
+Modern digital processors and microcontrollers contain millions of solid state devices known as transistors ({ref}`fig:week2:transistor`).
 
 ```{figure} pictures/transistor.png
 :name: fig:week2:transistor
@@ -59,7 +59,7 @@ This is known as a binary system.
 We can use the output (or input if wired to ground) of this transistor
 to connect to other transistors forming logic gates and eventually a bit of memory.
 
-With many transistors we can use these transistors to create memory and store data as bits ([](#fig:week2:1_bit_of_memory)).
+With many transistors we can use these transistors to create memory and store data as bits ({ref}`fig:week2:1_bit_of_memory`).
 
 ```{figure} pictures/memory.jpg
 :alt: One bit of SRAM memory.
@@ -114,7 +114,7 @@ $$4000 + 600 + 20 + 3$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$(4\times 1000) + (6\times 100) + (2\times 10) + (3\times 1)$$ 
+$$(4\times 1000) + (6\times 100) + (2\times 10) + (3\times 1)$$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -212,7 +212,7 @@ $$N_{16} = \cdots  + \left(X\times 16^5\right) + \left(X\times 16^4\right) + \le
 
 where $X$ is any *digit* in the set $\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, \textrm{A}, \textrm{B}, \textrm{C}, \textrm{D}, \textrm{E}, \textrm{F}\}$[^hex_digits].
 
-[^hex_digits]: Note we have to introduce the letters A-F to represent the two-digit decinal numbers 10-15. Thus $\textrm{A}_{16} = 10_{10}$, $\textrm{B}_{16} = 11_{10}$, $\textrm{C}_{16} = 12_{10}$, $\textrm{D}_{16} = 13_{10}$, $\textrm{E}_{16} = 14_{10}$, $\textrm{F}_{16} = 15_{10}$, 
+[^hex_digits]: Note we have to introduce the letters A-F to represent the two-digit decinal numbers 10-15. Thus $\textrm{A}_{16} = 10_{10}$, $\textrm{B}_{16} = 11_{10}$, $\textrm{C}_{16} = 12_{10}$, $\textrm{D}_{16} = 13_{10}$, $\textrm{E}_{16} = 14_{10}$, $\textrm{F}_{16} = 15_{10}$,
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -244,7 +244,7 @@ A decimal number can be converted into any other base using the **divide-by-$n$*
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Step 1 (see [](#divide-by-n-method)) − Divide the decimal number by the value of the new base and get the quotient and a remainder. 
+Step 1 (see {ref}`divide-by-n-method`) − Divide the decimal number by the value of the new base and get the quotient and a remainder. 
 
 ```{figure} pictures/dividion_method.png
 :alt: Illustration of a step in the divisision-by-n method of decimal number conversion.
@@ -380,7 +380,7 @@ $$
 
 All numbers are stored in a computer in binary form. Depending on the encoding, each digit takes up 1 (binary), 3 (octal) or 4 bits (decimal and hexadecimal).
 
-If the digit needs less bits than allowed for its representation, the remaining bits the the left of the number will be set to zero. 
+If the digit needs less bits than allowed for its representation, the remaining bits the the left of the number will be set to zero.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -425,11 +425,11 @@ Convert the binary number `0x000011101` to octal and hexadecimal. Give the value
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Grouping `0x000011101` by threes gives `00` + `011` + `101` = `0035` = $35_8$. 
+Grouping `0x000011101` by threes gives `00` + `011` + `101` = `0035` = $35_8$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Grouping `0x000011101` by fours gives `0001` + `1101` = `0x01D` = $1\textrm{D}_{16}$. 
+Grouping `0x000011101` by fours gives `0001` + `1101` = `0x01D` = $1\textrm{D}_{16}$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -447,7 +447,7 @@ Convert the octal number $62_8$ (`0062`) to binary and hexadecimal. Give the val
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-The octal digits $6_8$ and $2_8$ are the three-bit binary values  `0b110` and `0b010` respectively. So the equivalent 8-bit binary byte is obtained by combining these binary values and prepending with two zeros: `0b00 110 010` -> `0b00110010`. 
+The octal digits $6_8$ and $2_8$ are the three-bit binary values  `0b110` and `0b010` respectively. So the equivalent 8-bit binary byte is obtained by combining these binary values and prepending with two zeros: `0b00 110 010` -> `0b00110010`.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -467,7 +467,7 @@ The equivalent decimal number is $\left(3\times 16^1\right) + \left(2\times 16^0
 
 ### Summary of number systems
 
-[](#week2:table:number-values) shows the equivalent binary, octal and hexadecimal values for decimal numbers 0-16. Note that we need just 1 nybble to represent a value in the range 0-154 but we need two nybbles (1 byte) for numbers greater than 15. The maximum value representable in one byte of data is $2^8 - 1 = 255$. The concept can of course be extended to words (16 bits). The maximum value that can be represented with 16 bits is $2^{16} - 1 = 65,535$. 
+{ref}`week2:table:number-values` shows the equivalent binary, octal and hexadecimal values for decimal numbers 0-16. Note that we need just 1 nybble to represent a value in the range 0-154 but we need two nybbles (1 byte) for numbers greater than 15. The maximum value representable in one byte of data is $2^8 - 1 = 255$. The concept can of course be extended to words (16 bits). The maximum value that can be represented with 16 bits is $2^{16} - 1 = 65,535$. 
 
 ```{list-table} Representation of integer values in 8 bit computer systems
 :header-rows: 1
@@ -631,7 +631,7 @@ $$
 
 ##### Example 12
 
-Confirm using binary subtraction that $27_{10} - 14_{10} = 13_{10}$. 
+Confirm using binary subtraction that $27_{10} - 14_{10} = 13_{10}$.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -713,7 +713,7 @@ The Status Register of the Atmel ATMega328/P
 
 [^note:msb] The most significant bit is the left most bit. It corresponds to the numerical value $2^7 = 128$. For certain operations, it may also indicate a negative number.
 
-We will look at the status register in detail in [Architecture of the Atmel ATmega 328 Microcontroller](week3/index.md).
+We will look at the status register in detail in {ref}`week3`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
