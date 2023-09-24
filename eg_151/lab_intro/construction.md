@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -22,14 +22,14 @@ A continuity tester is an essential tool for the electrical engineer. It allows 
 ## Circuit Operation
 The simplest form of continuity tester is a torch bulb and battery. This can be used to test circuits of low resistance, but for electronic circuits, a low applied voltage and test current is much more suitable. Our tester uses a circuit attributed to a Mr Eccles and a Mr Jordan (see {numref}`fig8.1`) and is referred to in textbooks as an "astable multivibrator". An astable multivibrator consists of two transistors, cross-coupled using resistors and capacitors, which oscillate at a well-defined frequency. The two transistors are switching in antiphase; that is, one is on, and the other is off at any given instant. A loudspeaker connected between the collectors will experience a peak-to-peak voltage of twice the supply, so a low voltage battery can be used and still produce a loud noise. The base resistors and the capacitors control the pitch (frequency) of the sound.
 
-:::{figure} pictures/fig61.png
+```{figure} pictures/fig61.png
 :name: fig8.1
 :alt: Circuit Diagram of Continuity Tester
 :align: center
 :width: 100%
 
 Circuit Diagram of Continuity Tester
-:::
+```
 
 ## Circuit Construction
 The circuit is symmetrical and suited to construction on stripboard (Veroboard). Stripboard consists of an insulating board with thin copper tracks spaced 0.1 inches apart and perforated with holes on a 0.1-inch grid. Before any soldering, certain tracks must be cut using a special tool. This is a drill bit in a handle and must be used lightly to avoid damaging the board. It is centred on a hole and twisted a half turn so that a thin sliver of copper is removed. Then the cut must be inspected to ensure no "whiskers" of copper remain.
@@ -38,14 +38,14 @@ Orient the board as seen in Figure 6.2, looking at the component side. The first
 
 
 
-::: {figure} pictures/assembly.png
+```{figure} pictures/assembly.png
 :name: fig8.2
 :alt: Construction of the continuity tester on stripboard
 :align: center
 :width: 100%
 
 Construction on Stripboard
-:::
+```
 
 Refer to {ref}`soldering` for instructions on soldering. If you have never used a soldering iron previously, ask one of the demonstrators for help. Make sure you work on one of the extraction mats with the air filter turned on to keep the fumes away from your face.
 
@@ -68,3 +68,7 @@ When the board is fitted into its case, make a small mark on the plastic corresp
 The only test required is to touch the metal ends of the test clips together. If a high-pitched tone is heard, then congratulations! You have built a useful instrument and demonstrated your dexterity. If by chance, the circuit does not function, ask one of the demonstrators to help identify the problem. Try testing a silicon diode; the tester should sound only if the black lead is clipped to the banded end of the diode. Try clipping the tester across resistors of 100 Ohms and 1k Ohms; they will produce a fainter tone because the external resistance reduces the test current. Finally, borrow an NPN transistor and connect the red lead to the collector and the black lead to the emitter. Touch a 10k resistor between the base and collector leads; the tone should be heard. This shows that the transistor is amplifying the tiny current flowing through the base and allowing enough current to pass between collector and emitter to power our continuity tester.
 
 When the tester is not in use, it is recommended that you attach the clips to a small piece of card so that they cannot accidentally touch and run the battery down. Anticipated battery life is 1000 hours of continuous operation and five years of intermittent use.
+
+```{code-cell} ipython3
+
+```

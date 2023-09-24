@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -89,80 +89,80 @@ Once again, go to [arduino.cc](https://arduino.cc) and select the tab &ldquo;Sof
 
 When you are satisfied that the Arduino IDE has been successfully installed, run the application. Assuming that the installation procedure described above has gone to plan, and after the splash screen, the Arduino IDE main screen ({numref}`fig:5`) appears. 
 
-::: {figure} pictures/arduino_ide.png
+```{figure} pictures/arduino_ide.png
 :name: fig:5
 :align: center
 :width: 100%
 :alt: A screen shot of the Arduino IDE 2 as it appears on first start up
 
 The Ardino IDE 2 Main Screen on First Run
-:::
+```
 
 Plug in the Arduino Nano board ({numref}`fig:6`) using the supplied lead. Next look at the dropdown control labelled **Select Board*. Identify the connection which depends on your operating system but will be identified as a USB connection on MacOS and Linux, or may be labelled COM 5 (or some other number) on Windows (see {numref}`fig:7`).
 
-::: {figure} pictures/arduino_nano_breadboard.png
+```{figure} pictures/arduino_nano_breadboard.png
 :name: fig:6
 :align: center
 :width: 100%
 :alt: The Arduino nano microntroller mounted on breadboard
 
 The Arduino nano microntroller mounted on breadboard
-:::
+```
 
-::: {figure} pictures/choose_port.png
+```{figure} pictures/choose_port.png
 :name: fig:7
 :align: center
 :width: 100%
 :alt: The select port dialogue when setting up the Arduino IDE 2 to use the plugged in Adrduiono nano board. 
 
 Choose the port that your nano board is connected on. What you will see here depends on your operating system. I have shown what I see on my MacOS machine. 
-:::
+```
 
 Once you have selected the correct port, you need to identify the board you are using. Search for nano as shown in {numref}`fig:7`
 
-::: {figure} pictures/select_board.png
+```{figure} pictures/select_board.png
 :name: fig:8
 :align: center
 :width: 100%
 :alt: Shows the slect board dialogue. We have seached for nano and will the the offered selection "Ardunino Nano".
 
 Search for and select Arduino Nano. 
-:::
+```
 
 Once you have set up your board, the board idenitfier changes to **Arduino Nano** in the menu bar as shown in {numref}`fig:9`. You are now ready to compile your first program.
 
-::: {figure} pictures/nano_ready.png
+```{figure} pictures/nano_ready.png
 :name: fig:9
 :align: center
 :width: 100%
 :alt: A screenshot of the Arduino IDE 2 fater it has been connected to the Arduino nano board. 
 
 Arduino IDE 2 set up and ready to go.
-:::
+```
 
 ## On the blink
 
 The first program we shall run rejoices in the unlikely name of Blink. Click on `File` and select `Examples` from the drop-down menu. A further menu appears, with all the example programs. Select `01.Basics`, followed by `Blink` ({numref}`fig:10`). 
 
-::: {figure} pictures/select_blink.png
+```{figure} pictures/select_blink.png
 :name: fig:10
 :align: center
 :width: 100%
 :alt: A screenshot the Arduino IDE 2 will Files> Examples> 01.Basiscs> Blink highlighted. 
 
 Select the blink example.
-:::
+```
 
 Select `Blink`. The program appears in a new IDE window ({numref}`fig:11`). The program at this stage is just text. It needs to be compiled in order to create an executable file.
 
-::: {figure} pictures/blink_prog.png
+```{figure} pictures/blink_prog.png
 :name: fig:11
 :align: center
 :width: 100%
 :alt: A screenshot the Arduino IDE 2 with the example blink program loaded as blinck.ino. 
 
 Blink program (Arduino sketch blink.ino) loaded in the Arduino IDE 2.
-:::
+```
 
 Identify the icon for compiling the program, this is a tick in a blue circle which is called Verify on the Arduino IDE. Click this once, and after a short period of time the message &ldquo;Done compiling&rdquo; should appear near the bottom of the window. Hopefully, as we are compiling an example program, there will be no errors! If there are errors, information on the type of error and where it has occurred in the program can be found in the dialogue box near the bottom of the window.
 

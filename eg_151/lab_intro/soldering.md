@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -35,14 +35,14 @@ The soldering iron must be at the correct temperature (typically 300 Celsius for
 ## Making a soldered joint
 Let us consider a component lead threaded through a circuit board. The lead and the copper tracks must be all at a high enough temperature to melt the solder BEFORE the solder is applied. If this is the case, the solder will flow like water over the joint and form a smooth curved surface when it solidifies. If the solder alone is heated, the joint will be "dry" - the solder will sit sullenly on the surface without forming a eutectic bond or forming a blob in mid-air on the component lead. The remedy in such cases is to apply more heat to the joint until the solder runs. If necessary, use a little more solder to provide new flux. In extreme cases, the solder will have to be removed (using braid or a solder pump), and the task starts again.
 
-:::{figure} pictures/soldering.png
+```{figure} pictures/soldering.png
 :name: fig9.1
 :alt: An illustration of soldering a component onto strip board.
 :align: center
 :width: 100%
 
 Soldering a component onto a stripboard.
-:::
+```
 
 Referring to the illustration shown in {numref}`fig9.1`:
 
@@ -68,3 +68,7 @@ greatest danger is of burning oneself, either directly or as a result of touchin
 Dr Davies has made three videos, accessible on Canvas ([Video demonstration: Let's build a Circuit Continuity Tester from a Tic Tac Box](https://canvas.swansea.ac.uk)), in which he demonstrates the correct way of preparation and soldering the continuity tester. 
 
 You may wish to review these videos before performing the construction exercise. There is also a photograph through which Dr Davies has shown the stages in the assembly of his continuity tester. You are invited to check your work against these images.
+
+```{code-cell} ipython3
+
+```

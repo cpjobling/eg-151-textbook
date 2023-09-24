@@ -196,13 +196,15 @@ $$N_{10} = \left(7\times 8^2\right) + \left(1·8^1\right) + \left(2·8^0\right)$
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$
-\begin{align}
-N_{10} &= (7\times 64) + (1\times 8) + (2\times 1)\\
-&= 448 + 8 + 2\\
-&= 45810
-\end{align}
-$$
+$$N_{10} = (7\times 64) + (1\times 8) + (2\times 1)$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$N_{10} = 448 + 8 + 2$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$N_{10} = 458_{10}$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -228,13 +230,15 @@ $$N_{16} = \left(3\times 16^2\right) + \left(\textrm{C}\times 16^1\right) + \lef
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-$$
-\begin{align}
-N_{10} &= 3\times 256 + 12\times 16 + 4\times 1\\
-&= 768 + 192 + 4\\
-&= 96410
-\end{align}
-$$
+$$N_{10} = 3\times 256 + 12\times 16 + 4\times 1$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$N_{10} = 768 + 192 + 4$$
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+$$N_{10} = 964_{10}$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -302,13 +306,12 @@ Binary value: $28_{10} = 11100_{2}$.
 
 ##### Confirmation
 
-$$\begin{align}
+\begin{align}
 11000_2 &= \left(1\times 2^4\right) + \left(1\times 2^3\right) + \left(1\times 2^2\right) + \left(0\times 2^1\right) + \left(0\times 2^0\right)\\
 &= \left(1\times 16\right) + \left(1\times 8\right) + \left(1\times 4\right) + \left(0\times 2\right) + \left(0\times 1\right)\\
 &= 16 + 8 + 4\\
 &= 28_{10}
 \end{align}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -334,13 +337,12 @@ Octal value: $28_{10} = 34_{8}$.
 
 ##### Confirmation
 
-$$\begin{align}
+\begin{align}
 34_8 &= \left(3\times 8^1\right) + \left(4\times 8^0\right)\\
 &= \left(3\times 8\right) + \left(4\times 1\right) \\
 &= 24 + 4\\
 &= 28_{10}
 \end{align}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -366,13 +368,12 @@ Hexadecimal value: $28_{10} = 1\textrm{C}_{16}$.
 
 ##### Confirmation
 
-$$\begin{align}
+\begin{align}
 1\textrm{C}_{16} &= \left(1\times 16^1\right) + \left(\textrm{C}\times 16^0\right)\\
 &= \left(1\times 16\right) + \left(12\times 1\right) \\
 &= 16 + 12\\
 &= 28_{10}
 \end{align}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -580,14 +581,12 @@ In order to add or subtract two binary numbers there are a series of rules simil
 
 #### Rules for Binary Addition
 
-$$
 \begin{align*}
 0 + 0 &= 0\\
 0 + 1 &= 1\\
 1 + 0 &= 1\\
 1 + 1 &= 10\quad\textrm{i.e.}\, 0 + \textrm{carry}\, 1
 \end{align*}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -618,14 +617,12 @@ Confirm using binary addition that $46_{10} + 147_{10} = 193$.
 
 #### Rules for Binary Subtraction
 
-$$
 \begin{align*}
 0 - 0 &= 0\\
 1 - 0 &= 1\\
 1 - 1 &= 0\\
 0 - 1 &= 10 - 1 +\,\textrm{borrow} = 1+ \textrm{borrow}
 \end{align*}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -663,7 +660,6 @@ What happens when the result is larger than 8-bits?
 
 We need to extend the rules of binary addition to introduce an overflow that is indicated by a carry flag.
 
-$$
 \begin{align*}
 0 + 0 &= 0 \\
 0 + 1 &= 1 \\
@@ -671,7 +667,6 @@ $$
 1 + 1 &= 10\quad \textrm{i.e.}\, 0 + \textrm{carry}\, 1 \\
 1 + 1 + 1 &= 11\quad \textrm{i.e.}\, 1 + \textrm{carry}\, 1
 \end{align*}
-$$
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

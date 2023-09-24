@@ -24,3 +24,13 @@ The full table of contents for this course is given below.
 ## Tour of the Canvas site
 
 During the first class meeting we will introduce this online textbook and how the course materials are presented to you via Canvas.
+
+## PDF Version of this Web Site
+
+There is a version of this site that is published as a textbook in PDF form. It can be downloaded from [cpjobling.github.io/eg-151-textbook/eg-151-microcontrollers.pdf](https://cpjobling.github.io/eg-151-textbook/eg-151-microcontrollers.pdf). 
+
+The PDF file linked to this page is updated automatically when the website is updated. It is also linked to the Canvas site. Please be aware that once downloaded, the PDF will no longer tack the website so you should always download the latest version before using it.
+
+```python
+x
+```

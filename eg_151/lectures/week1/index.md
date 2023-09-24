@@ -698,4 +698,4 @@ There is a quiz which tests your recall of the topics covered in this lecture
 
 ## Next week
 
-Next week we will look at {ref}(week2).
+Next week we will look at {ref}`week2`.

@@ -1,18 +1,18 @@
 # See docs at: https://mystmd.org/guide/frontmatter
 version: 1
 project:
-  # title:
-  # description:
-  keywords: []
-  authors: []
-  # github:
+  title: EG-151 Microcontrollers
+  description: Online textbook for Academic Year 2023-2024
+  keywords: [EG-151,Microntrollers,Swansea University]
+  authors: [Chris P. Jobling, Dr Timothy Davies, Dr Ben Clifford]
+  github: https://github.com/cpjobling/eg-151-textbook
   # bibliography: []
 site:
   template: book-theme
-  # title:
-  # logo:
+  title: EG-151 Microcontrollers
+  logo: logo.png
   nav: []
   actions:
-    - title: Learn More
-      url: https://mystmd.org/guide
+    - title: Textbook repository
+      url: https://cpjobling.github.io/eg-151-textbook
   domains: []

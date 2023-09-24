@@ -23,13 +23,11 @@ $$14.12_{10} = \left(1\times 10^1\right) + \left(4\times 10^0\right) + \left(1\t
 
 The idea extends to binary, octal and hexadecimal numbers:
 
-$$
 \begin{align*}
 0000.101_2 &= \left(1\times 2^{-1}\right) + \left(0\times 2^{-2}\right) + \left(1\times 2^{-3}\right) \\
 &= \frac{1}{2} + 0\times \frac{1}{4} + \frac{1}{8}\\ 
 &= 0.5 + 0 + 0.125 = 0.625_{10}
 \end{align*}
-$$
 
 The representation of octal and hexadecimal numbers is left as an exercise.
 
@@ -39,18 +37,18 @@ The representation of octal and hexadecimal numbers is left as an exercise.
 To convert a decimal fraction (base 10) to a new base (n) the fractional
 part is repeatedly multiplied by n.
 
-§ The whole number part of the product gives the value at the current
+- The whole number part of the product gives the value at the current
 power.
 
-§ The decimal part of the product is multiplied by n and repeated until
+- The decimal part of the product is multiplied by n and repeated until
 the fractional part of the product is zero
 
-§ Read the result from **top to bottom**
+- Read the result from **top to bottom**
 
 
 ## Limitations
 
-Convert 0.675~10\ ~to binary
+Convert $0.675_{10}$ to binary
 
 0.675 × 2 = 1.35 1
 

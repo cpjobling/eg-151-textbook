@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -19,27 +19,28 @@ kernelspec:
 This experiment will involve the construction of a two-transistor oscillator on a plug-in breadboard and then a series of measurements using the Rohde &amp; Schwarz oscilloscope. This oscillator circuit is identical to the one we shall be using in the construction exercise later on.
 ## Plug-In Breadboard
 
-:::{figure} pictures/bread_board.png
+```{figure} pictures/bread_board.png
 :name: fig1
 :alt: An x-ray view of the plug-in breadboard illustrates how the plugs are electrically interconnected
 :align: center
 :width: 100%
 
 X-ray view of the plug-in breadboard.
-:::
+```
 
 If you place the plug-in breadboard under an X-ray machine, you will see the metal springs inside the plastic cover laid out, as seen in {numref}`fig1` above. The long horizontal tracks are used for power supply connections, and the short vertical tracks are used for the interconnection of resistors, capacitors and transistors. The plug-in breadboard is very useful for trying out experimental circuits. Components can be plugged in and interconnected with minimal fuss and without soldering. Changing a component for one of a different value takes only a matter of seconds, and after the experiment, all the parts can be recovered intact for future experiments.
 
+
 ## Circuit Diagram
 
-:::{figure} pictures/circuit-diagram.png
+```{figure} pictures/circuit-diagram.png
 :name: fig2
 :alt: The circuit diagram of the oscillator which is to be constructed and tested in this laboratory exercise.
 :align: center
 :width: 100%
 
 Circuit diagram of an oscillator.
-:::
+```
 
 Referring to the circuit in {numref}`fig2` above, there are only eight electronic components arranged symmetrically. The circuit symbols bear no resemblance to their practical components &ndash; for example, the transistors are black plastic D-shapes with three wires emerging from one end, and the capacitors are little blue or yellow discs. The theoretical circuit must be translated into a practical layout on the plug-in breadboard, taking into account the physical size of the components and their connections. A recommended layout is given in {numref}`fig3` below. There are six wire links &ndash; four on the breadboard and two between the breadboard and the red and black terminals. These can be cut from single-strand insulated wire.</span></p>
 
@@ -57,14 +58,14 @@ Resistors can be identified by their coloured bands, but to give confidence usin
 (sec5.3)=
 ## Introducing &ndash; The Rohde &amp; Schwarz HMC 8043 Triple-Output Power Supply
 
-:::{figure} pictures/r&s-power-supply.jpg
+```{figure} pictures/r&s-power-supply.jpg
 :name: fig4
 :alt: A photograph of the Rohde &amp; Schwartz HMC 8043 Triple-Output Power Supply.
 :align: center
 :width: 100%
 
 Rohde &amp; Schwartz HMC 8043 Triple-Output Power Supply
-:::
+```
 
 Each workstation in the laboratory is equipped with two power supplies, the Rohde &amp; Schwarz HMC 8043 and the Rohde &amp; Schwarz HMC 8042. The HMC 8042 is similar to the HMC 8043, but it only has two outputs. For our laboratory introduction, either power supply can be used as only one output is necessary.
 
@@ -98,13 +99,13 @@ Connect the power supply to the breadboard using flexible leads with 4mm plugs a
 (r&s_socilloscope)=
 ## Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope
 
-:::{figure} pictures/r&s-digital-oscilloscope.jpg
+```{figure} pictures/r&s-digital-oscilloscope.jpg
 :name: fig5.5
 :alt: A photograph of the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope.
 :width: 100%
 
 A Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope
-:::
+```
 
 
 An oscilloscope is an essential instrument for Electronic Engineers. It provides a &ldquo;window&rdquo; into the circuit, showing the changing voltages as a function of time. Our standard laboratory oscilloscope is one of a series produced by Rohde &amp; Schwarz, and, in reality, far exceeds in its specification what we need for our modest experiments. Former students often tell us that the instruments in their place of work are not as sophisticated as the ones we use every day!
@@ -188,23 +189,27 @@ The remaining 85 marks in EG-151 are carried by the formal assessment of the Mic
 
 These images are produced for guidance. They **must not** be copied and included in your lab diary! Gnenerate your own versions.
 
-:::{figure} pictures/prototype-circuit.jpg
+```{figure} pictures/prototype-circuit.jpg
 :name: fig5.6
 :alt: A photograph of the completed oscillator circuit as prototyped on breadboard.
 
 A photograph of the completed oscillator circuit as prototyped on breadboard.
-:::
+```
 
-:::{figure} pictures/r&s-trace1.png
+```{figure} pictures/r&s-trace1.png
 :name: fig5.7
 :alt: Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 4.
 
 Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 4.
-:::
+```
 
-:::{figure} pictures/r&s-trace2.png
+```{figure} pictures/r&s-trace2.png
 :name: fig5.8
 :alt: Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 2.
 
 Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 2.
-:::
+```
+
+```{code-cell} ipython3
+
+```

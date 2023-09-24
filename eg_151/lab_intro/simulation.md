@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -30,7 +30,7 @@ Starting from the Windows desktop, click on \"Zenworks\" followed by
 \"Engineering\" and select NI Multisim 14.2 from the list of available
 packages. The main screen should look like {numref}`fig6.1`:
 
-:::{figure} pictures/multisim-home-screen.png
+```{figure} pictures/multisim-home-screen.png
 :name: fig6.1
 :align: center
 :width: 100.0%
@@ -38,7 +38,7 @@ packages. The main screen should look like {numref}`fig6.1`:
 
 The National Instruments Multisim home
 screen.
-:::
+```
 
 If there is a wide dialogue box at the bottom of the screen, click on
 \"View\" and untick the item \"Spreadsheet view\". The dialogue box
@@ -50,14 +50,14 @@ breadboard in section 4.
 
 The toolbar of the Multisim programme looks like {numref}`fig6.2`:
 
-:::{figure} pictures/ms-toolbar.png
+```{figure} pictures/ms-toolbar.png
 :name: fig6.2
 :alt: The Multisim toolbar with the key controls
 :align: center
 :width: 100%
 
 The toolbar of the Multisim programme
-:::
+```
 
 The actual appearance may differ depending on the screen resolution and
 the available options.
@@ -157,14 +157,14 @@ Timebase \"Scale\" boxes to set the vertical sensitivity to 2V per
 division and the timebase to 0.05ms per division. The simulation circuit
 is now ready to run.
 
-:::{figure} pictures/circuit.png
+```{figure} pictures/circuit.png
 :name: fig6.3
 :align: center
 :width: 100%
 :alt: The completed circuit and oscilloscope display as they should appear when the simulation is run.
 
 The completed circuit being simulated in Multisim with the oscilloscope trace visible.
-:::
+```
 
  
 
@@ -226,3 +226,7 @@ Finally, change the property of the battery from 3V to 1.5V and repeat
 the above measurements. You will need to change the oscilloscope
 settings, Channel A Scale and Y-Pos, Channel B Scale and Y- Pos;
 otherwise, the waveforms will be too small in the vertical direction.
+
+```{code-cell} ipython3
+
+```
