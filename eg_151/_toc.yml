@@ -6,7 +6,6 @@ root: intro
 parts:
   - caption: Introduction
     chapters:
-     - file: intro/about
      - file: intro/course_aims
      - file: intro/course_delivery
   - caption: Introduction to Microcontrollers
@@ -16,6 +15,7 @@ parts:
     - file: lectures/week1/index
     - file: lectures/week2/index
     - file: lectures/week3/index
+    - file: lectures/week4/index
   - caption: Programming in C
     numbered: false
     chapters:

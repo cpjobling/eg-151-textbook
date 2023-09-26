@@ -6,7 +6,8 @@
 
 ## Table of Contents
 
-- [Welcome to Swansea University](intro.md)
-- [Introduction to Microcontrollers and Microcontroller Architecture](week1/index.md)
-- [Introduction to Data Representation](week2/index.md)
+- {ref}`week1`
+- {ref}`week2`
+- {ref}`week3`
+- {ref}`week4`
 <!-- #endregion -->

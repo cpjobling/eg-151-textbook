@@ -7,4 +7,6 @@ jupyterlab
 jupyterlab_myst
 notebook
 rise
+jupyterlab-deck
+jupyterlab-spellchecker
 

@@ -8,8 +8,9 @@ jupytext:
     format_version: 0.13
     jupytext_version: 1.15.1
 kernelspec:
-  display_name: ''
-  name: ''
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
 +++ {"slideshow": {"slide_type": "slide"}}
@@ -25,7 +26,7 @@ kernelspec:
 
 ## Introduction
 
-In this week's lecture, you will be given an introduction to microcontrollers focussing on what a microcontroller is, where they can be found and how they can be described using the their *architecture*. The lecture then moves on to introduce the Atmel ATmega328 microcontroller, which will be used in the practical sessions in this course, looking at its core architecture including the function of the arithmetic logic unit and registers.
+In this week's lecture, you will be given an introduction to microcontrollers focusing on what a microcontroller is, where they can be found and how they can be described using the their *architecture*. The lecture then moves on to introduce the Atmel ATmega328 microcontroller, which will be used in the practical sessions in this course, looking at its core architecture including the function of the arithmetic logic unit and registers.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -185,7 +186,7 @@ Image source: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-### Envoronmental monitoring
+### Environmental monitoring
 
 ```{image} https://cdn.openpr.com/S/7/S709502617_g.jpg
 :alt: Image that illustrated article "Hawa Dawa Installs the Largest Air Quality Measurement Network in Germany"
@@ -468,7 +469,7 @@ Most modern microcontrollers don't have a physical separation between the memory
 
 ### How is a Microcontroller Described?
 
-In summary, the final MCU classification shown in {numref}`mcu_architecture` represents some of categories under microcontroller architecture which are focussed around the system itself.
+In summary, the final MCU classification shown in {numref}`mcu_architecture` represents some of categories under microcontroller architecture which are focused around the system itself.
 
 There are further classifications as you move towards either the circuit design or the embedded system application.
 
