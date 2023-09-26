@@ -264,6 +264,7 @@ It is written in assembly code for the Atmel ATmega328 MCU. Each instruction is 
 :width: 30%
 
 The program memory of the ATmega328 microcontroller
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
@@ -306,6 +307,17 @@ During reset, all I/O Registers are set to their initial values, and the program
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(week3:stack_pointer)=
+## The Stack Pointer
+
+```{image} pictures/wallpaper.png
+:alt: Image of a microcontroller used as chapter headings in slide show
+:width: 50%
+```
+[wallpaper.dog/microcontroller-wallpapers](https://wallpaper.dog/microcontroller-wallpapers)
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 ### The Stack
 
 In a microcontroller, the ‘stack’ is a space in memory with a fixed origin and a variable size that can be used for temporary storage purposes, such as storing local variables and saving return address for subroutine calls and interrupts.
@@ -326,24 +338,9 @@ The stack supports two types of operations:
 
 The stack typically operates as a “Last In First Out” (LIFO) buffer
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
-
-(week3:stack_pointer)=
-## The Stack Pointer
-
-```{image} pictures/wallpaper.png
-:alt: Image of a microcontroller used as chapter headings in slide show
-:width: 50%
-```
-[wallpaper.dog/microcontroller-wallpapers](https://wallpaper.dog/microcontroller-wallpapers)
-
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
-
-### The Stack Pointer
-
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-#### What is the stack pointer?
+### What is the stack pointer?
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -371,6 +368,7 @@ The are called `SPH` (stack pointer high byte) and `SPL` (stack pointer low byte
 :alt: The AVR stack pointer implemented as two bytes SPH and SPL.
 
 The AVR stack pointer implemented as two bytes SPH and SPL.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
