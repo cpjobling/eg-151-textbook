@@ -13,7 +13,7 @@ kernelspec:
   name: python3
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week1)=
 # Introduction to Microcontrollers and Microcontroller Architecture
@@ -288,7 +288,7 @@ from 0x0000 – 0x00FF which covers:
 Memory map for the Atmel Atmega328 MCU
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ##### Applications of 8-bit and 32-bit MCUs
 
@@ -298,9 +298,9 @@ Memory map for the Atmel Atmega328 MCU
 ```
 Source: [http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus](http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-##### Market share of 8-bit, 18-bit and 32-bit MCUs in 2021
+##### Market share of 8-bit, 16-bit and 32-bit MCUs in 2021
 
 ```{image} https://www.precedenceresearch.com/insightimg/Product-Market-Share-By-Product-2021.jpg
 :alt:
@@ -309,7 +309,7 @@ Source: [http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-m
 
 Source: [www.precedenceresearch.com/microcontroller-mcu-market](http://www.precedenceresearch.com/microcontroller-mcu-market)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 #### Memory
 
@@ -350,7 +350,7 @@ Broadly speaking embedded memory that is found in a microcontroller can be class
 - *Volatile*: data is lost when power is removed &ndash; this is *temporary storage*.
 - *Non-volatile*: data is retained when power is removed &ndash; this is *permanent storage*.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 Volatile and non-volatile memory can be further classified as illustrated in {numref}`vol-non-vol-memory`.
 
@@ -360,10 +360,10 @@ Volatile and non-volatile memory can be further classified as illustrated in {nu
 :width: 60%
 :alt: Classification of volatile and non-volatile memmory.
 
-Classification of volatile and non-volatile memmory.
+Classification of volatile and non-volatile memory.
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 #### Instruction Set Architectures
 
@@ -549,7 +549,7 @@ The Atmel&reg; ATMega328/P is a low-power CMOS 8-bit microcontroller based on th
 
 - The AVR core uses a **Harvard memory architecture** &ndash; with separate memories and busses for program and data.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 #### Arithmetic Logic Unit
 
