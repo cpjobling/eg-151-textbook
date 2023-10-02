@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.0
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -21,11 +21,13 @@ In this laboratory introduction, you will do the following:
 - *Simulation exercise*: to investigate the operation of the oscillator circuit using National Instruments Multisim, a circuit simulation package
 - *Construction exercise*: to build a continuity tester in a Tic-Tac® box
 
-:::{figure-md} Fig:workbench
-<img src="pictures/lab-workbench.jpg" alt="A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board." width="100%">
+```{figure} pictures/lab-workbench.jpg
+:name: fig:workbench
+:alt: A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board.
+:width: 100%
 
 A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board.
-:::
+```
 
 We expect that you will work through the exercises contained in this practical introduction in less than two weeks (four lab sessions), but a month has been allowed.
 
@@ -50,3 +52,7 @@ You should work through each of these activities in order.
 If you would prefer a document version of the lab introduction, it is available as a PDF which you are welcome to download and use. 
 
 However, so your progress in the lab can be monitored, you are expected to work through the sections on Canvas.
+
+```{code-cell} ipython3
+
+```
