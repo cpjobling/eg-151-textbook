@@ -528,7 +528,7 @@ The equivalent decimal number is $\left(3\times 16^1\right) + \left(2\times 16^0
 * - $11$ (`11`)
   - $1011$ (`0b00001011`)
   - $13$ (`013`)
-  - $\textrm{B}$ (`0x0b0000`)
+  - $\textrm{B}$ (`0x0B`)
 * - $12$ (`12`)
   - $1100$ (`0b00001100`)
   - $14$ (`014`)
@@ -555,7 +555,7 @@ The equivalent decimal number is $\left(3\times 16^1\right) + \left(2\times 16^0
 
 ### Other binary encodings
 
-Numbers are not the only type of data that can be encoded using binary values. In fact, all data that is manipulated by computers is represented by an encoding.
+Numbers are not the only type of data that can be encoded using binary values. In fact, all data that is manipulated by computers is represented by an encoding of binary numbers.
 
 Some examples of codings that you will see are:
 
