@@ -24,6 +24,49 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
+## 50 years of teaching microprocessors at Swansea![^acknowledgements]
+
+```{image} pictures/dr_tim_davies.png
+:alt: Dr Davies in the Electronics lab
+:width: 50%
+```
+
+[^acknowledgements]: The history presented here was written by Dr Davies.
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+* Started in 1972/1973 by Prof. David Aspinall and Dr. Erik Dagless, using bespoke equipment based on the Intel 8008.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Always using 8-bit micros such as Intel 8008, Intel 8085, Motorola 68HC11, Motorola 68HCS08...
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Take-home lab, developed by Dr Davies, in 2020, used the Arduino Nano which is based on the Atmel (now MicroChip) ATmega328
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* One of our former students, Prof Sir Andy Hopper, asked why we are not teaching using the ARM processor which he helped develop.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* And so the quest for a new microcontroller laboratory began.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* Spring 2021 - the launch of a new microcontroller, the RP2040 which is packaged into a small module, costing only three pounds.
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* This is the microcontroller for our new EG-252 lab and will also be used in the new module EG-3082 Embedded Systems launching this year,
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+* You will therefore be using microcontrollers throughout this program
+
++++ {"slideshow": {"slide_type": "slide"}}
+
 ## Introduction
 
 In this week's lecture, you will be given an introduction to microcontrollers focusing on what a microcontroller is, where they can be found and how they can be described using the their *architecture*. The lecture then moves on to introduce the Atmel ATmega328 microcontroller, which will be used in the practical sessions in this course, looking at its core architecture including the function of the arithmetic logic unit and registers.
