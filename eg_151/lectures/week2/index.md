@@ -32,6 +32,7 @@ The week's lecture provides a background to data representation introducing some
 - {ref}`week2:intro2dr`
 - {ref}`week2:numbering`
 - {ref}`week2:addition_and_subtraction`
+- {ref}`week2:sr`
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -248,7 +249,7 @@ A decimal number can be converted into any other base using the **divide-by-$n$*
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-Step 1 (see {ref}`divide-by-n-method`) − Divide the decimal number by the value of the new base and get the quotient and a remainder. 
+Step 1 (see {numref}`divide-by-n-method`) − Divide the decimal number by the value of the new base and get the quotient and a remainder. 
 
 ```{figure} pictures/dividion_method.png
 :alt: Illustration of a step in the divisision-by-n method of decimal number conversion.
@@ -390,6 +391,8 @@ For example:
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 - $1_2$ is represented as `0b00000001`[^note2] (binary, prefix `0b`, seven padding 0 bits + 1 bit for the value 1).
+
+[^note2]: The prefix `0b` is used in C code and many other languages as the prefix for the text representation of a binary value. `0` is used for octal values and `0x` for hexadecimal values. If there is no leading zero, the number is assumed to be decimal. However a number is defined in program code, the actual value stored in memory to represent that number will be a binary number.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
@@ -687,7 +690,8 @@ The overflow is acknowledged in the **status register** by the carry flag
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-#### Introduction to the Status Register
+(week2:sr)=
+## Introduction to the Status Register
 
 The microcontroller has an 8-bit register containing a number of flags which can be set based on the condition of the microcontroller.
 
@@ -704,9 +708,9 @@ The Status Register of the Atmel ATMega328/P
 
 - The Half Carry Flag `H` is set (to 1) if there was a carry from bit 3; it is cleared (set to 0) otherwise.
 - The Zero Flag `Z` is set if the result is `0x00000000`; cleared otherwise.
-- The Carry Flag `C` is set if there was a carry from the most significant bit (MSB)[^mote:msb] of the result; cleared otherwise.
+- The Carry Flag `C` is set if there was a carry from the most significant bit (MSB)[^note:msb] of the result; cleared otherwise.
 
-[^note:msb] The most significant bit is the left most bit. It corresponds to the numerical value $2^7 = 128$. For certain operations, it may also indicate a negative number.
+[^note:msb]: The most significant bit is the left most bit. It corresponds to the numerical value $2^7 = 128$. For certain operations, it may also indicate a negative number.
 
 We will look at the status register in detail in {ref}`week3`.
 

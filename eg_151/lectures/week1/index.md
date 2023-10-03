@@ -306,7 +306,7 @@ As an example, in an 8-bit MC
 
 - Each register is 8-bits (or one byte) wide. 
 - There are $2^8$ (or 256) possible memory addresses
-- There are $2^8$ integers that can be represented (0 o 255).
+- There are $2^8$ integers that can be represented (0 to 255).
 
 Microcontrollers with more bits, for example 16- and 32-bit MCUs have correspondingly more bits per register, more available memory addresses, and can handle larger numbers compared with their 8-bit counterparts.
 
