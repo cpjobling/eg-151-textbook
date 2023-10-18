@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.2
+    jupytext_version: 1.15.1
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -338,7 +338,7 @@ The stack supports two types of operations:
 
 The stack typically operates as a “Last In First Out” (LIFO) buffer
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### What is the stack pointer?
 

@@ -6,13 +6,14 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.1
+    jupytext_version: 1.15.2
 kernelspec:
-  display_name: ''
-  name: ''
+  display_name: Python 3 (ipykernel)
+  language: python
+  name: python3
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week2)=
 # Introduction to Data Representation
@@ -376,7 +377,7 @@ Hexadecimal value: $28_{10} = 1\textrm{C}_{16}$.
 &= 28_{10}
 \end{align}
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Tricks and Tips
 
@@ -384,17 +385,17 @@ All numbers are stored in a computer in binary form. Depending on the encoding, 
 
 If the digit needs less bits than allowed for its representation, the remaining bits the the left of the number will be set to zero.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 For example:
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 - $1_2$ is represented as `0b00000001`[^note2] (binary, prefix `0b`, seven padding 0 bits + 1 bit for the value 1).
 
 [^note2]: The prefix `0b` is used in C code and many other languages as the prefix for the text representation of a binary value. `0` is used for octal values and `0x` for hexadecimal values. If there is no leading zero, the number is assumed to be decimal. However a number is defined in program code, the actual value stored in memory to represent that number will be a binary number.
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 - $5_8$ is `0005` (octal prefix `0` followed two 0 digits (2 bits plus 3 bits) (00 000 101).
 
@@ -439,7 +440,7 @@ Grouping `0x000011101` by fours gives `0001` + `1101` = `0x01D` = $1\textrm{D}_{
 
 Taking the octal value $62_8 = \left(0\times 8^2\right) + \left(3\times 8^1\right) + (5\times 8^0) = 0 + 24 + 5 = 29_{10}$.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 #### Example 8
 
@@ -461,13 +462,11 @@ Grouping the binary number `0b00110010` in blocks of 4 gives `0b 0011 0010` whic
 
 The equivalent decimal number is $\left(3\times 16^1\right) + \left(2\times 16^0\right) = 48 + 2 = 50_{10}$.[^note3]
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-[^note2]: Here we are taking the opportunity to introduce the value notation that is used in the C and many other programming languages. Decimal numbers are written as they would be in normal usage: `10`, `100`, `255` etc. Binary numbers use the prefix `0b`: e.g. `0b10010`, `0b00010010`. Octal numbers use the prefix `0` and the digits 0-7: e.g. `0127`, `0377`, etc. Hexadecimal numbers use the prefix `0x0` and the digits 0-9 and A-F: e.g. `0x02B`, `0x019`.
++++ {"slideshow": {"slide_type": "notes"}, "editable": true}
 
 [^note3]: The calculator app on both Windows and MacOS have a programmer view that makes it easy to confirm these results.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Summary of number systems
 
@@ -716,7 +715,7 @@ We will look at the status register in detail in {ref}`week3`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-#### Binary Arithmetic Example 14
+### Binary Arithmetic Example 14
 
 {numref}`fig:week2:ex15` shows the condition of the status register after completing the addition from {ref}`week2:example14`.
 

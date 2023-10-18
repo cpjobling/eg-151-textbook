@@ -5,14 +5,14 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.1
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
   name: python3
 ---
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week4)=
 # Introduction to Programming and Program Development
@@ -34,7 +34,7 @@ When developing an application to run on a microcontroller or other embedded sys
 4. Once the program is at a level where its functionality can start to be tested, testing and debugging is performed to look for errors or unexpected behaviour in software called bugs.
 5. When the final software is commissioned, it is important to document the code so as a developer can come back to it at later date or pass the task to another team member.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ## Lecture Topics
 
@@ -48,12 +48,12 @@ When developing an application to run on a microcontroller or other embedded sys
 - {ref}`week4:flowcharts`
 - {ref}`week4:modular_programming`
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week4:useful_terminology)=
 ## Useful Terminology
 
-![](pictures/prog_wallpaper.png)
+![](../week4/pictures/prog_wallpaper.png)
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -134,6 +134,7 @@ Early program source code! Input into a computer with punched paper tape. Image 
 :name: week4:fig:modern_programming
 
 Writing programs on a modern high resolution display screen. (Image source: [unsplash.com/photos/ieic5Tq8YMk](https://unsplash.com/photos/ieic5Tq8YMk) by Chris Reid) 
+```
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
@@ -467,7 +468,7 @@ Web-based drawing tool
 
 [creately.com/diagram-type/flowchart/](https://creately.com/diagram-type/flowchart/)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Using flowcharts to capturing the most common program constructs
 
@@ -475,25 +476,13 @@ From a software designer's point of view, any program function can be described 
 
 - **Sequence**: this construct performs one task after another in a sequence. It is a group of instructions to be performed one after another in the order shown in the program. 
 - **Decision**: this construct performs a task or a sequence of tasks based on the result of a test condition.
-- **Repetition**: this construct is for a process that repeats until a condition which will stop the process is satisfied[^repetition]. Repetition is used to repeat a a sequence over and over again. 
+- **Repetition**: this construct is for a process that repeats until a condition which will stop the process is satisfied[^repetition]. Repetition is used to repeat a a sequence over and over again.
 
-+++ {"slideshow": {"slide_type": "notes"}}
-
-[^repetition]: Repetition is used a lot in microcontroller programming.
-
-+++
-
-## Program Constructs
-
-From a software designer’s point of view, any program function can be described using only three program constructs:
-
-- **Sequence**: this construct performs one task after another in a sequence. It is a group of instructions to be performed one after another in the order shown in the program. 
-- **Decision**: this construct performs one of several tasks based on the result of a test condition.
-- **Repetition**: This construct is for a process that repeats until a condition is satisfied to stop the process. It is used to repeat a program segment over and over until a condition is satisfied[^repetition]. 
++++ {"slideshow": {"slide_type": "notes"}, "editable": true}
 
 [^repetition]: Repetition is used a lot in microcontroller programming.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 #### Sequence
 
@@ -508,7 +497,7 @@ A sequence ({numref}`week4:fig:fc_sequence`) is represented as a set of process 
 Flowchart for a sequence of tasks
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
++++ {"slideshow": {"slide_type": "notes"}, "editable": true}
 
 The program shown in {numref}`week4:fig:fc_sequence` might be represented in *psuedocode*[^psuedocode] as
 
@@ -684,7 +673,7 @@ I.e. $\mathrm{sum} = 1 + 2 + 3 + \dots n$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The program that solves this project is illustrated by the flowchart shown in {numref}`week4:fig:example2`. This program has a sequence, a decision and repetition. It also has an input where the limit ($n$) is entered and an output where the sum is displayed. 
+The program that solves this project is illustrated by the flowchart shown in {numref}`week4:fig:example2`. This program has a sequence, a decision and repetition. It also has an input where the limit ($n$) is entered and an output where the sum is displayed.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -725,7 +714,7 @@ For our program summing the numbers up to a limit, there are three key parts.
 
 These can be theoretically be combined in 8 different ways, the first six of which as shown in {numref}`week4:table:1`. Three implementations three are illustrated in {numref}`
 
-` (variation 6), {numref}`week4:fig:isc` (variation 4), {numref}`week4:fig:isc` (row 2). 
+` (variation 6), {numref}`week4:fig:isc` (variation 4), {numref}`week4:fig:isc` (row 2).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -1069,7 +1058,6 @@ Feel free to work individually or in small groups
 
 See {numref}`week4:fig:exercise_solution` in the notes online.
 
-
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ```{figure} pictures/exercise_soln.png
@@ -1098,15 +1086,15 @@ In this chapter we have:
 ## On Canvas
 
 This week on the canvas course page, there is:
-- a [short video by Ben Clifford providing more of an introduction to programming languages and the compilation process](https://canvas.swansea.ac.uk/courses/44971/pages/introduction-to-programming-languages?module_item_id=2258077); 
+- a [short video by Ben Clifford providing more of an introduction to programming languages and the compilation process](https://canvas.swansea.ac.uk/courses/44971/pages/introduction-to-programming-languages?module_item_id=2258077);
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-- a [discussion forum](https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078) to talk about the {ref}`flow_chart_task`; 
+- a [discussion forum](https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078) to talk about the {ref}`flow_chart_task`;
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-- some [supplementary resources](https://canvas.swansea.ac.uk/courses/44971/pages/week-4-supplementary-resources?module_item_id=2258079); and 
+- some [supplementary resources](https://canvas.swansea.ac.uk/courses/44971/pages/week-4-supplementary-resources?module_item_id=2258079); and
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
