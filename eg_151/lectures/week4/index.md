@@ -621,8 +621,9 @@ START
 END
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
+(wk4:sum_example)=
 ### Example 2: Decision and a Loop
 
 Task: *Find the sum of numbers 1 to 10*
