@@ -590,12 +590,13 @@ In addition to the logical operators designed to evaluate multiple conditions th
 b = 0xA3 & 0xD5; // -> b = 0x81
 ```
 
-$$\begin{array}{lrr}
+```{math}
+\begin{array}{lrr}
    & 1010 & 0111 \\
 \red{\&} & 1101 & 0101 \\\hline
    & 1000 & 0001
 \end{array}
-$$
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -605,12 +606,13 @@ $$
 c = 0xA3 | 0xD5; // -> b = 0xF7
 ```
 
-$$\begin{array}{lrr}
+```{math}
+\begin{array}{lrr}
    & 1010 & 0111 \\
 \red{|} & 1101 & 0101 \\\hline
    & 1111 & 0111
 \end{array}
-$$
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -620,12 +622,14 @@ $$
 c = ~0xA3; // -> c = 0x5C
 ```
 
-$$\begin{array}{lrr}
+
+```{math}
+\begin{array}{lrr}
    & 1010 & 0111 \\
 \red{|} & 1101 & 0101 \\\hline
    & 1111 & 0111
 \end{array}
-$$
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -871,31 +875,40 @@ A flow chart illustrating the structure of the *switch* statement
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Example switch statement
+
 ```c
 char student_grade = 'B';
-switch (student_grade) 
+printf("Your grade was %c: ",student_grade);
+switch (student_grade)
 {
-    case 'A' :
-        printf('Excellent!);
-        break; // prevents fall-through to default
-    case 'B' :
-        printf('Very good!');
-        break;
-    case 'C' :
-        printf('Good!');
-        break;
-    :
-    case 'F' : 
-        printf('Sorry you failed!');
-        break;
-    default: 
-        printf('Error! Grade %s is invalid',student_grade);
+   case 'A':
+     printf ("excellent!\n");
+     break; // prevents fall-through to default
+   case 'B' :
+     printf("very good!\n");
+     break;
+   case 'C' :
+     printf("good!\n");
+     break;
+   case 'D' :
+     printf("satisfactory!\n");
+     break;
+   case 'E' :
+     printf("needs work!\n");
+     break;
+   case 'F' : 
+     printf("sorry you failed!\n");
+     break;
+   default: 
+     printf("Error! The grade %c is invalid\n",student_grade);
 }
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
 If the `break` was not present, the program would drop down to the next case which is not usually what you want. Instead, you usually break out to the case statement as soon as a valid match is made.
+
+You can play with this program here: [grader](https://onlinegdb.com/16BcOgMJD). See what happens when you remove `break`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 

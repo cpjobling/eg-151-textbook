@@ -17,6 +17,7 @@ parts:
     - file: lectures/week3/index
     - file: lectures/week4/index
     - file: lectures/week5/index
+    - file: lectures/week6/index
   - caption: Programming in C
     numbered: false
     chapters:
