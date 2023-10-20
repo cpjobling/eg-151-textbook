@@ -467,7 +467,7 @@ The order of arithmetic operations follow the [BODMAS (BIDMAS)](https://en.wikip
 | `--`          | Decrement      |
 
 
-[^bodmas_rules]: BODMAS is a *mnemonic* which stands for **B**ackets, **O**perations, **D**ivision/**M**ultiplaction, **A**ddition/**Subtraction**. It describes the order of calculation in an expression that involves operators. Brackets, which are considered first, are used to disambiguate expressions that would otherwise produce wrong results. For example `a + b/c` is intrepreted as $a + (b/c)$ not $(a + b)/c$.
+[^bodmas_rules]: BODMAS is a *mnemonic* which stands for **B**ackets, **O**perations, **D**ivision/**M**ultiplication, **A**ddition/**S**ubtraction. It describes the order of calculation in an expression that involves operators. Brackets, which are considered first, are used to disambiguate expressions that would otherwise produce wrong results. For example `a + b/c` is intrepreted as $a + (b/c)$ not $(a + b)/c$.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
