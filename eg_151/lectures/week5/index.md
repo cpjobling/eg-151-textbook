@@ -453,7 +453,7 @@ This is because C ia highs -level language and the compiler takes care of he det
 (wk4:arithmetic_ops)=
 #### **Arithmetic** operators in C
 
-The order of arithmetic operations follow the [BODMAS (BIDMAS)[(https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics) rules[^bodmas_rules].
+The order of arithmetic operations follow the [BODMAS (BIDMAS)](https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics) rules[^bodmas_rules].
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -468,7 +468,7 @@ The order of arithmetic operations follow the [BODMAS (BIDMAS)[(https://en.wikip
 | `--`          | Decrement      |
 
 
-[^bodmas_rules]: BODMAS is a *mnemonic* which stands for **B**ackets, **O**perations, **D**ivision/**Multiplaction**, **A**ddition/**Subtraction**. It describes the order of calculation in an expression that involves operators. Brackets, which are considered first, are used to disambiguate expressions that would otherwise produce wrong results. For example `a + b/c` is intrepreted as $a + (b/c)$ not $(a + b)/c$.
+[^bodmas_rules]: BODMAS is a *mnemonic* which stands for **B**ackets, **O**perations, **D**ivision/**M**ultiplaction, **A**ddition/**Subtraction**. It describes the order of calculation in an expression that involves operators. Brackets, which are considered first, are used to disambiguate expressions that would otherwise produce wrong results. For example `a + b/c` is intrepreted as $a + (b/c)$ not $(a + b)/c$.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -511,20 +511,165 @@ i   =  5.5 / 2; // -> i = 1.75	- evaluates correctly if i is defined as a float
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
-The same  rules apply to multiplication operation.s
+The same  rules apply to multiplication operation.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:logical_ops)=
 #### **Logical** operators in C
 
+Logical operators are used in expressions which return *true* (`1`) or *false* (`0`).
+
+| **Operator** | **Meaning**   |
+|--------------|---------------|
+| `&&`         | Logical *and* |
+| `\|\|`       | Logical *or*  |
+| `!` .        | Logical *not* |
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Example of the *and* operator (`&&`)
+```c
+/* 
+   If the voltage is greater than 10 and the
+   current is less than 20 the condition is true
+   and the value of the expression will be 1, 
+   otherwise it is false and the value of the 
+   expression will be 0.
+*/
+if ((voltage > 10) && (current < 20)) {...}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Example of the *or* operator (`&&`)
+```c
+/*
+    If the voltage is greater than 10 or the
+    current is greater than 20 the condition is
+    true and the value of the expression will be
+    1, otherwise it is false and the expression 
+    will be 0.
+*/
+if((voltage > 10) || (current > 20)) {...}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Example of the *not* operator (`!`)
+```c
+/* 
+    The unary operator (!) is usually used to
+    turn true into false and vice versa.
+*/
+c = 0;	// -> c = 0 which is "false"
+d = !c; // -> d = 1 which is "true".
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 (wk4:bitwise_ops)=
 ##### **Bitwise logical** operators in C
+
+In addition to the logical operators designed to evaluate multiple conditions there are **bitwise logical operators** which operate on the binary digits (bits) of their operands.
+
+| **Operator** | **Used for** |
+|--------------|--------------|
+| `&`          | bitwise AND  |
+| `\|`         | bitwise OR   |
+| `^`          | bitwise XOR  |
+| `~`          | bitwise NOT  |
+| `>>`         | shift right  |
+| `<<`         | shift left   |
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Example of the bitwise and operator
+
+```c
+b = 0xA3 & 0xD5; // -> b = 0x81
+```
+
+$$\begin{array}{lrr}
+   & 1010 & 0111 \\
+\red{\&} & 1101 & 0101 \\\hline
+   & 1000 & 0001
+\end{array}
+$$
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Example of the bitwise or operator
+
+```c
+c = 0xA3 | 0xD5; // -> b = 0xF7
+```
+
+$$\begin{array}{lrr}
+   & 1010 & 0111 \\
+\red{|} & 1101 & 0101 \\\hline
+   & 1111 & 0111
+\end{array}
+$$
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Example of the bitwise not operator
+
+```c
+c = ~0xA3; // -> c = 0x5C
+```
+
+$$\begin{array}{lrr}
+   & 1010 & 0111 \\
+\red{|} & 1101 & 0101 \\\hline
+   & 1111 & 0111
+\end{array}
+$$
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bitwise operators used for I/O ports
+
+The use of these operators are important when working with microcontrollers, in particular in the case of I/O, as they can be used to mask bits of a port. This is useful in C as we have limited data transfer options, i.e. we have to read/write to an entire port (memory location) rather than an individual bit.
+
+```c
+PTAPE = 0x0F;       // bit pattern: 0000 1111
+PTAD = 0xF0;        // bit pattern: 1111 0000
+PTAD = PTAD | 0x0C;	// bit pattern: 1111 1100
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+Since XORing any bit with a 1 forces it to return the opposite value, it can be used to toggle the state of a port:
+
+```c
+portA = portA ^ 0xFF; // e.g. 0101 0110 -> 1010 1001
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:relational_ops)=
 ##### **Relational** operators in C
+
+The final group of operators are the **relational operators** which are used to test a relationship between two variables or a variable and data. 
+
+| **Relational operator** | **Meaning**                 |
+|-------------------------|-----------------------------|
+| `==`                    | is equal to                 |
+| `!=`                    | is *not* equal to           |
+| `<`                     | is less than                |
+| `<=`                    | is less than or equal to    |
+| `>`                     | is greater than |
+| `>=`                    | is greater than or equal to |
+
+Example: "is x equal to 2?" would be written as `x == 2`[^equality].
+
+[^equality]: **Important**: don’t confuse the double equals sign (`==`) with `=`. The latter used for assignment operations. **That is `(x = 2)` is different from `(x == 2)`**.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+Relational operators are most often used in the *expressions* used in the *conditions* of the flow control structures discussed in {ref}`wk4:flow_control`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -557,6 +702,19 @@ Classification of the flow control strucures provided by the C language.
 ```
 
 [^rarely_used]: Most of the unconditional branching statements such as `goto` (for an unconditional branch to a label) and `continue` (to ignore a condition without breaking out of a loop) are rarely used in modern programs. The `break` statement is often used in *switch statements* and occasionally for breaking out of a loop when some exit condition is met.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+### Flow control structures to be considered
+
+1. {ref}`wk4:if`
+   - {ref}`wk4:if-else`
+   - {ref}`wk4:if-elseif-else`
+3. {ref}`wk4:switch`
+4. {ref}`wk4:while`
+   - {ref}`wk4:do-while`
+5. {ref}`wk4:for`
+   - {ref}`wk4:nested-for`
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -627,7 +785,7 @@ A flow chart illustrating the structure of the *if-else* statement
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:if-elseif-else)=
-#### The *if-elseif-else*-statement
+#### The *if-elseif-else* statement
 
 The third example of the if statement is the ***if-elseif-else* statement** which allows multiple conditions to be tested and blocks of statements to be executed for each decision.
 
@@ -665,7 +823,7 @@ A flow chart illustrating the structure of the *if-elseif-else* statement
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:switch)=
-### The *switch*-statement in C
+### The *switch* statement in C
 
 - The *switch* statement allows selection between several possible defined options. 
 - The **test condition** is referred to as the *expression* and the choices are referred to as the *cases*[^cases].
@@ -742,7 +900,7 @@ If the `break` was not present, the program would drop down to the next case whi
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:while)=
-### The *while*-statement in C
+### The *while* statement in C
 
 In order to write a function that loops, i.e. execution of a sequence of statements until a particular condition is met, a *while* statement can be used.
 
@@ -773,7 +931,7 @@ A flow chart illustrating the structure of the *while* statement
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:do-while)=
-#### The *do-while*-statement
+#### The *do-while* statement
 
 The *do-while* statement is almost identical to the while statement however the condition is checked after the statements have run.
 
@@ -799,10 +957,14 @@ while (condition);
 A flow chart illustrating the structure of the *do-while* statement
 ````
 
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+Be careful: it is very easy to get stuck in an infinite *while* loop if your test condition is always true.
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:for)=
-### The *for*-statement in C
+### The *for* statement in C
 
 Another way of writing a while statement is to use a ***for* loop**.
 
@@ -901,8 +1063,8 @@ It is arguable that the *for* loop is easier to read and understand.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk4:nested)=
-#### Nested *for*-statements
+(wk4:nested-for)=
+#### Nested *for* statements
 
 The equivalent of the nested *for* statement illustrated in the {numref}`wk4:fig:nested-for-statement` is:_
 
@@ -945,12 +1107,3 @@ In this section we have:
 ## On Canvas
 
 On the canvas course page, there is a series of short videos providing a history of the C language and a brief overview of programming paradigms as well as videos on functions and data type with a quiz to test your knowledge
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
-```
