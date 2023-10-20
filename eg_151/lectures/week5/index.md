@@ -50,7 +50,6 @@ In this chapter we will be looking at how to produce clear well commented progra
   - {ref}`wk4:while`
   - {ref}`wk4:for`
 
-
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk4:c-language)=
@@ -593,7 +592,7 @@ b = 0xA3 & 0xD5; // -> b = 0x81
 ```{math}
 \begin{array}{lrr}
    & 1010 & 0111 \\
-\red{\&} & 1101 & 0101 \\\hline
+\& & 1101 & 0101 \\\hline
    & 1000 & 0001
 \end{array}
 ```
@@ -609,7 +608,7 @@ c = 0xA3 | 0xD5; // -> b = 0xF7
 ```{math}
 \begin{array}{lrr}
    & 1010 & 0111 \\
-\red{|} & 1101 & 0101 \\\hline
+|  & 1101 & 0101 \\\hline
    & 1111 & 0111
 \end{array}
 ```
@@ -625,9 +624,8 @@ c = ~0xA3; // -> c = 0x5C
 
 ```{math}
 \begin{array}{lrr}
-   & 1010 & 0111 \\
-\red{|} & 1101 & 0101 \\\hline
-   & 1111 & 0111
+\sim & 1010 & 0111 \\\hline
+     & 0101 & 1100
 \end{array}
 ```
 
@@ -1004,7 +1002,6 @@ statement
 
 A flow chart illustrating the structure of the *for* statement
 ````
-
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
