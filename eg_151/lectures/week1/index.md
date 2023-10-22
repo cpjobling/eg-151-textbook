@@ -6,7 +6,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.1
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -104,7 +104,7 @@ At a high level of abstraction, a microntroller includes three core components w
 - Memory, and
 - Input/output (I/0) peripherals
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week1:where_are_uc_used)=
 ## Where are Microcontrollers Used?
@@ -115,15 +115,15 @@ At a high level of abstraction, a microntroller includes three core components w
 ```
 Microcontrollers are used in the automotive industry, consumer electronics, industrial and control systems, and environmental monitoring and many other areas of engineering.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Automotive applications
 
-![Automotive applications of microcontrollers](https://media.licdn.com/dms/image/C5612AQFlXXRGbDj1iQ/article-cover_image-shrink_423_752/0/1548696054359?e=1697068800&v=beta&t=jQnmQP2oTqRSY17lAliHfiSlMdcckGRRhzzpcrfLA7s)
+![Automotive applications of microcontrollers](pictures/automotive_apps.png)
 
-Image source: [www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina](https://www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina).
+Original image source: [www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina](https://www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina) (no longer accessible).
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 <table>
 <tr>
