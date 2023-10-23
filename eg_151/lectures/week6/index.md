@@ -15,12 +15,14 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week6)=
-# Interfacing with digital I/O in C
+# Interfacing to digital I/O with C
 
 ```{image} ../week3/pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
+
+## Introduction
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
@@ -30,7 +32,13 @@ kernelspec:
 :width: 50%
 ```
 
-## Lecture Topics
+### Topics Covered
+
+In this section we will be looking at two different approaches to reading and writing to ports on a microcontroller. The first approach discussed is using library files and predefined functions to control I/O ports as is conventionally done with the Arduino IDE, the second approach will look at accessing I/O bits directly using bit masks to select the desired pins. The section begins by looking at digital inputs and outputs before moving onto to show a detailed example program implemented on the Atmel ATmega328 microcontroller.
+
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+
+### Contents
 
 - How does I/O work using the Arduino IDE.
 
@@ -201,7 +209,28 @@ void digitalWrite(uint8_t pin, uint8_t val)
 	}
 
 	SREG = oldSREG;
-}```
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Advantages and Disadvantages of using the Arduino IDE
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Advantages
+
+* Code is cross processor compatible.
+* Code is easy to understand.
+* Code controls a named pin on the board and is therefore easy to wire up
+* Changing code to use different pins is trivial..
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Disadvantages
+
+* Code is slower than accessing the ports directly.
+* You cannot perform multiple bit reads or writes in a single action.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -401,7 +430,7 @@ How can the LED at `D9` be switched on without changing the state of the LED at 
 
 ##### Atmel ATmega328 I/0 Architecture Recap
 
-```{image} pictures/mem_map.png
+```{image} pictures/io_map.png
 :alt: Arduino ATmega328 Memory map for I/O
 ```
 
@@ -427,7 +456,7 @@ How can the LED at `D9` be switched on without changing the state of the LED at 
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* `D9 = PortB1` 
+* `D9 = PortB1`
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -472,20 +501,292 @@ PORTB = PORTB & 0x11111101;
 :alt: Decorative background image showing the circuit discussed in the example.
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-### Example
+### Example - breadboard
+
+Consider the Ardunino nano circuit shown in {numref}`wk6_fig_example_circuit`. The left and right push buttons are connected to the digital inputs `D3` and `D2` on the Arduino nano board. These correspond with Port D Bits 3 and 2 on the Atmega328 microcontroller. 
+
+```{figure} pictures/breadboard.jpg
+:alt: A photograph of the example circuit which has two buttons and two LEDs.
+:name: wk6_fig_example_circuit
+:width: 50%
+
+A photograph of the example circuit which has two buttons and two LEDs. When the left button is pressed, the red LED lights up. When the right button is pressed the green LED lights up.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+When the left push button is pressed, the red LED (Port B Bit 1) is illuminated and the green LED (Port B Bit 0) illuminated when the right push button is pressed.
+
+The buttons are digital inputs with pull-up resistors (so *active low*) and are connected to pins 1 and 2 of port D respectively.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+What does the code for this look like without using the predefined Arduino functions – `pinMode` and `digitalRead`?
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - statement 1
+
+```c
+#include <stdint.h>
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+`#include` is a **preprocessor directive** used to **include header files** which contain **definitions and declarations** of existing and frequently used functions.
+
+The **<>** variant is used for **system header files** that are included as part of the C language compiler.
+
+ The *stdint.h* header file provides a set of **type definitions (typedefs)** that specify exact-width integer types, together with the defined minimum and maximum allowable values for each type, using macros. The types are tabulated in {numref}`integer_types`.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+```{list-table} Specific integral type limits
+:header-rows: 1
+:name: integer_types
+* - **Specifier**
+  - **Signing**
+  - **Bits**
+  - **Bytes**
+  - **Minimum Value**
+  - **Maximum Value**
+* - `int8_t`
+  - Signed
+  - 8
+  - 1
+  - $-2^7$ which equals $-128$
+  - $2^7 - 1$ which equals $127$
+* - `uint8_t`
+  - Signed
+  - 8
+  - 1
+  - $0$
+  - $2^8 - 1$ which equals $255$
+* - `int16_t`
+  - Signed
+  - 16
+  - 2
+  - $-2^7$ which equals $-32,768$
+  - $2^7 - 1$ which equals $32,767$
+* - `uint16_t`
+  - Signed
+  - 16
+  - 2
+  - $0$
+  - $2^{16} - 1$ which equals $65,535$
+* - `int32_t`
+  - Signed
+  - 32
+  - 4
+  - $-2^{31}$ which equals $-2,147,483,648$
+  - $2^{31} - 1$ which equals $2,147,483,647$
+* - `uint32_t`
+  - Signed
+  - 32
+  - 4
+  - $0$
+  - $2^{32} - 1$ which equals $4,294,967,295$
+* - `int64_t`
+  - Signed
+  - 64
+  - 8
+  - $-2^{63}$ which equals $-9,223,372,036,854.775,808$
+  - $2^{63} - 1$ which equals $9,223,372,036,854.775,807$
+* - `uint32_t`
+  - Signed
+  - 32
+  - 4
+  - $0$
+  - $2^{64} - 1$ which equals $18,446,744,073,709,551,615$
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example code - aligning port names to the I/O memory map
+
+The I/O memory map is shown in {numref}`wk6:fig:io_mem_map`. 
+
+```{figure} pictures/io_mem_map.png
+:name: wk6:fig:io_mem_map
+:align: center
+:width: 100%
+:alt: Memory map for the I/O ports in the Atmel ATmega328
+
+Memory map for the I/O ports in the Atmel ATmega328
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+We need to map a port to the address used by the port. We use `#define` for this:
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+1. Preprocessor directive: `#define`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+2. Convenient name that the processor can use in code: `PORTD`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+3. The size is an 8 bit unsigned integer: `unit8_t`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+4. Memory address of the specific register from the datasheet (reproduced here as {numref}`wk6:fig:io_mem_map`): `0x2B`.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+The full command is[^volatile]:
+
+```c
+#define PORTD(*(volatile unint8_t *)(0x2B))
+```
+
+[^volatile]: In this definition we use the qualifier volatile to inform the compiler that the variable value can be changed any time without any task given by the source code. Without this qualifier, depending on the optimisation level of the compiler this may result in code that doesn’t work as it doesn’t know the value can be changed by external sources. The asterisk symbol is used to denote a pointer, for now you do not need to know what this explicitly mean but in short a pointer is a variable whose value is the address of another variable, i.e., direct address of the memory location rather than a value.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The full set up which sets up the ports, data direction registers and pins is:
+
+```c
+//I/O and ADC Register definitions taken from datasheet
+#define	PORTD (*(volatile uint8_t *)(0x2B))
+#define DDRD  (*(volatile uint8_t *)(0x2A))
+#define PIND  (*(volatile uint8_t *)(0x29))
+
+#define PORTB (*(volatile uint8_t *)(0x25))
+#define DDRB  (*(volatile uint8_t *)(0x24))
+#define PINB  (*(volatile uint8_t *)(0x23))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - the main function
+
+This is the starting point for any program[^main].
+
+```c
+int main (void) 
+{
+    // code
+    return 0;
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+The return type is declared as integer meaning the function returns some integer even ‘0’ at the end of the program execution. By convention, a return of ‘0’ represents the successful execution of a program.
+
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - Set data direction registers
+
+```{image} pictures/dd.gif
+:alt: Video illustrating the setting up of the data direction regsisters.
+:width: 50%
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - Set pull-ups for inputs and initialize outputs
+
+```{image} pictures/pullup.gif
+:alt: Video illustrating the setting of the port D for input and resetting port B.
+:width: 50%
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - The infinite for loop
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The **infinite *for* loop** is quite a common idiom in C:
+```c
+for (;;;)
+{
+   // code that repeats forever
+}
+```
+
+Any code that is placed inside the for loop will run forever.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+The Arduino IDE does the same thing behind the scenes - `void loop` is actually a function that is repeatedly called inside an infinite for loop[^main].
+
+[^main]: The actual code is slightly different and if you are interested you can access it here: [main.cpp](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp). Note that the sketch function `init()` is called once first, then `loop()` is called each time through the infinite loop.
+:
+
+```c
+int main(void)
+{
+  init();
+    
+  for (;;) {
+	loop();
+  }
+        
+  return 0;
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example Code - Reading the button
+
+This *if* statement is at the heart of the program. Each time though the loop it tests the condition of bit 2 in the `PIND` register (`D3`). The pin linked to this bit has been configured as an input with the pull-up resistor enabled and it has been wired to the left button. This means the default state is 1 (`HIGH`) and pressing the button will ground the input to 0 (`LOW`).
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+ We then use a bit mask to query bit 2 only, and if the result is zero, we turn on bit 1 of `PORTB` - which illuminates the red LED.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+ ```c
+if ((PIND & 0b00000100) == 0)
+{
+    PORTB = 0b00000001; // Sets port B, bit 0 to logic 1/high which switches the LED connected to D8 on.
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+```{image} pictures/buttons.gif
+:alt: Video showing how the state of the buttons is interogated using bit masks.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+Similar code is used to test the left button on `PORTD` pin 3 to illuminate the green LED on `PORTB` pin 0. See if you can write this code.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### The full program
+
+The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883). You will need a fully featured IDE, such as [Atmel (now Microchip) Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio), to compile and upload the code to the Ardino nano board.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## Summary
 
+In this section we have:
 
-## On Canvas
+* Begun to look at I/O operations on the Atmel Atmega 328 microcontroller including the registers and checking/setting states based on flow control statements. 
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-```
+* Introduced bit masking to read/write individual bits of a register without affecting the remainder of it.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+* Looked at a detailed example program which uses the state of two pushbuttons to set whether an LED is illuminated or not.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### On Canvas
+
+This week on the [canvas course page](https://canvas.swansea.ac.uk/courses/44971/pages/direct-port-manipulation-in-c), you will find the sample programs from today's lecture, look through these and ensure you are confident in how they work and how the masks are defined. There is also a short quiz to test your knowledge on these topics.
