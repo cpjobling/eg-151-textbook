@@ -718,13 +718,13 @@ Any code that is placed inside the for loop will run forever.
 
 The Arduino IDE does the same thing behind the scenes - `void loop` is actually a function that is repeatedly called inside an infinite for loop[^main].
 
-[^main]: The actual code is slightly different and if you are interested you can access it here: [main.cpp](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp). Note that the sketch function `init()` is called once first, then `loop()` is called each time through the infinite loop.
+[^main]: The actual code is slightly different and if you are interested you can access it here: [main.cpp](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp). Note that the sketch function `setup()` is called once first, then `loop()` is called each time through the infinite loop.
 :
 
 ```c
 int main(void)
 {
-  init();
+  setup();
     
   for (;;) {
 	loop();
