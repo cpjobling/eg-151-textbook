@@ -680,14 +680,13 @@ int main (void)
 
 The return type is declared as integer meaning the function returns some integer even ‘0’ at the end of the program execution. By convention, a return of ‘0’ represents the successful execution of a program.
 
-
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Example Code - Set data direction registers
 
 ```{image} pictures/dd.gif
 :alt: Video illustrating the setting up of the data direction regsisters.
-:width: 50%
+:width: 100%
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
@@ -696,7 +695,7 @@ The return type is declared as integer meaning the function returns some integer
 
 ```{image} pictures/pullup.gif
 :alt: Video illustrating the setting of the port D for input and resetting port B.
-:width: 50%
+:width: 100%
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
@@ -758,6 +757,8 @@ if ((PIND & 0b00000100) == 0)
 
 ```{image} pictures/buttons.gif
 :alt: Video showing how the state of the buttons is interogated using bit masks.
+:width: 100%
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -775,7 +776,7 @@ The full program is available as a GitHub gist: [main.c](https://gist.github.com
 
 In this section we have:
 
-* Begun to look at I/O operations on the Atmel Atmega 328 microcontroller including the registers and checking/setting states based on flow control statements. 
+* Begun to look at I/O operations on the Atmel Atmega 328 microcontroller including the registers and checking/setting states based on flow control statements.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
