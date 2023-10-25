@@ -57,7 +57,7 @@ In this section we will be looking at two different approaches to reading and wr
 ```{image} pictures/arduino_nano_wallpaper.jpg
 :alt: Decorative section background - showing an Arduino nano microcontroller and an LED light strip
 ```
-Image source: [This Photo by Unknown Author is licensed under CC BY-NC](https://www.flickr.com/photos/netlcom/36486445205/)
+Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) by Unknown Author is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/3.0/)
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -239,7 +239,7 @@ void digitalWrite(uint8_t pin, uint8_t val)
 ```{image} pictures/arduino_nano_wallpaper.jpg
 :alt: Decorative section background - showing an Arduino nano microcontroller and an LED light strip
 ```
-Image source: [This Photo by Unknown Author is licensed under CC BY-NC](https://www.flickr.com/photos/netlcom/36486445205/)
+Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) by Unknown Author is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/3.0/)
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
