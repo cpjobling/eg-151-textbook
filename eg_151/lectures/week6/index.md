@@ -604,6 +604,7 @@ The **<>** variant is used for **system header files** that are included as part
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(aligin_to_io_mem_map)=
 ### Example code - aligning port names to the I/O memory map
 
 The I/O memory map is shown in {numref}`wk6:fig:io_mem_map`. 
@@ -664,6 +665,7 @@ The full set up which sets up the ports, data direction registers and pins is:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(main_c)=
 ### Example Code - the main function
 
 This is the starting point for any program[^main].

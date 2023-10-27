@@ -174,7 +174,7 @@ Illustration of the resolution of a 3 bit ADC
 
 To calculate the resolution of an ADC we use {eq}`eq:adc_res`[^floor].
 
-[^floor]: Note the symbols $\lfloor \ldots \rfloor$ are called *floor*. They round a decimal number to the lowest value. Thus quantization is always going to choose the bin that is the closest to the truncated part of the decimal number.
+[^floor]: Note the symbols $\lfloor \ldots \rfloor$ are called *floor*. They round a decimal number to the next lowest integer value. That is the decimal part is simply eliminated. Thus quantization is always going to choose the bin that is the closest to the truncated part of the decimal number.
 
 ```{math}
 :label: eq:adc_res
@@ -200,14 +200,11 @@ Let's say that we have a **10-bit ADC** and the reference voltage is **5V**.
 
 If our input is **2.2V** the the digital output will be:
 
-```{math}
-:label: eq:2.2V
 \begin{align}
 \mathrm{Digital\ Ouput} &= \left\lfloor \frac{1023 \times 2.2}{5}\right\rfloor \\
 &= \lfloor 450.12 \rfloor = 450_{10}\\
 &= 10\ 1100\ 0010_2
 \end{align}
-```
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
@@ -219,14 +216,11 @@ Let's say that we have a **6-bit ADC** and the reference voltage is **3.3**.
 
 If our input is **1V** the the digital output will be:
 
-```{math}
-:label: eq:1V
 \begin{align}
 \mathrm{Digital\ Ouput} &= \left\lfloor \frac{63 \times 1}{3.3}\right\rfloor \\
 &= \lfloor 19.09 \rfloor = 19_{10}\\
 &= 01\ 0011_2
 \end{align}
-```
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
@@ -368,9 +362,9 @@ To implement the binary search algorithm, the $N$-bit register is first set to m
 
 A comparison is then performed to determine if $V_\mathrm{IN} \le  V_\mathrm{DAC}$. 
 
-If $V_\mathrm{IN} \gt  V_\mathrm{DAC}$, the comparator output will be logic high (or 1), and the MSB of the $N$-bit register remains at 1. 
+If $V_\mathrm{IN} >  V_\mathrm{DAC}$, the comparator output will be logic high (or 1), and the MSB of the $N$-bit register remains at 1. 
 
-If $V_\mathrm{IN} \lt  V_\mathrm{DAC}$, the comparator output is a logic low (0) and the MSB of the $N$-register is cleared to logic 0. 
+If $V_\mathrm{IN} <  V_\mathrm{DAC}$, the comparator output is a logic low (0) and the MSB of the $N$-register is cleared to logic 0. 
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -544,11 +538,11 @@ The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
 * - $0101$
   - ADC5
 * - $0110$
-  - ADC6
+  - ADC6 - Not used on the Arduino nano board
 * - $0111$
-  - ADC7
+  - ADC7 - Not used on the Arduino nano board
 * - $1000$
-  - ADC8 - Used for temperature sensor.
+  - ADC8 - Used for internal temperature sensor.
 * - $1001$
   - Reserved
 * - $1010$
@@ -570,11 +564,15 @@ The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
 (wk7:sect4)=
 ## Analogue I/O Example program
 
-```{image} pictures/adc_board_wallpaper.jpg
+```{image} pictures/adc_board_wallpaper.png
 :alt: Decorative image showing a protopype ADC application for the Arduino nano
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Single Conversion Example 
+
+The centre tap of the blue potentiometer shown in {numref}`wk7:fig:adc_board` is connected to the analogue input `A0` which represents Port C Bit 0 on the ATmega328 microcontroller. 
 
 ```{figure} pictures/adc_board.jpg
 :alt: The protyype board showing the finished Arduino nano application with ADC and digital outputs.
@@ -583,19 +581,126 @@ The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
 The protyype board showing the finished Arduino nano application with ADC and digital outputs.
 ```
 
+As the voltage at the input changes, the value is reflected on the 6 LEDs
+What does the code for this look like without using the predefined Arduino function – `analogRead`?
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example code - aligning port names to the I/O memory map
+
+We showed how we use the `#define` function to map our program variables to the I/O memory map shown in {ref}`aligin_to_io_mem_map`. We use the same technique to map the digital and analogue registers to programmer friendly names:
+
+```c
+//I/O and ADC Register definitions taken from datasheet
+#define PORTB  (*(volatile uint8_t *)(0x25))
+#define DDRB   (*(volatile uint8_t *)(0x24))
+#define PINB   (*(volatile uint8_t *)(0x23))
+
+#define ADMUX  (*(volatile uint8_t *)(0x7C))
+#define ADCSRA (*(volatile uint8_t *)(0x7A))
+#define ADCRSB (*(volatile uint8_t *)(0x7B))
+#define ADCH   (*(volatile uint8_t *)(0x79))
+#define ADCL   (*(volatile uint8_t *)(0x78))
+#define DIDR0  (*(volatile uint8_t *)(0x7E))
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+We now define some unsigned integers as either 8  or 16 bits:
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+* Variable type: `uint16_t`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+* first variable name: `adc_result`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+* second variable name: `previous_result`
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+* Initial value of `previous_result`: `=0;"
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+The definitions are:
+
+```c
+uint16_t adc_result, previous_result = 0;
+uint8_t  adc_result_low, adc_result_high;
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example - the main function
+
+We discussed this in {ref}`main_c`.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example - set up I/O using the registers
+
+```c
+// Set Data Direction Registers
+DDRB = DDRB | 0b00111111; // Setup bits 0 - 5 of port B as outputs
+
+// Turn all LEDs off
+PORTB = PORTB & 0b11000000; // Pins B0 (D8) - B5 (D13) start low
+	
+// Set up ADC on pin A0
+DIDR0 = DIDR0 | 0b00000001; //Disable pin A0 as a digital input
+	
+ADMUX = 0b01000000; // Select reference voltage, right adjusted result and select channel ADC0 - A0
+
+ADCSRA = ADCSRA | 0b00000111; // Select ADC Prescaler
+
+ADCSRA = ADCSRA | 0b10000000; // Enable ADC
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example - the processing loop
+
+```c
+for(;;)
+{
+	ADCSRA = ADCSRA | 0b01000000;	      //start conversion by writing 1 to the ADSC bit
+		
+	while((ADCSRA & 0b01000000) != 0) { } //wait until the ADSC bit changes to 0
+
+	adc_result_low  = ADCL;		//read the low byte of the result into adc_result_low
+	adc_result_high = ADCH;		//read the high byte of the result into adc_result_high
+    /* shift whole 8 bits of ADC high byte into most significant byte of ADC result and 
+       add in ADC low byte using bitwise OR. */
+	adc_result = (adc_result_high<<8) | adc_result_low; 
+
+    // do somethinhg interesting with the ADC readings
+
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Example - the full program
+
+The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/db5e3e157b6e6153f7cb75157dae1e94). You will need a fully featured IDE, such as Atmel (now Microchip) Studio, to compile and upload the code to the Ardino nano board.
+
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## Summary
+
+In this section we have:
+* discussed the differences between analogue and digital signals and the challenges in working with them.
+* explored analogue to digital conversion looking at the architectures and focusing on SAR based ADCs.
+* continued looking at I/O operations on the Atmel ATmega328 microcontroller focusing on analogue signals and using the ADC registers.
 
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 ## On Canvas
 
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
++++ {"editable": true, "slideshow": {"slide_type": ""}}
 
-```
+This week on the [canvas course pages](https://canvas.swansea.ac.uk/courses/44971/modules/305541), you will find the sample program from today's lecture, look through this and ensure you are confident in how they work and how the masks are defined and registers set. There is also a short quiz to test your knowledge on these topics.
