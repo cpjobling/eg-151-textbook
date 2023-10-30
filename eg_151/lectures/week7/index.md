@@ -364,14 +364,15 @@ A comparison is then performed to determine if $V_\mathrm{IN} \le  V_\mathrm{DAC
 
 If $V_\mathrm{IN} >  V_\mathrm{DAC}$, the comparator output will be logic high (or 1), and the MSB of the $N$-bit register remains at 1. 
 
-If $V_\mathrm{IN} <  V_\mathrm{DAC}$, the comparator output is a logic low (0) and the MSB of the $N$-register is cleared to logic 0. 
+If $V_\mathrm{IN} <  V_\mathrm{DAC}$, the comparator output is a logic low (0) and the MSB of the $N$-register is cleared to logic 0.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 The SAR control logic then moves to the next bit along[^next_bit_along], forces that bit high, and repeats the comparison. The sequence continues all the way down to the LSB (bit 0). 
 
-[^next_bit_along]: The "next bit along" will be the MSB-$1^\mathrm{th}$ bit. That is, for a 12-bit ADC, MSB is bit 11, and the next bit along will be bit 10. If the previous comparison produced a 1, the binary value we are testing is now $2^{11} + 2^{10} = 2048 + 1024 = 3072$. If the comparison at the previous step was 0, the binary value we are testing is now $2^{10} = 1024$. The corresponding values of $V_\mathrm{DAC} will now be either $3072/4096 V_\mathrm{REF} = 0.75 V_\mathrm{REF}$ or $1024/4096 V_\mathrm{REF} = 0.25 V_\mathrm{REF}$. This process continues until all bits have been considered.
-Once the input has been compared with the full $N$-bit register the conversion is complete and the $N$-bit digital word is sent to the ADC output register.
+[^next_bit_along]: The "next bit along" will be the MSB-$1^\mathrm{th}$ bit. That is, for a 12-bit ADC, MSB is bit 11, and the next bit along will be bit 10. If the previous comparison produced a 1, the binary value we are testing is now $2^{11} + 2^{10} = 2048 + 1024 = 3072$. If the comparison at the previous step was 0, the binary value we are testing is now $2^{10} = 1024$. The corresponding values of $V_\mathrm{DAC}$ will now be either $3072/4096 V_\mathrm{REF} = 0.75 V_\mathrm{REF}$ or $1024/4096 V_\mathrm{REF} = 0.25 V_\mathrm{REF}$. This process continues until all bits have been considered.
+
+Once the input has been compared with the full $N$-bit register the conversion is complete and the $N$-bit digital word is sent to the ADC output register.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -397,8 +398,6 @@ Example of the successive approximation method in action: a 4 bit ADC converting
 
 The final output of the conversion is $0101_2 = 5/16 V_\mathrm{REF} = 0.3125 V_\mathrm{REF}$.
 
-
-
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk7:sect3)=
@@ -415,7 +414,7 @@ Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) b
 
 The Atmel ATMega328 features a **10-bit successive approximation ADC**. 
 
-The ADC is connected to an 8-channel **Analog Multiplexer** which allows eight single-ended voltage inputs (referenced to GND) constructed from the pins of Port C. 
+The ADC is connected to an 8-channel **Analog Multiplexer** which allows eight single-ended voltage inputs (referenced to GND) constructed from the pins of Port C.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -490,7 +489,8 @@ The settings for the reference selection bits are tabulated in {numref}`wk7:tabl
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-##### Bit 5 – ADLAR: ADC Left Adjust ResultThe `ADLAR` bit (bit 5) affects the presentation of the ADC conversion result in the **ADC Data Register**. We write 1 to ADLAR to *left adjust* the result. Otherwise, the result is *right adjusted*.
+##### Bit 5 – ADLAR: ADC Left Adjust Result
+The `ADLAR` bit (bit 5) affects the presentation of the ADC conversion result in the **ADC Data Register**. We write 1 to ADLAR to *left adjust* the result. Otherwise, the result is *right adjusted*.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -502,7 +502,7 @@ The settings for the reference selection bits are tabulated in {numref}`wk7:tabl
 
 *We will revisit this in a couple of slides when we discuss the results registers*.
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ##### Bits 3:0 – `MUX[3:0]`: Analog Channel Selection Bits
 
@@ -558,6 +558,261 @@ The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
 * - $1111$
   - GND
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### ADCSRA - ADC Control and Status Register A
+
+###### Bit 7 - `ADEN`: ADC Enable
+
+```{image} pictures/adcsra7.png
+:alt: ADCSRCA with bit 7 highlighted
+```
+
+Writing 1 to bit 7 of the ADCSRA register enables the ADC. Writing 0 to this bit turns the ADC off.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bit 6 - `ADSC`: ADC Start Conversion
+
+```{image} pictures/adcsra6.png
+:alt: ADCSRCA with bit 6 highlighted
+```
+
+* In *Single Conversion Mode*, writing 1 to bit 6 of the ADCSRA register starts the conversion.
+* In *Free Running Mode*, writing 1 to this bit starts the first conversion.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bit 5 - `ADATE`: ADC Start Conversion
+
+```{image} pictures/adcsra5.png
+:alt: ADCSRCA with bit 5 highlighted
+```
+
+When 1 is written to bit 5 of the ADCSRA register, the ADC will start a conversion on a positive edge of the selected trigger signal[^clock]
+
+[^clock]: This bit is used for clock-based ADC operation when you need a controlled and predictable sampling rate.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bit 4 - `ADIF`: ADC Interrupt Flag
+
+```{image} pictures/adcsra4.png
+:alt: ADCSRCA with bit 4 highlighted
+```
+
+This bit is set when an ADC conversion completes, and the data registers are updated. The *ADC Conversion Complete Interrupt* is executed if the ADIE bit and the I-bit in the status register are set. 
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bit 3 - `ADIE`: ADC Interrupt Enable
+
+```{image} pictures/adcsra3.png
+:alt: ADCSRCA with bit 3 highlighted
+```
+Writing 1 to bit30 of the ADCSRA register, when the I-bit in the status register is set, activates the *ADC Conversion Complete Interrupt*
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Bits 2-0 - `ADPS[2:0]`: ADC Interrupt Enable
+
+```{image} pictures/adcsra2-0.png
+:alt: ADCSRCA with bit2 2-0 highlighted
+```
+
+Bits 2-0 of ADCSRA determine the division factor between the system clock frequency and the input clock to the ADC. That is they set the sample rate for free-running mode. The prescaler settings are tabulated in {numref}`wk7-table3`.
+
+```{list-table} Clock Division Factor selected by Prescaler Select Bits 2-0.
+:header-rows: 1
+:name: wk7-table3
+* - ADPS2 
+  - ADPS1
+  - ADPS0
+  - Division Factor
+* - 0
+  - 0
+  - 0
+  - 2
+* - 0
+  - 0
+  - 1
+  - 2
+* - 0
+  - 1
+  - 0
+  - 4
+* - 0
+  - 1
+  - 1
+  - 8
+* - 1
+  - 0
+  - 0
+  - 16
+* - 1
+  - 0
+  - 1
+  - 32
+* - 1
+  - 1
+  - 0
+  - 64
+* - 1
+  - 1
+  - 1
+  - 128
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### ADCSRB - ADC Control and Status Register B
+
+###### Bit 6 - `ACME`: Analogue comparator multiplexer enable
+
+```{image} pictures/adcsrb6.png
+:alt: ADCSRB with bit 6 highlighted.
+```
+
+When logic 1 is written to bit 6 of `ADCSRB` the ADC is switched off, the ADC multiplexer selects the negative input to the *Analog Comparator*. When 0 is written to this bit,  `AIN1` is applied to the negative input of the Analog Comparator.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+Note: The Analog Comparator compares the input values on the positive pin `AIN0` and negative pin `AIN1`. When the voltage on the positive pin AIN0 is higher than the voltage on the negative pin `AIN1`, the Analog Comparator output, ACO, is set.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+###### Bits 2:0 - `ADT[2:0]`: ADC Autotrigger source
+
+```{image} pictures/adcsrb6.png
+:alt: ADCSRB with bit 6 highlighted.
+```
+
+If logic 1 is written to the `ADATE` bit in the `ADCSRA` register, the value of the `ADTS` bits selects which source will trigger an ADC conversion. The trigger source settings are tabulated in {numref}`wk7-table4`.
+
+```{list-table} ADC Trigger Source.
+:header-rows: 1
+:name: wk7-table4
+* - ADTS2 
+  - ADTS1
+  - ADTS0
+  - TRigger Source
+* - 0
+  - 0
+  - 0
+  - Free Running Mode
+* - 0
+  - 0
+  - 1
+  - Analogue Comparitor
+* - 0
+  - 1
+  - 0
+  - External Interrupt Request 0
+* - 0
+  - 1
+  - 1
+  - Timer/Counter 0 Compare Match A
+* - 1
+  - 0
+  - 0
+  - Timer/Counter 0 Overflow
+* - 1
+  - 0
+  - 1
+  - Timer/Counter 0 Compare Match B
+* - 1
+  - 1
+  - 0
+  - Timer/Counter 1 Overflow
+* - 1
+  - 1
+  - 1
+  - Timer/Counter 1 Capture Event
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### ADCL and ADCH - The ADC Data Registers
+
+The ADC Data Registers are illustrated in {numref}`wk7:fig:adc_data`.
+
+```{figure} pictures/adc_results.png
+:name: wk7:fig:adc_data
+:alt: The ADC Data Registers
+
+The ADC Data Registers `ADCH` and `ADCL` when (a) ADLAR = 0 and (b) when ADLAR = 1.
+```
+
+When an ADC conversion is complete, the result is put in these two registers[^precision].
+
+[^precision]: Recall that the ADC has a precision of up to 10 bits so two data registers are required. Register `ADCL` contains the least significant 8 bits, bits [0-7] and `ACDH` contains the most significant bits bit 8 and bit 9.
+
+When `ADCL` is read, the ADC Data Register is not updated until `ADCH` is read. 
+
+If the result is left adjusted and no more than 8-bit precision is required, it is sufficient to read `ADCH`. Otherwise, `ADCL` must be read first, then `ADCH`.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### `DIDR0` - Digital Input Disable Register 0
+
+###### Bits 5:0 - ADC5D...ADC0D: ADC5...0 Digital Input Disable
+
+```{image} pictures/didr0.png
+:alt: Register DIDR0 with bits 0-5 highlighted.
+```
+
+When logic 1 is written to one of these bits, the digital input buffer on the corresponding ADC pin is disabled. (i.e. the corresponding PIN register bit will always read zero).
+
+When an analog signal is applied to the ADC5...0 pin and the digital input from this pin is not needed, logic 1 should be written to this bit to reduce power consumption in the digital input buffer.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Setting up the ADC
+
+The following steps are illustrated in flow-chart form in {numref}`wk7:fig:flc1`.
+
+```{figure} pictures/flc1.png
+:alt: A flow chart of the ADC initialization steps
+:name: wk7:fig:flc1
+:width: 20%
+
+A flow chart of the ADC initialization steps
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+In words, the operations to be completed are:
+
+1. **Define** convenient **names** for the required registers.
+2. Set the **data direction** of the relevant pins to input (`DDRxn`)
+3. Set the corresponding pin in the **input disable register** to 1 to disable the input buffer (`DIDR0`)
+4. Select the **reference voltage**, **result alignment** and **input channel** (`ADMUX`)
+5. Select the **ADC prescaler value** in the A control and status register (`ADCSRA`)
+6. Write a **1 to the `ADEN` bit** of the A control and status register to enable the ADC (`ADCSRA`)
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The **main code** is illustrated in the flowchart shown in {numref}`wk7:fig:flc2`.
+
+```{figure} pictures/flc2.png
+:alt: A flow chart of the ADC operation loop
+:name: wk7:fig:flc2
+:width: 25%
+
+A flow chart of the ADC operation loop
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+In words, the operations to be completed are:
+
+1. Within the infinite for loop, **Write a 1 to the `ADSC` bit** of the A control and status register each time you want to start a conversion (`ADCSRA``) 
+2. Monitor for the **`ADSC` bit going low** (or the `ADIF` bit going high) of the A control and status register.
+3. Read the converted value from the result registers (`ADCH`  and `ADCL`).
+4. Do something with the ADC result.
+
+We illustrate this in {ref}`wk7:sect4`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 

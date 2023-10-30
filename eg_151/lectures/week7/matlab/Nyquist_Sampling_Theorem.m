@@ -23,7 +23,7 @@ close all
 
 %Plot back to sine
 
-samplingFreq=5;                                                  %Sample Frequency
+samplingFreq=2;                                                  %Sample Frequency
 resolution = 3
 Q=2^resolution;                                                   %number of quantisation states
 
