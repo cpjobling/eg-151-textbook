@@ -14,10 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week6)=
+(week05)=
 # Interfacing to digital I/O with C
 
-```{image} ../week3/pictures/chapter_heading.png
+```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
@@ -27,7 +27,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
  
-```{image} ../week3/pictures/contents_image.png
+```{image} ../week02/pictures/contents_image.png
 :alt: Decorative image used as a slide background
 :width: 50%
 ```
@@ -52,7 +52,7 @@ In this section we will be looking at two different approaches to reading and wr
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk6:arduino_ide)=
+(wk5:arduino_ide)=
 ## How does I/O work using the Arduino IDE
 ```{image} pictures/arduino_nano_wallpaper.jpg
 :alt: Decorative section background - showing an Arduino nano microcontroller and an LED light strip
@@ -245,7 +245,7 @@ Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) b
 
 ### Logical Bitwise Operators
 
-As we saw in {ref}`wk4:bitwise_ops`, there is a group of operators within the C programming language which are referred to as **bitwise logical operators** ({numref}`bitwise-logic-operators`).
+As we saw in {ref}`wk5:bitwise_ops`, there is a group of operators within the C programming language which are referred to as **bitwise logical operators** ({numref}`bitwise-logic-operators`).
 
 ```{list-table} The bitwise logic operators
 :header-rows: 1
@@ -414,7 +414,7 @@ Imagine a circuit with LED’s connected to D8 and D9 of the Atmel ATmega328 mic
 
 ```{figure} pictures/pins_8_and_9.png
 :alt: Schematic of Arduino nano board identifying pins D8 and D9.
-:name: wk6:fig:pins_8_and_9
+:name: wk5:fig:pins_8_and_9
 :width: 50%
 
 Schematic of Arduino nano board identifying pins D8 and D9[^d8_and_d9].
@@ -607,10 +607,10 @@ The **<>** variant is used for **system header files** that are included as part
 (aligin_to_io_mem_map)=
 ### Example code - aligning port names to the I/O memory map
 
-The I/O memory map is shown in {numref}`wk6:fig:io_mem_map`. 
+The I/O memory map is shown in {numref}`wk5:fig:io_mem_map`. 
 
 ```{figure} pictures/io_mem_map.png
-:name: wk6:fig:io_mem_map
+:name: wk5:fig:io_mem_map
 :align: center
 :width: 100%
 :alt: Memory map for the I/O ports in the Atmel ATmega328
@@ -636,7 +636,7 @@ We need to map a port to the address used by the port. We use `#define` for this
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-4. Memory address of the specific register from the datasheet (reproduced here as {numref}`wk6:fig:io_mem_map`): `0x2B`.
+4. Memory address of the specific register from the datasheet (reproduced here as {numref}`wk5:fig:io_mem_map`): `0x2B`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 

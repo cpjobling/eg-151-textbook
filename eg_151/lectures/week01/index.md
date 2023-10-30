@@ -15,14 +15,14 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week1)=
+(week01)=
 # Introduction to Microcontrollers and Microcontroller Architecture
 
 ![](pictures/cover.png)
 
 (week1:introduction)=
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ## 50 years of teaching microprocessors at Swansea![^acknowledgements]
 
@@ -33,7 +33,7 @@ kernelspec:
 
 [^acknowledgements]: The history presented here was written by Dr Davies.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 * Started in 1972/1973 by Prof. David Aspinall and Dr. Erik Dagless, using bespoke equipment based on the Intel 8008.
 
@@ -296,7 +296,7 @@ Definition from the Oxford English Dictionary [architecture](https://www.oed.com
 :width: 50%
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 Categorizing Microcontroller Units (MCUs) as 8-, 16-, or 32-bit designs is one way of classifying their performance capabilities.
 
@@ -310,9 +310,9 @@ As an example, in an 8-bit MC
 
 Microcontrollers with more bits, for example 16- and 32-bit MCUs have correspondingly more bits per register, more available memory addresses, and can handle larger numbers compared with their 8-bit counterparts.
 
-An introduction to data representation follows in {ref}`week2`.
+An introduction to data representation follows in {ref}`data_representation`.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 {numref}`memmap` shows the data memory map of the Atmel Atmega328 which is an 8- bit MCU.
 
@@ -738,7 +738,7 @@ In this lecture we have:
 
 There is a quiz which tests your recall of the topics covered in this lecture
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ## Next week
 

@@ -14,15 +14,15 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week4)=
+(week03)=
 # Introduction to Programming and Program Development
 
-```{image} ../week3/pictures/chapter_heading.png
+```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ## Introduction
 
@@ -38,33 +38,33 @@ When developing an application to run on a microcontroller or other embedded sys
 
 ## Lecture Topics
 
-```{image} ../week3/pictures/contents_image.png
+```{image} ../week02/pictures/contents_image.png
 :alt: Decorative image used as a slide background
 :width: 50%
 ```
 
-- {ref}`week4:useful_terminology`
-- {ref}`week4:programming_languages`
-- {ref}`week4:flowcharts`
-- {ref}`week4:modular_programming`
+- {ref}`week03:useful_terminology`
+- {ref}`week03:programming_languages`
+- {ref}`week03:flowcharts`
+- {ref}`week03:modular_programming`
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week4:useful_terminology)=
+(week03:useful_terminology)=
 ## Useful Terminology
 
-![](../week4/pictures/prog_wallpaper.png)
+![](../week03/pictures/prog_wallpaper.png)
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Hello, World!
 
-{numref}`week4:fig:hello_world` is a reproduction of "Hello, world!" written in C.
+{numref}`week03:fig:hello_world` is a reproduction of "Hello, world!" written in C.
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 ```{figure} https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png
-:name: week4:fig:hello_world
+:name: week03:fig:hello_world
 :alt: Hello World programme written in C
 :width: 75%
 
@@ -103,17 +103,17 @@ A programming language is a **formal notation comprising a set of instructions a
 
 +++ {"slideshow": {"slide_type": "notes"}, "editable": true}
 
-The next few slides provide some historical context to the development of computer programming. For example {numref}`week4:fig:ibm704` is a photograph, taken in 1957, of an early mainframe computer based at NASA Langley Research Centre. This may have well been used in the research that led to the moon landing in 1969.
+The next few slides provide some historical context to the development of computer programming. For example {numref}`week03:fig:ibm704` is a photograph, taken in 1957, of an early mainframe computer based at NASA Langley Research Centre. This may have well been used in the research that led to the moon landing in 1969.
 
-In the early days of programming, programs were typed on teletypes and encoded as ASCII characters onto paper tape ({numref}`week4:fig:punch_tape`). These paper tapes where used to load programs and data into mainframes like that shown in {numref}`week4:fig:ibm704`. Later, programs were stored on magnetic tape, then magnetic disks and these days are stored servers to be downloaded over networks and loaded into powerful PCs or mobile devices using flash memory and SSD drives.
+In the early days of programming, programs were typed on teletypes and encoded as ASCII characters onto paper tape ({numref}`week03:fig:punch_tape`). These paper tapes where used to load programs and data into mainframes like that shown in {numref}`week03:fig:ibm704`. Later, programs were stored on magnetic tape, then magnetic disks and these days are stored servers to be downloaded over networks and loaded into powerful PCs or mobile devices using flash memory and SSD drives.
 
-{numref}`week4:fig:modern_programming` shows an image of a modern laptop and the programming tools and languages (in this case Python) that are used to develop programs these days.
+{numref}`week03:fig:modern_programming` shows an image of a modern laptop and the programming tools and languages (in this case Python) that are used to develop programs these days.
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ```{figure} pictures/ibm704.png
 :alt: Man and woman shown working with IBM type 704 electronic data processing machine used for making computations for aeronautical research at Langley Research Center.
-:name: week4:fig:ibm704
+:name: week03:fig:ibm704
 
 IBM type 704 electronic data processing machine used for making computations for aeronautical research at NASA Langley Research Center – 21st March 1957. (Image source: [www.flickr.com/photos/nasacommons/9467782802](https://www.flickr.com/photos/nasacommons/9467782802))
 ```
@@ -122,7 +122,7 @@ IBM type 704 electronic data processing machine used for making computations for
 
 ```{figure} pictures/punch_tape.png
 :alt: a picture of some punched paper tape
-:name: week4:fig:punch_tape
+:name: week03:fig:punch_tape
 
 Early program source code! Input into a computer with punched paper tape. Image Source: [How it was: Paper tapes and punched cards | EETimes](https://www.eetimes.com/how-it-was-paper-tapes-and-punched-cards/)
 ```
@@ -131,14 +131,14 @@ Early program source code! Input into a computer with punched paper tape. Image 
 
 ```{figure} pictures/modern_programming.png
 :alt: A computer screen with a bunch of code on it
-:name: week4:fig:modern_programming
+:name: week03:fig:modern_programming
 
 Writing programs on a modern high resolution display screen. (Image source: [unsplash.com/photos/ieic5Tq8YMk](https://unsplash.com/photos/ieic5Tq8YMk) by Chris Reid) 
 ```
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week4:programming_languages)=
+(week03:programming_languages)=
 ## Programming Languages
 
 ```{image} pictures/prog_lang_wallpaper.jpg
@@ -149,10 +149,10 @@ Writing programs on a modern high resolution display screen. (Image source: [uns
 
 ### Programming Language Level Vs Complexity
 
-{numref}`week4:fig:pl_complexity` shows how code complexity that must be handled by the programmer is related to language level.
+{numref}`week03:fig:pl_complexity` shows how code complexity that must be handled by the programmer is related to language level.
 
 ```{figure} pictures/prog_lang_complexity.png
-:name: week4:fig:pl_complexity
+:name: week03:fig:pl_complexity
 :alt: A pyramid comparing code complexity with language level.
 :width: 100%
 
@@ -212,7 +212,7 @@ There is more code complexity at the top because the languages there are "low le
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week4:flowcharts)=
+(week03:flowcharts)=
 ## Flowcharts
 
 ```{image} https://upload.wikimedia.org/wikipedia/commons/a/a6/Flowchart_structured_programming.svg
@@ -254,12 +254,12 @@ Basic flowcharts are convenient because they
 
 ### Flowcharts Vs Code
 
-Consider the simple flowchart shown in {numref}`week4:fig:flowchart:hello_world` representing the printing of the text string "Hello, World!"[^string].
+Consider the simple flowchart shown in {numref}`week03:fig:flowchart:hello_world` representing the printing of the text string "Hello, World!"[^string].
 
 +++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 ```{figure} pictures/flowchart_hello_world.png
-:name: week4:fig:flowchart:hello_world
+:name: week03:fig:flowchart:hello_world
 :alt: A flowchart representing the hellow world program.
 :width: 20%
 
@@ -486,11 +486,11 @@ From a software designer's point of view, any program function can be described 
 
 #### Sequence
 
-A sequence ({numref}`week4:fig:fc_sequence`) is represented as a set of process blocks (tasks) connected by program flows. The tasks are executed in the order shown by the arrows from top to bottom.
+A sequence ({numref}`week03:fig:fc_sequence`) is represented as a set of process blocks (tasks) connected by program flows. The tasks are executed in the order shown by the arrows from top to bottom.
 
 
 ```{figure} pictures/fc_sequence.png
-:name: week4:fig:fc_sequence
+:name: week03:fig:fc_sequence
 :alt: Flowchart for a sequence of instructions computed in the order shown, one after the other.
 :width: 20%
 
@@ -499,7 +499,7 @@ Flowchart for a sequence of tasks
 
 +++ {"slideshow": {"slide_type": "notes"}, "editable": true}
 
-The program shown in {numref}`week4:fig:fc_sequence` might be represented in *psuedocode*[^psuedocode] as
+The program shown in {numref}`week03:fig:fc_sequence` might be represented in *psuedocode*[^psuedocode] as
 
 ```
 START;
@@ -515,11 +515,11 @@ END;
 
 #### Decision
 
-A decision ({numref}`week4:fig:fc_decision`) is represented as a decision block followed by flows which depend on the outcome of the decision.
+A decision ({numref}`week03:fig:fc_decision`) is represented as a decision block followed by flows which depend on the outcome of the decision.
 
 
 ```{figure} pictures/decision.png
-:name: week4:fig:fc_decision
+:name: week03:fig:fc_decision
 :alt: Flowchart for a decision.
 :width: 30%
 
@@ -528,7 +528,7 @@ Flowchart for a decision
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The program shown in {numref}`week4:fig:fc_decision` might be represented in psuedocode as
+The program shown in {numref}`week03:fig:fc_decision` might be represented in psuedocode as
 
 ```
 START;
@@ -549,11 +549,11 @@ END;
 
 #### Repetition
 
-Repetition ({numref}`week4:fig:fc_repetition`) is represented as a decision block, then a sequence of tasks and a flow that returns to the original decision. The tasks are repeated until the condition for ending the repeated sequence is met.
+Repetition ({numref}`week03:fig:fc_repetition`) is represented as a decision block, then a sequence of tasks and a flow that returns to the original decision. The tasks are repeated until the condition for ending the repeated sequence is met.
 
 
 ```{figure} pictures/repetition.png
-:name: week4:fig:fc_repetition
+:name: week03:fig:fc_repetition
 :alt: Flowchart for a sequence of instructions computed in the order shown, one after the other,
 :width: 30%
 
@@ -562,7 +562,7 @@ Flowchart for a sequence of tasks
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The program shown in {numref}`week4:fig:fc_repetition` might be represented in psuedocode as
+The program shown in {numref}`week03:fig:fc_repetition` might be represented in psuedocode as
 
 ```
 START;
@@ -596,10 +596,10 @@ Program design method 1:
 
 #### Solution to task as a sequence
 
-{numref}`week4:fig:task1_sequence` shows the flow chart of this program.
+{numref}`week03:fig:task1_sequence` shows the flow chart of this program.
 
 ```{figure} pictures/task1_sequence.png
-:name: week4:fig:task1_sequence
+:name: week03:fig:task1_sequence
 :alt: Flowchart of a program to sum the first 10 numbers written as a sequence.
 :width: 20%
 
@@ -608,7 +608,7 @@ Flowchart of a program to sum the first 10 numbers written as a sequence.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-#### Program shown in {numref}`week4:fig:task1_sequence` written in pseudo code
+#### Program shown in {numref}`week03:fig:task1_sequence` written in pseudo code
 
 ```
 START
@@ -638,10 +638,10 @@ Program design method 2:
 
 #### Solution to task 1 using a decision and repetition
 
-{numref}`week4:fig:task1_loop` shows the solution of task 1 using a decision and repetition.
+{numref}`week03:fig:task1_loop` shows the solution of task 1 using a decision and repetition.
 
 ```{figure} pictures/task1_loop.png
-:name: week4:fig:task1_loop
+:name: week03:fig:task1_loop
 :alt: Flowchart of the solution to task 1 using a decision and repetition
 :width: 30%
 
@@ -650,7 +650,7 @@ Flowchart of the solution to task 1 using a decision and repetition.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-#### Program shown in {numref}`week4:fig:task1_loop` written in pseudo code
+#### Program shown in {numref}`week03:fig:task1_loop` written in pseudo code
 
 ```
 START
@@ -674,12 +674,12 @@ I.e. $\mathrm{sum} = 1 + 2 + 3 + \dots n$
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
-The program that solves this project is illustrated by the flowchart shown in {numref}`week4:fig:example2`. This program has a sequence, a decision and repetition. It also has an input where the limit ($n$) is entered and an output where the sum is displayed.
+The program that solves this project is illustrated by the flowchart shown in {numref}`week03:fig:example2`. This program has a sequence, a decision and repetition. It also has an input where the limit ($n$) is entered and an output where the sum is displayed.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{figure} pictures/example2.png
-:name: week4:fig:example2
+:name: week03:fig:example2
 :align: center
 :width: 30%
 :alt: A program that asks for a limit value and sums numbers up to that limit before outputting the sum.
@@ -713,15 +713,15 @@ For our program summing the numbers up to a limit, there are three key parts.
 - Increment (**I**): `counter = counter + 1`
 - Check (**C**): Has condition been met?
 
-These can be theoretically be combined in 8 different ways, the first six of which as shown in {numref}`week4:table:1`. Three implementations three are illustrated in {numref}`
+These can be theoretically be combined in 8 different ways, the first six of which as shown in {numref}`week03:table:1`. Three implementations three are illustrated in {numref}`
 
-` (variation 6), {numref}`week4:fig:isc` (variation 4), {numref}`week4:fig:isc` (row 2).
+` (variation 6), {numref}`week03:fig:isc` (variation 4), {numref}`week03:fig:isc` (row 2).
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{list-table} How many ways can a program be written?
 :header-rows: 1
-:name: week4:table:1
+:name: week03:table:1
 * - Variation
   - Part 1
   - Part 2
@@ -755,7 +755,7 @@ These can be theoretically be combined in 8 different ways, the first six of whi
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{figure} pictures/sic.png
-:name: week4:fig:sic
+:name: week03:fig:sic
 :align: center
 :width: 30%
 :alt: Variation 6 - Sum - Increment - Check
@@ -766,7 +766,7 @@ Variation 6: Sum - Increment - Check
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{figure} pictures/isc.png
-:name: week4:fig:isc
+:name: week03:fig:isc
 :align: center
 :width: 30%
 :alt: Variation 4 - Increment - Sum - Check
@@ -777,7 +777,7 @@ Variation 4: Increment - Sum - Check
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{figure} pictures/cis.png
-:name: week4:fig:cis
+:name: week03:fig:cis
 :align: center
 :width: 30%
 :alt: Variation 2 - Check - Increment - Sum
@@ -817,12 +817,12 @@ Let us tabulate the results of this program assuming that $n=4$.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-A flow chart that implements this variation is given in {numref}`week4:fig:var4`.
+A flow chart that implements this variation is given in {numref}`week03:fig:var4`.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 ```{figure} pictures/var4.png
-:name: week4:fig:var4
+:name: week03:fig:var4
 :align: center
 :width: 30%
 :alt: Another variation - Check - Decrement - Sum
@@ -844,7 +844,7 @@ Another variation: Check - Decrement - Sum
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week4:modular_programming)=
+(week03:modular_programming)=
 ## Modular Programming
 
 ```{image} pictures/modular_prog_wallpaper.png
@@ -857,12 +857,12 @@ This [Image](https://commons.wikimedia.org/wiki/File:Flowchart_structured_progra
 
 ### What is a module?
 
-The basic approach to modularization is to consider a top-down design where the top level defines the main function, and a separate module represents each smaller function in the program (see {numref}`week4:fig:a_modular_program`.
+The basic approach to modularization is to consider a top-down design where the top level defines the main function, and a separate module represents each smaller function in the program (see {numref}`week03:fig:a_modular_program`.
 
 +++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 ```{figure} pictures/modules.png
-:name: week4:fig:a_modular_program
+:name: week03:fig:a_modular_program
 :alt: A program built from modules
 :width: 50%
 
@@ -1057,12 +1057,12 @@ Feel free to work individually or in small groups
 
 ##### Solution
 
-See {numref}`week4:fig:exercise_solution` in the notes online.
+See {numref}`week03:fig:exercise_solution` in the notes online.
 
 +++ {"slideshow": {"slide_type": "notes"}}
 
 ```{figure} pictures/exercise_soln.png
-:name: week4:fig:exercise_solution
+:name: week03:fig:exercise_solution
 :alt: Implementing a delay sub-program 
 :width: 50%
 
@@ -1078,22 +1078,18 @@ In this chapter we have:
 - Looked at flowcharts defining the standard symbols and looking at how they are used to represent a program.
 - Introduced the use of sub-processes to allow modular programming for splitting up a program or repeating common elements.
 
-+++ {"slideshow": {"slide_type": "slide"}}
-
-## Any Questions?
-
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ## On Canvas
 
 This week on the canvas course page, there is:
 - a [short video by Ben Clifford providing more of an introduction to programming languages and the compilation process](https://canvas.swansea.ac.uk/courses/44971/pages/introduction-to-programming-languages?module_item_id=2258077);
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 - a [discussion forum](https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078) to talk about the {ref}`flow_chart_task`;
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 - some [supplementary resources](https://canvas.swansea.ac.uk/courses/44971/pages/week-4-supplementary-resources?module_item_id=2258079); and
 

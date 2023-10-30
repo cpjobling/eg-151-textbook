@@ -15,10 +15,10 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week7)=
+(week06)=
 # Interfacing to Analogue I/O with C
 
-```{image} ../week3/pictures/chapter_heading.png
+```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
@@ -28,7 +28,7 @@ C is a high-levelled structured programming language which is often used for wri
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-```{image} ../week3/pictures/contents_image.png
+```{image} ../week02/pictures/contents_image.png
 :alt: Decorative image used as a slide background
 :width: 50%
 ```
@@ -40,23 +40,23 @@ In this section we will be looking at how we can read analogue signals into a mi
 
 ### Contents
 
-* {ref}`wk7:sect1`
+* {ref}`wk6:sect1`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk7:sect2`
+* {ref}`wk6:sect2`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk7:sect3`
+* {ref}`wk6:sect3`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk7:sect4`
+* {ref}`wk6:sect4`
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk7:sect1)=
+(wk6:sect1)=
 ## What are analogue signals?
 
 ```{image} pictures/waves_wallpaper.jpg
@@ -74,11 +74,11 @@ In the real world, most measurable parameters are actually analogue. They includ
 
 An analogue sensor for measuring light intensity is shown in {numref}`ex7:fig:anlogue_sensor` along with a calibration graph that would be typically supplied in the data sheet for such a sensor.. 
 ```{figure} pictures/photo_sensor.png
-:alt: A photograph of a light sensor and its calibrrtion data
+:alt: A photograph of a light sensor and its calibration data
 :width: 100%
 :name: ex7:fig:anlogue_sensor
 
-A photograph of a light sensor and its calibrrtion data
+A photograph of a light sensor and its calibration data
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
@@ -87,9 +87,9 @@ A photograph of a light sensor and its calibrrtion data
 
 Since microcontrollers can only handle 0s and 1s (digital signals) we need a way of converting analogue signals to digital signals. This is done using an **analogue-to-digital** converter or ADC.
 
-An ADC converts a **continuous-time** and **continuous-amplitude** analogue signal to a **discrete-time and discrete-amplitude** digital signal through a process called **sampling and quantization** illustrated in {numref}`wk7:fig:sampling`..
+An ADC converts a **continuous-time** and **continuous-amplitude** analogue signal to a **discrete-time and discrete-amplitude** digital signal through a process called **sampling and quantization** illustrated in {numref}`wk6:fig:sampling`..
 ```{figure} pictures/Sampling.png
-:name: wk7:fig:sampling
+:name: wk6:fig:sampling
 :align: center
 :width: 100%
 :alt: Sampling and quantization of and an analogue signal.
@@ -117,11 +117,11 @@ Note:  This will be covered in more detail in EG-247 Digital Signal Processing i
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Example.
-Consider the sine wave governed by the equation $x(t) = sin(t)$. the period is $2\pi$ (approx. 6.3 seconds) so the frequency is 0.16 Hz ({numref}`wk7:fig:sinewave`).
+Consider the sine wave governed by the equation $x(t) = sin(t)$. the period is $2\pi$ (approx. 6.3 seconds) so the frequency is 0.16 Hz ({numref}`wk6:fig:sinewave`).
 
 ```{figure} pictures/sinewave.png
 :alt: Analogue signal x(t) = sin(t) - a sine wave.
-:name: wk7:fig:sinewave
+:name: wk6:fig:sinewave
 
 Analogue signal $x(t) = sin(t)$ - a sine wave.
 ```
@@ -129,11 +129,11 @@ Analogue signal $x(t) = sin(t)$ - a sine wave.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-If we sample this at 0.5 Hz (once every 2 seconds), which is over 3 times the original frequency we get the orange trace {numref}`wk7:fig:sampled_wave`. From this it would be enough to accurately recreate the blue trace.
+If we sample this at 0.5 Hz (once every 2 seconds), which is over 3 times the original frequency we get the orange trace {numref}`wk6:fig:sampled_wave`. From this it would be enough to accurately recreate the blue trace.
 
 ```{figure} pictures/sampled_wave.png
 :alt: Sine wave x(t) = sin(t) sampled at 0.5 Hz.
-:name: wk7:fig:sampled_wave
+:name: wk6:fig:sampled_wave
 
 Sine wave $x(t) = sin(t)$ sampled at 0.5 Hz.
 ```
@@ -146,24 +146,24 @@ As well as the sampling rate, the resolution of the converter is crucial to gett
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### A 2 bit ADC
-As an example a 2-bit ADC has $2^2 = 4$ quantization levels ({numref}`wk7:fig:2bit`)..
+As an example a 2-bit ADC has $2^2 = 4$ quantization levels ({numref}`wk6:fig:2bit`)..
 
 ```{figure} pictures/2bitadc.png
 :alt: Illustration of the resolution of a 2 bit ADC
-:name: wk7:fig:2bit
+:name: wk6:fig:2bit
 
 Illustration of the resolution of a 2 bit ADC
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### A bit t ADC has $2^3 = 8$ quantization levels ({numref}`wk7:fig:3bi).
+#### A bit t ADC has $2^3 = 8$ quantization levels ({numref}`wk6:fig:3bi).
 
 
 
 ```{figure} pictures/3bitadc.png
 :alt: Illustration of the resolution of a 3 bit ADC
-:name: wk7:fig:3bit
+:name: wk6:fig:3bit
 
 Illustration of the resolution of a 3 bit ADC
 ```
@@ -183,11 +183,11 @@ To calculate the resolution of an ADC we use {eq}`eq:adc_res`[^floor].
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-The graph in {numref}`wk7:fig:resolution` shows the values (*bins*) that are available for a three bit ADC.
+The graph in {numref}`wk6:fig:resolution` shows the values (*bins*) that are available for a three bit ADC.
 
 ```{figure} pictures/3bitresolution.png
 :alt: The resolution of a 3 bit ADC
-:name: wk7:fig:resolution
+:name: wk6:fig:resolution
 
 The resolution of a 3 bit ADC
 ```
@@ -222,64 +222,70 @@ If our input is **1V** the the digital output will be:
 &= 01\ 0011_2
 \end{align}
 
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Illustrating the sampling theorem
 
 ##### Violation of the sampling theorem
 
-Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 1$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk7:fig:violation`. Nyquist-Shannon sampling theorem has clearly been violated and the original signal cannot be reconstructed from the sampled signal.
+Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 1$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk6:fig:violation`. Nyquist-Shannon sampling theorem has clearly been violated and the original signal cannot be reconstructed from the sampled signal.
 
 ```{figure} pictures/violation.png
 :alt: Illustration of the violation of the sampling thereom - signal cannot be reconstructed from sampled signal.
-:name: wk7:fig:violation
+:name: wk6:fig:violation
 
 Violation of the sampling thereom: signal cannot be reconstructed from sampled signal
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 ##### Sampling at twice the signal frequency 
 
-Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 2$Hz (the so-called Nyquist frequency), and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk7:fig:nyquist`. The reconstructed signal is on the border of acceptable. In practice, we need to sample at a higher frequency than $F_s = 2F_c$.
+Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 2$Hz (the so-called Nyquist frequency), and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk6:fig:nyquist`. The reconstructed signal is on the border of acceptable. In practice, we need to sample at a higher frequency than $F_s = 2F_c$.
 
 ```{figure} pictures/nyquist.png
 :alt: Illustration of a signal sampled at the Nyquist frequency. Signal is just about reconstructable from the sampled data..
-:name: wk7:fig:nyquist
+:name: wk6:fig:nyquist
 
 Signal sampled at the Nyquist frequency and 3-bit resolution. Signal is just about reconstructable from the sampled data.
 ```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Illustrating sampling and quantization
 
 ##### Sampling at five times the signal frequency 
 
-Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 5$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk7:fig:5fs`. The reconstructed signal (in the bottom trace) is starting to look like a sine wave.
+Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 5$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk6:fig:5fs`. The reconstructed signal (in the bottom trace) is starting to look like a sine wave.
 
 ```{figure} pictures/5fs.png
 :alt: Illustration of a signal sampled at the 5 x Nyquist frequency.
-:name: wk7:fig:5fs
+:name: wk6:fig:5fs
 
 Signal sampled at the $Fs = 5 Fc$ and 3-bit resolution.
 ```
 
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 ##### Sampling at ten times the signal frequency 
 
-Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 10$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk7:fig:10fs`. The reconstructed signal now starting to look like a sine wave. In general, the faster the sampling frequency compared to the frequency of the analogue signal, the better the approximation.
+Consider the signal with frequency $F_c = 1$Hz, sampling frequency of $F_s = 10$Hz, and resolution = 3 bits. The sampled signal is illustrated in {numref}`wk6:fig:10fs`. The reconstructed signal now starting to look like a sine wave. In general, the faster the sampling frequency compared to the frequency of the analogue signal, the better the approximation.
 
 ```{figure} pictures/10fs.png
 :alt: Illustration of a signal sampled at the 5 x Nyquist frequency.
-:name: wk7:fig:10fs
+:name: wk6:fig:10fs
 
 Signal sampled at the $Fs = 10 Fc$ and 3-bit resolution.
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk7:sect2)=
+(wk6:sect2)=
 ## ADC Architecture
 
 ```{figure} pictures/adc_arch.png
 :alt: The architecture of the ADC system in the Atmel ATmega328 Processor
-:name: wk7:fig:atmel_adc
+:name: wk6:fig:atmel_adc
 :width: 100%
 
 The architecture of the ADC system in the Atmel ATmega328 Processor (source [ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061B](https://ww1.microchip.com/downloads/en/DeviceDoc/ATmega48A-PA-88A-PA-168A-PA-328-P-DS-DS40002061A.pdf), Page 247)
@@ -287,7 +293,7 @@ The architecture of the ADC system in the Atmel ATmega328 Processor (source [ATm
 
 ### ADC Components
 
-The architecture of the Atmel ATmega328 is shown in {numref}`wk7:fig:atmel_adc`. It contains the following major components:
+The architecture of the Atmel ATmega328 is shown in {numref}`wk6:fig:atmel_adc`. It contains the following major components:
 
 * Multiplexer[^mux]
 * Voltage Reference
@@ -310,10 +316,10 @@ There are several achitectures for ADCs summarized as:
 * Pipelined
 * Flash
 
-Each has their own advantages and disadvantages in terms of price, conversion speed, noise and complexity as summarized in {numref}`wk7:fig:adc_archs`.
+Each has their own advantages and disadvantages in terms of price, conversion speed, noise and complexity as summarized in {numref}`wk6:fig:adc_archs`.
 
 ```{figure} pictures/adc_archs.png
-:name: wk7:fig:adc_archs
+:name: wk6:fig:adc_archs
 :alt: DC Architecture vs Resolution and Sample Rate
 
 ADC Architecture vs Resolution and Sample Rate (Source [calstate.edu](https://scholarworks.calstate.edu/downloads/v979v314q))
@@ -331,11 +337,11 @@ The SAR converter is essentially a binary search algorithm which compares the in
 
 While the internal circuitry of the ADC may be running at several megahertz, the ADC sample rate is a fraction of that number due to the multiple step successive-approximation algorithm needed to convert the measured input to a binary number.
 
-The SAR converter is at the heart of the ATmega328 microcontroller and is highlighted in {numref}`wk7:fig:sar`.
+The SAR converter is at the heart of the ATmega328 microcontroller and is highlighted in {numref}`wk6:fig:sar`.
 
 ```{figure} pictures/sar_converter.png
 :alt: Schematic diagram of the Atmel ATMega328 ADC system with the SAR highlighted.
-:name: wk7:fig:sar
+:name: wk6:fig:sar
 
 Schematic diagram of the Atmel ATMega328 ADC system with the SAR highlighted.
 ```
@@ -343,11 +349,11 @@ Schematic diagram of the Atmel ATMega328 ADC system with the SAR highlighted.
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### SAR based ADC Operation
-Consider the schemeatic diagram shown in {numref}`wk7:fig:sar_converter`.
+Consider the schemeatic diagram shown in {numref}`wk6:fig:sar_converter`.
 
 ```{figure} pictures/sar.png
 :alt: Schematic diagram used to illustrate the hardware used to achieve SAR conversion.
-:name: wk7:fig:sar_converter
+:name: wk6:fig:sar_converter
 
 Schematic diagram of the hardware used to achieve SAR conversion (image source: Analog Devices[^sar_conversion]).
 ```
@@ -378,11 +384,11 @@ Once the input has been compared with the full $N$-bit register the conversion i
 
 #### 4-bit SAR based ADC Example
 
-Consider {numref}`wk7:fig:sar_example`:
+Consider {numref}`wk6:fig:sar_example`:
 
 ```{figure} pictures/sar_operation.gif
 :alt: Example of the successive approximation method in action.
-:name: wk7:fig:sar_example
+:name: wk6:fig:sar_example
 
 Example of the successive approximation method in action: a 4 bit ADC converting a signal for which $V_\mathrm{IN}$ is in "bin" 5.
 ```
@@ -400,10 +406,10 @@ The final output of the conversion is $0101_2 = 5/16 V_\mathrm{REF} = 0.3125 V_\
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk7:sect3)=
+(wk6:sect3)=
 ## The Atmel ATmega328 Analog-digital-converter
 
-```{image} ../week6/pictures/arduino_nano_wallpaper.jpg
+```{image} ../week05/pictures/arduino_nano_wallpaper.jpg
 :alt: Decorative section background - showing an Arduino nano microcontroller and an LED light strip
 ```
 Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) by Unknown Author is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/3.0/)
@@ -443,11 +449,11 @@ These registers are described in the following sections.
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ##### ADMUX – ADC Multiplexer Selection
-The `ADMUX` is an 8-bit register arranged as shown in {numref}`wk7:fig:admux`.
+The `ADMUX` is an 8-bit register arranged as shown in {numref}`wk6:fig:admux`.
 
 ```{figure} pictures/admux.png
 :alt: The ADMUX Register
-:name: wk7:fig:admux
+:name: wk6:fig:admux
 
 The ACD Multplexer Selection Register `ADMUX` (Source: Atmel Documentation).
 ```
@@ -465,10 +471,10 @@ Bits 7 and 6 -`REFS1` and `REFS0` select the reference voltage for the ADC[^refs
 
 [^refs]: The internal voltage reference options may not be used if an external reference voltage is being applied to the *AREF* pin of the microcontroller chip.
 
-The settings for the reference selection bits are tabulated in {numref}`wk7:table1`.
+The settings for the reference selection bits are tabulated in {numref}`wk6:table1`.
 
 ```{list-table} The settings for the reference selection bits of the ADMUX register.
-:name: wk7:table1
+:name: wk6:table1
 :header-rows: 1
 * - REFS1
   - REFS0
@@ -510,18 +516,18 @@ The `ADLAR` bit (bit 5) affects the presentation of the ADC conversion result in
 :alt: The ADMUX Register with bit5 highlighted
 ```
 
-The value of these bits selects which analogue inputs are connected to the ADC (see {numref}`wk7:fig:admux_mux` and {numref}`wk7:table2`).
+The value of these bits selects which analogue inputs are connected to the ADC (see {numref}`wk6:fig:admux_mux` and {numref}`wk6:table2`).
 
 ```{figure} pictures/mux_pins.png
 :alt: The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
-:name: wk7:fig:admux_mux
+:name: wk6:fig:admux_mux
 :width: 60%
 
 The pins on the Atmel ATmega328 that may be multiplexed to act as ADC inputs.
 ```
 
 ```{list-table} ADC multiplexer bit settings for the ADMUX register
-:name: wk7:table2
+:name: wk6:table2
 :header-rows: 1
 * - MUX3:0
   - Input Selected
@@ -602,7 +608,7 @@ When 1 is written to bit 5 of the ADCSRA register, the ADC will start a conversi
 :alt: ADCSRCA with bit 4 highlighted
 ```
 
-This bit is set when an ADC conversion completes, and the data registers are updated. The *ADC Conversion Complete Interrupt* is executed if the ADIE bit and the I-bit in the status register are set. 
+This bit is set when an ADC conversion completes, and the data registers are updated. The *ADC Conversion Complete Interrupt* is executed if the ADIE bit and the I-bit in the status register are set.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -735,10 +741,10 @@ If logic 1 is written to the `ADATE` bit in the `ADCSRA` register, the value of 
 
 ##### ADCL and ADCH - The ADC Data Registers
 
-The ADC Data Registers are illustrated in {numref}`wk7:fig:adc_data`.
+The ADC Data Registers are illustrated in {numref}`wk6:fig:adc_data`.
 
 ```{figure} pictures/adc_results.png
-:name: wk7:fig:adc_data
+:name: wk6:fig:adc_data
 :alt: The ADC Data Registers
 
 The ADC Data Registers `ADCH` and `ADCL` when (a) ADLAR = 0 and (b) when ADLAR = 1.
@@ -770,11 +776,11 @@ When an analog signal is applied to the ADC5...0 pin and the digital input from 
 
 #### Setting up the ADC
 
-The following steps are illustrated in flow-chart form in {numref}`wk7:fig:flc1`.
+The following steps are illustrated in flow-chart form in {numref}`wk6:fig:flc1`.
 
 ```{figure} pictures/flc1.png
 :alt: A flow chart of the ADC initialization steps
-:name: wk7:fig:flc1
+:name: wk6:fig:flc1
 :width: 20%
 
 A flow chart of the ADC initialization steps
@@ -793,11 +799,11 @@ In words, the operations to be completed are:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-The **main code** is illustrated in the flowchart shown in {numref}`wk7:fig:flc2`.
+The **main code** is illustrated in the flowchart shown in {numref}`wk6:fig:flc2`.
 
 ```{figure} pictures/flc2.png
 :alt: A flow chart of the ADC operation loop
-:name: wk7:fig:flc2
+:name: wk6:fig:flc2
 :width: 25%
 
 A flow chart of the ADC operation loop
@@ -812,11 +818,11 @@ In words, the operations to be completed are:
 3. Read the converted value from the result registers (`ADCH`  and `ADCL`).
 4. Do something with the ADC result.
 
-We illustrate this in {ref}`wk7:sect4`.
+We illustrate this in {ref}`wk6:sect4`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk7:sect4)=
+(wk6:sect4)=
 ## Analogue I/O Example program
 
 ```{image} pictures/adc_board_wallpaper.png
@@ -827,11 +833,11 @@ We illustrate this in {ref}`wk7:sect4`.
 
 ### Single Conversion Example 
 
-The centre tap of the blue potentiometer shown in {numref}`wk7:fig:adc_board` is connected to the analogue input `A0` which represents Port C Bit 0 on the ATmega328 microcontroller. 
+The centre tap of the blue potentiometer shown in {numref}`wk6:fig:adc_board` is connected to the analogue input `A0` which represents Port C Bit 0 on the ATmega328 microcontroller. 
 
 ```{figure} pictures/adc_board.jpg
 :alt: The protyype board showing the finished Arduino nano application with ADC and digital outputs.
-:name: wk7:fig:adc_board
+:name: wk6:fig:adc_board
 
 The protyype board showing the finished Arduino nano application with ADC and digital outputs.
 ```

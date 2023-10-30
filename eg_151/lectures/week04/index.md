@@ -14,10 +14,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week5)=
+(week04)=
 # Introduction to Programming with C
 
-```{image} ../week3/pictures/chapter_heading.png
+```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
@@ -29,7 +29,7 @@ C is a high-level structured programming language which is often used for writin
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
  
-```{image} ../week3/pictures/contents_image.png
+```{image} ../week02/pictures/contents_image.png
 :alt: Decorative image used as a slide background
 :width: 50%
 ```
@@ -339,12 +339,12 @@ C functions are made up from **statements**, each of which is **terminated with 
 
 #### C functions
 
-{numref}`week5:fig:function_bd` is a schematic diagram of the C function. You can think of it as something that takes some inputs (arguments) and returns some output.
+{numref}`week04:fig:function_bd` is a schematic diagram of the C function. You can think of it as something that takes some inputs (arguments) and returns some output.
 
 ```{figure} pictures/function_bd.png
 :alt: A schematic diagram of a function in C
 :width: 100%
-:name: week5:fig:function_bd
+:name: week04:fig:function_bd
 
 A schematic diagram of a function in C
 ```
@@ -684,7 +684,7 @@ These are discussed in the next section {ref}`wk4:flow_control`.
 
 (wk4:flow_control)=
 ## Flow control
-```{image} ../week4/pictures/prog_lang_wallpaper.jpg
+```{image} ../week03/pictures/prog_lang_wallpaper.jpg
 :alt: Decorative section background - showing code
 ```
 Flow control statements `if`, `for`, `while`, and `switch`

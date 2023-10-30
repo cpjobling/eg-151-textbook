@@ -12,13 +12,17 @@ parts:
     chapters:
     - file: lectures/index
     - file: lectures/intro
-    - file: lectures/week1/index
-    - file: lectures/week2/index
-    - file: lectures/week3/index
-    - file: lectures/week4/index
-    - file: lectures/week5/index
-    - file: lectures/week6/index
-    - file: lectures/week7/index
+    - file: lectures/week01/index
+    - file: lectures/data_representation/index
+    - file: lectures/week02/index
+    - file: lectures/week03/index
+    - file: lectures/week04/index
+    - file: lectures/week05/index
+    - file: lectures/week06/index
+    - file: lectures/week07/index
+    - file: lectures/week08/index
+    - file: lectures/week09/index
+    - file: lectures/week10/index
   - caption: Programming in C
     numbered: false
     chapters:

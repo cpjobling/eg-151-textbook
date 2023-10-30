@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.15.1
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -14,7 +14,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3)=
+(week02)=
 # Architecture of the Atmel ATmega 328 Microcontroller
 
 ```{image} pictures/chapter_heading.png
@@ -31,22 +31,22 @@ kernelspec:
 :width: 50%
 ```
 
-- {ref}`week3:intro`
-- {ref}`week3:status_register`
-- {ref}`week3:program_counter`
-- {ref}`week3:stack_pointer`
-- {ref}`week3:io`
+- {ref}`week02:intro`
+- {ref}`week02:status_register`
+- {ref}`week02:program_counter`
+- {ref}`week02:stack_pointer`
+- {ref}`week02:io`
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3:intro)=
+(week02:intro)=
 ## Introducing the Atmel ATmega 328 MCU
 
-In {ref}`week1` we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at {numref}`week3:fig:atmel_arch` which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
+In {ref}`week1` we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at {numref}`week02:fig:atmel_arch` which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
 
 
 ```{figure} pictures/atmel_arch.png
-:name: week3:fig:atmel_arch
+:name: week02:fig:atmel_arch
 :align: center
 :width: 50%
 :alt: The architecture of the Atmel ATMega328 Microcontroller
@@ -84,7 +84,7 @@ The architecture of the Atmel ATMega328 Microcontroller
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3:status_register)=
+(week02:status_register)=
 ## The Status Register
 
 ```{image} pictures/wallpaper.png
@@ -97,12 +97,12 @@ The architecture of the Atmel ATMega328 Microcontroller
 
 ### What is The status register?
 
-- An 8-bit register containing flags that contain information about the result of the most recently executed instruction and the current **state of the processor** ({numref}`week3:fig1:sreg`).
+- An 8-bit register containing flags that contain information about the result of the most recently executed instruction and the current **state of the processor** ({numref}`week02:fig1:sreg`).
 - The status register is updated after all ALU instructions as specified by the instruction set reference.
 
 ```{figure} pictures/sreg.png
 :alt: SREG - The AVR Status Register
-:name: week3:fig1:sreg
+:name: week02:fig1:sreg
 :width: 75%
 
 SREG - The AVR Status Register
@@ -112,7 +112,7 @@ SREG - The AVR Status Register
 
 ```{figure} pictures/AVR-instruction.png
 :alt: Example instruction showing how the status register is affected
-:name: week3:fig1:sreg-setting
+:name: week02:fig1:sreg-setting
 
 Example instruction showing how the status register is affected
 ```
@@ -196,7 +196,7 @@ $$\begin{array}{lrr}
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3:program_counter)=
+(week02:program_counter)=
 ## The program counter
 
 ```{image} pictures/wallpaper.png
@@ -224,10 +224,10 @@ $$\begin{array}{lrr}
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Example of a program
-{numref}`week3:fig:a_program` illustrates a simple program to add two numbers. 
+{numref}`week02:fig:a_program` illustrates a simple program to add two numbers. 
 
 ```{figure} pictures/pc_example.png
-:name: week3:fig:a_program
+:name: week02:fig:a_program
 :alt: An example programme showing three instructions located at memory locations 0 through 2.
 :width: 30%
 
@@ -256,10 +256,10 @@ It is written in assembly code for the Atmel ATmega328 MCU. Each instruction is 
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-{numref}`week3:fig:prog_mem` illustrates the organisation of the program memory for the ATmega328.
+{numref}`week02:fig:prog_mem` illustrates the organisation of the program memory for the ATmega328.
 
 ```{figure} pictures/prog_mem.png
-:name: week3:fig:prog_mem
+:name: week02:fig:prog_mem
 :alt: The program memory of the ATmega328 microcontroller
 :width: 30%
 
@@ -276,12 +276,12 @@ Remember a word is 16 bits
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-{numref}`week3:fig:prog_counter` shows how the program counter is used to access the next instruction.
+{numref}`week02:fig:prog_counter` shows how the program counter is used to access the next instruction.
 
 ```{figure} pictures/prog_counter.png
 :alt: How the program counter is used to access instructions within the available pages of program memory.
 :width: 60%
-:name: week3:fig:prog_counter
+:name: week02:fig:prog_counter
 
 How the program counter is used to access instructions within the available pages of program memory.
 ```
@@ -307,7 +307,7 @@ During reset, all I/O Registers are set to their initial values, and the program
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3:stack_pointer)=
+(week02:stack_pointer)=
 ## The Stack Pointer
 
 ```{image} pictures/wallpaper.png
@@ -358,11 +358,11 @@ The *stack pointer register* keeps track of the top of the stack.
 
 The AVR stack pointer is implemented as two 8-bit registers in the I/O space.
 
-The are called `SPH` (stack pointer high byte) and `SPL` (stack pointer low byte) as illustrated in {numref}`week3:fig:sp_register`.
+The are called `SPH` (stack pointer high byte) and `SPL` (stack pointer low byte) as illustrated in {numref}`week02:fig:sp_register`.
 
 
 ```{figure} pictures/sp_register.png
-:name: week3:fig:sp_register
+:name: week02:fig:sp_register
 :align: center
 :width: 75%
 :alt: The AVR stack pointer implemented as two bytes SPH and SPL.
@@ -372,10 +372,10 @@ The AVR stack pointer implemented as two bytes SPH and SPL.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-{numref}`week3:fig:sp_operation` illustrates the operation of the stack pointer as it appears to the user of the stack.
+{numref}`week02:fig:sp_operation` illustrates the operation of the stack pointer as it appears to the user of the stack.
 
 ```{figure} pictures/sp_operation.png
-:name: week3:fig:sp_operation
+:name: week02:fig:sp_operation
 :align: center
 :width: 50%
 :alt: Illustration of the operation of a stack.
@@ -389,7 +389,7 @@ Like a box of Pringles, when you pop an item of the stack, it comes from the top
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week3:io)=
+(week02:io)=
 ## Introduction to Microcontroller I/O
 
 ```{image} pictures/mc_io_wallpaper.png
@@ -402,11 +402,11 @@ Like a box of Pringles, when you pop an item of the stack, it comes from the top
 
 ### I/O on the ATmega328
 
-{numref}`week3:fig:arduino_nano` illustrates the layout of the input-output (I/O) pins of the Atmel ATmega328 packaged as an Arduino Nano that you will be using in the lab and project.
+{numref}`week02:fig:arduino_nano` illustrates the layout of the input-output (I/O) pins of the Atmel ATmega328 packaged as an Arduino Nano that you will be using in the lab and project.
 
 
 ```{figure} pictures/arduino_nano.png
-:name: week3:fig:arduino_nano
+:name: week02:fig:arduino_nano
 :align: center
 :width: 50%
 :alt: Input/output pins for the Arduino nano
@@ -416,11 +416,11 @@ Input/output pins for the Arduino nano
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-{numref}`week3:fig:atmega325_schematic` is the schematic diagram of the Atmel ATmega328 reproduced from the reference manual.
+{numref}`week02:fig:atmega325_schematic` is the schematic diagram of the Atmel ATmega328 reproduced from the reference manual.
 
 
 ```{figure} pictures/atmega325_schematic.png
-:name: week3:fig:atmega325_schematic
+:name: week02:fig:atmega325_schematic
 :alt: Schematic diagram showing the I/O provided by the Atmel ATmega328 microcontroller
 :width: 50%
 
@@ -443,10 +443,10 @@ What voltage is read at the I/O port when the switch is closed and when it is op
 
 ### Pull Ups
 
-To get around this issue, microcontrollers use pull-up (or pull-down) circuitry to hold the port high (or low) (see {numref}`week3:fig:pullup`).
+To get around this issue, microcontrollers use pull-up (or pull-down) circuitry to hold the port high (or low) (see {numref}`week02:fig:pullup`).
 
 ```{figure} pictures/pullup.png
-:name: week3:fig:pullup
+:name: week02:fig:pullup
 :alt: Schematic of the pullup circuitry for the ATmega328 (from the manual).
 :width: 50%
 
@@ -467,7 +467,7 @@ What voltage is read at the I/O port when the switch 'S1' is closed and when it 
 ### Ports as General Digital I/O
 
 ```{figure} pictures/general_io.png
-:name: week3:fig:general_io
+:name: week02:fig:general_io
 :alt: The PORTC register
 :width: 75%
 
@@ -476,14 +476,14 @@ The `PORTC` register
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
-The ports are bi-directional I/O ports with optional internal pull-ups meaning they can be configured to read an input such as a switch or a sensor or to write to an output such as an LED or control an actuator. {numref}`week3:fig:general_io` shows a functional description of one I/O-port pin, which we give the notation `Pxn`.
+The ports are bi-directional I/O ports with optional internal pull-ups meaning they can be configured to read an input such as a switch or a sensor or to write to an output such as an LED or control an actuator. {numref}`week02:fig:general_io` shows a functional description of one I/O-port pin, which we give the notation `Pxn`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Configuring a pin
 
 ```{figure} pictures/iomap.png
-:name: week3:fig:iomap
+:name: week02:fig:iomap
 :alt: A portion of the memory map of the Atmel ATmega328 showing the location of the I/O registers.
 :width: 750%
 
@@ -492,7 +492,7 @@ A portion of the memory map of the Atmel ATmega328 showing the location of the I
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
-Recall the 64 I/O registers early on in the user data space (see {numref}`week3:fig:iomap`):
+Recall the 64 I/O registers early on in the user data space (see {numref}`week02:fig:iomap`):
 
 * General purpose registers – `0x0000` – `0x001F`
 * Three I/O memory address locations are allocated for each port, one each for:
@@ -506,10 +506,10 @@ Note: `x` refers to the numbering letter for the port (`B`, `C`, or `D` in our c
 
 ### Configuring a Pin - Data Direction
 
-The `DDxn` bit in the `DDRx` Register (illustrated for `DDRB` in {numref}`week3:fig:ddrb`) selects the data direction (input or output) of this pin.
+The `DDxn` bit in the `DDRx` Register (illustrated for `DDRB` in {numref}`week02:fig:ddrb`) selects the data direction (input or output) of this pin.
 
 ```{figure} pictures/ddrb.png
-:name: week3:fig:ddrb
+:name: week02:fig:ddrb
 :alt: DDRB - The port B data direction register.
 :width: 75%
 
@@ -525,11 +525,11 @@ The `DDxn` bit in the `DDRx` Register (illustrated for `DDRB` in {numref}`week3:
 
 ### Writing to a Pin - Output
 
-The `Pxn` bit in the `PORTx` Register (illustrated for `PORTC` in {numref}`week3:fig:portc`) has two purposes dependent on the condition of the corresponding bit in the `DDRx` register. 
+The `Pxn` bit in the `PORTx` Register (illustrated for `PORTC` in {numref}`week02:fig:portc`) has two purposes dependent on the condition of the corresponding bit in the `DDRx` register. 
 
 
 ```{figure} pictures/portc.png
-:name: week3:fig:portc
+:name: week02:fig:portc
 :alt: PORTC - the port C data register
 :width: 75%
 
@@ -547,10 +547,10 @@ If the `DDRx` bit is configured as an output:
 
 ### Reading from a Pin - Input
 
-The port pin can be read through the **`PINxn` Register bit** (illustrated for `PINB` in {numref}`week3:fig:pinb`. 
+The port pin can be read through the **`PINxn` Register bit** (illustrated for `PINB` in {numref}`week02:fig:pinb`. 
 
 ```{figure} pictures/pinb.png
-:name: week3:fig:pinb
+:name: week02:fig:pinb
 :alt: PINB - the port B input pins address
 :width: 75%
 
@@ -596,7 +596,7 @@ In this chapter we have:
 
 ### On Canvas
 
-Canvas module [Week 3: Microcontroller Architecture and I/O](https://canvas.swansea.ac.uk/courses/44971/modules/305537?wrap=1), along with these notes, there is some additional self study material on canvas on page [Week 3: Atmel ATmega328 Architecture Overview](https://canvas.swansea.ac.uk/courses/44971/pages/week-3-atmel-atmega328-architecture-overview?module_item_id=2258072). This includes a video demonstration, from my former colleague Ben Clifford, of the various topics discussed in this session. 
+Canvas module [Week 2: Microcontroller Architecture and I/O](https://canvas.swansea.ac.uk/courses/44971/modules/305537?wrap=1), along with these notes, there is some additional self study material on canvas on page [Week 2: Atmel ATmega328 Architecture Overview](https://canvas.swansea.ac.uk/courses/44971/pages/week-3-atmel-atmega328-architecture-overview?module_item_id=2258072). This includes a video demonstration, from my former colleague Ben Clifford, of the various topics discussed in this session. 
 
 There is also a quiz on Microcontroller Architecture.
 
@@ -606,4 +606,4 @@ There is also a quiz on Microcontroller Architecture.
 
 ### Next time
 
-* {ref}`week4`
+* {ref}`week03`
