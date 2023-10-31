@@ -40,7 +40,7 @@ In this section we will be looking at two different approaches to reading and wr
 
 ### Contents
 
-- How does I/O work using the Arduino IDE.
+- {ref}`wk5:arduino_ide`
 
 +++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
@@ -245,7 +245,7 @@ Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) b
 
 ### Logical Bitwise Operators
 
-As we saw in {ref}`wk5:bitwise_ops`, there is a group of operators within the C programming language which are referred to as **bitwise logical operators** ({numref}`bitwise-logic-operators`).
+As we saw in {ref}`wk4:bitwise_ops`, there is a group of operators within the C programming language which are referred to as **bitwise logical operators** ({numref}`bitwise-logic-operators`).
 
 ```{list-table} The bitwise logic operators
 :header-rows: 1
@@ -463,7 +463,7 @@ How can the LED at `D9` be switched on without changing the state of the LED at 
 Let us assume Port B currently reads $1010\,0001$ and we execute[^shortcut]:
 
 ```c
-PORTB = PORTB | 0x00000010;
+PORTB = PORTB | 0b00000010;
 ```
 
 [^shortcut]: Idiomatic C often uses the shortcut `PORTB |= 0x00000010;` There are many such *assignment operators* in C. For example: `+=`, `-=`, `&=` etc. They all mean the same thing: `var = var op argument`. Internally, the C compiler treats both forms the same so their use is a matter of style. The full version is easier to read and understand. The shortcut is quicker to type, but arguably less easy to read and understand. 
@@ -481,7 +481,7 @@ PORTB = PORTB | 0x00000010;
 To turn but 9 off, we use the logical AND.
 
 ```c
-PORTB = PORTB & 0x11111101;
+PORTB = PORTB & 0xb11111101;
 ```
 
 ```{math}
@@ -494,6 +494,7 @@ PORTB = PORTB & 0x11111101;
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(wk5:example_program)=
 ## Digital I/O Example Program
 
 ```{image} pictures/breadboard_wallpaper.jpg
