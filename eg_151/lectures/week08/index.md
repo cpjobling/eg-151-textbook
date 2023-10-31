@@ -15,7 +15,7 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week09)=
+(week08)=
 # Addressing Modes
 
 ```{image} ../week02/pictures/chapter_heading.png
