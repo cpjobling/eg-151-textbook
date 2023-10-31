@@ -320,24 +320,46 @@ However in general, the mnemonics can be classified into one of six groups:
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
-For this module we have been working  with an Atmel ATmega328 microcontroller which is based on the  AVR® enhanced (AVRe+) architecture
+For this module we have been working  with an Atmel ATmega328 microcontroller which is based on the  AVR® enhanced (AVRe+) architecture.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-Labels must follow a set of rules and a particular format
-All labels must be unique and cannot use system reserved phrases.
-All labels must start with a letter.
-Labels can contain letters, numbers, and special characters (symbols, such as @, $, _ ).
-Labels that don’t begin at column 1 must be followed by a colon character ( : ).
-Labels are written in all capitals. 
+#### Assembler Directives
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+The **operator field** contains either an **assembly directive** or a **mnemonic/instruction**.
+
+Assembly directives, sometimes termed pseudo-operations are **directives to the assembler** that will not be translated to machine code but provide information critical to the programs function that is **required by the assembler**.
+
+Some common directives include;
+
+- `.CSEG` / `.DSEG` / `.ESEG`
+- `.ORG` / `.EXIT`
+- `.EQU` / `.SET` / `.DEF` / `INCLUDE`
+- `.DB` / `.DW `/ `.BYTE`
+
+Directives are specific to a particular microcontroller family (different to the instruction set). A list of supported directives for the AVR based microcontrollers can be found [here](http://www.avr-asm-tutorial.net/avr_en/beginner/DIREXP.html).
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Assembly Language Operands
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+(wk7:sect3)=
+## Interfacing with Digital I/O example.
+```{image} ../week05/pictures/breadboard_wallpaper.jpg
+:width: 75%
+:alt: Decorative background image showing the circuit discussed in the example.
+```e
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Example
 
 Recall the example from {ref}`wk5:example_program` reproduced again here as {numref}`wk7_fig_example_circuit`. The left and right push buttons connected to the digital inputs `D3` and `D2` respectively corresponding with Port D Bits 3 and 2 on the Atmega328 microcontroller. 
 
 When the left push button is pressed the red LED (Port B Bit 1) is illuminated and the green LED (Port B Bit 0) illuminated when the right push button is pressed.
+
 `````{figure} ../week05/pictures/breadboard.jpg
 :alt: A photograph of the example circuit which has two buttons and two LEDs.
 :name: wk7_fig_example_circuit
@@ -346,9 +368,9 @@ When the left push button is pressed the red LED (Port B Bit 1) is illuminated a
 A photograph of the example circuit which has two buttons and two LEDs discussed in {ref}`wk5:example_program`.
 ``
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-### C-Language Code
+#### C-Language Code
 
 Let us start with the C-language program we wrote for this ([main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883)).
 
@@ -393,24 +415,10 @@ int main(void)
 }
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
-
-(wk7:sect4)=
-## Section 4
-
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## Summary
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## On Canvas
-
-```{code-cell} ipython3
----
-editable: true
-slideshow:
-  slide_type: ''
----
-
-```
