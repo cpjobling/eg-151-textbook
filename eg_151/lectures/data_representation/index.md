@@ -15,10 +15,10 @@ kernelspec:
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
-(week2)=
+(data_representation)=
 # Introduction to Data Representation
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week2:introduction)= 
 ## Introduction
@@ -687,7 +687,7 @@ Show using binary addition that $110_{10} + 227_{10} = 337_{10}$.
 
 The overflow is acknowledged in the **status register** by the carry flag
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 (week2:sr)=
 ## Introduction to the Status Register
@@ -711,9 +711,9 @@ The Status Register of the Atmel ATMega328/P
 
 [^note:msb]: The most significant bit is the left most bit. It corresponds to the numerical value $2^7 = 128$. For certain operations, it may also indicate a negative number.
 
-We will look at the status register in detail in {ref}`week3`.
+We will look at the status register in detail in {ref}`week02`.
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Binary Arithmetic Example 14
 

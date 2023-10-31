@@ -16,7 +16,7 @@ kernelspec:
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (week09)=
-# Introduction to Assembly Language
+# Microcontroller Architecture – Program Operation
 
 ```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
