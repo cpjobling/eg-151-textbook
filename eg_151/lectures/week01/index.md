@@ -189,18 +189,18 @@ Image source: [www.electronicsweekly.com/blogs/distribution-world/communities/in
 </tr>
 </table>
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Industrial applications
 
-```{image} https://investinfrance.fr/wp-content/uploads/2020/07/Usine_robot_bleu_1500px.jpg
+```{image} pictures/robots.jpg
 :alt: Photograph showing robots working on an automated assembly line]()
 :width: 50%
 ```
 
-Image source: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/](https://investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/)
+Image source: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/](https://investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/) [No longer available online]
 
-+++ {"slideshow": {"slide_type": "fragment"}}
++++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
 
 <table>
 <tr>
@@ -227,7 +227,7 @@ Image source: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-
 </tr>
 </table>
 
-+++ {"slideshow": {"slide_type": "slide"}}
++++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
 ### Environmental monitoring
 
@@ -742,4 +742,4 @@ There is a quiz which tests your recall of the topics covered in this lecture
 
 ## Next week
 
-Next week we will look at {ref}`week2`.
+Next week we will look at {ref}`week02`.

@@ -162,7 +162,7 @@ Essentially, assembly langauges are a much more readable but directly translatab
 
 Assembly language is commonly called just assembly, ASM, or symbolic machine code.
 
-Despite the giant leap from machine code to assembly language, by the 1980s its use had largely been overtaken by higher-level languages such as Fortran and C and more recently Python for many applications. 
+Despite the giant leap from machine code to assembly language, by the 1980s its use had largely been overtaken by higher-level languages such as Fortran and C and more recently Python for many applications.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -196,11 +196,11 @@ In short:
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* **Space** - assembly language programs are often the smallest. 
+* **Space** - assembly language programs are often the smallest.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* **Capability** - you can do things in assembly which are difficult or impossible in HLLs. 
+* **Capability** - you can do things in assembly which are difficult or impossible in HLLs.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -224,7 +224,7 @@ In short:
 
 ### Assembly Language 101
 
-An assembly language program consists of a series of instructions to an assembler which will then produce the machine code program that is loaded to the microcontroller. 
+An assembly language program consists of a series of instructions to an assembler which will then produce the machine code program that is loaded to the microcontroller.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -236,7 +236,7 @@ A program is written as a sequence of statements - one statement per line:
 
 Each statement contains up to four fields each separated by a space or tab character as shown below:
 
-```asm
+```
 [label:]    operator    [operand]     [;comment]
 ```
 
@@ -251,7 +251,7 @@ All statements must have something in the Operator field, but the label, operand
 The label field is used to create a reference point in the program than can be used to identify/locate a collection of instructions.
 
 Examples:
-```asm
+```
 LOOP        operator
 
   COUNTER:  operator
@@ -269,7 +269,7 @@ Labels must follow a set of rules and a particular format:
 * All labels **must start with a letter**.
 * Labels can contain **letters, numbers, and special characters** (symbols, such as `@`, `$, `_` ).
 * Labels that **don't begin at column 1** must be followed by a colon character ( `:` ).
-* Labels are written in **all capitals**. 
+* Labels are written in **all capitals**.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -343,14 +343,84 @@ Directives are specific to a particular microcontroller family (different to the
 
 #### Assembly Language Operands
 
+- The operand field follows the operator and contains the **address or data** to be used by the instruction.
+- A name (‘label’) can be used to represent the address of the data or a symbol to represent a data constant.
+- The **field can be empty** if the instructions given by the operator do not need an address or data.
+  - As an example the operator `NOP` (no-operation) requires no operand.
+- **Some operators allow for multiple operands** and in these cases the operands are separated by commas (`,`).
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Examples 1
+
+```
+LDI     R16, 0b01010101
+ADD     R16, R17
+LDS     R2, 0xFF00
+NOP
+MOV     R16, R17
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Assembly Language Comments
+
+As with the C language, the comment field is there to allow the programmer to include any comments which may make the program easier to understand at a later time or by another reader.
+
+When the **assembler is reading** the line of text, the **comment field is ignored**.
+
+Comments also follow a set of rules and a particular format dependent on the assembler being used[^comments_in_asm]:
+- If an **entire line** is a comment, it must start with a **semicolon** or an **asterisk symbol** in the first column.
+- If **not starting in the first column**, the comment must start with a **semicolon**.
+- The comment must be separated from the operator or operand field by at least one space. 
+
+[^comments_in_asm]: As assembly codes are generally less readable than higher level languages, like the C language, it is good practice to be very liberal with comments in assembly code programs.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+##### Examples 2
+
+```
+;This comment line starts with a semicolon
+*This comment line starts with an asterisk
+
+operator ;This comment follows an operator
+operator
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Assembler
+
+It is important to be aware of the assembler and the structure assembly language programs follow.
+
+The assembler takes the sequence of mnemonics (instructions) written in assembly language and translates them into machine code using the process illustrated in {numref}`wk7:fig:assembly`.
+
+```{figure} pictures/assembler.png
+:alt: The assembly process
+:name: wk7:fig:assembly
+:width: 50%
+
+The assembly process
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The assembler processes the assembly language file and generates an object file and listing file(s)
+- An object file is essentially a one-to-one mapping of mnemonics against the binary (sometimes hexadecimal) instruction set
+- The listing file shows each line of the assembly language input along with the memory addresses resolved by the assembler, resulting machine code or data and other diagnostic information.
+
+The linker combines multiple object files as well as any library files and generates an executable which can be loaded onto the microcontroller (this file is often a `*.hex` file).
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (wk7:sect3)=
 ## Interfacing with Digital I/O example.
+
 ```{image} ../week05/pictures/breadboard_wallpaper.jpg
 :width: 75%
 :alt: Decorative background image showing the circuit discussed in the example.
-```e
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -360,13 +430,13 @@ Recall the example from {ref}`wk5:example_program` reproduced again here as {num
 
 When the left push button is pressed the red LED (Port B Bit 1) is illuminated and the green LED (Port B Bit 0) illuminated when the right push button is pressed.
 
-`````{figure} ../week05/pictures/breadboard.jpg
+```{figure} ../week05/pictures/breadboard.jpg
 :alt: A photograph of the example circuit which has two buttons and two LEDs.
 :name: wk7_fig_example_circuit
 :width: 50%
 
 A photograph of the example circuit which has two buttons and two LEDs discussed in {ref}`wk5:example_program`.
-``
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -417,8 +487,265 @@ int main(void)
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+#### I/O Addresses
+
+```{figure} pictures/io_registers.png
+:alt: The addresses of the IO registers with information on which can be used in particular contexts.
+:width: 100%
+:name: wk7:fig:io_addresses
+
+The addresses of the IO registers with information on which can be used in particular contexts.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Assigning a name to the I/O addresses
+
+We use `.EQU`, `.SET` or `.DEF` to assign a name to a memory location[^assembly_names]:
+
+```
+.EQU label = 12345
+.SET variable = 0x0100
+.DEF my_register = R16
+```
+
+[^assembly_names]: The purpose of these assembly directives is to assign a meaningful name to a label, constant, data value (*variable*), or memory location.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/asm1.png
+:alt: First assembler example - assigning names
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Assembly equivalent of `int main(void)`
+
+In C language we put our code (or calls to external functions) within a main function, written as:
+```c
+int main(void) {
+  // Program code
+}
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+In assembly language, there isn't a main function as such but rather `.CSEG` / `.DSEG` / `.ESEG` directive along with the `.ORG` directive are used to define the start address of code, data and EEPROM segments in memory.
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+In these lines we are telling the assembler that we want the code segment to start at memory location with address $200_{16}$.
+
+```{image} pictures/asm2.png
+:alt: Second assembler example - setting the start address for a program
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### I/O port access and bitmasking operations
+
+We can use the `IN` and `OUT` operations for reading from and writing to ports respectively, and the `ANDI` and `ORI` operations for setting up bitmasks.
+
+We include scans of the documentation for these operators in the following images.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/in.png
+:alt: The IN operator
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/out.png
+:alt: The OUT operator
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/andi.png
+:alt: The ANDI operator
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/ori.png
+:alt: The ORI operator
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Setting up the I/O Ports
+
+Using the C language, we wrote:
+
+```c
+DDRD = DDRD & 0b11110011;
+```
+
+to ensure bits 2 and 3 of port D are configured as inputs. 
+
+Similar lines were written to set up the output bits in Port B, the starting condition of these bits and then to enable the pull up resistors on Port D.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The direct translation to Assembly language involves three lines for each action as illustrated in {numref}`wk7:fig:port_io`.
+
+```{figure} pictures/port_io.png
+:alt: Setting up and accessing I/O in assembler
+:width: 100%
+:name: wk7:fig:port_ios
+
+Setting up and accessing I/O in assembler
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Infinite loop
+
+Using the C language, we created an infinite loop as follows:
+	
+```c
+for (;;) {
+  // Program code
+}
+```
+
+This essentially "*traps*" the program to ensure it continuously loops executing the program code within the code block.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+In assembly language we can produce the same result by creating a "Label" and using the operation `RJMP` (*relative jump*): 
+
+```{image} pictures/inf_loop.png
+:alt: An infinite loop using a label and rjmp.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+documented as shown here
+
+
+```{image} pictures/rjmp.png
+:alt: The RJMP operators
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Detecting a button press
+
+In C language, to detect a button press we used the 'if statement' below with a bit mask corresponding to a particular bit of the port and monitoring for its state changing to 0 or Low.
+
+```c
+if ( (PIND & 0b00000100) == 0)
+{
+  PORTB = 0b00000001;	 // sets port B, bit 0 to logic 1 (high)
+                         // which switches the LED connected to D8 on
+}
+```
+
+In assembly we can use the *compare* (`CP`) and *branch if equal* (`BREQ`) instructions to achieve this same implementation.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/cp.png
+:alt: Documentation for the CP (compare) operation
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/breq.png
+:alt: Documentation for the BREQ (branch if equal) operation
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+Consider the assembly code shown below.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+- In lines 32-36 we read `PIND`, use a bit mask to select bit 2, compare the value of the selected bit with zero and branch to label `LED1` if the value is zero (`0x00`).
+- In lines 38-42 we read `PIND`, use a bit mask to select bit 3, compare the value of the selected bit with zero and branch to label `LED2` if the value is zero (`0x00`).
+- If we reach lines 44, then both buttons were high (not pressed) so we use the bitmask `0x11111100` to ensure that both LEDs connected to bits 0 and 1 of port B are turned off. We then jump to the label `LOOP` (lines 45-47). 
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+```{image} pictures/detect_switch.png
+:alt: Detecting a button press in assembly code
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+In the next few lines (49-59) we read the current value of Port B into `R16` before performing a bitwise or operation with the immediate pattern provided (mask). The new value stored in R16 is then sent to the `PORTB` register essentially changing the state of the LED to on. Finally the `RJMP` instruction ensures the program loops back to the start.
+
+```{image} pictures/leds.png
+:alt: Assembly code to switch on LEDs
+```
+
+A similar process is used for LED2.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Comparison with C
+
+In {numref}`wk7:fig:comp_asm_with_c` we compare the C program with the equivalent assembly program. 
+
+```{figure} pictures/comp_asm_with_c.png
+:alt: Comparing an I/O program written in C with an equvalent assembly program.
+:width: 100%
+:name: wk7:fig:comp_asm_with_c
+
+Comparing an I/O program written in C with an equvalent assembly program.
+```
+
+The assembly code is available for study as a GIST [main.asm](https://gist.github.com/cpjobling/e72f37ff363353b6ed10ecdbeaa970af).
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### An Advantage of Assembly Language
+Using C language, it is not possible to read or write individual bits of a register or I/O port.
+
+In assembly language, this *is possible* using bit operations such `SBI`, `CBI`, `SBIC`, `SBIS` and a handful of others:
+
+```{image} pictures/sbi.png
+:alt: The SBI operation.
+```
+```{image} pictures/sbic.png
+:alt: The SBIC operation.
+```
+
+These can only be used on certain registers as identified in the documentation for the I/O memory map:
+
+```{image} pictures/io_mem_map2.png
+:alt: The I/O memory map showing the registers for which bitwise operations are available.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Comparisons
+
+In {numref}`wk7:fig:comparison` we show the original C program, the first version of the assembly program, and a version that is using `SBIC` to directly branch based on the value of a single bit in Port D. These will work in the same way.
+
+```{figure} pictures/comparison.png
+:alt: Comparison of three equivalent programs
+:width: 100%
+:name: wk7:fig:comparison
+
+Comparison of three equivalent programs
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 ## Summary
+
+In this section:
+- We have introduced assembly language as a direct mapping of mnemonics to machine code.
+- We have explored the basic structure of an assembly language program including operator classification, operands and comments.
+- Finally, we have revisited out digital switch example from C and looked at how this can directly translate to Assembly language and how it can be optimized using specific features of the Atmel ATmega328 microcontroller.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## On Canvas
+
+This week on the canvas course pages, you will find the sample program from today's lecture, look through this and ensure you are confident in how it works and how the masks are defined and registers set. 
+
+There is also a short quiz to test your knowledge on these topics.

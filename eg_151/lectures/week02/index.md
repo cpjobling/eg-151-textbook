@@ -42,7 +42,7 @@ kernelspec:
 (week02:intro)=
 ## Introducing the Atmel ATmega 328 MCU
 
-In {ref}`week1` we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at {numref}`week02:fig:atmel_arch` which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
+In {ref}`week01` we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at {numref}`week02:fig:atmel_arch` which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
 
 
 ```{figure} pictures/atmel_arch.png

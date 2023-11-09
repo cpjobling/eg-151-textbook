@@ -4,7 +4,7 @@
 
 ## Floating Point Numbers
 
-With decimal numbers a decimal point is used to separate the whole and fractional parts of a number. Recalling from {ref}`week2` that we represent numbers using a weighted [positional notation](https://en.wikipedia.org/wiki/Positional_notation)  in which digit's value is relative to its position. ({numref}`fig:pos_ntn`) illustrates the idea
+With decimal numbers a decimal point is used to separate the whole and fractional parts of a number. Recalling from {ref}`week02` that we represent numbers using a weighted [positional notation](https://en.wikipedia.org/wiki/Positional_notation)  in which digit's value is relative to its position. ({numref}`fig:pos_ntn`) illustrates the idea
 
 ```{figure} pictures/positional_notation.png
 :name: fig:pos_ntn

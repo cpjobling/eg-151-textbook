@@ -98,7 +98,7 @@ This is because for each "sketch" the Arduino IDE automatically includes a the i
 
 #### The include file Arduino.h
 
-Amongst a number of other definitions[^arduino_h], the `Arduino.h` file contains the declarations for the commonly used digital I/O functions: `pinMode`, `digitalWrite` and `digitalRead` as well as the functions used for Analog I/0: `analogRead`, `analogReference` and `analogWrite` to be discussed in {ref}`week7`. 
+Amongst a number of other definitions[^arduino_h], the `Arduino.h` file contains the declarations for the commonly used digital I/O functions: `pinMode`, `digitalWrite` and `digitalRead` as well as the functions used for Analog I/0: `analogRead`, `analogReference` and `analogWrite` to be discussed in {ref}`week07`. 
 
 ```c
 void pinMode(uint8_t pin, uint8_t mode);
