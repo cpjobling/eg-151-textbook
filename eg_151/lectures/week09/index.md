@@ -15,8 +15,8 @@ kernelspec:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(week09)=
-# Microcontroller Architecture – Program Operation
+(week08)=
+# Addressing Modes
 
 ```{image} ../week02/pictures/chapter_heading.png
 :alt: Decorative image for slide show
@@ -40,38 +40,38 @@ In this section we will be looking at how we can read analogue signals into a mi
 
 ### Contents
 
-* {ref}`wk9:sect1`
+* {ref}`wk8:sect1`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk9:sect2`
+* {ref}`wk8:sect2`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk9:sect3`
+* {ref}`wk8:sect3`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk9:sect4`
+* {ref}`wk8:sect4`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-(wk9:sect1)=
+(wk8:sect1)=
 ## Section 1
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-(wk9:sect2)=
+(wk8:sect2)=
 ## Section 2
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-(wk9:sect3)=
+(wk8:sect3)=
 ## Section 3
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-(wk9:sect4)=
+(wk8:sect4)=
 ## Section 4
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}

@@ -593,7 +593,7 @@ The direct translation to Assembly language involves three lines for each action
 ```{figure} pictures/port_io.png
 :alt: Setting up and accessing I/O in assembler
 :width: 100%
-:name: wk7:fig:port_ios
+:name: wk7:fig:port_io
 
 Setting up and accessing I/O in assembler
 ```
