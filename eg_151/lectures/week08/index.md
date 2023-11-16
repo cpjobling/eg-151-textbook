@@ -251,7 +251,7 @@ A block diagram of the clock circuity is given in {numref}`wk8:fig:atmel328_clk`
 :width: 100%
 :align: center
 
-Clock distribution of the ATmega328. (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet.
+Clock distribution of the ATmega328. (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet {cite.
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
@@ -266,12 +266,143 @@ The **CKSEL3..0** are special memory locations in flash memory ("fuses") that ar
 
 There are two registers accessible to the programmer with respect to the clock. These are
 
-**OSCCAL - Oscillation Calibration Register** used to trim the calibrated internal RC oscillator to remove process
-variations from the oscillator frequency
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-**CLKPR – Clock Prescale Register** whose bits define the division factor between the selected clock source and the internal system clock. These bits
-can beseynat  run-time to vary the clock frequency to suit the application requirement.
-.
+**OSCCAL - Oscillation Calibration Register** used to trim the calibrated internal RC oscillator to remove process
+variations from the oscillator frequency.y
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+**CLKPR – Clock Prescale Register** whose bits define the division factor between the selected clock source and the internal system clock. These bits can be set at run-time to vary the clock frequency to suit the application requirements.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Block 2: Control Unit
+
+The **control unit** coordinates all activities and sends signals through the control bus to all elements of the microcontroller, including the ALU, memory, and input/output, instructing them how to respond to the instructions from the program code it has just read and interpreted from the memory unit. 
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+The control unit is responsible for
+- Coordinating and controlling activities of the CPU;
+- Managing data flow between other components and the CPU;
+- Acknowledging and accepting the next instruction; and
+- Storing the resulting data back into a memory unit.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Block 3: Memory Address Register (MAR)
+
+During operation the address in the program counter is loaded into the **Memory Address Register** and a request is sent onto the address bus to retrieve the data stored at that memory location.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Block 4: Memory Data Register (MDR)
+
+The data at a particular memory location is loaded from the data bus into the **Memory Data Register** before being passed to the **instruction register** or being operated on.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Block 5: Instruction Register (IR)
+
+After fetching an instruction from program memory, the microcontroller stores it in the **instruction register**.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Block 6: Instruction Decoder (ID)
+
+The **instruction decoder** decodes the instruction opcode from the **instruction register** and generates appropriate control signals to execute the instruction.
+
+It contains a lookup table featuring a mapping of all binary instructions in the microcontroller's instruction set architecture.
+
+Once an instruction arrives at the instruction register it is passed to the decoder. Once decoded the output is passed to the control unit to select the correct hardware for the operation or to get the next word of data from memory.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+A summary of some example operations taken from section 5 of the AVR Instruction Set Manual {cite}`avr_instruction_set` are given in {numref}`wk8:table1`. The interested reader will find full details at the manual reference quoted in the table.
+
+```{list-table} Some examples of instruction decoding
+:header-rows: 1
+:name: wk8:table1
+* - 16 Bit Opcode
+  - Operation
+  - Usage
+  - Syntax
+  - Program Counter (PC)
+  - Manual reference
+* - 0001 11rd dddd rrrr
+  - Add with carry (`ADC`)
+  - Rd <- Rd + Rr + C[^carry_flag]
+  - `ADD Rd, Rr`
+  - PC <- PC + 1
+  - 5.1
+* - 0000 11rd dddd rrrr
+  - Add without carry (`ADD`)
+  - Rd <- Rd + Rr
+  - `ADD Rd, Rr`
+  - PC <- PC + 1
+  - 5.2
+* - 1001 0110 KKdd KKKK
+  - Add Immedidate to Word (`ADIW`)
+  - R[d+1]:Rd <- R[d+1]:Rd + K
+  - `ADIW Rd+1:Rd,K`
+  - PC <- PC + 1
+  - 5.3
+* - 0010 00rd dddd rrrr
+  - Logical AND (`AND`)
+  - Rd <- Rd & Rr
+  - `AND Rd, Rr`
+  - PC <- PC + 1
+  - 5.4
+* - 0111 KKKK dddd KKKK
+  - Logical AND with Immediate (`ANDI`)
+  - Rd <- Rd & K
+  - `ANDI Rd, K`
+  - PC <- PC + 1
+  - 5.5
+* - 1001 010d dddd 0101
+  - Arithmetic Shift Right (`ASR`)
+  - ![ASR Operation](pictures/asr.png)
+  - `ASR Rd`
+  - PC <- PC + 1
+  - 5.6
+* - 1001 0100 1sss 1000
+  - Bit Clear in SREG (`BCLR`)
+  - SREG(s) <- 0
+  - `BCLR s`
+  - PC <- PC + 1
+  - 5.7
+```
+
+[^carry_flag]: The carry flag C comes from the status register.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Busses
+
+Inside the microcontroller, components communicate with each other using sets of parallel connectors known as buses. The processor is connected to the main memory by three separate buses as illustrated in {numref}`wk8:fig:busses`. 
+
+```{figure} pictures/mc_busses.png
+:alt: The three busses in the ATmega328 microntroller
+:name: wk8:fig:busses
+:width: 100%
+:align: center
+
+The three busses in the ATmega328 microntroller.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The three buses are:
+- **Address bus**: a unidirectional bus from the processor to the memory or an I/O controller that carries the location of the data to be read from or written to. 
+- **Data bus**: a bi-directional pathway that carries data or instructions between processor components. The width of data bus is key in determining the overall computer performance. The AVR CPU data bus is 8-bits wide but the word size is 16-bits meaning the data bus has to use two cloxk cycles to fetch each byte of a word from the main memory.
+- **Control bus**: is a bi-directional pathway that carries command, timing and specific status information among components. Examples of control information include:
+  - Read/write from/to memory
+  - Read/write from/to I/O port
+  - Request access to the data bus
+  - Grant access to the data bus
+  - Sync clock
+  - Reset
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 

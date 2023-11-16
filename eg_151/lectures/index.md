@@ -18,3 +18,7 @@
 - {ref}`week09`
 - {ref}`week10`
 <!-- #endregion -->
+
+```python
+
+```

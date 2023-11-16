@@ -125,9 +125,7 @@ if (sensorValue <= 127) {
 Once each of the test conditions has been populated with `digitalWrite` statements the code is complete and can uploaded to the Arduino Nano board.
 <!-- #endregion -->
 
-## Note
-
-[^note1]: To avoid using floating point aritmetic, we have rounded $127.875$ to $127$. If you wanted to be really accurate, you could add the full value and round afterwards. For example $$2\times 127.875 = 256$; $$3\times 127.875 = 384$. Indeed it is arguable that $127.875$ is closer to $128$ than $127$!
+[^note1]: To avoid using floating point aritmetic, we have rounded $127.875$ to $127$. If you wanted to be really accurate, you could add the full value and round afterwards. For example $2\times 127.875 = 256$; $3\times 127.875 = 384$. Indeed it is arguable that $127.875$ is closer to $128$ than $127$!
 
 ## Appendix: Code Listing
 
@@ -135,3 +133,7 @@ Once each of the test conditions has been populated with `digitalWrite` statemen
 ### Listing 10: An Example C Program
 The complete code listing can be downloaded as a GitHub gist [example.ino](https://gist.github.com/cpjobling/27269c14e211e7d19657f0a147a3986d)
 <script src="https://gist.github.com/cpjobling/27269c14e211e7d19657f0a147a3986d.js"></script>
+
+```python
+    
+```
