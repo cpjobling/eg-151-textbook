@@ -35,7 +35,7 @@ In {ref}`week02`, we discussed  some of the core components of a microcontroller
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-### Contents
+## Contents
 
 * {ref}`wk8:sect1`
 
@@ -170,7 +170,7 @@ Simplified block diagram showing the major components of a microcontroller
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 1: Clock
+### Block 1: Clock
 
 The clock generates a signal that oscillates between a high and a low state and acts like a metronome which coordinates/synchronizes the actions of the different microcontroller elements.
 
@@ -198,11 +198,11 @@ At every cycle of the clock a step of the Fetch-decode-execute cycle is performe
 
 The ATmega328 is shipped with an internal RC oscillator with a frequency of 8MHz and the Arduino nano board includes a 16MHz *external* crystal which is typically set to be the default clock[^execution_speed].
 
-[^execution_speed]: If the frequency is $x$MHz, then the microcontroller can execute $x$ million instructions a second and each instruction takes 1/x microseconds to execute. Therefore, for the ATmega328 with internal clock the execution speed is 0.125$\mu$s per instruction. For the ATmega328 on the Arduino nano it is half this. 
+[^execution_speed]: If the frequency is $x$MHz, then the microcontroller can execute $x$ million instructions a second and each instruction takes 1/x microseconds to execute. Therefore, for the ATmega328 with internal clock the execution speed is 0.125$\mu$s per instruction. For the ATmega328 on the Arduino nano it is half this.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-##### Internal Clock
+#### Internal Clock
 
 Internal clocks are made from RC oscillators.
 
@@ -224,7 +224,7 @@ Pins reserved for an external clock signal on the Atmel ATmega328 microcontrolle
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-##### External clock
+#### External clock
 
 Many components inside the microcontroller will use a scaled version of the clock signal (recall the ADC) and so high clock accuracy is not needed. However, for other applications, such as communication based applications like the CAN bus, USB and Ethernet, high frequency and accurate clock signals are required. 
 
@@ -241,7 +241,7 @@ Examples of the crystal oscillators used with microcontrollers. a) The circuit s
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-##### The Atmel ATmega328 clock
+#### The Atmel ATmega328 clock
 
 A block diagram of the clock circuity is given in {numref}`wk8:fig:atmel328_clk`. This is a complex diagram and the details are not too important. What is important is to note is how the clock signal is distributed to all the major subsystems. This is to ensure that all the internal operations that the microcontrollers are carried out in lock-step with the clock signal and in synchronization with each other. The clock sources are shown at the bottom of the diagram and the major blocks which use the clock are at the top. The blocks in the centre of the diagram are concerned with the functions needed to monitor the status of the microcontroller. 
 
@@ -251,7 +251,7 @@ A block diagram of the clock circuity is given in {numref}`wk8:fig:atmel328_clk`
 :width: 100%
 :align: center
 
-Clock distribution of the ATmega328. (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet {cite.
+Clock distribution of the ATmega328 (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet {cite}`atmel_data`).
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
@@ -277,9 +277,9 @@ variations from the oscillator frequency.y
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 2: Control Unit
+### Block 2: Control Unit
 
-The **control unit** coordinates all activities and sends signals through the control bus to all elements of the microcontroller, including the ALU, memory, and input/output, instructing them how to respond to the instructions from the program code it has just read and interpreted from the memory unit. 
+The **control unit** coordinates all activities and sends signals through the control bus to all elements of the microcontroller, including the ALU, memory, and input/output, instructing them how to respond to the instructions from the program code it has just read and interpreted from the memory unit.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -291,25 +291,25 @@ The control unit is responsible for
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 3: Memory Address Register (MAR)
+### Block 3: Memory Address Register (MAR)
 
 During operation the address in the program counter is loaded into the **Memory Address Register** and a request is sent onto the address bus to retrieve the data stored at that memory location.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 4: Memory Data Register (MDR)
+### Block 4: Memory Data Register (MDR)
 
 The data at a particular memory location is loaded from the data bus into the **Memory Data Register** before being passed to the **instruction register** or being operated on.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 5: Instruction Register (IR)
+### Block 5: Instruction Register (IR)
 
 After fetching an instruction from program memory, the microcontroller stores it in the **instruction register**.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Block 6: Instruction Decoder (ID)
+### Block 6: Instruction Decoder (ID)
 
 The **instruction decoder** decodes the instruction opcode from the **instruction register** and generates appropriate control signals to execute the instruction.
 
@@ -378,7 +378,7 @@ A summary of some example operations taken from section 5 of the AVR Instruction
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-#### Busses
+### Busses
 
 Inside the microcontroller, components communicate with each other using sets of parallel connectors known as buses. The processor is connected to the main memory by three separate buses as illustrated in {numref}`wk8:fig:busses`. 
 
@@ -415,16 +415,262 @@ The three buses are:
 ```
 [wallpaper.dog/microcontroller-wallpapers](https://wallpaper.dog/microcontroller-wallpapers)
 
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Recap: Program Instructions
+
+The microcontroller program consists of a sequence of instructions, each consisting of an opcode (`LDI`, `ADD`, `OUT`, etc…) defining the operation to be carried out and an operand containing the data or location of the data which the instruction is to operate on.
+
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
+**High level language**
+
+```c
+myVariable = 121 + 103;
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+![Arrow pointing downwards](pictures/arrow.png)
+
+**Low Level Language**
+
+```asm
+LDI r16, 0b01111001
+LDI r17, 0b01100111
+ADD r16, r17
+STS 0xFF00, r16
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+![Arrow pointing downwards](pictures/arrow.png)
+
+**Machine Code**
+
+```
+1110011100001001
+
+1110011000010111
+
+0000111100000001
+
+1001001100000000
+1111111100000000
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Fetch-Decode-Execute Cycle
+
+Each instruction is carried out by a sequence of operations, known as the **fetch-decode-execute cycle** illustrated as a flow chart in {numref}`wk8:fig:fetch_decode_execute_cycle`.
+
+```{figure} pictures/fetch_decode_execute_cycle.png
+:alt: A flow chart illustrating the fetch-decode-execute cycle.
+:name: wk8:fig:fetch_decode_execute_cycle
+:align: center
+:width: 50%
+
+A flow chart illustrating the fetch-decode-execute cycle
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+The fetch-decode-execute cycle follows the following steps
+
+#### Fetch
+**Fetch** the operator code from memory via the data bus and store it in the instruction register. This occurs by placing an address on the address bus and then reading the instruction at this address from the data bus.
+- The address of the instruction to be fetched is stored in the program counter which is then loaded into the **Memory Address Register** and a request is sent onto the address bus.
+- The program counter is then incremented to point to the next sequential memory address.
+- The contents of the memory location are then transferred through the data bus to the **Memory Data Register** and then into the **instruction register** before passing to the decoder.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Decode
+**Decode** the operator code within the instruction decoder and determine the nature of the operation specified (load immediately, load a byte from memory, load a word from memory). Fetch further data using the address and data busses as necessary based on the instruction decoded.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Execute
+Execute the instruction on the necessary operands.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+#### Continue
+The fetch-decode-execute is now complete and starts again for the next code memory location indicated by the program counter.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Fetch-Decode-Execute cycle algorithm
+
+The process is illustrated as an algorithm below
+
+Step 1: The address in the program counter (PC) is transferred to the memory address register (MAR).
+```
+MAR <- (PC)
+``` 
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+Step 2: The program counter is incremented to point to the next instruction.
+```
+(PC) <- (PC) + 1
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+Step 3: The contents of the location specified by the memory address register (MAR) are transferred to the memory data register (MDR).
+```
+MDR <- (MAR)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+Step 4: The contents of the memory data register (MDR) are loaded to the instruction register (IR) and then decoded.
+```
+IR <- (MDR)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
 (wk8:sect4)=
-## Example
+## An Example
 
 ```{image} ../week02/pictures/wallpaper.png
 :alt: Image of a microcontroller used as chapter headings in slide show
 :width: 50%
 ```
 [wallpaper.dog/microcontroller-wallpapers](https://wallpaper.dog/microcontroller-wallpapers)
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Recall the digital I/O program…
+
+```c
+#include <stdint.h>
+
+//I/O and ADC Register definitions taken from datasheet
+#define	PORTD (*(volatile uint8_t *)(0x2B))
+#define DDRD (*(volatile uint8_t *)(0x2A))
+#define PIND (*(volatile uint8_t *)(0x29))
+
+#define PORTB (*(volatile uint8_t *)(0x25))
+#define DDRB (*(volatile uint8_t *)(0x24))
+#define PINB (*(volatile uint8_t *)(0x23))
+
+int main(void)
+{
+	//Set Data Direction Registers
+	DDRD = DDRD & 0b11110011; //setup bits 2 and 3 of port D as inputs
+	DDRB = DDRB | 0b00000011; //setup bits 0 and 1 of port B as outputs
+
+	PORTB = PORTB & 0b11111100; //both pins B0 (D8) and B1 (D9) start low
+	
+	PORTD = PORTD | 0b00001100; // Enable the pull up resistor for bits 2 and 3 of port D
+	
+	for(;;)
+	{
+		if((PIND & 0b00000100) == 0)
+		{
+			PORTB = PORTB | 0b00000001; //sets port B, bit 0 to logic 1/high, switches the LED connected to D8 on
+		}
+		else if ((PIND & 0b00001000) == 0)
+		{
+			PORTB = PORTB | 0b00000010; //sets port B, bit 1 to logic 1/high, switches the LED connected to D9 on
+		}
+		else
+		{
+			PORTB = PORTB & 0b11111100; //sets bits 0-5 of port B to logic 0/low, switches off both the LED's
+		}
+	}
+	
+}
+```
+
+Code: [main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883)
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Listing File
+
+This is the listing file (refer to {numref}`wk7:fig:assembly`) generated by the assembler which shows each line of C code and what it has been translated to in assembly language along with the memory address the instruction will be stored at[^wk8_note].
+
+[^wk8_note]: Note:  This file is not completely accurate as the assembler used has assumed the memory space is 8-bits wide where as it is actually 16-bits wide. This means each memory address shown should be divided by 2.
+
+```
+00000080 <main>:
+#define PINB (*(volatile uint8_t *)(0x23))
+
+int main(void)
+{
+	//Set Data Direction Registers
+	DDRD = DDRD & 0b11110011; //setup bits 2 and 3 of port D as inputs
+  80:	8a b1       	in	r24, 0x0a	; 10
+  82:	83 7f       	andi	r24, 0xF3	; 243
+  84:	8a b9       	out	0x0a, r24	; 10
+	DDRB = DDRB | 0b00000011; //setup bits 0 and 1 of port B as outputs
+  86:	84 b1       	in	r24, 0x04	; 4
+  88:	83 60       	ori	r24, 0x03	; 3
+  8a:	84 b9       	out	0x04, r24	; 4
+
+	PORTB = PORTB & 0b11111100; //both pins B0 (D8) and B1 (D9) start low
+  8c:	85 b1       	in	r24, 0x05	; 5
+  8e:	8c 7f       	andi	r24, 0xFC	; 252
+  90:	85 b9       	out	0x05, r24	; 5
+	
+	PORTD = PORTD | 0b00001100; // Enable the pull up resistor for bits 2 and 3 of port D
+  92:	8b b1       	in	r24, 0x0b	; 11
+  94:	8c 60       	ori	r24, 0x0C	; 12
+  96:	8b b9       	out	0x0b, r24	; 11
+	
+	for(;;)
+	{
+		if((PIND & 0b00000100) == 0)
+  98:	4a 99       	sbic	0x09, 2	; 9
+  9a:	02 c0       	rjmp	.+4      	; 0xa0 <main+0x20>
+		{
+			PORTB = PORTB | 0b00000001; //sets port B, bit 0 to logic 1/high, switches the LED connected to D8 on
+  9c:	28 9a       	sbi	0x05, 0	; 5
+  9e:	fc cf       	rjmp	.-8      	; 0x98 <main+0x18>
+		}
+		else if ((PIND & 0b00001000) == 0)
+  a0:	4b 99       	sbic	0x09, 3	; 9
+  a2:	02 c0       	rjmp	.+4      	; 0xa8 <main+0x28>
+		{
+			PORTB = PORTB | 0b00000010; //sets port B, bit 1 to logic 1/high, switches the LED connected to D9 on
+  a4:	29 9a       	sbi	0x05, 1	; 5
+  a6:	f8 cf       	rjmp	.-16     	; 0x98 <main+0x18>
+		}
+		else
+		{
+			PORTB = PORTB & 0b11111100; //sets bits 0-5 of port B to logic 0/low, switches off both the LED's
+  a8:	85 b1       	in	r24, 0x05	; 5
+  aa:	8c 7f       	andi	r24, 0xFC	; 252
+  ac:	85 b9       	out	0x05, r24	; 5
+  ae:	f4 cf       	rjmp	.-24     	; 0x98 <main+0x18>
+
+000000b0 <_exit>:
+  b0:	f8 94       	cli
+
+000000b2 <__stop_program>:
+  b2:	ff cf       	rjmp	.-2      	; 0xb2 <__stop_program>
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Fetch
+
+```{image} pictures/fetch_example.gif
+:alt: the fetch operation as a video.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+1. The PC is set to $0040.
+2. The contents of the PC is copied to the MAR and transferred via the address bus to the memory controller.
+3. The value of PC is incremented.
+4. The contents of the memory location specified by the MAR are transferred via the data bus to the MDR
+5. The contents of the MDR are placed into the IR.
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
