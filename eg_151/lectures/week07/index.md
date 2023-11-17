@@ -390,6 +390,7 @@ operator
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(wk7:assembler)=
 #### Assembler
 
 It is important to be aware of the assembler and the structure assembly language programs follow.
@@ -665,7 +666,7 @@ Consider the assembly code shown below.
 
 - In lines 32-36 we read `PIND`, use a bit mask to select bit 2, compare the value of the selected bit with zero and branch to label `LED1` if the value is zero (`0x00`).
 - In lines 38-42 we read `PIND`, use a bit mask to select bit 3, compare the value of the selected bit with zero and branch to label `LED2` if the value is zero (`0x00`).
-- If we reach lines 44, then both buttons were high (not pressed) so we use the bitmask `0x11111100` to ensure that both LEDs connected to bits 0 and 1 of port B are turned off. We then jump to the label `LOOP` (lines 45-47). 
+- If we reach lines 44, then both buttons were high (not pressed) so we use the bitmask `0x11111100` to ensure that both LEDs connected to bits 0 and 1 of port B are turned off. We then jump to the label `LOOP` (lines 45-47).
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 

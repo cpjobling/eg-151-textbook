@@ -417,6 +417,7 @@ The three buses are:
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
+(wk8:add_code)=
 ### Recap: Program Instructions
 
 The microcontroller program consists of a sequence of instructions, each consisting of an opcode (`LDI`, `ADD`, `OUT`, etc…) defining the operation to be carried out and an operand containing the data or location of the data which the instruction is to operate on.
@@ -666,16 +667,105 @@ int main(void)
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
+**Fetch operation described**
+
 1. The PC is set to $0040.
 2. The contents of the PC is copied to the MAR and transferred via the address bus to the memory controller.
 3. The value of PC is incremented.
 4. The contents of the memory location specified by the MAR are transferred via the data bus to the MDR
 5. The contents of the MDR are placed into the IR.
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Decode
+
+```{image} pictures/decode_example.gif
+:alt: the decode operation as a video.
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+**Decode operation described**
+
+The program instruction at line 40 is b1 8a = 1011 0001 1000 1010.
+
+The most significant 5 bits 10110 correspond to the `IN` opcode ({cite}`avr_instruction_set`, Section 5.61).
+
+```{image} pictures/in_opcode.png
+:alt: Documentation for the IN opcode
+```
+From the documentation the remaining bits are distributed as per the table below:
+
+| opcode | AA | ddddd | AAAA |
+|--------|----|-------|------|
+| 10110  | 00 | 11000 | 1010 |
+
+
+So
+
+AAAAAA = 00 1010 (0x0A) and ddddd = 11000 (24).
+
+Disassembling the instruction gives:
+```
+in r24, 0x0a
+```
+which in words is *read I/O register 0x0A into register 24*.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Execute
+
+```{image} pictures/execute_example.gif
+:alt: the execute operation as a video
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+**Execute operation described**
+
+1. MAR set to I/O register $000A (DDRD) and transferred via the address bus to the memory controller.
+
+2. The contents of the memory location specified by the MAR are transferred via the data bus to the MDR.
+
+3. The contents of the MDR are copied to R24
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+### Assembly to Machine Code
+
+The assembly/machine code instructions equivalent to the program given in {ref}`wk8:add_code` above is tabulated in {numref}`wk8:table2`. Refer also to {ref}`wk7:assembler`.
+
+```{list-table} Assembly to machine code
+:header-rows: 1
+:name: wk8:table2
+* - Assembler
+  - Machine Code
+  - Documentation
+* - `ldi r16, 0b01111001`
+  - 1110 0110 0001 0111
+  - ![LDI - Load immediate documentation](pictures/ldi_opcode.png)
+* - `ldi r17, 0b01100111`
+  - 1110 0110 0001 0111
+  - See cell above
+* - `add r16, r17`
+  - 0000 1111 0000 0001
+  - ![ADD - Add without carry](pictures/add_opcode.png)
+* - `sts 0xFF00, r16`
+  - 1001 0011 0000 0000 1111 1111 0000 0000
+  - ![STS - Store direct to data space](pictures/sts_opcode.png)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## Summary
 
-+++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+In this section we have:
+- Recapped the core components of the AVR CPU including the ALU, general purpose registers, program counter, stack pointer and status register as well as their function in the microcontroller.
+- Looked at the function of some of the other components within the CPU including the clock, memory address register, memory data register, instruction register and decoder.
+- Looked at an example of what happens during program execution through the fetch-decode-execute cycle.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ## On Canvas
+
+This week on the canvas course pages, you will find a [short quiz](https://canvas.swansea.ac.uk/courses/44971/assignments/300839) to test your knowledge on these topics.
