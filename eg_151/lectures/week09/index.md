@@ -91,21 +91,143 @@ The Atmel ATmega328 microcontroller makes use of the following addressing modes:
 - Relative Addressing
 - Program Addressing (Not covered)
 
-Apart from program addressing, we will discuss each of these addressing modes in the following
+Apart from program addressing, we will discuss each of these addressing modes in the followin.g
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Inherent Addressing Mode
+
+For instructions that use **inherent addressing**, sometimes called *implicit* or *implied* addressing,  the operands are not explicitly specified but are implied by the instruction[^inherent_addressing].
+
+[^inherent_addressing]: In inherent addressing the effective address that the operation acts on is the register itself.
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+**Examples**
+
+```
+SEN    ; Set Negative Flag in Status Register (SREG)
+CLN    ; Clear Nagative Flag in Status Register (SREG)
+NOP    ; No Operation (do nothing for one clock cycle)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+Since no additional clock cycles are required to fetch and move data around, this is the **simplest and fastest addressing mode**.
+
+Some of the AVR instructions that use inherent addressing are listed in {numref}`wk9:table1`.
+
+```{list-table} AVR instructions that use inherent addressing
+:name: wk9:table1
+:header-rows: 1
+* - Mnemonic
+  - Operands
+  - Decription
+* - `CLZ`
+  - 
+  - Clear Zero Flag
+* - `SEI`
+  - 
+  - Global Interrupt Enable
+* - `CLI`
+  - 
+  - Global Interrupy Disable
+* - `SES`
+  - 
+  - Set Sign Bit
+* - `CLS`
+  - 
+  - Clear Sign Biy
+* - `SEV`
+  - 
+  - Set Two's Complement Overflow
+* - `CLV`
+  - 
+  - Clear Two's Complement Overflow
+* - `SET`
+  - 
+  - SET T in SREG
+* - `CLT`
+  - 
+  - Clear T in SREG
+* - `SEH`
+  - 
+  - Set Half Carry Flag in SREG
+* - `CLH`
+  - 
+  - Clear Half Carry Flag in SREG
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+Microcontrollers that have single accumulators in place of a bank of general-purpose registers often have more instructions that use inherent addressing such as `CLRA`, `DECA`, `INCA`.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Register Direct Addressing
 
+For these operators, the operands are contained in registers in the *register file*. There are single register operators which operates on and returns the result to the destination register, known as Rd[^rd].
+
+Because the microcontroller can access the register file faster than memory, they are also fast instructions.
+
+[^Rd]: The d in Rd is a number in the range 0-31.
+[^Rr]: The r in Rr is also a number in the range 0-31.
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Single Register (Rd)
 
+For instructions that use **single direct register addressing**, the operand is contained in the destination register Rd as illustrated in {numref}`wk9:fig:srda`.
+
+
+```{figure} pictures/srda.png
+:alt: Illustrating single register direct addressing.
+:name: wk9:fig:srda
+:width: 60%
+:align: center
+
+Illustrating single register direct addressing: d is the register number and register d is source of the operand and the destination of the result.
+```
+
+**Examples**
+
+```
+DEC R16		;Decrement R16
+INC R17		;Increment R17
+CLR R16		;Clear R16
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+Remember the operand represents the data so this addressing mode is accessing or acting on the data using only one of the general purpose registers but does not include any write back to SRAM/EEPROM.
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Two Register (Rd, Rr)
+
+For instructions that use **direct register addressing with two registers**, the operand is **contained in the source and destination registers Rr and Rd respectively. The result of this that the data in Rd is overwritten . This is illustrated in {numref}`wk9:fig:rda_with_2_regs`.
+
+
+```{figure} pictures/srda2.png
+:alt: Illustrating direct register addressing with two registers.
+:name: wk9:fig:rda_with_2_regs
+:width: 60%
+:align: center
+
+Illustrating register direct addressing with two registers: d is the source of the first operand, r is the source of the second operand. The result overwrites the data in register d.
+```
+
+**Examples**
+
+```
+ADD R16, R17  ;Add the contents of R16 and R17. Return sum to R16.
+CP R16, R17   ;Compare the values of R16 and R17
+MOV R16, R17  ;Copy contents of R17 into R16
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+As with the previous addressing mode, this one is accessing or acting on the data in two of the general purpose registers and although it overwrites the data in Rd is also does not include any write back to SRAM/EEPROM.
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
