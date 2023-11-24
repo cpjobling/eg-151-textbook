@@ -231,7 +231,7 @@ Image source: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-
 
 ### Environmental monitoring
 
-```{image} https://cdn.openpr.com/S/7/S709502617_g.jpg
+```{image} pictures/env_mon.jpg
 :alt: Image that illustrated article "Hawa Dawa Installs the Largest Air Quality Measurement Network in Germany"
 :width: 50%
 ```

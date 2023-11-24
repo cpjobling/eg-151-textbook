@@ -251,7 +251,7 @@ A block diagram of the clock circuity is given in {numref}`wk8:fig:atmel328_clk`
 :width: 100%
 :align: center
 
-Clock distribution of the ATmega328 (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet {cite}`atmel_data`).
+Clock distribution of the ATmega328 (Reproduced from Figure 8.1 of the Atmel ATmega328 data sheet).
 ```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
