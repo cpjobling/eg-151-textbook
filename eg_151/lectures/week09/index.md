@@ -40,15 +40,15 @@ In this section we will review a number of different addressing modes relevant t
 
 ### Contents
 
-* {ref}`wk8:sect1`
+* {ref}`wk9:sect1`
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-* {ref}`wk8:sect2`
+* {ref}`wk9:sect2`
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk8:sect1)=
+(wk9:sect1)=
 ## What is an addressing mode?
 
 An addressing mode is a way in which an operand is specified in an instruction and defines how the CPU finds it. 
@@ -63,8 +63,8 @@ The six addressing modes found in the AVR architecture used by the Atmel ATmega3
 ```{figure} pictures/addressing_modes.png
 :name: wk9:fig:addressing_modes
 :align: center
-:width: 30%
-:alt: The six addressing modes of an AVR processor: inherent, immediate, extended, direct, relative and indexed.
+:width: 100%
+:alt: The six addressing modes of an AVR processor - inherent, immediate, extended, direct, relative and indexed.
 
 The six addressing modes of an AVR processor.
 ```
@@ -77,7 +77,7 @@ The memory address where data is stored is called the  *effective address* of th
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-(wk8:sect2)=
+(wk9:sect2)=
 ## Addressing modes on the Atmel ATmega328
 The AVR<sup>&reg;</sup> Enhanced RISC microcontroller supports powerful and efficient addressing modes for access to the program memory (Flash) and Data memory (SRAM, Register file, I/O Memory, and Extended I/O Memory).
 
@@ -183,7 +183,7 @@ For instructions that use **single direct register addressing**, the operand is 
 ```{figure} pictures/srda.png
 :alt: Illustrating single register direct addressing.
 :name: wk9:fig:srda
-:width: 60%
+:width: 100%
 :align: center
 
 Illustrating single register direct addressing: d is the register number and register d is source of the operand and the destination of the result.
@@ -199,7 +199,9 @@ CLR R16		;Clear R16
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
+```{note}
 Remember the operand represents the data so this addressing mode is accessing or acting on the data using only one of the general purpose registers but does not include any write back to SRAM/EEPROM.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -211,7 +213,7 @@ For instructions that use **direct register addressing with two registers**, the
 ```{figure} pictures/srda2.png
 :alt: Illustrating direct register addressing with two registers.
 :name: wk9:fig:rda_with_2_regs
-:width: 60%
+:width: 100%
 :align: center
 
 Illustrating register direct addressing with two registers: d is the source of the first operand, r is the source of the second operand. The result overwrites the data in register d.
@@ -225,45 +227,267 @@ CP R16, R17   ;Compare the values of R16 and R17
 MOV R16, R17  ;Copy contents of R17 into R16
 ```
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
 
+```{note}
 As with the previous addressing mode, this one is accessing or acting on the data in two of the general purpose registers and although it overwrites the data in Rd is also does not include any write back to SRAM/EEPROM.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### I/O Direct Addressing
 
+Within the user data space there are 64 I/O registers as well as 160 Extended I/O registers. The **first 64** of these can be accessed using instructions **such as `IN` and `OUT` using I/O direct addressing mode**.  In I/O direct addressing mode the operands contain the **address A of one of the lower 64 I/O locations** and a source (Rr) or destination register (Rd). This is illustrated in {numref}`wk9:fig:io_addr`. 
+
+```{figure} pictures/io_addr.png
+:alt: Illustrating I/O direct register addressing - one of the operands comes from one of the I/O registers. 
+:name: wk9:fig:io_addr
+:width: 100%
+:align: center
+
+Illustrating I/O direct addressing: the source (or destination) will be from an I/O register. The destination (or source) will be one of the general purpose registers.
+```
+
+**Examples[^wk9:note1]** 
+
+```
+IN R16, PIND	 ;Load (input) the contents of PIND into R16
+OUT PORTC, R17	 ;Store (output) the contents of R17 to PORTC
+```
+
+[^wk9:note1]: Note: in these examples, the labels  `PIND` and `PORTC` must have already been defined.
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+```{note}
+Be aware that loading and storing data to these registers using instructions such as LD and ST must address these registers differently and does not use I/O direct addressing mode. 
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Data Direct Addressing
+
+Instructions that use **direct data addressing** are **two words** (32-bits) in length, the first operand, Rr/Rd is one of the general-purpose registers and the second is 16-bit Data Address contained in the 16 LSBs of the two-word instruction.
+This is illustrated in {numref}`wk9:fig:dd_addr`. 
+
+```{figure} pictures/dd_addr.png
+:alt: Illustrating data direct addressing with a general purpose register and data stored in memory.
+:name: wk9:fig:dd_addr
+:width: 100%
+:align: center
+
+Illustrating data direct addressing: the source (or destination) will be in memory. The destination (or source) will be one of the general purpose registers.
+```
+
+**Examples** 
+
+```
+LDS R16, 0x0100   ;Load the contents of data space address hex 0100 into R16
+STS 0x0101, R17   ;Store the contents of R17 to data space address hex 0101
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Immediate Addressing
 
+With instructions that use **immediate addressing** the actual data to be used is included within the instruction itself as a constant value[^wk9:note2]. This is illustrated in {numref}`wk9:fig:imm_addr`. 
+
+```{figure} pictures/imm_addr.png
+:alt: Illustrating immediate addressing in which the operand is a number in the instruction.
+:name: wk9:fig:imm_addr
+:width: 100%
+:align: center
+
+Illustrating immediate addressing: the destination will be an one of the general purpose registers. The source will be a data value given in the instruction.
+```
+
+[^wk9:note2]: the value of the second operand of an operator with immediate addressing will be hard coded into the code and cannot be changed during the running of a program.
+
+**Examples** 
+
+```
+LDI R16, 0x5B   ;Load the hex value 5B into R16
+SUBI R17, 24    ;Subtract the decimal value 24 from the contents of R17
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+```{note}
+Since the instruction already contains the data, this is a fast addressing mode and only takes one clock cycle to complete.
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Immediate vs Data Direct Addressing
+
+Instructions that use immediate addressing, take one clock-cycle to complete. For example `LDI` - load immediate:
+
+```{image} pictures/wk9_ldi.png
+:alt: Manual page for the LDI command
+```
+
+Instructions that use register or data direct addressing, take two clock-cycles to complete. For example `LDS` - load from store 
+ needs to load the operator and decode the register address, then load data from the data space into the register.
+
+```{image} pictures/wk9_lds.png
+:alt: Manual page for the LDS command
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Indirect Data Addressing
 
+With instructions that use **indirect data addressing** the operand address is the contents of one of the X- Y- Z-pointer registers. This is illustrated in {numref}`wk9:fig:id_addr`. 
+
+```{figure} pictures/id_addr.png
+:alt: Illustrating indirect direct addressing in which the registers provide the address of the operand.
+:name: wk9:fig:id_addr
+:width: 100%
+:align: center
+
+Illustrating indirect direct addressing in which two registers provide the address in memory of the operand.
+```
+
+**Examples**
+
+```
+LDS R26, 0x00
+LDS R27, 0x10 
+
+LD R18, X	   ;Load R18 with data stored at the address in the X- pointer register
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+```{note}
+This mode allows the address to be a run time computed value, whereas the direct address must be computed at compile time/assembly time/load time.
+
+This has several important use cases including setting up storage for arrays or other structures in memory.
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Indirect Data Addressing with Displacement
+
+As with indirect data addressing, the microcontroller makes use of the Y and/or Z pointers with an additional displacement to access data stored in the data space.
+
+This is the best way to access an array of data and is illustrated in {numref}`wk9:fig:id_addr_2`. 
+
+```{figure} pictures/id_addr_2.png
+:alt: Illustrating indirect direct addressing with displacement.
+:name: wk9:fig:id_addr_2
+:width: 100%
+:align: center
+
+Illustrating indirect direct addressing with displacement.
+```
+
+**Examples**
+
+```
+LDS R28, 0x00
+LDS R29, 0x10 
+
+LD R18, Y + 1	   ;Load R18 with data stored at the address in the Y- pointer register with a displacement of 1
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+```{note}
+This mode allows the address to be a run time computed value, whereas the direct address must be computed at compile time/assembly time/load time.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Indirect Data Addressing with Increment/Decrement
 
+Indirect Data Addressing mode also supports Post-increment and Pre-decrement addressing.
+W
+ith Data Indirect Addressing with Post-increment, the X-, Y-, or the Z-pointer is incremented after the operation. The operand address is the content of the X-, Y-, or the Z-pointer before incrementing.
+
+With Data Indirect Addressing with Pre-decrement, the X,- Y-, or the Z-pointer is decremented before the operation. The operand address is the decremented contents of the X-, Y-, or the Z-pointer.
+
+**Examples**
+
+```
+LD R16, Z+ ;Load R16 with data stored at the current address in the Z pointer register then increment the Z register
+LD R16, -Z ;Load R16 with data stored at the current address in the Z pointer register - 1
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "notes"}}
+
+```{note}
+This mode is useful for iterating through arrays of or sequentially stored linked data.
+```
+
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 ### Relative Addressing
+With relative program memory addressing the operand contains a signed 12-bit offset value which during execution is added to the program counter to change the flow of the program.
+
+The destination of the branch (effective address) instruction is calculated by adding the signed byte following the opcode (-2048 to +2047) to the PC content. This is illustrated in {numref}`wk9:fig:rel_addr`. 
+
+```{figure} pictures/rel_addr.png
+:alt: Illustrating relative addressing which adjusts the program counter and is typically used for branching.
+:name: wk9:fig:rel_addr
+:width: 100%
+:align: center
+
+Illustrating relative addressing which adjusts the program counter and is typically used for branching.
+```
+
+**Examples**
+
+```
+RJMP Label	;Jump to the address specified by label
+RCALL Label	;relative call to an address (subroutine)
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{note}
+This addressing mode is used by instructions such as RJMP to modify the flow of a program, this typically is used in conjunction with test conditions or at the end of the code to make it loop back to the start.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 #### Relative Addressing Example
+
+```{figure} pictures/rad_example.png
+:alt: Example of relative addressing
+:name: wk9:fig:rel_addr_2
+:width: 100%
+:align: center
+
+An example to illustrate relative addressing
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+
+```{image} pictures/rel_addr_2.png
+:alt: RJMP LED1
+:width: 50%
+```
+
+```
+RJMP LED1
+1100 kkkk kkkk kkkk
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+is
+
+```
+C006 = 1100 0000 0000 0110
+RJMP +6
+```
+
++++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
+
+```{image} pictures/rel_addr_3.png
+:alt: The program counter jumps 6 memory locations forward.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
@@ -275,6 +499,17 @@ In this section have reviewed different addressing modes supported by the AVR in
 
 ## On Canvas
 
-This week in your own time, you should review all the content covered in these lecture notes, self-directed study material and the lab classes in preparation for the class test next week. 
+You should review Section 3 of the AVR instructions set manual ({cite}`avr_instruction_set`) on program and data addressing modes. There is a short quiz covering the content of this chapter. 
 
-You should also review Section 3 of the AVR instructions set manual {cite}`avr_instruction_set`) on program and data addressing modes.
+In preparation for the class test next week, you should review all the content covered in these lecture notes, self-directed study material and the lab classes. 
+
+Note that the class test is closed-book but you have will access to the reference manuals mentioned in these notes.
+
+```{code-cell} ipython3
+---
+editable: true
+slideshow:
+  slide_type: ''
+---
+
+```

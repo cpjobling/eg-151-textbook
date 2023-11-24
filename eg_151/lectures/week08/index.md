@@ -74,7 +74,7 @@ Memory is used to store data and information but the real goal of the MCU is com
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
-```{figure} pictures/ALU.png
+```{figure} pictures/alu.png
 :name: wk8:fig:alu
 :align: center
 :width: 50%
@@ -136,13 +136,13 @@ The highlighted components are:
 
 +++ {"editable": true, "slideshow": {"slide_type": "notes"}, "jp-MarkdownHeadingCollapsed": true}
 
-**Notes**
-
+```{note}
 * The stack is an area in SRAM where data/information/MCU state can be temporarily pushed on and popped off - the stack pointer holds the memory address of the top of the stack.
 
 * The program counter holds the address of the next address to be executed.
 
-* The general purpose registers are located at the bottom of the data space so can be accessed directly by the ALU. Lower spec microcontrollers/CPUs may only have a single register which is referred to as an accumulator..
+* The general purpose registers are located at the bottom of the data space so can be accessed directly by the ALU. Lower spec microcontrollers/CPUs may only have a single register which is referred to as an accumulator.
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
@@ -509,7 +509,7 @@ The process is illustrated as an algorithm below
 Step 1: The address in the program counter (PC) is transferred to the memory address register (MAR).
 ```
 MAR <- (PC)
-``` 
+```
 
 +++ {"editable": true, "slideshow": {"slide_type": "fragment"}}
 
