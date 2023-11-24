@@ -22,7 +22,6 @@ parts:
     - file: lectures/week07/index
     - file: lectures/week08/index
     - file: lectures/week09/index
-    - file: lectures/week10/index
     - file: references
   - caption: Programming in C
     numbered: false
