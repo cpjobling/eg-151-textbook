@@ -58,6 +58,11 @@ parts:
   - caption: Mini Projects
     chapters:
     - file: projects/index
+    - file: projects/voltmeter
+    - file: projects/range_finder
+    - file: projects/clock_timer
+    - file: projects/weather_station
+    - file: projects/weather_station_display
   - caption: Appendices
     chapters:
     - file: appendix/appendix_a

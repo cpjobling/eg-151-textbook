@@ -1,3 +1,4 @@
+(micros_lab)=
 # Microcontroller Programming Laboratory
 
 Our colleague Dr Timothy Davies designed the Microcontroller Programming laboratory to teach you the fundamentals of programming microcontrollers. 
