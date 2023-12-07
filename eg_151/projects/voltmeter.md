@@ -44,6 +44,6 @@ The demo code which accounts for these adjustments follows:
 
 <script src="https://gist.github.com/cpjobling/1326229ed9e42f174d541fb8a1d64824.js"></script>
 
-```python
+## Bipolar Voltage Measurement
 
-```
+Extra information is provided in {ref}`bipolar_voltage_measurement`.
