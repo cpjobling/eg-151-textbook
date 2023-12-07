@@ -1,0 +1,1053 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Architecture of the Atmel ATmega 328 Microcontroller &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week02/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Programming and Program Development" href="../week03/index.html" />
+    <link rel="prev" title="Introduction to Data Representation" href="../data_representation/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week02/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week02/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Architecture of the Atmel ATmega 328 Microcontroller</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-atmel-atmega-328-mcu">Introducing the Atmel ATmega 328 MCU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-status-register">The Status Register</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-status-register">What is The status register?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-flags">Status Register Flags</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-example">Status Register Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-demonstration">Status Register Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-program-counter">The program counter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-program-counter">What is The Program Counter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-program">Example of a program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organisation-of-program-memory">Organisation of program memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bootloader">The Bootloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-counter-demonstration">Program Counter Demonstration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stack-pointer">The Stack Pointer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stack">The Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-stack-pointer">What is the stack pointer?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-microcontroller-i-o">Introduction to Microcontroller I/O</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-on-the-atmega328">I/O on the ATmega328</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mcu-inputs">MCU Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-ups">Pull Ups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ports-as-general-digital-i-o">Ports as General Digital I/O</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin">Configuring a pin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin-data-direction">Configuring a Pin - Data Direction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-a-pin-output">Writing to a Pin - Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-from-a-pin-input">Reading from a Pin - Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin-pull-up-enable">Configuring a Pin - Pull Up Enable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-i-o-demonstration">Basic I/O Demonstration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-questions">Any Questions?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-time">Next time</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="architecture-of-the-atmel-atmega-328-microcontroller">
+<span id="week02"></span><h1>Architecture of the Atmel ATmega 328 Microcontroller<a class="headerlink" href="#architecture-of-the-atmel-atmega-328-microcontroller" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<section id="lecture-topics">
+<h2>Lecture Topics<a class="headerlink" href="#lecture-topics" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p><a class="reference internal" href="#week02-intro"><span class="std std-ref">Introducing the Atmel ATmega 328 MCU</span></a></p></li>
+<li><p><a class="reference internal" href="#week02-status-register"><span class="std std-ref">The Status Register</span></a></p></li>
+<li><p><a class="reference internal" href="#week02-program-counter"><span class="std std-ref">The program counter</span></a></p></li>
+<li><p><a class="reference internal" href="#week02-stack-pointer"><span class="std std-ref">The Stack Pointer</span></a></p></li>
+<li><p><a class="reference internal" href="#week02-io"><span class="std std-ref">Introduction to Microcontroller I/O</span></a></p></li>
+</ul>
+</section>
+<section id="introducing-the-atmel-atmega-328-mcu">
+<span id="week02-intro"></span><h2>Introducing the Atmel ATmega 328 MCU<a class="headerlink" href="#introducing-the-atmel-atmega-328-mcu" title="Permalink to this heading">#</a></h2>
+<p>In <a class="reference internal" href="../week01/index.html#week01"><span class="std std-ref">Introduction to Microcontrollers and Microcontroller Architecture</span></a> we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at <a class="reference internal" href="#week02-fig-atmel-arch"><span class="std std-numref">Fig. 18</span></a> which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.</p>
+<figure class="align-center" id="week02-fig-atmel-arch">
+<a class="reference internal image-reference" href="../../_images/atmel_arch.png"><img alt="The architecture of the Atmel ATMega328 Microcontroller" src="../../_images/atmel_arch.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">The architecture of the Atmel ATMega328 Microcontroller</span><a class="headerlink" href="#week02-fig-atmel-arch" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>This is an 8-bit CMOS microcontroller based on the AVR enhanced <strong>RISC architecture</strong> with 131 instructions</p></li>
+</ul>
+<ul class="simple">
+<li><p>It has 2KB of Internal SRAM, 32 KB of Flash Memory and 1 KB of EEPROM</p></li>
+</ul>
+<ul class="simple">
+<li><p>It has <strong>32 General Purpose Registers</strong></p></li>
+</ul>
+<ul class="simple">
+<li><p>It can achieve up to 20 MIPS at 20 MHz (maximum clock frequency)</p></li>
+</ul>
+<ul class="simple">
+<li><p>There are <strong>8 Analog I/O Pins</strong> connected to 10-bit ADC</p></li>
+</ul>
+<ul class="simple">
+<li><p>There are <strong>22 Digital I/O Pins</strong> (6 capable of PWM)</p></li>
+</ul>
+<ul class="simple">
+<li><p>The AVR core uses a <strong>Harvard memory  architecture</strong> – with separate memories and buses for program and data.</p></li>
+</ul>
+</section>
+<section id="the-status-register">
+<span id="week02-status-register"></span><h2>The Status Register<a class="headerlink" href="#the-status-register" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/wallpaper.png"><img alt="Image of a microcontroller used as chapter headings in slide show" src="../../_images/wallpaper.png" style="width: 50%;" /></a>
+<p><a class="reference external" href="https://wallpaper.dog/microcontroller-wallpapers">wallpaper.dog/microcontroller-wallpapers</a></p>
+<section id="what-is-the-status-register">
+<h3>What is The status register?<a class="headerlink" href="#what-is-the-status-register" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>An 8-bit register containing flags that contain information about the result of the most recently executed instruction and the current <strong>state of the processor</strong> (<a class="reference internal" href="#week02-fig1-sreg"><span class="std std-numref">Fig. 19</span></a>).</p></li>
+<li><p>The status register is updated after all ALU instructions as specified by the instruction set reference.</p></li>
+</ul>
+<figure class="align-default" id="week02-fig1-sreg">
+<a class="reference internal image-reference" href="../../_images/sreg.png"><img alt="SREG - The AVR Status Register" src="../../_images/sreg.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">SREG - The AVR Status Register</span><a class="headerlink" href="#week02-fig1-sreg" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="week02-fig1-sreg-setting">
+<img alt="Example instruction showing how the status register is affected" src="../../_images/AVR-instruction.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Example instruction showing how the status register is affected</span><a class="headerlink" href="#week02-fig1-sreg-setting" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="status-register-flags">
+<h3>Status Register Flags<a class="headerlink" href="#status-register-flags" title="Permalink to this heading">#</a></h3>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>Bit 0 - Carry Flag (C)</strong>:</p></td>
+<td><p>The carry flag is set when the execution of the previous arithmetic or logic instruction produced a carry out of bit-7 or required a borrow</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bit 1 – Zero Flag (Z)</strong>:</p></td>
+<td><p>The zero flag is set when the result of the previous arithmetic or logic instruction resulted in a zero</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bit 2 – Negative Flag (N)</strong>:</p></td>
+<td><p>The negative flag is set when the result of the previous arithmetic or logic instruction is negative</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bit 3 – Two’s Complement Overflow Flag (V)</strong>:</p></td>
+<td><p>The Two’s Complement Overflow Flag V supports two’s complement arithmetic. +ve + +ve = -ve  or  -ve + -ve = +ve</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bit 4 – Sign Bit (S)</strong>:</p></td>
+<td><p>The S-bit is always an exclusive or between the Negative Flag and the Two’s Complement Overflow Flag.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bit 5 – Half Carry Flag (H)</strong>:</p></td>
+<td><p>The half carry flag is set when the execution of the previous arithmetic or logic instruction produced a carry out of bit-3 or required a borrow from bit-4.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Bit 6 – Bit Copy Storage (T)</strong>:</p></td>
+<td><p>A bit from a register in the Register File can be copied into T by the BST instruction, and a bit in T can be copied into a bit in a register in the Register File by the BLD instruction.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Bit 7 – Global Interrupt Enable (I)</strong>:</p></td>
+<td><p>The Global Interrupt Enable bit is set to enable interrupts. The individual interrupt enable control is then performed in separate control registers.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="status-register-example">
+<h3>Status Register Example<a class="headerlink" href="#status-register-example" title="Permalink to this heading">#</a></h3>
+<img alt="An example of how the status register works" src="../../_images/sreg-example.png" />
+</section>
+<section id="status-register-demonstration">
+<h3>Status Register Demonstration<a class="headerlink" href="#status-register-demonstration" title="Permalink to this heading">#</a></h3>
+<p>Code to be executed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDI</span> <span class="n">R16</span><span class="p">,</span> <span class="n">Addend</span>
+<span class="n">LDI</span> <span class="n">rR17</span><span class="p">,</span> <span class="n">Augend</span>
+<span class="n">ADD</span> <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/status-reg.png"><img alt="Status register" src="../../_images/status-reg.png" style="width: 50%;" /></a>
+<p>Record status of SREG at line 3.</p>
+<section id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+\mathrm{Addend} &amp; 0\,1\,1\,0\,1\,1\,1\,0 &amp; 110_{10}\\
+\mathrm{Augend} &amp; 1\,1\,1\,0\,0\,0\,1\,1 &amp; 227_{10}\\
+\hline
+\mathrm{Sum} &amp; &amp;
+\end{array}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+\mathrm{Addend} &amp; 0\,0\,1\,1\,0\,1\,1\,1 &amp; 55_{10}\\
+\mathrm{Augend} &amp; 0\,1\,0\,1\,0\,0\,0\,0 &amp; 80_{10}\\
+\hline
+\mathrm{Sum} &amp; &amp;
+\end{array}\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+\mathrm{Addend} &amp; 1\,0\,0\,0\,0\,0\,0\,0 &amp; 128_{10}\\
+\mathrm{Augend} &amp; 1\,0\,0\,0\,0\,0\,0\,0 &amp; 128_{10}\\
+\hline
+\mathrm{Sum} &amp; &amp;
+\end{array}\end{split}\]</div>
+</section>
+</section>
+</section>
+<section id="the-program-counter">
+<span id="week02-program-counter"></span><h2>The program counter<a class="headerlink" href="#the-program-counter" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/wallpaper.png"><img alt="Image of a microcontroller used as chapter headings in slide show" src="../../_images/wallpaper.png" style="width: 50%;" /></a>
+<p><a class="reference external" href="https://wallpaper.dog/microcontroller-wallpapers">wallpaper.dog/microcontroller-wallpapers</a></p>
+<section id="what-is-the-program-counter">
+<h3>What is The Program Counter?<a class="headerlink" href="#what-is-the-program-counter" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>A program is a sequence of instructions written in a particular order to perform a specific task</p></li>
+</ul>
+<ul class="simple">
+<li><p>The instructions of the program are stored sequentially in non-volatile memory.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The program counter is a register which holds the address of the next instruction to be executed</p></li>
+</ul>
+</section>
+<section id="example-of-a-program">
+<h3>Example of a program<a class="headerlink" href="#example-of-a-program" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#week02-fig-a-program"><span class="std std-numref">Fig. 21</span></a> illustrates a simple program to add two numbers.</p>
+<figure class="align-default" id="week02-fig-a-program">
+<a class="reference internal image-reference" href="../../_images/pc_example.png"><img alt="An example programme showing three instructions located at memory locations 0 through 2." src="../../_images/pc_example.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">An example programme showing three instructions located at memory locations 0 through 2.</span><a class="headerlink" href="#week02-fig-a-program" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>It is written in assembly code for the Atmel ATmega328 MCU. Each instruction is a programmer-friendly rendition of an 16- or 32-bit binary code that is stored at the memory locations shown.</p>
+</section>
+<section id="organisation-of-program-memory">
+<h3>Organisation of program memory<a class="headerlink" href="#organisation-of-program-memory" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The ATmega328 microcontroller has a 32 Kbyte flash memory which is organised into 256 pages each containing 64 Words of program.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The program counter is 14-bits and can access each of these memory locations <code class="docutils literal notranslate"><span class="pre">0x0000</span></code> – <code class="docutils literal notranslate"><span class="pre">0x3FFE</span></code></p></li>
+</ul>
+<ul class="simple">
+<li><p>The remaining addresses <code class="docutils literal notranslate"><span class="pre">0x3FFF</span></code> – <code class="docutils literal notranslate"><span class="pre">0x7FA5</span></code> (the boot flash section) are reserved for the bootloader</p></li>
+</ul>
+<p><a class="reference internal" href="#week02-fig-prog-mem"><span class="std std-numref">Fig. 22</span></a> illustrates the organisation of the program memory for the ATmega328.</p>
+<figure class="align-default" id="week02-fig-prog-mem">
+<a class="reference internal image-reference" href="../../_images/prog_mem.png"><img alt="The program memory of the ATmega328 microcontroller" src="../../_images/prog_mem.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The program memory of the ATmega328 microcontroller</span><a class="headerlink" href="#week02-fig-prog-mem" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Remember a word is 16 bits</p>
+<p>64 (words) = 128 bytes</p>
+<p>256 (pages) each of 128 bytes = 32 KB (or decimal 32768 / binary 32678)</p>
+<p><a class="reference internal" href="#week02-fig-prog-counter"><span class="std std-numref">Fig. 23</span></a> shows how the program counter is used to access the next instruction.</p>
+<figure class="align-default" id="week02-fig-prog-counter">
+<a class="reference internal image-reference" href="../../_images/prog_counter.png"><img alt="How the program counter is used to access instructions within the available pages of program memory." src="../../_images/prog_counter.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">How the program counter is used to access instructions within the available pages of program memory.</span><a class="headerlink" href="#week02-fig-prog-counter" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The Least significant six bits address the instruction words within a given page. Note: <span class="math notranslate nohighlight">\(2^6 = 64\)</span> words which is <span class="math notranslate nohighlight">\(128\)</span> bytes.</p>
+<p>The 8 most significant bits address the <em>page</em> in programme memory in which the instruction word is to be found. Note: <span class="math notranslate nohighlight">\(2^8 = 256\)</span> and that <span class="math notranslate nohighlight">\(256 \times 64 \times 2 = 32,768\)</span> bytes.</p>
+</section>
+<section id="the-bootloader">
+<h3>The Bootloader<a class="headerlink" href="#the-bootloader" title="Permalink to this heading">#</a></h3>
+<p>In short, microcontrollers are usually programmed through a programmer (specialist piece of hardware) unless you have a piece of firmware in your microcontroller that allows installing new firmware without the need of an external programmer. This small piece of firmware is called a bootloader and can allow the program to be rewritten by the microcontroller itself e.g. via an over-the-air (OTA) updates.</p>
+<p>The bootloader also contains the reset routine (power-on-reset)</p>
+<p>During reset, all I/O Registers are set to their initial values, and the program starts execution from the Reset Vector. For the ATmega168A/168PA/328/328P family of microcontrollers, the instruction placed at the Reset Vector must be a JMP – Absolute Jump – instruction to the reset handling routine.</p>
+</section>
+<section id="program-counter-demonstration">
+<h3>Program Counter Demonstration<a class="headerlink" href="#program-counter-demonstration" title="Permalink to this heading">#</a></h3>
+</section>
+</section>
+<section id="the-stack-pointer">
+<span id="week02-stack-pointer"></span><h2>The Stack Pointer<a class="headerlink" href="#the-stack-pointer" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/wallpaper.png"><img alt="Image of a microcontroller used as chapter headings in slide show" src="../../_images/wallpaper.png" style="width: 50%;" /></a>
+<p><a class="reference external" href="https://wallpaper.dog/microcontroller-wallpapers">wallpaper.dog/microcontroller-wallpapers</a></p>
+<section id="the-stack">
+<h3>The Stack<a class="headerlink" href="#the-stack" title="Permalink to this heading">#</a></h3>
+<p>In a microcontroller, the ‘stack’ is a space in memory with a fixed origin and a variable size that can be used for temporary storage purposes, such as storing local variables and saving return address for subroutine calls and interrupts.</p>
+<p>The stack supports two types of operations:</p>
+<ol class="arabic simple">
+<li><p>Push – a data item is placed at the location pointed to by the stack pointer</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Pop or Pull – a data item at the current location pointed to by the stack pointer is removed.</p></li>
+</ol>
+<p>The stack typically operates as a “Last In First Out” (LIFO) buffer</p>
+</section>
+<section id="what-is-the-stack-pointer">
+<h3>What is the stack pointer?<a class="headerlink" href="#what-is-the-stack-pointer" title="Permalink to this heading">#</a></h3>
+<p>The <em>stack pointer register</em> keeps track of the top of the stack.</p>
+<ul class="simple">
+<li><p>A stack <code class="docutils literal notranslate"><span class="pre">PUSH</span></code> command will decrement the stack pointer.</p></li>
+</ul>
+<ul class="simple">
+<li><p>A stack <code class="docutils literal notranslate"><span class="pre">POP</span></code> command will increment the stack pointer.</p></li>
+</ul>
+<p>The AVR stack pointer is implemented as two 8-bit registers in the I/O space.</p>
+<p>The are called <code class="docutils literal notranslate"><span class="pre">SPH</span></code> (stack pointer high byte) and <code class="docutils literal notranslate"><span class="pre">SPL</span></code> (stack pointer low byte) as illustrated in <a class="reference internal" href="#week02-fig-sp-register"><span class="std std-numref">Fig. 24</span></a>.</p>
+<figure class="align-center" id="week02-fig-sp-register">
+<a class="reference internal image-reference" href="../../_images/sp_register.png"><img alt="The AVR stack pointer implemented as two bytes SPH and SPL." src="../../_images/sp_register.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">The AVR stack pointer implemented as two bytes SPH and SPL.</span><a class="headerlink" href="#week02-fig-sp-register" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#week02-fig-sp-operation"><span class="std std-numref">Fig. 25</span></a> illustrates the operation of the stack pointer as it appears to the user of the stack.</p>
+<figure class="align-center" id="week02-fig-sp-operation">
+<a class="reference internal image-reference" href="../../_images/sp_operation.png"><img alt="Illustration of the operation of a stack." src="../../_images/sp_operation.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Illustration of the operation of a stack.</span><a class="headerlink" href="#week02-fig-sp-operation" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Like a box of Pringles, when you pop an item of the stack, it comes from the top. The pringle below the one you have just taken off becomes the new top. If you were to put the Pringle back, it becomes the new top. When the pringles box is empty, there is nothing on the stack and the stack pointer will be pointing at the memory address of the bottom of the stack.</p>
+</section>
+</section>
+<section id="introduction-to-microcontroller-i-o">
+<span id="week02-io"></span><h2>Introduction to Microcontroller I/O<a class="headerlink" href="#introduction-to-microcontroller-i-o" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/mc_io_wallpaper.png"><img alt="Image of a microcontroller used as chapter heading heading for MC I/O Sectiom" src="../../_images/mc_io_wallpaper.png" style="width: 50%;" /></a>
+<p><a class="reference external" href="https://wallpaper.dog/microcontroller-wallpapers">wallpaper.dog/microcontroller-wallpapers</a>)</p>
+<section id="i-o-on-the-atmega328">
+<h3>I/O on the ATmega328<a class="headerlink" href="#i-o-on-the-atmega328" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#week02-fig-arduino-nano"><span class="std std-numref">Fig. 26</span></a> illustrates the layout of the input-output (I/O) pins of the Atmel ATmega328 packaged as an Arduino Nano that you will be using in the lab and project.</p>
+<figure class="align-center" id="week02-fig-arduino-nano">
+<a class="reference internal image-reference" href="../../_images/arduino_nano.png"><img alt="Input/output pins for the Arduino nano" src="../../_images/arduino_nano.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Input/output pins for the Arduino nano</span><a class="headerlink" href="#week02-fig-arduino-nano" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#week02-fig-atmega325-schematic"><span class="std std-numref">Fig. 27</span></a> is the schematic diagram of the Atmel ATmega328 reproduced from the reference manual.</p>
+<figure class="align-default" id="week02-fig-atmega325-schematic">
+<a class="reference internal image-reference" href="../../_images/atmega325_schematic.png"><img alt="Schematic diagram showing the I/O provided by the Atmel ATmega328 microcontroller" src="../../_images/atmega325_schematic.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Schematic diagram showing the I/O provided by the Atmel ATmega328 microcontroller</span><a class="headerlink" href="#week02-fig-atmega325-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="mcu-inputs">
+<h3>MCU Inputs<a class="headerlink" href="#mcu-inputs" title="Permalink to this heading">#</a></h3>
+<p>Consider a switch which on one side is connected to a 5V power source and on the other side to a microntroller input.</p>
+<p><img alt="" src="../../_images/switch.png" /></p>
+<p>What voltage is read at the I/O port when the switch is closed and when it is open?</p>
+</section>
+<section id="pull-ups">
+<h3>Pull Ups<a class="headerlink" href="#pull-ups" title="Permalink to this heading">#</a></h3>
+<p>To get around this issue, microcontrollers use pull-up (or pull-down) circuitry to hold the port high (or low) (see <a class="reference internal" href="#week02-fig-pullup"><span class="std std-numref">Fig. 28</span></a>).</p>
+<figure class="align-default" id="week02-fig-pullup">
+<a class="reference internal image-reference" href="../../_images/pullup.png"><img alt="Schematic of the pullup circuitry for the ATmega328 (from the manual)." src="../../_images/pullup.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Schematic of the pullup circuitry for the ATmega328 (from the manual).</span><a class="headerlink" href="#week02-fig-pullup" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>What voltage is read at the I/O port when the switch ‘S1’ is closed and when it is open now?</p>
+<a class="reference internal image-reference" href="../../_images/pu_enabled.png"><img alt="port with pull-up enabled" src="../../_images/pu_enabled.png" style="width: 50%;" /></a>
+</section>
+<section id="ports-as-general-digital-i-o">
+<h3>Ports as General Digital I/O<a class="headerlink" href="#ports-as-general-digital-i-o" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="week02-fig-general-io">
+<a class="reference internal image-reference" href="../../_images/general_io.png"><img alt="The PORTC register" src="../../_images/general_io.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">PORTC</span></code> register</span><a class="headerlink" href="#week02-fig-general-io" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The ports are bi-directional I/O ports with optional internal pull-ups meaning they can be configured to read an input such as a switch or a sensor or to write to an output such as an LED or control an actuator. <a class="reference internal" href="#week02-fig-general-io"><span class="std std-numref">Fig. 29</span></a> shows a functional description of one I/O-port pin, which we give the notation <code class="docutils literal notranslate"><span class="pre">Pxn</span></code>.</p>
+</section>
+<section id="configuring-a-pin">
+<h3>Configuring a pin<a class="headerlink" href="#configuring-a-pin" title="Permalink to this heading">#</a></h3>
+<figure class="align-default" id="week02-fig-iomap">
+<a class="reference internal image-reference" href="../../_images/iomap.png"><img alt="A portion of the memory map of the Atmel ATmega328 showing the location of the I/O registers." src="../../_images/iomap.png" style="width: 750%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">A portion of the memory map of the Atmel ATmega328 showing the location of the I/O registers.</span><a class="headerlink" href="#week02-fig-iomap" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Recall the 64 I/O registers early on in the user data space (see <a class="reference internal" href="#week02-fig-iomap"><span class="std std-numref">Fig. 30</span></a>):</p>
+<ul class="simple">
+<li><p>General purpose registers – <code class="docutils literal notranslate"><span class="pre">0x0000</span></code> – <code class="docutils literal notranslate"><span class="pre">0x001F</span></code></p></li>
+<li><p>Three I/O memory address locations are allocated for each port, one each for:</p>
+<ul>
+<li><p>the <em>Data Registers</em> – <code class="docutils literal notranslate"><span class="pre">PORTx</span></code>,</p></li>
+<li><p>the <em>Data Direction Register</em> – <code class="docutils literal notranslate"><span class="pre">DDRx</span></code>, and</p></li>
+<li><p>the <em>Port Input Pins</em> – <code class="docutils literal notranslate"><span class="pre">PINx</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>Note: <code class="docutils literal notranslate"><span class="pre">x</span></code> refers to the numbering letter for the port (<code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code>, or <code class="docutils literal notranslate"><span class="pre">D</span></code> in our case).e)</p>
+</section>
+<section id="configuring-a-pin-data-direction">
+<h3>Configuring a Pin - Data Direction<a class="headerlink" href="#configuring-a-pin-data-direction" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">DDxn</span></code> bit in the <code class="docutils literal notranslate"><span class="pre">DDRx</span></code> Register (illustrated for <code class="docutils literal notranslate"><span class="pre">DDRB</span></code> in <a class="reference internal" href="#week02-fig-ddrb"><span class="std std-numref">Fig. 31</span></a>) selects the data direction (input or output) of this pin.</p>
+<figure class="align-default" id="week02-fig-ddrb">
+<a class="reference internal image-reference" href="../../_images/ddrb.png"><img alt="DDRB - The port B data direction register." src="../../_images/ddrb.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">DDRB</span></code> - The port B data direction register.</span><a class="headerlink" href="#week02-fig-ddrb" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>Writing <strong>logic one</strong> to <code class="docutils literal notranslate"><span class="pre">DDxn</span></code>, <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> is configured as an <strong>output pin</strong>.</p></li>
+<li><p>Writing <strong>logic zero</strong> to <code class="docutils literal notranslate"><span class="pre">DDxn</span></code>, <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> is configured as an <strong>input pin</strong>. .</p></li>
+</ul>
+</section>
+<section id="writing-to-a-pin-output">
+<h3>Writing to a Pin - Output<a class="headerlink" href="#writing-to-a-pin-output" title="Permalink to this heading">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">Pxn</span></code> bit in the <code class="docutils literal notranslate"><span class="pre">PORTx</span></code> Register (illustrated for <code class="docutils literal notranslate"><span class="pre">PORTC</span></code> in <a class="reference internal" href="#week02-fig-portc"><span class="std std-numref">Fig. 32</span></a>) has two purposes dependent on the condition of the corresponding bit in the <code class="docutils literal notranslate"><span class="pre">DDRx</span></code> register.</p>
+<figure class="align-default" id="week02-fig-portc">
+<a class="reference internal image-reference" href="../../_images/portc.png"><img alt="PORTC - the port C data register" src="../../_images/portc.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">PORTC</span></code> - the port C data register</span><a class="headerlink" href="#week02-fig-portc" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If the <code class="docutils literal notranslate"><span class="pre">DDRx</span></code> bit is configured as an output:</p>
+<ul class="simple">
+<li><p>Writing logic one to <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> drives the pin high (on-state).</p></li>
+<li><p>Writing logic zero to <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> to logic zero drives the pin low (off-state).</p></li>
+</ul>
+</section>
+<section id="reading-from-a-pin-input">
+<h3>Reading from a Pin - Input<a class="headerlink" href="#reading-from-a-pin-input" title="Permalink to this heading">#</a></h3>
+<p>The port pin can be read through the <strong><code class="docutils literal notranslate"><span class="pre">PINxn</span></code> Register bit</strong> (illustrated for <code class="docutils literal notranslate"><span class="pre">PINB</span></code> in <a class="reference internal" href="#week02-fig-pinb"><span class="std std-numref">Fig. 33</span></a>.</p>
+<figure class="align-default" id="week02-fig-pinb">
+<a class="reference internal image-reference" href="../../_images/pinb.png"><img alt="PINB - the port B input pins address" src="../../_images/pinb.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">PINB</span></code> - the port B input pins address</span><a class="headerlink" href="#week02-fig-pinb" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>This is independent of the setting of Data Direction bit <code class="docutils literal notranslate"><span class="pre">DDxn</span></code>, however is good practice to have it set.</p>
+<p><strong>Writing</strong> a logic one to <code class="docutils literal notranslate"><span class="pre">PINxn</span></code> toggles the value of <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code>, independent on the value of <code class="docutils literal notranslate"><span class="pre">DDRxn</span></code>.</p>
+</section>
+<section id="configuring-a-pin-pull-up-enable">
+<h3>Configuring a Pin - Pull Up Enable<a class="headerlink" href="#configuring-a-pin-pull-up-enable" title="Permalink to this heading">#</a></h3>
+<p>Providing a port is configured as an input.</p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> is written <strong>logic one</strong> when the pin is configured as an input pin, the <strong>pull-up resistor</strong> is activated.</p></li>
+<li><p>To switch the <strong>pull-up resistor</strong> off, <code class="docutils literal notranslate"><span class="pre">PORTxn</span></code> has to be written logic zero or the pin has to be configured as an output pin.</p></li>
+</ul>
+</section>
+<section id="basic-i-o-demonstration">
+<h3>Basic I/O Demonstration<a class="headerlink" href="#basic-i-o-demonstration" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/ide_for_demo.png"><img alt="Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O." src="../../_images/ide_for_demo.png" style="width: 50%;" /></a>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we have:</p>
+<ul class="simple">
+<li><p>Introduced a few more parts of the AVR core, namely, the status register, program counter and stack pointer and how these are used under normal operation</p></li>
+<li><p>Started  to look at I/O on a microcontroller including the concept of pull up resistors as well as some of the specific registers used in the AVR core to enable the use of both input and output device</p></li>
+</ul>
+<section id="on-canvas">
+<h3>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h3>
+<p>Canvas module <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/modules/305537?wrap=1">Week 2: Microcontroller Architecture and I/O</a>, along with these notes, there is some additional self study material on canvas on page <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/pages/week-3-atmel-atmega328-architecture-overview?module_item_id=2258072">Week 2: Atmel ATmega328 Architecture Overview</a>. This includes a video demonstration, from my former colleague Ben Clifford, of the various topics discussed in this session.</p>
+<p>There is also a quiz on Microcontroller Architecture.</p>
+</section>
+<section id="any-questions">
+<h3>Any Questions?<a class="headerlink" href="#any-questions" title="Permalink to this heading">#</a></h3>
+</section>
+<section id="next-time">
+<h3>Next time<a class="headerlink" href="#next-time" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="../week03/index.html#week03"><span class="std std-ref">Introduction to Programming and Program Development</span></a></p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../data_representation/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Data Representation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week03/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Programming and Program Development</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-atmel-atmega-328-mcu">Introducing the Atmel ATmega 328 MCU</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-status-register">The Status Register</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-status-register">What is The status register?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-flags">Status Register Flags</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-example">Status Register Example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#status-register-demonstration">Status Register Demonstration</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-program-counter">The program counter</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-program-counter">What is The Program Counter?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-program">Example of a program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#organisation-of-program-memory">Organisation of program memory</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-bootloader">The Bootloader</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#program-counter-demonstration">Program Counter Demonstration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stack-pointer">The Stack Pointer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stack">The Stack</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-the-stack-pointer">What is the stack pointer?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-microcontroller-i-o">Introduction to Microcontroller I/O</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-on-the-atmega328">I/O on the ATmega328</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mcu-inputs">MCU Inputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pull-ups">Pull Ups</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ports-as-general-digital-i-o">Ports as General Digital I/O</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin">Configuring a pin</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin-data-direction">Configuring a Pin - Data Direction</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-to-a-pin-output">Writing to a Pin - Output</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-from-a-pin-input">Reading from a Pin - Input</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#configuring-a-pin-pull-up-enable">Configuring a Pin - Pull Up Enable</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-i-o-demonstration">Basic I/O Demonstration</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#any-questions">Any Questions?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#next-time">Next time</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

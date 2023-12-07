@@ -1,0 +1,1560 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Programming and Program Development &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week03/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Programming with C" href="../week04/index.html" />
+    <link rel="prev" title="Architecture of the Atmel ATmega 328 Microcontroller" href="../week02/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week03/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week03/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Programming and Program Development</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-terminology">Useful Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">Hello, World!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-program">What is a program?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-software">What is software?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-programming-language">What is a programming language?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-programming">Development of programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">Programming Languages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-level-vs-complexity">Programming Language Level Vs Complexity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-levels">Programming levels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-languages">High-level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-level-languages">Low-level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-c-programming-language">The C Programming language</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flowcharts">Flowcharts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-flowchart">What is a Flowchart?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowcharts-vs-code">Flowcharts Vs Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-a-command-line-shell-used-in-unix-and-macos">Bash (a command-line <em>shell</em> used in Unix and MacOS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">BASIC</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab">MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-for-arduino">C (for Arduino)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">C++</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowchart-building-blocks">Flowchart building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-start-end-block">Terminal: start/end block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-program-flow">Terminal: program flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-block">Process block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#suprocess-block">Suprocess block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-block">Decision block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-block">I/O block</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-drawing-flowcharts">Rules for drawing flowcharts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowchart-drawing-packages">Flowchart Drawing Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-visio-windows-and-web-only">Microsoft Visio (Windows and web only)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-365">Microsoft 365</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flowchart-drawing-tools">Other flowchart drawing tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smartdraw">SmartDraw</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creately">Creately</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-flowcharts-to-capturing-the-most-common-program-constructs">Using flowcharts to capturing the most common program constructs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence">Sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition">Repetition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-sequence">Example 1: A sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-task-as-a-sequence">Solution to task as a sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-shown-in-week03-fig-task1-sequence-written-in-pseudo-code">Program shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">week03:fig:task1_sequence</span></code> written in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-decision-and-a-loop">Example 2: Decision and a Loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-task-1-using-a-decision-and-repetition">Solution to task 1 using a decision and repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-shown-in-week03-fig-task1-loop-written-in-pseudo-code">Program shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">week03:fig:task1_loop</span></code> written in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-example-program">Another Example Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-ways-can-we-write-the-same-program">How many ways can we write the same program?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#any-more">Any more?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#self-directed-learning">Self-directed learning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-programming">Modular Programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-module">What is a module?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-program-non-modular-approach">Example program - Non-Modular Approach</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-specification">Change the specification</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-program-modular-approach">Example program - Modular Approach</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity">Activity</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-programming-and-program-development">
+<span id="week03"></span><h1>Introduction to Programming and Program Development<a class="headerlink" href="#introduction-to-programming-and-program-development" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>When developing an application to run on a microcontroller or other embedded system, there are five key steps which should be followed:</p>
+<ol class="arabic simple">
+<li><p>Clearly define the requirements of the system, planning the number of inputs and outputs required, speed, storage etc. to identify suitable hardware candidates.</p></li>
+<li><p>Plan/design the software using flowcharts and pseudocode to describe the program and identify functions, or blocks of code, and how they link to other blocks.</p></li>
+<li><p>Translate the flowchart into the required programming language.</p></li>
+<li><p>Once the program is at a level where its functionality can start to be tested, testing and debugging is performed to look for errors or unexpected behaviour in software called bugs.</p></li>
+<li><p>When the final software is commissioned, it is important to document the code so as a developer can come back to it at later date or pass the task to another team member.</p></li>
+</ol>
+</section>
+<section id="lecture-topics">
+<h2>Lecture Topics<a class="headerlink" href="#lecture-topics" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p><a class="reference internal" href="#week03-useful-terminology"><span class="std std-ref">Useful Terminology</span></a></p></li>
+<li><p><a class="reference internal" href="#week03-programming-languages"><span class="std std-ref">Programming Languages</span></a></p></li>
+<li><p><a class="reference internal" href="#week03-flowcharts"><span class="std std-ref">Flowcharts</span></a></p></li>
+<li><p><a class="reference internal" href="#week03-modular-programming"><span class="std std-ref">Modular Programming</span></a></p></li>
+</ul>
+</section>
+<section id="useful-terminology">
+<span id="week03-useful-terminology"></span><h2>Useful Terminology<a class="headerlink" href="#useful-terminology" title="Permalink to this heading">#</a></h2>
+<p><img alt="" src="../../_images/prog_wallpaper.png" /></p>
+<section id="hello-world">
+<h3>Hello, World!<a class="headerlink" href="#hello-world" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#week03-fig-hello-world"><span class="std std-numref">Fig. 34</span></a> is a reproduction of “Hello, world!” written in C.</p>
+<figure class="align-default" id="week03-fig-hello-world">
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png"><img alt="Hello World programme written in C" src="https://upload.wikimedia.org/wikipedia/commons/3/39/C_Hello_World_Program.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Hello World programme written in C (Image source: <a class="reference external" href="https://en.wikipedia.org/wiki/File:C_Hello_World_Program.png">en.wikipedia.org/wiki/File:C_Hello_World_Program.png</a>)</span><a class="headerlink" href="#week03-fig-hello-world" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The first version of <strong>Hello, World!</strong> was published in the classic book Kerningham and Ritchie, The C Programming Language, 1st Ed. Prentice Hall, 1978.</p>
+<p>Since then, it has become common to introduce each new programming language with a version of this program.</p>
+<p>Unfortunately, there is a lot of hidden complexity in this simple program, and it is not easy to run “Hello, World!” on a microcontroller!</p>
+</section>
+<section id="what-is-a-program">
+<h3>What is a program?<a class="headerlink" href="#what-is-a-program" title="Permalink to this heading">#</a></h3>
+<p>A program or algorithm is a <strong>recorded sequence of instructions</strong> that <strong>performs a task</strong> or set of tasks when executed <strong>to produce a specific result</strong>.</p>
+</section>
+<section id="what-is-software">
+<h3>What is software?<a class="headerlink" href="#what-is-software" title="Permalink to this heading">#</a></h3>
+<p>Software is the term used to describe <strong>collections of programs, libraries, and related data</strong>.</p>
+</section>
+<section id="what-is-a-programming-language">
+<h3>What is a programming language?<a class="headerlink" href="#what-is-a-programming-language" title="Permalink to this heading">#</a></h3>
+<p>A programming language is a <strong>formal notation comprising a set of instructions and rules</strong> for writing programs.</p>
+</section>
+<section id="development-of-programming">
+<h3>Development of programming<a class="headerlink" href="#development-of-programming" title="Permalink to this heading">#</a></h3>
+<p>The next few slides provide some historical context to the development of computer programming. For example <a class="reference internal" href="#week03-fig-ibm704"><span class="std std-numref">Fig. 35</span></a> is a photograph, taken in 1957, of an early mainframe computer based at NASA Langley Research Centre. This may have well been used in the research that led to the moon landing in 1969.</p>
+<p>In the early days of programming, programs were typed on teletypes and encoded as ASCII characters onto paper tape (<a class="reference internal" href="#week03-fig-punch-tape"><span class="std std-numref">Fig. 36</span></a>). These paper tapes where used to load programs and data into mainframes like that shown in <a class="reference internal" href="#week03-fig-ibm704"><span class="std std-numref">Fig. 35</span></a>. Later, programs were stored on magnetic tape, then magnetic disks and these days are stored servers to be downloaded over networks and loaded into powerful PCs or mobile devices using flash memory and SSD drives.</p>
+<p><a class="reference internal" href="#week03-fig-modern-programming"><span class="std std-numref">Fig. 37</span></a> shows an image of a modern laptop and the programming tools and languages (in this case Python) that are used to develop programs these days.</p>
+<figure class="align-default" id="week03-fig-ibm704">
+<img alt="Man and woman shown working with IBM type 704 electronic data processing machine used for making computations for aeronautical research at Langley Research Center." src="../../_images/ibm704.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">IBM type 704 electronic data processing machine used for making computations for aeronautical research at NASA Langley Research Center – 21st March 1957. (Image source: <a class="reference external" href="https://www.flickr.com/photos/nasacommons/9467782802">www.flickr.com/photos/nasacommons/9467782802</a>)</span><a class="headerlink" href="#week03-fig-ibm704" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="week03-fig-punch-tape">
+<img alt="a picture of some punched paper tape" src="../../_images/punch_tape.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Early program source code! Input into a computer with punched paper tape. Image Source: <a class="reference external" href="https://www.eetimes.com/how-it-was-paper-tapes-and-punched-cards/">How it was: Paper tapes and punched cards | EETimes</a></span><a class="headerlink" href="#week03-fig-punch-tape" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="week03-fig-modern-programming">
+<img alt="A computer screen with a bunch of code on it" src="../../_images/modern_programming.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Writing programs on a modern high resolution display screen. (Image source: <a class="reference external" href="https://unsplash.com/photos/ieic5Tq8YMk">unsplash.com/photos/ieic5Tq8YMk</a> by Chris Reid)</span><a class="headerlink" href="#week03-fig-modern-programming" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="programming-languages">
+<span id="week03-programming-languages"></span><h2>Programming Languages<a class="headerlink" href="#programming-languages" title="Permalink to this heading">#</a></h2>
+<img alt="Decorative section background - showing code" src="../../_images/prog_lang_wallpaper.jpg" />
+<section id="programming-language-level-vs-complexity">
+<h3>Programming Language Level Vs Complexity<a class="headerlink" href="#programming-language-level-vs-complexity" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#week03-fig-pl-complexity"><span class="std std-numref">Fig. 38</span></a> shows how code complexity that must be handled by the programmer is related to language level.</p>
+<figure class="align-default" id="week03-fig-pl-complexity">
+<a class="reference internal image-reference" href="../../_images/prog_lang_complexity.png"><img alt="A pyramid comparing code complexity with language level." src="../../_images/prog_lang_complexity.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Programming language level versus complexity.</span><a class="headerlink" href="#week03-fig-pl-complexity" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There is more code complexity at the top because the languages there are “low level” - you need to tell the computer what to do at a very granular level. Languages at the bottom of the pyramid are “high-level” because they provide a simpler way for the programmer to define complex operations without needing to be explicit about how the processor will perform the tasks. Tools are needed to convert that code into the low-level instructions that the computer needs to execute. High-level codes are converted into machine code by compilers, interpreters and web browsers.</p>
+</section>
+<section id="programming-levels">
+<h3>Programming levels<a class="headerlink" href="#programming-levels" title="Permalink to this heading">#</a></h3>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/wc_programming_languages.png"><img alt="Word cloud of common programming languages." src="../../_images/wc_programming_languages.png" style="width: 50%;" /></a>
+</figure>
+</section>
+<section id="high-level-languages">
+<h3>High-level languages<a class="headerlink" href="#high-level-languages" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>High level languages are written in a form that is close to human language, enabling the programmer to just focus on the problem being solved without any knowledge of the hardware it is running on.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Examples include: C++, Java, Pascal, Python, Visual Basic.</p></li>
+</ul>
+</section>
+<section id="low-level-languages">
+<h3>Low-level languages<a class="headerlink" href="#low-level-languages" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Low level languages are used to write programs that relate to the specific architecture and hardware of a particular type of computer and are much closer to the native language of a computer (binary).</p></li>
+</ul>
+<ul class="simple">
+<li><p>Examples include:  Assembly Language, Machine Code</p></li>
+</ul>
+</section>
+<section id="the-c-programming-language">
+<h3>The C Programming language<a class="headerlink" href="#the-c-programming-language" title="Permalink to this heading">#</a></h3>
+<blockquote>
+<div><p>C is a general-purpose computer programming language. It was created in the 1970s by Dennis Ritchie, and remains very widely used and influential. <a class="reference external" href="https://en.wikipedia.org/wiki/C_(programming_language)">Wikipedia - C (programming language)</a></p>
+</div></blockquote>
+<ul class="simple">
+<li><p>C might be described as a “mid-level language”. It is a compiled language and it has features that allow code to be written at a fair distance from the machine instructions. At the same time it provides structures that allow the detailed manipulation of data, memory and I/O at a level that is quite close to the machine.</p></li>
+</ul>
+<ul class="simple">
+<li><p>In this course, we will be using a dialect of C that has been specifically designed for the programming of Arduino devices such as the 8-bit Atmel ATmega328 which is used in the Arduino Nano.</p></li>
+</ul>
+<ul class="simple">
+<li><p>C is a very influential language. It is still used widely for writing operating system kernels, command-line tools, hardware drivers, and microcontroller applications.  The syntax of C is the basis of many of the compiled and interpreted high-level languages that are in use today.</p></li>
+</ul>
+</section>
+</section>
+<section id="flowcharts">
+<span id="week03-flowcharts"></span><h2>Flowcharts<a class="headerlink" href="#flowcharts" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="https://upload.wikimedia.org/wikipedia/commons/a/a6/Flowchart_structured_programming.svg"><img alt="A flowchart" src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Flowchart_structured_programming.svg" width="50%" /></a>
+<p>This <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Flowchart_structured_programming.svg">Image</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA</a></p>
+<section id="what-is-a-flowchart">
+<h3>What is a Flowchart?<a class="headerlink" href="#what-is-a-flowchart" title="Permalink to this heading">#</a></h3>
+<p>A flowchart is a <strong>pictorial representation</strong> of the <strong>logic flow</strong> through a program.</p>
+<p>Flowcharts are a useful tool for planning, visualizing and documenting a program without having to write any code.</p>
+<p>Basic flowcharts are convenient because they</p>
+<ul class="simple">
+<li><p>Don’t require the viewer to have an in-depth knowledge of programming</p></li>
+</ul>
+<ul class="simple">
+<li><p>Don’t require the viewer to have knowledge of a specific programming language</p></li>
+</ul>
+<ul class="simple">
+<li><p>Useful for visualizing how blocks of code interact with one another</p></li>
+</ul>
+<ul class="simple">
+<li><p>Can be a useful tool in identifying flaws and bottlenecks in large and complex algorithms</p></li>
+</ul>
+</section>
+<section id="flowcharts-vs-code">
+<h3>Flowcharts Vs Code<a class="headerlink" href="#flowcharts-vs-code" title="Permalink to this heading">#</a></h3>
+<p>Consider the simple flowchart shown in <a class="reference internal" href="#week03-fig-flowchart-hello-world"><span class="std std-numref">Fig. 39</span></a> representing the printing of the text string “Hello, World!”<a class="footnote-reference brackets" href="#string" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<figure class="align-default" id="week03-fig-flowchart-hello-world">
+<a class="reference internal image-reference" href="../../_images/flowchart_hello_world.png"><img alt="A flowchart representing the hellow world program." src="../../_images/flowchart_hello_world.png" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">A flowchart representing the “Hello, World!” program.</span><a class="headerlink" href="#week03-fig-flowchart-hello-world" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="bash-a-command-line-shell-used-in-unix-and-macos">
+<h4>Bash (a command-line <em>shell</em> used in Unix and MacOS)<a class="headerlink" href="#bash-a-command-line-shell-used-in-unix-and-macos" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="basic">
+<h4>BASIC<a class="headerlink" href="#basic" title="Permalink to this heading">#</a></h4>
+<div class="highlight-basic notranslate"><div class="highlight"><pre><span></span><span class="kr">PRINT</span><span class="w"> </span><span class="s2">&quot;Hello, World!&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="matlab">
+<h4>MATLAB<a class="headerlink" href="#matlab" title="Permalink to this heading">#</a></h4>
+<div class="highlight-matlab notranslate"><div class="highlight"><pre><span></span><span class="nb">disp</span><span class="p">(</span><span class="s">&#39;Hello, World!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="python">
+<h4>Python<a class="headerlink" href="#python" title="Permalink to this heading">#</a></h4>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>print<span class="o">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+</section>
+<section id="c-for-arduino">
+<h4>C (for Arduino)<a class="headerlink" href="#c-for-arduino" title="Permalink to this heading">#</a></h4>
+<p>(a <em>shell</em> used in Unix and MacOS)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">puts</span><span class="p">(</span><span class="s">&quot;Hello, World!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="c">
+<h4>C++<a class="headerlink" href="#c" title="Permalink to this heading">#</a></h4>
+<p>(a <em>shell</em> used in Unix and MacOS)</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Hello, World!&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">:</span><span class="n">endl</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="html">
+<h4>HTML<a class="headerlink" href="#html" title="Permalink to this heading">#</a></h4>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Hello, World!<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="javascript">
+<h4>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this heading">#</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nb">document</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="s1">&#39;Hello, World!&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="flowchart-building-blocks">
+<h3>Flowchart building blocks<a class="headerlink" href="#flowchart-building-blocks" title="Permalink to this heading">#</a></h3>
+<section id="terminal-start-end-block">
+<h4>Terminal: start/end block<a class="headerlink" href="#terminal-start-end-block" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_terminal.png"><img alt="Flowchart start/end block" src="../../_images/fc_terminal.png" style="width: 20%;" /></a>
+</section>
+<section id="terminal-program-flow">
+<h4>Terminal: program flow<a class="headerlink" href="#terminal-program-flow" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_flow.png"><img alt="Flowchart program flow" src="../../_images/fc_flow.png" style="width: 20%;" /></a>
+</section>
+<section id="process-block">
+<h4>Process block<a class="headerlink" href="#process-block" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_process.png"><img alt="Flowchart process block" src="../../_images/fc_process.png" style="width: 20%;" /></a>
+</section>
+<section id="suprocess-block">
+<h4>Suprocess block<a class="headerlink" href="#suprocess-block" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_subprocess.png"><img alt="Flowchart suprocess block" src="../../_images/fc_subprocess.png" style="width: 20%;" /></a>
+</section>
+<section id="decision-block">
+<h4>Decision block<a class="headerlink" href="#decision-block" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_decision.png"><img alt="Flowchart decision block" src="../../_images/fc_decision.png" style="width: 20%;" /></a>
+</section>
+<section id="i-o-block">
+<h4>I/O block<a class="headerlink" href="#i-o-block" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/fc_io.png"><img alt="Flowchart I/O block" src="../../_images/fc_io.png" style="width: 20%;" /></a>
+</section>
+</section>
+<section id="rules-for-drawing-flowcharts">
+<h3>Rules for drawing flowcharts<a class="headerlink" href="#rules-for-drawing-flowcharts" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Flowcharts are usually drawn top to bottom but can be also be drawn left to right.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Flowcharts must begin with a “start” symbol and finish with an “end” symbol.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The spacing between all items should be consistent</p></li>
+</ul>
+<ul class="simple">
+<li><p>The direction of flow between each block should be indicated with an arrow.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Connecting lines should never overlap.</p></li>
+</ul>
+<p>In short flow charts should look visually tidy and the program flow should be obvious to the viewer.</p>
+</section>
+<section id="flowchart-drawing-packages">
+<h3>Flowchart Drawing Packages<a class="headerlink" href="#flowchart-drawing-packages" title="Permalink to this heading">#</a></h3>
+<section id="microsoft-visio-windows-and-web-only">
+<h4>Microsoft Visio (Windows and web only)<a class="headerlink" href="#microsoft-visio-windows-and-web-only" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/visio.png"><img alt="A screenshot of the Microsoft Vision program being used to draw a flowchart." src="../../_images/visio.png" style="width: 100%;" /></a>
+</section>
+<section id="microsoft-365">
+<h4>Microsoft 365<a class="headerlink" href="#microsoft-365" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/ms265_flowchart_symbols.png"><img alt="Screenshot of the flowchart symbols available in Microsoft 365 - Word, PowerPoint, Excel, etc." src="../../_images/ms265_flowchart_symbols.png" style="width: 100%;" /></a>
+<p>Get <a class="reference external" href="https://myuni.swansea.ac.uk/it-services/software-enquiry/office-365/">Swansea University Office 365 (now Microsoft 365)</a> from myuni.swan.ac.uk.</p>
+</section>
+</section>
+<section id="other-flowchart-drawing-tools">
+<h3>Other flowchart drawing tools<a class="headerlink" href="#other-flowchart-drawing-tools" title="Permalink to this heading">#</a></h3>
+<section id="smartdraw">
+<h4>SmartDraw<a class="headerlink" href="#smartdraw" title="Permalink to this heading">#</a></h4>
+<p>For MacOS</p>
+<a class="reference internal image-reference" href="../../_images/smartdraw.png"><img alt="Screenshot from the smartdraw flowchart editor" src="../../_images/smartdraw.png" style="width: 75%;" /></a>
+<p><a class="reference external" href="https://www.smartdraw.com/">www.smartdraw.com</a></p>
+</section>
+<section id="creately">
+<h4>Creately<a class="headerlink" href="#creately" title="Permalink to this heading">#</a></h4>
+<p>Web-based drawing tool</p>
+<a class="reference internal image-reference" href="../../_images/creately.png"><img alt="Screenshot from the creately flowchart editor" src="../../_images/creately.png" style="width: 50%;" /></a>
+<p><a class="reference external" href="https://creately.com/diagram-type/flowchart/">creately.com/diagram-type/flowchart/</a></p>
+</section>
+</section>
+<section id="using-flowcharts-to-capturing-the-most-common-program-constructs">
+<h3>Using flowcharts to capturing the most common program constructs<a class="headerlink" href="#using-flowcharts-to-capturing-the-most-common-program-constructs" title="Permalink to this heading">#</a></h3>
+<p>From a software designer’s point of view, any program function can be described using only three program constructs:</p>
+<ul class="simple">
+<li><p><strong>Sequence</strong>: this construct performs one task after another in a sequence. It is a group of instructions to be performed one after another in the order shown in the program.</p></li>
+<li><p><strong>Decision</strong>: this construct performs a task or a sequence of tasks based on the result of a test condition.</p></li>
+<li><p><strong>Repetition</strong>: this construct is for a process that repeats until a condition which will stop the process is satisfied<a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. Repetition is used to repeat a a sequence over and over again.</p></li>
+</ul>
+<section id="sequence">
+<h4>Sequence<a class="headerlink" href="#sequence" title="Permalink to this heading">#</a></h4>
+<p>A sequence (<a class="reference internal" href="#week03-fig-fc-sequence"><span class="std std-numref">Fig. 40</span></a>) is represented as a set of process blocks (tasks) connected by program flows. The tasks are executed in the order shown by the arrows from top to bottom.</p>
+<figure class="align-default" id="week03-fig-fc-sequence">
+<a class="reference internal image-reference" href="../../_images/fc_sequence.png"><img alt="Flowchart for a sequence of instructions computed in the order shown, one after the other." src="../../_images/fc_sequence.png" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Flowchart for a sequence of tasks</span><a class="headerlink" href="#week03-fig-fc-sequence" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The program shown in <a class="reference internal" href="#week03-fig-fc-sequence"><span class="std std-numref">Fig. 40</span></a> might be represented in <em>psuedocode</em><a class="footnote-reference brackets" href="#psuedocode" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">START</span><span class="p">;</span>
+ <span class="n">Task</span> <span class="mi">1</span><span class="p">;</span>
+ <span class="n">Task</span> <span class="mi">2</span><span class="p">;</span>
+ <span class="n">Task</span> <span class="mi">3</span><span class="p">;</span>
+<span class="n">END</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="decision">
+<h4>Decision<a class="headerlink" href="#decision" title="Permalink to this heading">#</a></h4>
+<p>A decision (<a class="reference internal" href="#week03-fig-fc-decision"><span class="std std-numref">Fig. 41</span></a>) is represented as a decision block followed by flows which depend on the outcome of the decision.</p>
+<figure class="align-default" id="week03-fig-fc-decision">
+<a class="reference internal image-reference" href="../../_images/decision.png"><img alt="Flowchart for a decision." src="../../_images/decision.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 41 </span><span class="caption-text">Flowchart for a decision</span><a class="headerlink" href="#week03-fig-fc-decision" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The program shown in <a class="reference internal" href="#week03-fig-fc-decision"><span class="std std-numref">Fig. 41</span></a> might be represented in psuedocode as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">START</span><span class="p">;</span>
+ <span class="n">IF</span> <span class="n">condition</span> <span class="n">one</span> <span class="ow">is</span> <span class="n">true</span>
+   <span class="n">DO</span>
+       <span class="n">Task</span> <span class="mi">1</span><span class="p">;</span>
+       <span class="p">:</span>
+   <span class="n">END_DO</span>
+ <span class="n">IF</span> <span class="n">condition</span> <span class="n">two</span> <span class="ow">is</span> <span class="n">true</span>
+   <span class="n">DO</span>
+       <span class="n">Task</span> <span class="mi">2</span><span class="p">;</span>
+       <span class="p">:</span>
+   <span class="n">END_DO</span>
+<span class="n">END</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="repetition">
+<h4>Repetition<a class="headerlink" href="#repetition" title="Permalink to this heading">#</a></h4>
+<p>Repetition (<a class="reference internal" href="#week03-fig-fc-repetition"><span class="std std-numref">Fig. 42</span></a>) is represented as a decision block, then a sequence of tasks and a flow that returns to the original decision. The tasks are repeated until the condition for ending the repeated sequence is met.</p>
+<figure class="align-default" id="week03-fig-fc-repetition">
+<a class="reference internal image-reference" href="../../_images/repetition.png"><img alt="Flowchart for a sequence of instructions computed in the order shown, one after the other," src="../../_images/repetition.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 42 </span><span class="caption-text">Flowchart for a sequence of tasks</span><a class="headerlink" href="#week03-fig-fc-repetition" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The program shown in <a class="reference internal" href="#week03-fig-fc-repetition"><span class="std std-numref">Fig. 42</span></a> might be represented in psuedocode as</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">START</span><span class="p">;</span>
+ <span class="n">UNTIL</span> <span class="n">condition</span> <span class="ow">is</span> <span class="n">true</span>
+   <span class="n">Task</span> <span class="mi">1</span><span class="p">;</span>
+   <span class="p">:</span>
+   <span class="n">Task</span> <span class="n">n</span><span class="p">;</span>
+ <span class="n">THEN</span>
+   <span class="n">Task</span> <span class="mi">2</span><span class="p">;</span>
+   <span class="p">:</span>
+<span class="n">END</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-1-a-sequence">
+<h3>Example 1: A sequence<a class="headerlink" href="#example-1-a-sequence" title="Permalink to this heading">#</a></h3>
+<p>Task: <em>Find the sum of numbers 1 to 10</em></p>
+<p>Program design method 1:</p>
+<ul class="simple">
+<li><p>Brute force method using the Sequence construct,</p></li>
+<li><p>Add number 1 to sum, then add, number 2, then add number 3 …</p></li>
+<li><p>Continue the process until all numbers are added!</p></li>
+</ul>
+<section id="solution-to-task-as-a-sequence">
+<h4>Solution to task as a sequence<a class="headerlink" href="#solution-to-task-as-a-sequence" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="#week03-fig-task1-sequence"><span class="std std-numref">Fig. 43</span></a> shows the flow chart of this program.</p>
+<figure class="align-default" id="week03-fig-task1-sequence">
+<a class="reference internal image-reference" href="../../_images/task1_sequence.png"><img alt="Flowchart of a program to sum the first 10 numbers written as a sequence." src="../../_images/task1_sequence.png" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 43 </span><span class="caption-text">Flowchart of a program to sum the first 10 numbers written as a sequence.</span><a class="headerlink" href="#week03-fig-task1-sequence" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="program-shown-in-week03-fig-task1-sequence-written-in-pseudo-code">
+<h4>Program shown in <a class="reference internal" href="#week03-fig-task1-sequence"><span class="std std-numref">Fig. 43</span></a> written in pseudo code<a class="headerlink" href="#program-shown-in-week03-fig-task1-sequence-written-in-pseudo-code" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">START</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="mi">2</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="mi">3</span>
+  <span class="p">:</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="n">END</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="example-2-decision-and-a-loop">
+<span id="wk4-sum-example"></span><h3>Example 2: Decision and a Loop<a class="headerlink" href="#example-2-decision-and-a-loop" title="Permalink to this heading">#</a></h3>
+<p>Task: <em>Find the sum of numbers 1 to 10</em></p>
+<p>Program design method 2:</p>
+<ul class="simple">
+<li><p>Use the decision and repetition constructs:</p></li>
+</ul>
+<section id="solution-to-task-1-using-a-decision-and-repetition">
+<h4>Solution to task 1 using a decision and repetition<a class="headerlink" href="#solution-to-task-1-using-a-decision-and-repetition" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="#week03-fig-task1-loop"><span class="std std-numref">Fig. 44</span></a> shows the solution of task 1 using a decision and repetition.</p>
+<figure class="align-default" id="week03-fig-task1-loop">
+<a class="reference internal image-reference" href="../../_images/task1_loop.png"><img alt="Flowchart of the solution to task 1 using a decision and repetition" src="../../_images/task1_loop.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 44 </span><span class="caption-text">Flowchart of the solution to task 1 using a decision and repetition.</span><a class="headerlink" href="#week03-fig-task1-loop" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="program-shown-in-week03-fig-task1-loop-written-in-pseudo-code">
+<h4>Program shown in <a class="reference internal" href="#week03-fig-task1-loop"><span class="std std-numref">Fig. 44</span></a> written in pseudo code<a class="headerlink" href="#program-shown-in-week03-fig-task1-loop-written-in-pseudo-code" title="Permalink to this heading">#</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">START</span>
+  <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+  <span class="n">WHILE</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="mi">11</span>
+  <span class="n">DO</span> 
+    <span class="nb">sum</span> <span class="o">=</span> <span class="nb">sum</span> <span class="o">+</span> <span class="n">counter</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+  <span class="n">END_DO</span>
+<span class="n">END</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="another-example-program">
+<h3>Another Example Program<a class="headerlink" href="#another-example-program" title="Permalink to this heading">#</a></h3>
+<p>Consider a program that asks a user for a ‘limit’ value and sums the numbers up to that limit before outputting the sum?</p>
+<p>I.e. <span class="math notranslate nohighlight">\(\mathrm{sum} = 1 + 2 + 3 + \dots n\)</span></p>
+<p>The program that solves this project is illustrated by the flowchart shown in <a class="reference internal" href="#week03-fig-example2"><span class="std std-numref">Fig. 45</span></a>. This program has a sequence, a decision and repetition. It also has an input where the limit (<span class="math notranslate nohighlight">\(n\)</span>) is entered and an output where the sum is displayed.</p>
+<figure class="align-center" id="week03-fig-example2">
+<a class="reference internal image-reference" href="../../_images/example2.png"><img alt="A program that asks for a limit value and sums numbers up to that limit before outputting the sum." src="../../_images/example2.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 45 </span><span class="caption-text">A program that asks for a limit value and sums numbers up to that limit before outputting the sum.</span><a class="headerlink" href="#week03-fig-example2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Let us tabulate the results of this program assuming that <span class="math notranslate nohighlight">\(n=4\)</span>.</p>
+<p>We will complete the table in class:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p><strong><code class="docutils literal notranslate"><span class="pre">sum</span></code></strong></p></th>
+<th class="head text-right"><p><strong><code class="docutils literal notranslate"><span class="pre">counter</span></code></strong></p></th>
+<th class="head text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">&gt;</span> <span class="pre">limit</span></code></strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-left"><p><code class="docutils literal notranslate"><span class="pre">No</span></code></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(5\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="how-many-ways-can-we-write-the-same-program">
+<h3>How many ways can we write the same program?<a class="headerlink" href="#how-many-ways-can-we-write-the-same-program" title="Permalink to this heading">#</a></h3>
+<p>For our program summing the numbers up to a limit, there are three key parts.</p>
+<ul class="simple">
+<li><p>Sum (<strong>S</strong>): <code class="docutils literal notranslate"><span class="pre">sum</span> <span class="pre">=</span> <span class="pre">sum</span> <span class="pre">+</span> <span class="pre">counter</span></code></p></li>
+<li><p>Increment (<strong>I</strong>): <code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">=</span> <span class="pre">counter</span> <span class="pre">+</span> <span class="pre">1</span></code></p></li>
+<li><p>Check (<strong>C</strong>): Has condition been met?</p></li>
+</ul>
+<p>These can be theoretically be combined in 8 different ways, the first six of which as shown in <a class="reference internal" href="#week03-table-1"><span class="std std-numref">Table 2</span></a>. Three implementations three are illustrated in {numref}`</p>
+<p><code class="docutils literal notranslate"> <span class="pre">(variation</span> <span class="pre">6),</span> <span class="pre">{numref}</span></code>week03:fig:isc<code class="docutils literal notranslate"> <span class="pre">(variation</span> <span class="pre">4),</span> <span class="pre">{numref}</span></code>week03:fig:isc` (row 2).</p>
+<table class="table" id="week03-table-1">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">How many ways can a program be written?</span><a class="headerlink" href="#week03-table-1" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Variation</p></th>
+<th class="head"><p>Part 1</p></th>
+<th class="head"><p>Part 2</p></th>
+<th class="head"><p>Part 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>C</p></td>
+<td><p>S</p></td>
+<td><p>I</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>C</p></td>
+<td><p>I</p></td>
+<td><p>S</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>I</p></td>
+<td><p>C</p></td>
+<td><p>S</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>I</p></td>
+<td><p>S</p></td>
+<td><p>C</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>S</p></td>
+<td><p>C</p></td>
+<td><p>I</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>S</p></td>
+<td><p>I</p></td>
+<td><p>C</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="week03-fig-sic">
+<a class="reference internal image-reference" href="../../_images/sic.png"><img alt="Variation 6 - Sum - Increment - Check" src="../../_images/sic.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text">Variation 6: Sum - Increment - Check</span><a class="headerlink" href="#week03-fig-sic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="week03-fig-isc">
+<a class="reference internal image-reference" href="../../_images/isc.png"><img alt="Variation 4 - Increment - Sum - Check" src="../../_images/isc.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text">Variation 4: Increment - Sum - Check</span><a class="headerlink" href="#week03-fig-isc" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="week03-fig-cis">
+<a class="reference internal image-reference" href="../../_images/cis.png"><img alt="Variation 2 - Check - Increment - Sum" src="../../_images/cis.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text">Variation 2: Check - Increment - Sum</span><a class="headerlink" href="#week03-fig-cis" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="any-more">
+<h4>Any more?<a class="headerlink" href="#any-more" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[\mathrm{sum} = 1 + 2 + 3 + \cdots + \left(n - 1\right) + n\]</div>
+<div class="math notranslate nohighlight">
+\[\equiv\]</div>
+<div class="math notranslate nohighlight">
+\[\mathrm{sum} = n + \left(n-1\right) + \cdots 3 + 2 + 1\]</div>
+<p>Let us tabulate the results of this program assuming that <span class="math notranslate nohighlight">\(n=4\)</span>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-right"><p><strong><code class="docutils literal notranslate"><span class="pre">sum</span></code></strong></p></th>
+<th class="head text-right"><p><strong><code class="docutils literal notranslate"><span class="pre">counter</span></code></strong></p></th>
+<th class="head text-left"><p><strong><code class="docutils literal notranslate"><span class="pre">counter</span> <span class="pre">&gt;</span> <span class="pre">limit</span></code></strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-right"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(4\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(3\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(2\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-odd"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(1\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+<tr class="row-even"><td class="text-right"><p></p></td>
+<td class="text-right"><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td class="text-left"><p></p></td>
+</tr>
+</tbody>
+</table>
+<p>A flow chart that implements this variation is given in <a class="reference internal" href="#week03-fig-var4"><span class="std std-numref">Fig. 49</span></a>.</p>
+<figure class="align-center" id="week03-fig-var4">
+<a class="reference internal image-reference" href="../../_images/var4.png"><img alt="Another variation - Check - Decrement - Sum" src="../../_images/var4.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text">Another variation: Check - Decrement - Sum</span><a class="headerlink" href="#week03-fig-var4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="self-directed-learning">
+<span id="flow-chart-task"></span><h4>Self-directed learning<a class="headerlink" href="#self-directed-learning" title="Permalink to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p>See if you can write the other eight flowcharts for a program that sums the numbers 1 to n.</p></li>
+<li><p>To get you thinking from a programmer’s point of view, consider the steps required to perform a task we usually take for granted, such as making a cup of tea, and what a flowchart for this might look like.</p></li>
+<li><p>After you’ve had a go at these, drop a message on the <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078">discussion forum for this week</a> to let us know how you got on and which drawing package you found the best. Feel free to include any tips you find useful.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="modular-programming">
+<span id="week03-modular-programming"></span><h2>Modular Programming<a class="headerlink" href="#modular-programming" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/modular_prog_wallpaper.png"><img alt="" src="../../_images/modular_prog_wallpaper.png" style="width: 50%;" /></a>
+<p>This <a class="reference external" href="https://commons.wikimedia.org/wiki/File:Flowchart_structured_programming.svg">Image</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA</a></p>
+<section id="what-is-a-module">
+<h3>What is a module?<a class="headerlink" href="#what-is-a-module" title="Permalink to this heading">#</a></h3>
+<p>The basic approach to modularization is to consider a top-down design where the top level defines the main function, and a separate module represents each smaller function in the program (see <a class="reference internal" href="#week03-fig-a-modular-program"><span class="std std-numref">Fig. 50</span></a>.</p>
+<figure class="align-default" id="week03-fig-a-modular-program">
+<a class="reference internal image-reference" href="../../_images/modules.png"><img alt="A program built from modules" src="../../_images/modules.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text">A program built from modules</span><a class="headerlink" href="#week03-fig-a-modular-program" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Each module is treated as a box which can have an input and output.</p>
+<p>As long as the input and output requirements remain the same, the module code can be changed without affecting the rest of the program.</p>
+<section id="example-task">
+<h4>Example Task<a class="headerlink" href="#example-task" title="Permalink to this heading">#</a></h4>
+<p>Write a program to perform n different tasks with a ten second delay between each task.</p>
+<p>The program we have been discussing that sums the numbers 1-10 can be used to simulate a delay.</p>
+<section id="example-program-non-modular-approach">
+<h5>Example program - Non-Modular Approach<a class="headerlink" href="#example-program-non-modular-approach" title="Permalink to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">1</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">2</span> <span class="o">*/</span>
+<span class="n">DO</span>
+  <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">11</span>
+    <span class="n">DO</span>
+      <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">END_DO</span>
+  <span class="n">END_WHILE</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">2</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">3</span> <span class="o">*/</span>
+<span class="n">DO</span>
+  <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">11</span>
+    <span class="n">DO</span>
+      <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="n">END_DO</span>
+  <span class="n">END_WHILE</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">3</span>
+<span class="n">END</span>
+
+<span class="p">:</span>
+</pre></div>
+</div>
+</section>
+<section id="change-the-specification">
+<h5>Change the specification<a class="headerlink" href="#change-the-specification" title="Permalink to this heading">#</a></h5>
+<p>Now suppose that we want to change the delay between tasks to 20 seconds.</p>
+<p>Using a non-modular approach the developer/programmer now needs to change the line</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">11</span>
+</pre></div>
+</div>
+<p>to</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">21</span>
+</pre></div>
+</div>
+<p>For each of the n-1 times it is used.</p>
+</section>
+<section id="example-program-modular-approach">
+<h5>Example program - Modular Approach<a class="headerlink" href="#example-program-modular-approach" title="Permalink to this heading">#</a></h5>
+<p>The code that implements the delay is made into a module which is called when needed</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MODULE</span> <span class="n">delay</span>
+  <span class="n">DO</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="mi">21</span>
+      <span class="n">DO</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">END_DO</span>
+    <span class="n">END_WHILE</span>
+  <span class="n">END</span>
+<span class="n">END_MODULE</span>
+</pre></div>
+</div>
+<p>The modular program becomes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">1</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">2</span> <span class="o">*/</span>
+<span class="n">DO</span>
+  <span class="n">delay</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">2</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">3</span> <span class="o">*/</span>
+<span class="n">DO</span> 
+  <span class="n">delay</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">3</span>
+<span class="n">END</span>
+
+<span class="p">:</span>
+</pre></div>
+</div>
+<p>By using a modular approach to program this task, the developer/programmer need only change one value to adjust the delay, independent of how many times the delay is called between tasks in the program.</p>
+<p>We can take this idea further by parameterising the delay value itself. To code might now look like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MODULE</span> <span class="n">delay</span><span class="p">(</span><span class="n">delay</span><span class="p">)</span>
+  <span class="n">DO</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">WHILE</span> <span class="n">number</span> <span class="o">&lt;</span> <span class="n">delay</span>
+      <span class="n">DO</span>
+        <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">+</span> <span class="mi">1</span>
+      <span class="n">END_DO</span>
+    <span class="n">END_WHILE</span>
+  <span class="n">END</span>
+<span class="n">END_MODULE</span>
+</pre></div>
+</div>
+<p>We can now have variable length delays between tasks:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">1</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Ten</span> <span class="n">second</span> <span class="n">delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">2</span> <span class="o">*/</span>
+<span class="n">DO</span>
+  <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">2</span>
+<span class="n">END</span>
+
+<span class="o">/*</span> <span class="n">Twenty</span> <span class="n">second</span> <span class="n">delay</span> <span class="n">between</span> <span class="n">task</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">task</span> <span class="mi">3</span> <span class="o">*/</span>
+<span class="n">DO</span> 
+  <span class="n">delay</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">END</span>
+
+<span class="n">DO</span> 
+  <span class="n">Task</span> <span class="mi">3</span>
+<span class="n">END</span>
+
+<span class="p">:</span>
+</pre></div>
+</div>
+<p>We will return to this idea when we look at functions in C.</p>
+</section>
+</section>
+<section id="activity">
+<h4>Activity<a class="headerlink" href="#activity" title="Permalink to this heading">#</a></h4>
+<p>With the time remaining can you represent this program as a flow chart?</p>
+<p>Feel free to work individually or in small groups</p>
+<section id="solution">
+<h5>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h5>
+<p>See <a class="reference internal" href="#week03-fig-exercise-solution"><span class="std std-numref">Fig. 51</span></a> in the notes online.</p>
+<figure class="align-default" id="week03-fig-exercise-solution">
+<a class="reference internal image-reference" href="../../_images/exercise_soln.png"><img alt="Implementing a delay sub-program" src="../../_images/exercise_soln.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text">Implementing a delay sub-program using a modular approach</span><a class="headerlink" href="#week03-fig-exercise-solution" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we have:</p>
+<ul class="simple">
+<li><p>Defined terminology relating to programming and looked at how languages can be classified as high or low based on the level of abstraction from the architecture it is to be run on.</p></li>
+<li><p>Looked at flowcharts defining the standard symbols and looking at how they are used to represent a program.</p></li>
+<li><p>Introduced the use of sub-processes to allow modular programming for splitting up a program or repeating common elements.</p></li>
+</ul>
+</section>
+<section id="on-canvas">
+<h2>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h2>
+<p>This week on the canvas course page, there is:</p>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/pages/introduction-to-programming-languages?module_item_id=2258077">short video by Ben Clifford providing more of an introduction to programming languages and the compilation process</a>;</p></li>
+</ul>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078">discussion forum</a> to talk about the <a class="reference internal" href="#flow-chart-task"><span class="std std-ref">Self-directed learning</span></a>;</p></li>
+</ul>
+<ul class="simple">
+<li><p>some <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/pages/week-4-supplementary-resources?module_item_id=2258079">supplementary resources</a>; and</p></li>
+</ul>
+<ul class="simple">
+<li><p>a <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/assignments/321260/edit?module_item_id=2415567&amp;quiz_lti=true">quiz to test your knowledge</a>.</p></li>
+</ul>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="string" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In most programming languages, text is stored in memory as a sequence of binary codes which each represent the individual characters as in <code class="docutils literal notranslate"><span class="pre">'H'</span></code>, <code class="docutils literal notranslate"><span class="pre">'e'</span></code>, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'o'</span></code>, <code class="docutils literal notranslate"><span class="pre">','</span></code>, <code class="docutils literal notranslate"><span class="pre">'</span> <span class="pre">'</span></code>, <code class="docutils literal notranslate"><span class="pre">'W'</span></code>, <code class="docutils literal notranslate"><span class="pre">'o'</span></code>, <code class="docutils literal notranslate"><span class="pre">'r'</span></code>, <code class="docutils literal notranslate"><span class="pre">'l'</span></code>, <code class="docutils literal notranslate"><span class="pre">'d'</span></code>, <code class="docutils literal notranslate"><span class="pre">'!'</span></code>. Such a sequence is usually called a <em>string</em>.</p>
+</aside>
+<aside class="footnote brackets" id="id4" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Repetition is used a lot in microcontroller programming.</p>
+</aside>
+<aside class="footnote brackets" id="psuedocode" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>is a formal text which is used to represent the operation of a section of code in a way that can be understood without needing to resort to formal rules of a programming language.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week03"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week02/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Architecture of the Atmel ATmega 328 Microcontroller</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week04/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Programming with C</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#useful-terminology">Useful Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hello-world">Hello, World!</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-program">What is a program?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-software">What is software?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-programming-language">What is a programming language?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#development-of-programming">Development of programming</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-languages">Programming Languages</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-language-level-vs-complexity">Programming Language Level Vs Complexity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#programming-levels">Programming levels</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-level-languages">High-level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-level-languages">Low-level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-c-programming-language">The C Programming language</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flowcharts">Flowcharts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-flowchart">What is a Flowchart?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowcharts-vs-code">Flowcharts Vs Code</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bash-a-command-line-shell-used-in-unix-and-macos">Bash (a command-line <em>shell</em> used in Unix and MacOS)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#basic">BASIC</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab">MATLAB</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-for-arduino">C (for Arduino)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c">C++</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowchart-building-blocks">Flowchart building blocks</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-start-end-block">Terminal: start/end block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#terminal-program-flow">Terminal: program flow</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#process-block">Process block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#suprocess-block">Suprocess block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-block">Decision block</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-block">I/O block</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-drawing-flowcharts">Rules for drawing flowcharts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flowchart-drawing-packages">Flowchart Drawing Packages</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-visio-windows-and-web-only">Microsoft Visio (Windows and web only)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#microsoft-365">Microsoft 365</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-flowchart-drawing-tools">Other flowchart drawing tools</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#smartdraw">SmartDraw</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#creately">Creately</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-flowcharts-to-capturing-the-most-common-program-constructs">Using flowcharts to capturing the most common program constructs</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence">Sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#decision">Decision</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#repetition">Repetition</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-a-sequence">Example 1: A sequence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-task-as-a-sequence">Solution to task as a sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-shown-in-week03-fig-task1-sequence-written-in-pseudo-code">Program shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">week03:fig:task1_sequence</span></code> written in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-decision-and-a-loop">Example 2: Decision and a Loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-to-task-1-using-a-decision-and-repetition">Solution to task 1 using a decision and repetition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-shown-in-week03-fig-task1-loop-written-in-pseudo-code">Program shown in <code class="xref std std-numref docutils literal notranslate"><span class="pre">week03:fig:task1_loop</span></code> written in pseudo code</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#another-example-program">Another Example Program</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-many-ways-can-we-write-the-same-program">How many ways can we write the same program?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#any-more">Any more?</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#self-directed-learning">Self-directed learning</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modular-programming">Modular Programming</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-module">What is a module?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-task">Example Task</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-program-non-modular-approach">Example program - Non-Modular Approach</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#change-the-specification">Change the specification</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-program-modular-approach">Example program - Modular Approach</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#activity">Activity</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

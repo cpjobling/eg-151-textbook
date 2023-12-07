@@ -1,0 +1,845 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Experiment 2: Digital Input &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab02/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Experiment 3: Analogue to Digital Conversion" href="../lab03/index.html" />
+    <link rel="prev" title="Experiment 1: Binary Counter" href="../lab01/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab02/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/labs/lab02/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Experiment 2: Digital Input</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-a-switch-to-a-port">Connecting a switch to a port</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-switch-in-a-programme">2.3. Using a switch in a programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-go-faster">2.4. Let’s go faster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exercise-for-the-reader">2.5. An exercise for the reader…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-experiment-2">2.6. Assessment of Experiment 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-code-listings">Appendix A: Code Listings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-4-binary-counter-with-stop-start-control">Listing 4: Binary counter with stop/start control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-5-binary-counter-with-stop-start-and-turbo-button">Listing 5: Binary counter with stop/start and turbo button</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-photograph-of-experiment-2">Appendix B: Photograph of Experiment 2</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="experiment-2-digital-input">
+<span id="lab-2"></span><h1>Experiment 2: Digital Input<a class="headerlink" href="#experiment-2-digital-input" title="Permalink to this heading">#</a></h1>
+<p>All the programme examples in <a class="reference internal" href="../lab01/index.html#lab-1"><span class="std std-ref">Experiment 1: Binary Counter</span></a> dealt with Digital Output,
+and we learned how to set the bits in the Data Direction Register (DDR) to
+make designated ports work as outputs. In Experiment 2 we shall look at
+digital inputs.</p>
+<table class="table" id="table-1-ddr-inputs">
+<caption><span class="caption-number">Table 17 </span><span class="caption-text">DDR for setting six outputs</span><a class="headerlink" href="#table-1-ddr-inputs" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>DDRC7</p></th>
+<th class="head"><p>DDRC6</p></th>
+<th class="head"><p>DDRC5</p></th>
+<th class="head"><p>DDRC4</p></th>
+<th class="head"><p>DDRC3</p></th>
+<th class="head"><p>DDRC2</p></th>
+<th class="head"><p>DDRC1</p></th>
+<th class="head"><p>DDRC0</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Referring to <a class="reference internal" href="#table-1-ddr-inputs"><span class="std std-numref">Table 17</span></a>, the bits set to logic “1” in <code class="docutils literal notranslate"><span class="pre">DDRC</span></code> correspond to physical ports set as outputs.</p>
+<p><strong>Question</strong>: <em>What about the bits set to logic “0”?</em></p>
+<p><em><strong>Answer</strong></em>: The physical ports are inputs, and can be connected to devices outside
+the microcontroller, for example switches and sensors.</p>
+<p><strong>Question</strong>: *How is the logic state of a port accessed by the microcontroller?</p>
+<p><em><strong>Answer</strong></em>: By reading from the corresponding port number. The ports on our Nano board are a maximum of 8 bits wide, so a read from the port returns a value
+between 0 and 255 (<span class="math notranslate nohighlight">\(2^8 - 1\)</span>).</p>
+<p><strong>Question</strong>: <em>Supposing there are several digital inputs on a particular port. How can
+we distinguish between one input and another?</em></p>
+<p><em><strong>Answer:</strong></em> <em>There are several ways of
+doing this, but they are all based on the idea of masking.</em></p>
+<p>In the
+following example, imagine that there is a physical switch connected to
+Port C, bit 7. A read from Port C returns the state of all the bits from
+0 to 7. In order to isolate just bit 7, we use a mask and a decision.</p>
+<p></p>
+<table class="table" id="table-2-mask">
+<caption><span class="caption-number">Table 18 </span><span class="caption-text">Applying a mask to a register to access a particular value</span><a class="headerlink" href="#table-2-mask" title="Permalink to this table">#</a></caption>
+<tbody>
+<tr class="row-odd"><td><p><strong>Value read from Port</strong></p></td>
+<td><p>0 or 1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Mask</strong></p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Value AND Mask</strong></p></td>
+<td><p>0 or 1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>The last row of <a class="reference internal" href="#table-2-mask"><span class="std std-numref">Table 18</span></a> shows the result of an AND operation on the
+value read and the mask. So, a decision zero/non-zero will be exclusive
+to the bit that was masked.</p>
+<p>The Arduino version of “C” includes some commands which allow individual
+bits to be interrogated. The mask operation is still there but it is
+“behind the scenes”.</p>
+<section id="connecting-a-switch-to-a-port">
+<h2>Connecting a switch to a port<a class="headerlink" href="#connecting-a-switch-to-a-port" title="Permalink to this heading">#</a></h2>
+<p>How do we connect a switch to a port pin? There are various
+possibilities as shown in <a class="reference internal" href="#fig-ex2-1"><span class="std std-numref">Fig. 147</span></a>.</p>
+<figure class="align-center" id="fig-ex2-1">
+<a class="reference internal image-reference" href="../../_images/switch_to_port_connections.png"><img alt="Illustration of the three ways to connect a switch to a port." src="../../_images/switch_to_port_connections.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 147 </span><span class="caption-text">Three ways to connect a switch to a port.</span><a class="headerlink" href="#fig-ex2-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Option “A” looks good, but there are several problems. It requires a
+“change over” switch, with connections to both contacts. In addition,
+when the switch is in motion from “0” to “1” there is a brief period
+when the port voltage is undefined, which can result in unpredictable
+operation. For example, it could be seen as multiple operations of the
+switch.</p>
+<p>Option “B” is much better. It only requires a “single pole” switch,
+which is the usual configuration for a keyboard. In addition, the
+voltage on the port is always defined; logic “0” when the switch is
+open, logic “1” when it is closed.</p>
+<p>Option “C” has the same advantages as option “B”, though of course the
+switch action is reversed – logic “1” when the switch is open, logic
+“0” when the switch is closed. Historically, switch inputs on digital
+circuits tend to be of this type, which is known as “active low”
+switching. In fact, this option is supported by the internal hardware of
+the microcontroller, which has built-in resistors so all that is
+required is an external switch connected between the port and logic “0”.</p>
+<p>This is the case for the hardware that we are using and is illustrated in <a class="reference internal" href="#fig-ex2-2"><span class="std std-numref">Fig. 148</span></a>.</p>
+<figure class="align-center" id="fig-ex2-2">
+<a class="reference internal image-reference" href="../../_images/active_low_switching.png"><img alt="Connecting a switch to a microcontroller." src="../../_images/active_low_switching.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 148 </span><span class="caption-text">Active low switching for a microcontroller.</span><a class="headerlink" href="#fig-ex2-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Each port has an associated pull-up register, which allows individual
+bits of the port to be “tied” to logic “1” through a high-value
+resistor. Different families of microcontrollers have different
+mechanisms for achieving this. In the demonstration programme that
+follows, the input pull-up resistors are enabled by a Arduino specific
+instruction, <code class="docutils literal notranslate"><span class="pre">pinmode().</span></code> Another microcontroller used in our
+undergraduate labs, the “AW60”, has special registers called “pull-up
+enable” registers to perform the same task.</p>
+</section>
+<section id="using-a-switch-in-a-programme">
+<h2>2.3. Using a switch in a programme<a class="headerlink" href="#using-a-switch-in-a-programme" title="Permalink to this heading">#</a></h2>
+<p>The demonstration programme in <a class="reference internal" href="#listing-ex2-1"><span class="std std-ref">Listing 4: Binary counter with stop/start control</span></a> is, in fact, the very first
+programme we tried in Experiment 1. There is one refinement; a switch is
+tested and if the logic input is “0”, the counter does not advance.
+Notice the <code class="docutils literal notranslate"><span class="pre">pinmode()</span></code> instruction in setup, which turns on the internal
+pull-up resistor. This is a one-off instruction at the start of
+programme execution.</p>
+<p>Create an Arduino sketch, and copy/paste the code from <a class="reference internal" href="#listing-ex2-1"><span class="std std-ref">Listing 4: Binary counter with stop/start control</span></a> into
+it.</p>
+<p>The testing of the switch input could be done using an Arduino-specific
+instruction, <code class="docutils literal notranslate"><span class="pre">digitalRead()</span></code>, but for the sake of completeness here is
+how it can be done using a port read and a logical “and” operation. The
+designated port is port D, bit 2. Note the use of the exclamation mark
+(“!”); “!=” means “does not equal”.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">PIND</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b00000100</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">  </span><span class="n">counter2</span><span class="o">++</span><span class="p">;</span><span class="w"> </span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will work with a wide range of different microcontrollers and “C”
+compilers. Note the use of the ampersand (”&amp;”) which is the logical
+“and” operation. The equivalent using an Arduino specific command is as
+follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="n">digitalRead</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">counter2</span><span class="o">++</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The argument of the <code class="docutils literal notranslate"><span class="pre">digitalRead()</span> </code>operation, 2, is part of the
+“shorthand” used by Arduino programmers to designate a particular port
+pin. It has the advantage of being consistent over a wide range of
+boards in the Arduino family.</p>
+<p>Add the two push button switches to the plug-in breadboard, using
+pin-to-pin leads ans shown in <a class="reference internal" href="#fig-ex2-3"><span class="std std-numref">Fig. 149</span></a>. Take great care when mounting the switches on the
+breadboard, to orient them correctly, and to avoid bending the little
+tabs!</p>
+<p>When the programme runs, the LEDs on Port C will count up as before.
+When the left-hand button is pressed, the counter stops and resumes when
+the button is released. We are “in control” of the counter!</p>
+<figure class="align-center" id="fig-ex2-3">
+<a class="reference internal image-reference" href="../../_images/exp2_wiring_diagram.png"><img alt="Wiring diagram for prototype board." src="../../_images/exp2_wiring_diagram.png" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 149 </span><span class="caption-text">Wiring diagram for Experiment</span><a class="headerlink" href="#fig-ex2-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="let-s-go-faster">
+<h2>2.4. Let’s go faster<a class="headerlink" href="#let-s-go-faster" title="Permalink to this heading">#</a></h2>
+<p>The next programme, in <a class="reference internal" href="#listing-ex2-2"><span class="std std-ref">Listing 5: Binary counter with stop/start and turbo button</span></a>, uses both buttons. The left-hand
+button, as before, stops the counter. The right-hand button is a “turbo”
+button, and makes the counter speed up by a factor of 10!</p>
+<p>A new programme structure, <code class="docutils literal notranslate"><span class="pre">if...else</span></code> has been introduced in <a class="reference internal" href="#listing-ex2-2"><span class="std std-ref">Listing 5</span></a> (lines 28—33) is used to decide on a delay of 1000 ms
+or a delay of 100 ms, depending on the condition of the button.</p>
+<p>The general <code class="docutils literal notranslate"><span class="pre">if…else</span></code> structure is as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">operation</span><span class="w"> </span><span class="mi">1</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">   </span><span class="n">operation</span><span class="w"> </span><span class="mi">2</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>An additional programme structure, <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>, can replace <code class="docutils literal notranslate"><span class="pre">else</span></code> if there
+are multiple decisions.</p>
+</section>
+<section id="an-exercise-for-the-reader">
+<h2>2.5. An exercise for the reader…<a class="headerlink" href="#an-exercise-for-the-reader" title="Permalink to this heading">#</a></h2>
+<p>The last part of Experiment 2 is an exercise for the reader. Do not
+despair, all the programme elements needed have been covered in this
+Experiment and Experiment 1.</p>
+<p>Modify the programme in <a class="reference internal" href="#listing-ex2-2"><span class="std std-ref">Listing 5</span></a> so that the two buttons have this
+effect:</p>
+<ol class="arabic simple">
+<li><p>If no buttons are pressed, a counter on Port C and a counter on Port
+B increment at the same rate, with a delay of 1000 ms so that the
+LEDs seem to be counting identically.</p></li>
+<li><p>If the left button is pressed, the LEDs on Port C stop counting but
+the LEDs on Port B continue as before.</p></li>
+<li><p>If the right button is pressed, the LEDs on Port B stop counting but
+the LEDs on Port C continue as before.</p></li>
+<li><p>If both buttons are pressed, both sets of LEDs stop counting but
+resume when the buttons are released.</p></li>
+</ol>
+<p>A hint: there are four distinct parts inside<code class="docutils literal notranslate"> <span class="pre">loop()</span></code>; first of all,
+update both sets of LEDs. Then test one button and make a decision to
+increment counter 1 or not. Then test the other button and do the same
+for counter 2. Finally, adjust the delay.</p>
+</section>
+<section id="assessment-of-experiment-2">
+<h2>2.6. Assessment of Experiment 2<a class="headerlink" href="#assessment-of-experiment-2" title="Permalink to this heading">#</a></h2>
+<p>This follows the pattern set in Experiment 1.</p>
+<ul class="simple">
+<li><p>A photograph of the modified breadboard, with some form of
+identification.</p></li>
+<li><p>A listing of your final programme (as specified in Section 5 above)
+with suitable comments.</p></li>
+</ul>
+</section>
+<section id="appendix-a-code-listings">
+<h2>Appendix A: Code Listings<a class="headerlink" href="#appendix-a-code-listings" title="Permalink to this heading">#</a></h2>
+<section id="listing-4-binary-counter-with-stop-start-control">
+<span id="listing-ex2-1"></span><h3>Listing 4: Binary counter with stop/start control<a class="headerlink" href="#listing-4-binary-counter-with-stop-start-control" title="Permalink to this heading">#</a></h3>
+<p>View and download code as a GitHub gist:
+<a class="reference external" href="https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f">digi_input1.ino).</a>.</p>
+<script src="https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f.js"></script>
+</section>
+<section id="listing-5-binary-counter-with-stop-start-and-turbo-button">
+<span id="listing-ex2-2"></span><h3>Listing 5: Binary counter with stop/start and turbo button<a class="headerlink" href="#listing-5-binary-counter-with-stop-start-and-turbo-button" title="Permalink to this heading">#</a></h3>
+<p>View and download code as a GitHub gist:
+<a class="reference external" href="https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2">digi_input2.ino</a>.</p>
+<script src="https://gist.github.com/cpjobling/2aea9097a906424b0b2ba1eab2bcf3b2.js"></script>
+</section>
+</section>
+<section id="appendix-b-photograph-of-experiment-2">
+<h2>Appendix B: Photograph of Experiment 2<a class="headerlink" href="#appendix-b-photograph-of-experiment-2" title="Permalink to this heading">#</a></h2>
+<p>The following photograph (<a class="reference internal" href="#photo-ex2-1"><span class="std std-numref">Fig. 150</span></a> ) has been provided by Dr Davies who created this experiment.</p>
+<figure class="align-center" id="photo-ex2-1">
+<a class="reference internal image-reference" href="../../_images/Expt3A1-1.jpg"><img alt="Photograph of the prototype board after completing experiment 2." src="../../_images/Expt3A1-1.jpg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 150 </span><span class="caption-text">Photograph of the completed prototype board for Experiment 2.</span><a class="headerlink" href="#photo-ex2-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./labs/lab02"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lab01/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Experiment 1: Binary Counter</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lab03/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Experiment 3: Analogue to Digital Conversion</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-a-switch-to-a-port">Connecting a switch to a port</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-a-switch-in-a-programme">2.3. Using a switch in a programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#let-s-go-faster">2.4. Let’s go faster</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#an-exercise-for-the-reader">2.5. An exercise for the reader…</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-experiment-2">2.6. Assessment of Experiment 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-code-listings">Appendix A: Code Listings</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-4-binary-counter-with-stop-start-control">Listing 4: Binary counter with stop/start control</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-5-binary-counter-with-stop-start-and-turbo-button">Listing 5: Binary counter with stop/start and turbo button</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-photograph-of-experiment-2">Appendix B: Photograph of Experiment 2</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

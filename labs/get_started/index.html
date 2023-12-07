@@ -1,0 +1,705 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Getting Started &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/get_started/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Experiment 1: Binary Counter" href="../lab01/index.html" />
+    <link rel="prev" title="Microcontroller Programming Laboratory" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/get_started/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/labs/get_started/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Getting Started</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-arduino-ide-2-on-your-computer">Installing the Arduino IDE 2 on Your Computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apple-macos">Apple (MacOS)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-blink">On the blink</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-blink">Modifying Blink</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started">
+<span id="id1"></span><h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Microcontrollers are an important topic for the Electronics Engineer. So many modern devices have a microcontroller at their core, even apparently “dumb” products such as toasters and electric fans. Specifying the right microcontroller for a specific task is a useful skill, so in our Electronic and Electrical Engineering degree program you will be exposed to a number of different microcontrollers.</p>
+<p>As an introduction to the subject, we shall learn how to program a popular 8-bit microcontroller in the “C” language. The specific microcontroller we shall be using is the Arduino Nano, a low-cost board with a range of useful features. Before we can program it, however, we shall have to install the Arduino Integrated Development Environment (IDE) onto your computer. If you are using one of the PCs in room B107, the software is already installed. The software is free, so you can install it on your own computer if you wish. The IDE has been produced in several versions, which can be run on Linux, Windows, and Apple computers.</p>
+<p>A vast amount of information about the Arduino project can be found on their website, <a class="reference external" href="https://arduiono.cc">arduino.cc</a>, including downloads for the IDE. Many of you already have some experience using Arduino harware and software, and so may have the IDE already installed.</p>
+<p>Our friends in the Swansea Hackspace have an extensive web site, which also offers guidance on getting started with Arduino projects. Their website can be found at <a class="reference external" href="https://swansea.hackspace.org.uk">swansea.hackspace.org.uk</a>. If you click on “Activities” followed by “Learning” you will be offered a range of tutorials, including one on the Arduino. Click on “Introduction to Arduino” and you will find a detailed description of the device. You may find it useful to read through some of these pages before starting on the installation procedure detailed below.</p>
+</section>
+<section id="installing-the-arduino-ide-2-on-your-computer">
+<h2>Installing the Arduino IDE 2 on Your Computer<a class="headerlink" href="#installing-the-arduino-ide-2-on-your-computer" title="Permalink to this heading">#</a></h2>
+<section id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this heading">#</a></h3>
+<p>Modern Windows 10 and 11 machines are capable of finding the necessary driver for the CH340 interface chip automatically. A good strategy would be to start the Windows 10 machine, and when it is ready plug in the Arduino Nano board using the supplied lead. After a few minutes, type Device Manager into the search box, and run the application offered to you. You should see a list of devices, including “Ports (COM and LPT)”. Click on this item and look at the lines following. One of these should read “USB-SERIAL CH340 (COM5)” or similar. Make a note of the COM port number and close the Device Manager.</p>
+<p>Next, unplug the Arduino Nano board. Go to <a class="reference external" href="https://arduino.cc">arduino.cc</a> (<a class="reference internal" href="#fig-1"><span class="std std-numref">Fig. 131</span></a>) and select the tab “Software&amp;rdquo. This will bring up a new page of options (<a class="reference internal" href="#fig-2"><span class="std std-numref">Fig. 132</span></a>). Move past  “Arduino Web Editor” and look at the section titled “Downloads” and the box labelled <strong>Arduino IDE 2.1.1</strong>. Look on the right-hand side and click on “Windows Installer for Windows 10 and newer”, which is the first item in the list. When the installation file has finished downloading return to the previous page using “back” on your browser. In the section marked “Arduino IDE 2.1.1” you will see the words “For more details, please refer to the Arduino IDE 2.0 documentation.” . Click on the link labelled <strong>Arduino IDE 2.0 documentation</strong> to open the <strong>Arduino IDE 2</strong> dicumentation page (highlighted in <a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 133</span></a>) and then select <strong>Downloading and installing the Arduino IDE 2</strong> from the table of contents to open the <strong>Downloading and installing the Arduino IDE 2</strong> page ({numref:fig:4}).</p>
+<p>Follow the detailed instructions for Windows to start the installer. There will follow quite a lengthy installation procedure, during which you will be offered additional drivers for other members of the Arduino family, including the boards offered by the company Adafruit. We recommend installing these additional drivers. When the installation is complete, plug in the Arduino Nano board and click on the “Arduino IDE” icon that has appeared on your desktop.</p></p>
+<figure class="align-center" id="fig-1">
+<a class="reference internal image-reference" href="../../_images/arduino_home.png"><img alt="a screenshot of the web page arduino.cc with software selected in the page menu." src="../../_images/arduino_home.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 131 </span><span class="caption-text">The homepage arduino.cc with software selected</span><a class="headerlink" href="#fig-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-2">
+<a class="reference internal image-reference" href="../../_images/arduino_ide_select.png"><img alt="a screenshot of the software page on arduino.cc with downloads highlighted." src="../../_images/arduino_ide_select.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 132 </span><span class="caption-text">The software page on arduino.cc</span><a class="headerlink" href="#fig-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-3">
+<a class="reference internal image-reference" href="../../_images/downloading.png"><img alt="a screenshot of the Arduino IDE 2 page with the link to downloading and installing the Arduiono IDE 2 highlighted." src="../../_images/downloading.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 133 </span><span class="caption-text">The Arduino IDE 2 page</span><a class="headerlink" href="#fig-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-4">
+<a class="reference internal image-reference" href="../../_images/install.png"><img alt="a screenshot of the Arduino IDE 2 downloading and installation instructions page." src="../../_images/install.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 134 </span><span class="caption-text">The installation instructions page.</span><a class="headerlink" href="#fig-4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this heading">#</a></h3>
+<p>Fortunately, all Linux systems have the necessary drivers in place already, so it is only necessary to install the Arduino IDE application.</p>
+<p>Go to <a class="reference external" href="https://arduino.cc">arduino.cc</a> and select the tab “Software”. This will bring up the Arduiono IDE 2 page (<a class="reference internal" href="#fig-2"><span class="std std-numref">Fig. 132</span></a>). Move past the instructions for “Arduino Web Editor” and look at the section titled “Downloads”. In the section marked “Arduino IDE 2.1.1” you will see the words “For more details, please refer to the Arduino IDE 2.0 documentation.” . Click on the link labelled <strong>Arduino IDE 2.0 documentation</strong> to open the <strong>Arduino IDE 2</strong> dicumentation page (highlighted in <a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 133</span></a>) and then select <strong>Downloading and installing the Arduino IDE 2</strong> from the table of contents to open the <strong>Downloading and installing the Arduino IDE 2</strong> page ({numref:fig:4}). Follow the detailed instructions for Linux to start the installer.</p>
+<p>There will follow quite a lengthy installation procedure, involving unpacking the tar file, and running the script “install.sh”, either from the command line or using “Run in terminal” from “Files”. During the installation you will be offered additional drivers for other members of the Arduino family, including the boards offered by the company Adafruit. We recommend installing these additional drivers. When the installation is complete, plug in the Arduino Nano board and click on the “Arduino IDE” icon that has appeared on your desktop.</p>
+</section>
+<section id="apple-macos">
+<h3>Apple (MacOS)<a class="headerlink" href="#apple-macos" title="Permalink to this heading">#</a></h3>
+<p>Once again, go to <a class="reference external" href="https://arduino.cc">arduino.cc</a> and select the tab “Software”. This will bring up the Arduiono IDE 2 page (<a class="reference internal" href="#fig-2"><span class="std std-numref">Fig. 132</span></a>). Move past the instructions for “Arduino Web Editor” and look at the section titled “Downloads”. In the section marked “Arduino IDE 2.1.1” you will see the words “For more details, please refer to the Arduino IDE 2.0 documentation.” . Click on the link labelled <strong>Arduino IDE 2.0 documentation</strong> to open the <strong>Arduino IDE 2</strong> dicumentation page (highlighted in <a class="reference internal" href="#fig-3"><span class="std std-numref">Fig. 133</span></a>) and then select <strong>Downloading and installing the Arduino IDE 2</strong> from the table of contents to open the <strong>Downloading and installing the Arduino IDE 2</strong> page ({numref:fig:4}). Follow the detailed instructions for MacOS to start the installer.</p>
+</section>
+</section>
+<section id="initial-set-up">
+<span id="set-up-arduino"></span><h2>Initial set up<a class="headerlink" href="#initial-set-up" title="Permalink to this heading">#</a></h2>
+<p>When you are satisfied that the Arduino IDE has been successfully installed, run the application. Assuming that the installation procedure described above has gone to plan, and after the splash screen, the Arduino IDE main screen (<a class="reference internal" href="#fig-5"><span class="std std-numref">Fig. 135</span></a>) appears.</p>
+<figure class="align-center" id="fig-5">
+<a class="reference internal image-reference" href="../../_images/arduino_ide.png"><img alt="A screen shot of the Arduino IDE 2 as it appears on first start up" src="../../_images/arduino_ide.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 135 </span><span class="caption-text">The Ardino IDE 2 Main Screen on First Run</span><a class="headerlink" href="#fig-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Plug in the Arduino Nano board (<a class="reference internal" href="#fig-6"><span class="std std-numref">Fig. 136</span></a>) using the supplied lead. Next look at the dropdown control labelled *<em>Select Board</em>. Identify the connection which depends on your operating system but will be identified as a USB connection on MacOS and Linux, or may be labelled COM 5 (or some other number) on Windows (see <a class="reference internal" href="#fig-7"><span class="std std-numref">Fig. 137</span></a>).</p>
+<figure class="align-center" id="fig-6">
+<a class="reference internal image-reference" href="../../_images/arduino_nano_breadboard.png"><img alt="The Arduino nano microntroller mounted on breadboard" src="../../_images/arduino_nano_breadboard.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 136 </span><span class="caption-text">The Arduino nano microntroller mounted on breadboard</span><a class="headerlink" href="#fig-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="fig-7">
+<a class="reference internal image-reference" href="../../_images/choose_port.png"><img alt="The select port dialogue when setting up the Arduino IDE 2 to use the plugged in Adrduiono nano board." src="../../_images/choose_port.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 137 </span><span class="caption-text">Choose the port that your nano board is connected on. What you will see here depends on your operating system. I have shown what I see on my MacOS machine.</span><a class="headerlink" href="#fig-7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once you have selected the correct port, you need to identify the board you are using. Search for nano as shown in <a class="reference internal" href="#fig-7"><span class="std std-numref">Fig. 137</span></a></p>
+<figure class="align-center" id="fig-8">
+<a class="reference internal image-reference" href="../../_images/select_board.png"><img alt="Shows the slect board dialogue. We have seached for nano and will the the offered selection &quot;Ardunino Nano&quot;." src="../../_images/select_board.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 138 </span><span class="caption-text">Search for and select Arduino Nano.</span><a class="headerlink" href="#fig-8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Once you have set up your board, the board idenitfier changes to <strong>Arduino Nano</strong> in the menu bar as shown in <a class="reference internal" href="#fig-9"><span class="std std-numref">Fig. 139</span></a>. You are now ready to compile your first program.</p>
+<figure class="align-center" id="fig-9">
+<a class="reference internal image-reference" href="../../_images/nano_ready.png"><img alt="A screenshot of the Arduino IDE 2 fater it has been connected to the Arduino nano board." src="../../_images/nano_ready.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 139 </span><span class="caption-text">Arduino IDE 2 set up and ready to go.</span><a class="headerlink" href="#fig-9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="on-the-blink">
+<h2>On the blink<a class="headerlink" href="#on-the-blink" title="Permalink to this heading">#</a></h2>
+<p>The first program we shall run rejoices in the unlikely name of Blink. Click on <code class="docutils literal notranslate"><span class="pre">File</span></code> and select <code class="docutils literal notranslate"><span class="pre">Examples</span></code> from the drop-down menu. A further menu appears, with all the example programs. Select <code class="docutils literal notranslate"><span class="pre">01.Basics</span></code>, followed by <code class="docutils literal notranslate"><span class="pre">Blink</span></code> (<a class="reference internal" href="#fig-10"><span class="std std-numref">Fig. 140</span></a>).</p>
+<figure class="align-center" id="fig-10">
+<a class="reference internal image-reference" href="../../_images/select_blink.png"><img alt="A screenshot the Arduino IDE 2 will Files&gt; Examples&gt; 01.Basiscs&gt; Blink highlighted." src="../../_images/select_blink.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 140 </span><span class="caption-text">Select the blink example.</span><a class="headerlink" href="#fig-10" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Select <code class="docutils literal notranslate"><span class="pre">Blink</span></code>. The program appears in a new IDE window (<a class="reference internal" href="#fig-11"><span class="std std-numref">Fig. 141</span></a>). The program at this stage is just text. It needs to be compiled in order to create an executable file.</p>
+<figure class="align-center" id="fig-11">
+<a class="reference internal image-reference" href="../../_images/blink_prog.png"><img alt="A screenshot the Arduino IDE 2 with the example blink program loaded as blinck.ino." src="../../_images/blink_prog.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 141 </span><span class="caption-text">Blink program (Arduino sketch blink.ino) loaded in the Arduino IDE 2.</span><a class="headerlink" href="#fig-11" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Identify the icon for compiling the program, this is a tick in a blue circle which is called Verify on the Arduino IDE. Click this once, and after a short period of time the message “Done compiling” should appear near the bottom of the window. Hopefully, as we are compiling an example program, there will be no errors! If there are errors, information on the type of error and where it has occurred in the program can be found in the dialogue box near the bottom of the window.</p>
+<p>Next, we need to transfer the executable file to the Arduino Nano board. This is done by identifying the icon Upload, which is a right arrow in a blue circle, and clicking it once. Annoyingly, the IDE insists on re-compiling the program. If all has gone to plan, the message “Done Uploading” appears. Then after a few seconds the executable file starts running on the Nano board. One of the LEDs begins flashing at a regular rate, one second on, one second off.</p>
+</section>
+<section id="modifying-blink">
+<h2>Modifying Blink<a class="headerlink" href="#modifying-blink" title="Permalink to this heading">#</a></h2>
+<p>So far, so good.</p>
+<p>Now, let us try changing the program. Look at the text screen, the “source code”. You will find two instances of the instruction <code class="docutils literal notranslate"><span class="pre">delay(1000)</span></code>.</p>
+<p>Move the cursor and change the argument of the two instructions to <code class="docutils literal notranslate"><span class="pre">100</span></code>. Now, with your new-found knowledge, re-compile the program and upload it to the Nano.</p>
+<p>When the message “Done Uploading” appears, look at the LED on the Nano. It should be flashing at ten times the previous rate.</p>
+<p>Congratulations! You have successfully edited the program.</p>
+<p>If you like, you can save the edited program by clicking on File, selecting “Save As” and when the dialogue appears, give the program a new name, for example “myblink”.</p>
+<p>You are now ready to attempt the first laboratory exercise <a class="reference internal" href="../lab01/index.html#lab-1"><span class="std std-ref">Experiment 1: Binary Counter</span></a>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./labs/get_started"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Microcontroller Programming Laboratory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../lab01/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Experiment 1: Binary Counter</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installing-the-arduino-ide-2-on-your-computer">Installing the Arduino IDE 2 on Your Computer</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#windows">Windows</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linux">Linux</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apple-macos">Apple (MacOS)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-set-up">Initial set up</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-the-blink">On the blink</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modifying-blink">Modifying Blink</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

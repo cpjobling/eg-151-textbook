@@ -1,0 +1,1197 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Microcontrollers and Microcontroller Architecture &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week01/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Introduction to Data Representation" href="../data_representation/index.html" />
+    <link rel="prev" title="Croeso i Brifysgol Abertawe | Welcome to Swansea University" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week01/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week01/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Microcontrollers and Microcontroller Architecture</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#years-of-teaching-microprocessors-at-swansea">50 years of teaching microprocessors at Swansea!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered-in-this-lecture">Topics Covered in this Lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-microcontroller">What is a Microcontroller?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-microcontrollers-used">Where are Microcontrollers Used?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automotive-applications">Automotive applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-electronics">Consumer electronics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications">Industrial applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-monitoring">Environmental monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microcontroller-market-forecast">Microcontroller Market Forecast</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-describe-microcontrollers">How do we Describe Microcontrollers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-bits">Number of Bits</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-8-bit-and-32-bit-mcus">Applications of 8-bit and 32-bit MCUs</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#market-share-of-8-bit-16-bit-and-32-bit-mcus-in-2021">Market share of 8-bit, 16-bit and 32-bit MCUs in 2021</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-vs-external-memory">Embedded vs external memory</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#volatile-vs-non-volatile-embedded-memory">Volatile vs non-volatile embedded memory</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-set-architectures">Instruction Set Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-instruction-set-computer-risc">Reduced instruction Set Computer (RISC)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-instruction-computer-cisc">Complex Instruction Computer (CISC)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-architectures">Memory Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-princeton-architecture">Von-Neumann (Princeton) architecture</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#harvard-architecture">Harvard architecture</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-harvard-architecture">Modified Harvard architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-a-microcontroller-described">How is a Microcontroller Described?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-or-core-architecure">System or Core Architecure</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#atmel-atmega328p-avr">Atmel ATMega328P AVR</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#nxp-hcs08-mcu">NXP HCS08 MCU</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-atmel-atmega-328-microcontroller">The Atmel ATmega 328 Microcontroller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-atmel-atmega328-mcu">Introducing the Atmel ATMega328 MCU</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-logic-unit">Arithmetic Logic Unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-instruction">Example instruction</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-alu-from-the-74ls181">Example of the ALU from the 74LS181</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registers">Registers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#registers-in-the-atmega328-mcu">Registers in the ATMega328 MCU</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-register-file">The Register File</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-register-file">Using the Register File</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#x-y-z-pointer-registers">X- Y- Z-Pointer Registers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next week</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-microcontrollers-and-microcontroller-architecture">
+<span id="week01"></span><h1>Introduction to Microcontrollers and Microcontroller Architecture<a class="headerlink" href="#introduction-to-microcontrollers-and-microcontroller-architecture" title="Permalink to this heading">#</a></h1>
+<p><img alt="" src="../../_images/cover.png" /></p>
+<section id="years-of-teaching-microprocessors-at-swansea">
+<span id="week1-introduction"></span><h2>50 years of teaching microprocessors at Swansea!<a class="footnote-reference brackets" href="#acknowledgements" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a><a class="headerlink" href="#years-of-teaching-microprocessors-at-swansea" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/dr_tim_davies.png"><img alt="Dr Davies in the Electronics lab" src="../../_images/dr_tim_davies.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p>Started in 1972/1973 by Prof. David Aspinall and Dr. Erik Dagless, using bespoke equipment based on the Intel 8008.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Always using 8-bit micros such as Intel 8008, Intel 8085, Motorola 68HC11, Motorola 68HCS08…</p></li>
+</ul>
+<ul class="simple">
+<li><p>Take-home lab, developed by Dr Davies, in 2020, used the Arduino Nano which is based on the Atmel (now MicroChip) ATmega328</p></li>
+</ul>
+<ul class="simple">
+<li><p>One of our former students, Prof Sir Andy Hopper, asked why we are not teaching using the ARM processor which he helped develop.</p></li>
+</ul>
+<ul class="simple">
+<li><p>And so the quest for a new microcontroller laboratory began.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Spring 2021 - the launch of a new microcontroller, the RP2040 which is packaged into a small module, costing only three pounds.</p></li>
+</ul>
+<ul class="simple">
+<li><p>This is the microcontroller for our new EG-252 lab and will also be used in the new module EG-3082 Embedded Systems launching this year,</p></li>
+</ul>
+<ul class="simple">
+<li><p>You will therefore be using microcontrollers throughout this program</p></li>
+</ul>
+</section>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this week’s lecture, you will be given an introduction to microcontrollers focusing on what a microcontroller is, where they can be found and how they can be described using the their <em>architecture</em>. The lecture then moves on to introduce the Atmel ATmega328 microcontroller, which will be used in the practical sessions in this course, looking at its core architecture including the function of the arithmetic logic unit and registers.</p>
+</section>
+<section id="topics-covered-in-this-lecture">
+<span id="week1-toc"></span><h2>Topics Covered in this Lecture<a class="headerlink" href="#topics-covered-in-this-lecture" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/slide2.png"><img alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." src="../../_images/slide2.png" style="width: 50%;" /></a>
+<ul class="simple">
+<li><p><a class="reference internal" href="#week1-what-is-a-uc"><span class="std std-ref">What is a Microcontroller?</span></a></p></li>
+<li><p><a class="reference internal" href="#week1-where-are-uc-used"><span class="std std-ref">Where are Microcontrollers Used?</span></a></p></li>
+<li><p><a class="reference internal" href="#week1-architecture"><span class="std std-ref">How do we Describe Microcontrollers?</span></a></p></li>
+<li><p><a class="reference internal" href="#atmel-atmega328"><span class="std std-ref">The Atmel ATmega 328 Microcontroller</span></a></p></li>
+</ul>
+</section>
+<section id="what-is-a-microcontroller">
+<span id="week1-what-is-a-uc"></span><h2>What is a Microcontroller?<a class="headerlink" href="#what-is-a-microcontroller" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/micro_chip.jpg"><img alt="A decorative image showing a microcontroller chip" src="../../_images/micro_chip.jpg" style="width: 25%;" /></a>
+<p>A microntroller is a compact integrated circuit designed to govern a specific operation or set of operations within an embedded system.</p>
+<p>At a high level of abstraction, a microntroller includes three core components within a single chip:</p>
+<ul class="simple">
+<li><p>A central processing unit (CPU)</p></li>
+<li><p>Memory, and</p></li>
+<li><p>Input/output (I/0) peripherals</p></li>
+</ul>
+</section>
+<section id="where-are-microcontrollers-used">
+<span id="week1-where-are-uc-used"></span><h2>Where are Microcontrollers Used?<a class="headerlink" href="#where-are-microcontrollers-used" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/uses_of_micros.png"><img alt="An image illustrating that micronctrollers are used in the automotive industry, cosnumer electronics, industrial and control sytems, and environmental monitoring" src="../../_images/uses_of_micros.png" style="width: 50%;" /></a>
+<p>Microcontrollers are used in the automotive industry, consumer electronics, industrial and control systems, and environmental monitoring and many other areas of engineering.</p>
+<section id="automotive-applications">
+<h3>Automotive applications<a class="headerlink" href="#automotive-applications" title="Permalink to this heading">#</a></h3>
+<p><img alt="Automotive applications of microcontrollers" src="../../_images/automotive_apps.png" /></p>
+<p>Original image source: <a class="reference external" href="https://www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina">www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina</a> (no longer accessible).</p>
+<table>
+<tr>
+<td>
+<ul>
+    <li>Engine Control</li>
+<li>Heating/Cooling</li>
+<li>Central Locking</li>
+<li>Navigation</li>
+<li>Cruise Control</li>
+<li>Lighting</li>
+<li>Radio</li>
+<li>Charging System</li>
+</li>
+</ul>
+</td><td>
+<ul>
+    <li>Exhaust Control</li>
+    <li>Parking Assistance</li>
+    <li>Wipers</li>
+    <li>Occupancy / Airbags</li>
+    <li>ADAS</li>
+    <li>Collison Warning</li>
+    <li>Speed limiter</li>
+    <li>Battery Monitoring</li>
+</ul>
+</td>
+</tr>
+</table></section>
+<section id="consumer-electronics">
+<h3>Consumer electronics<a class="headerlink" href="#consumer-electronics" title="Permalink to this heading">#</a></h3>
+<p><img alt="Photograph showing the microcontroller inside a smart watch" src="https://static.electronicsweekly.com/wp-content/uploads/2015/10/14194030/6a238902a5a6bcc5a0e42f2133959272_original.jpg" /></p>
+<p>Image source: <a class="reference external" href="https://www.electronicsweekly.com/blogs/distribution-world/communities/innovative-smartwatch-challenges-apples-watch-design-2015-10">www.electronicsweekly.com/blogs/distribution-world/communities/innovative-smartwatch-challenges-apples-watch-design-2015-10</a></p>
+<table>
+<tr>
+<td>
+<ul>
+    <li>Smart watch</li>
+<li>Mobile phone</li>
+<li>Air conditioner</li>
+<li>Printer</li>
+<li>Calculator</li>
+<li>Hair dryer</li>
+</li>
+</ul>
+</td><td>
+<ul>
+    <li>Alarm clock</li>
+    <li>Microwave</li>
+    <li>Wipers</li>
+    <li>Fridge freezer</li>
+    <li>Power tool</li>
+    <li>Remote control</li>
+</ul>
+</td>
+</tr>
+</table></section>
+<section id="industrial-applications">
+<h3>Industrial applications<a class="headerlink" href="#industrial-applications" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/robots.jpg"><img alt="Photograph showing robots working on an automated assembly line]()" src="../../_images/robots.jpg" style="width: 50%;" /></a>
+<p>Image source: <a class="reference external" href="https://investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/">investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/</a> [No longer available online]</p>
+<table>
+<tr>
+<td>
+<ul>
+    <li>Manufacturing systems</li>
+<li>Quality control</li>
+<li>Process monitoring</li>
+<li>Robotics</li>
+<li>Tracking systems</li>
+<li>Fire control</li>
+</li>
+</ul>
+</td><td>
+<ul>
+    <li>Materials processing</li>
+    <li>Laboratory equipment</li>
+    <li>Machine-to-machine communications</li>
+    <li>Networking</li>
+    <li>Smart buildings / BMS</li>
+    <li>Environmental control/li>
+</ul>
+</td>
+</tr>
+</table></section>
+<section id="environmental-monitoring">
+<h3>Environmental monitoring<a class="headerlink" href="#environmental-monitoring" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/env_mon.jpg"><img alt="Image that illustrated article &quot;Hawa Dawa Installs the Largest Air Quality Measurement Network in Germany&quot;" src="../../_images/env_mon.jpg" style="width: 50%;" /></a>
+<p>Image source: <a class="reference external" href="http://www.openpr.com/news/1799966/hawa-dawa-installs-the-largest-air-quality-measurement-network">www.openpr.com/news/1799966/hawa-dawa-installs-the-largest-air-quality-measurement-network</a></p>
+<table>
+<tr>
+<td>
+<ul>
+    <li>Air quality monitoring</li>
+<li>Weather monitoring</li>
+<li>Gas sensors</li>
+<li>Water quality sensors</li>
+<li>Farming</li>
+</ul>
+</td><td>
+<ul>
+    <li>Temperature monitoring</li>
+<li>Light level monitoring</li>
+    <li>Climate change</li>
+    <li>Air flow</li>
+    <li>Animal/wildlife tracking</li>
+</ul>
+</td>
+</tr>
+</table></section>
+<section id="microcontroller-market-forecast">
+<h3>Microcontroller Market Forecast<a class="headerlink" href="#microcontroller-market-forecast" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="https://www.precedenceresearch.com/insightimg/Microcontroller-Market-Share-By-Application-2021.jpg"><img alt="Microntroller (MCU) market size, 2021 to 2030 (USD Billion)" src="https://www.precedenceresearch.com/insightimg/Microcontroller-Market-Share-By-Application-2021.jpg" style="width: 50%;" /></a>
+<p>Source: <a class="reference external" href="http://www.precedenceresearch.com/microcontroller-mcu-market">www.precedenceresearch.com/microcontroller-mcu-market</a></p>
+</section>
+</section>
+<section id="how-do-we-describe-microcontrollers">
+<span id="week1-architecture"></span><h2>How do we Describe Microcontrollers?<a class="headerlink" href="#how-do-we-describe-microcontrollers" title="Permalink to this heading">#</a></h2>
+<section id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this heading">#</a></h3>
+<p>Definition from the Oxford English Dictionary <a class="reference external" href="https://www.oed.com/dictionary/architecture_n?tab=meaning_and_use&amp;tl=true#40006241">architecture</a></p>
+<blockquote>
+<div><p><strong>Computing</strong>. The conceptual structure and overall logical organization of a computer or computer-based system from the point of view of its use or design; a particular realization of this<a class="footnote-reference brackets" href="#defn" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+</div></blockquote>
+<section id="number-of-bits">
+<h4>Number of Bits<a class="headerlink" href="#number-of-bits" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/nbits.png"><img alt="Architecture diagram showing number of bits used in a microcontroller" src="../../_images/nbits.png" style="width: 50%;" /></a>
+<p>Categorizing Microcontroller Units (MCUs) as 8-, 16-, or 32-bit designs is one way of classifying their performance capabilities.</p>
+<p>The number of bits identifies the size of the registers, the number of available memory addresses and the largest number that can be processed/represented.</p>
+<p>As an example, in an 8-bit MC</p>
+<ul class="simple">
+<li><p>Each register is 8-bits (or one byte) wide.</p></li>
+<li><p>There are <span class="math notranslate nohighlight">\(2^8\)</span> (or 256) possible memory addresses</p></li>
+<li><p>There are <span class="math notranslate nohighlight">\(2^8\)</span> integers that can be represented (0 to 255).</p></li>
+</ul>
+<p>Microcontrollers with more bits, for example 16- and 32-bit MCUs have correspondingly more bits per register, more available memory addresses, and can handle larger numbers compared with their 8-bit counterparts.</p>
+<p>An introduction to data representation follows in <a class="reference internal" href="../data_representation/index.html#data-representation"><span class="std std-ref">Introduction to Data Representation</span></a>.</p>
+<p><a class="reference internal" href="#memmap"><span class="std std-numref">Fig. 1</span></a> shows the data memory map of the Atmel Atmega328 which is an 8- bit MCU.</p>
+<p>It has <span class="math notranslate nohighlight">\(2^8\)</span> or 256 available memory addresses
+from 0x0000 – 0x00FF which covers:</p>
+<ul class="simple">
+<li><p>32 general purpose registers,</p></li>
+<li><p>64 I/O registers, and</p></li>
+<li><p>160 Extended I/O registers</p></li>
+</ul>
+<figure class="align-default" id="memmap">
+<a class="reference internal image-reference" href="../../_images/memmap.jpg"><img alt="Memory map for the Atmel Atmega328 MCU" src="../../_images/memmap.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Memory map for the Atmel Atmega328 MCU</span><a class="headerlink" href="#memmap" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="applications-of-8-bit-and-32-bit-mcus">
+<h5>Applications of 8-bit and 32-bit MCUs<a class="headerlink" href="#applications-of-8-bit-and-32-bit-mcus" title="Permalink to this heading">#</a></h5>
+<a class="reference internal image-reference" href="http://lreese.dotsenkoweb.com/wp-content/uploads/2019/04/Fig-1-VennDiagraml-1024x713.jpg"><img alt="Venn diagram of the 8-bit MCU vs. 32-bit MCU benefits from a general perspective, as direct comparisons of all features combined are relative to tradeoffs. In general, the 8-bit MCU has been lower cost and smaller in size than the 32-bit MCU, but 32-bit MCUs are close to competing on cost and both have at least one “specimen” of a similarly minute physical size. In overall power consumption, the slower 8-bit MCUs will always trump the faster 32-bit MCUs as long as manufacturers stay on their game." src="http://lreese.dotsenkoweb.com/wp-content/uploads/2019/04/Fig-1-VennDiagraml-1024x713.jpg" style="width: 50%;" /></a>
+<p>Source: <a class="reference external" href="http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus">http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus</a></p>
+</section>
+<section id="market-share-of-8-bit-16-bit-and-32-bit-mcus-in-2021">
+<h5>Market share of 8-bit, 16-bit and 32-bit MCUs in 2021<a class="headerlink" href="#market-share-of-8-bit-16-bit-and-32-bit-mcus-in-2021" title="Permalink to this heading">#</a></h5>
+<a class="reference internal image-reference" href="https://www.precedenceresearch.com/insightimg/Product-Market-Share-By-Product-2021.jpg"><img alt="" src="https://www.precedenceresearch.com/insightimg/Product-Market-Share-By-Product-2021.jpg" style="width: 50%;" /></a>
+<p>Source: <a class="reference external" href="http://www.precedenceresearch.com/microcontroller-mcu-market">www.precedenceresearch.com/microcontroller-mcu-market</a></p>
+</section>
+</section>
+<section id="memory">
+<h4>Memory<a class="headerlink" href="#memory" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/memory.png"><img alt="Architecture diagram showing memory types used in microcontrollers" src="../../_images/memory.png" style="width: 50%;" /></a>
+<section id="embedded-vs-external-memory">
+<h5>Embedded vs external memory<a class="headerlink" href="#embedded-vs-external-memory" title="Permalink to this heading">#</a></h5>
+<p>Memory in modern microcontrollers can be classified as embedded or external dependent on whether this is physically located within the MCU itself or is connected separately.</p>
+<p>For most microcontroller-based applications, the internal memory is enough, however applications which gather or buffer large amounts of data may also need external memory in the form of SD cards, M.2 drives and similar.</p>
+<p>A Raspberry Pi 4 Model B is illustrated in <a class="reference internal" href="#raspberrypi4b"><span class="std std-numref">Fig. 2</span></a>. It has both internal and external memory.</p>
+<figure class="align-center" id="raspberrypi4b">
+<a class="reference internal image-reference" href="https://www.hackatronic.com/wp-content/uploads/2021/11/raspberry-pi-4-specifications-.jpg"><img alt="Raspberry Pi 4 Model B" src="https://www.hackatronic.com/wp-content/uploads/2021/11/raspberry-pi-4-specifications-.jpg" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Raspberry Pi 4 Model B</span><a class="headerlink" href="#raspberrypi4b" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Source: <a class="reference external" href="http://www.hackatronic.com/raspberry-pi-4-specifications-pin-diagram-and-description/">www.hackatronic.com/raspberry-pi-4-specifications-pin-diagram-and-description</a>.</p>
+</section>
+<section id="volatile-vs-non-volatile-embedded-memory">
+<h5>Volatile vs non-volatile embedded memory<a class="headerlink" href="#volatile-vs-non-volatile-embedded-memory" title="Permalink to this heading">#</a></h5>
+<p>Broadly speaking embedded memory that is found in a microcontroller can be classified into two categories:</p>
+<ul class="simple">
+<li><p><em>Volatile</em>: data is lost when power is removed – this is <em>temporary storage</em>.</p></li>
+<li><p><em>Non-volatile</em>: data is retained when power is removed – this is <em>permanent storage</em>.</p></li>
+</ul>
+<p>Volatile and non-volatile memory can be further classified as illustrated in <a class="reference internal" href="#vol-non-vol-memory"><span class="std std-numref">Fig. 3</span></a>.</p>
+<figure class="align-center" id="vol-non-vol-memory">
+<a class="reference internal image-reference" href="../../_images/memory_types.png"><img alt="Classification of volatile and non-volatile memmory." src="../../_images/memory_types.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Classification of volatile and non-volatile memory.</span><a class="headerlink" href="#vol-non-vol-memory" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="instruction-set-architectures">
+<h4>Instruction Set Architectures<a class="headerlink" href="#instruction-set-architectures" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/instruction_set.png"><img alt="Architecture diagram showing instruction sets used in microcontrollers" src="../../_images/instruction_set.png" style="width: 50%;" /></a>
+<p>The instruction set architecture (ISA) describes the format and operation of instructions the microcontroller can perform and a microcontroller will often be categorized as having a RISC based or CISC based architecture.</p>
+<section id="reduced-instruction-set-computer-risc">
+<h5>Reduced instruction Set Computer (RISC)<a class="headerlink" href="#reduced-instruction-set-computer-risc" title="Permalink to this heading">#</a></h5>
+<p>A RISC is a device with a small, highly optimized set of instructions which utilizes registers and a highly regular instruction pipeline, allowing instructions to be completed in a low number of clock cycles. In short, several instructions may need to be run to perform a task and this may complicate the coding.</p>
+</section>
+<section id="complex-instruction-computer-cisc">
+<h5>Complex Instruction Computer (CISC)<a class="headerlink" href="#complex-instruction-computer-cisc" title="Permalink to this heading">#</a></h5>
+<p>A CISC is a device in which single instructions can execute several low-level operations or are capable of multi-step operations or addressing modes within single instructions. In this instance a program may be easier to read by a human, but the timing will be irregular and difficult to debug or be monitored by a machine.</p>
+</section>
+<section id="example">
+<h5>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h5>
+<p>As an example, consider the case where you want to multiply two numbers stored at addresses 0x0010 and 0x0011 respectively.</p>
+<p>On a RISC based architecture microcontroller the code would look something like:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDS</span> <span class="n">r18</span><span class="p">,</span> <span class="mh">0x0010</span>
+<span class="n">LDS</span> <span class="n">r19</span><span class="p">,</span> <span class="mh">0x0011</span>
+<span class="n">MUL</span> <span class="n">r18</span><span class="p">,</span> <span class="n">r19</span>
+</pre></div>
+</div>
+<p>However, on a CISC based architecture machine the multiply instruction may be able to perform the memory access instructions within its execution, meaning the code would look like this:</p>
+<div class="highlight-asm notranslate"><div class="highlight"><pre><span></span><span class="nf">MUL</span><span class="w"> </span><span class="mi">0x0010</span><span class="p">,</span><span class="w"> </span><span class="mi">0x0011</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="memory-architectures">
+<h4>Memory Architectures<a class="headerlink" href="#memory-architectures" title="Permalink to this heading">#</a></h4>
+<a class="reference internal image-reference" href="../../_images/mem_arch.png"><img alt="Architecture diagram showing the memory architectures used in microcontrollers" src="../../_images/mem_arch.png" style="width: 75%;" /></a>
+<p>Memory architecture is a different concept from embedded and external and volatile and non-volatile memory. Memory architecture classifications describe where program instructions and data are stored and how they are accessed.</p>
+<p>There are two categories, <em>Von-Neumann</em> and <em>Harvard</em>.</p>
+<section id="von-neumann-princeton-architecture">
+<h5>Von-Neumann (Princeton) architecture<a class="headerlink" href="#von-neumann-princeton-architecture" title="Permalink to this heading">#</a></h5>
+<p>In a Von-Neumann architecture, the same memory and bus are used for both data and instructions used by the CPU and peripherals as illustrated in <a class="reference internal" href="#fig-week1-vonneuman"><span class="std std-numref">Fig. 4</span></a>.</p>
+<figure class="align-center" id="fig-week1-vonneuman">
+<a class="reference internal image-reference" href="../../_images/von_neuman_arch.png"><img alt="The Von Neumann architecture - data memory and programme code use the same memory storage area and data busses." src="../../_images/von_neuman_arch.png" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">The Von Neumann architecture</span><a class="headerlink" href="#fig-week1-vonneuman" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="harvard-architecture">
+<h5>Harvard architecture<a class="headerlink" href="#harvard-architecture" title="Permalink to this heading">#</a></h5>
+<p>The Harvard architecture stores machine instructions and data in separate memory units that are connected to the CPU and peripherals by different busses as illustrated in <a class="reference internal" href="#fig-week1-harvard"><span class="std std-numref">Fig. 5</span></a>.</p>
+<figure class="align-center" id="fig-week1-harvard">
+<a class="reference internal image-reference" href="../../_images/harvard_arch.jpg"><img alt="The Harvard architecture - data memory and programme code use different memory storage areas and busses." src="../../_images/harvard_arch.jpg" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">The Harvard architecture</span><a class="headerlink" href="#fig-week1-harvard" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modified-harvard-architecture">
+<h5>Modified Harvard architecture<a class="headerlink" href="#modified-harvard-architecture" title="Permalink to this heading">#</a></h5>
+<p>Most modern microcontrollers don’t have a physical separation between the memory spaces used by data and instructions, and therefore could be described as Von Neumann for this reason. However, since these microcontrollers often use separate busses for data and instructions, a better way to represent these is as a <em>modified</em> Harvard architecture<a class="footnote-reference brackets" href="#note1" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="how-is-a-microcontroller-described">
+<h3>How is a Microcontroller Described?<a class="headerlink" href="#how-is-a-microcontroller-described" title="Permalink to this heading">#</a></h3>
+<p>In summary, the final MCU classification shown in <a class="reference internal" href="#mcu-architecture"><span class="std std-numref">Fig. 6</span></a> represents some of categories under microcontroller architecture which are focused around the system itself.</p>
+<p>There are further classifications as you move towards either the circuit design or the embedded system application.</p>
+<figure class="align-center" id="mcu-architecture">
+<a class="reference internal image-reference" href="../../_images/mem_arch.png"><img alt="Classification of microcontrollers systems" src="../../_images/mem_arch.png" style="width: 75%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Classification of microcontroller systems</span><a class="headerlink" href="#mcu-architecture" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="system-or-core-architecure">
+<h4>System or Core Architecure<a class="headerlink" href="#system-or-core-architecure" title="Permalink to this heading">#</a></h4>
+<p>In general, most microcontroller manufacturers will present a system wide, or <em>core architecture</em> in the form of a diagram which will appear early on in the data sheet for the device.</p>
+<section id="atmel-atmega328p-avr">
+<h5>Atmel ATMega328P AVR<a class="headerlink" href="#atmel-atmega328p-avr" title="Permalink to this heading">#</a></h5>
+<p>For example, <a class="reference internal" href="#fig-week1-avr"><span class="std std-numref">Fig. 7</span></a> is taken from Atmel ATMega328 data sheet<a class="footnote-reference brackets" href="#atmega328-data-sheet" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> and shows a block diagram of the Advanced Virtual RISC (AVR) architecture.</p>
+<figure class="align-center" id="fig-week1-avr">
+<a class="reference internal image-reference" href="../../_images/avr_architecture.png"><img alt="Block Diagram of the AVR Architecture" src="../../_images/avr_architecture.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Block Diagram of the AVR Architecture (Source: Figure 6.1, Page 9 of the Atmel ATMega328P data sheet)</span><a class="headerlink" href="#fig-week1-avr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="nxp-hcs08-mcu">
+<h5>NXP HCS08 MCU<a class="headerlink" href="#nxp-hcs08-mcu" title="Permalink to this heading">#</a></h5>
+<p>As another example, the block diagram shown in <a class="reference internal" href="#fig-week1-hcs08"><span class="std std-numref">Fig. 8</span></a> represents the architecture of the NXP (formally Motorola) HCS08 MCU.</p>
+<p>This MCU, which was used on this module before the Arduino was adopted, does not have a bank of general purpose registers. Instead it has a single working register, known as the <em>accumulator</em>, which is involved in most computations that the MCU performs.</p>
+<figure class="align-center" id="fig-week1-hcs08">
+<a class="reference internal image-reference" href="../../_images/hcs08.png"><img alt="Block Diagram of the HCS08 MCU" src="../../_images/hcs08.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Block Diagram of the NXP HCS08 Architecture</span><a class="headerlink" href="#fig-week1-hcs08" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+</section>
+<section id="the-atmel-atmega-328-microcontroller">
+<span id="atmel-atmega328"></span><h2>The Atmel ATmega 328 Microcontroller<a class="headerlink" href="#the-atmel-atmega-328-microcontroller" title="Permalink to this heading">#</a></h2>
+<p><a title="BregesT65421354, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:ATMEL_MEGA328P_AU_1328.jpg"><img width="512" alt="ATMEL MEGA328P AU 1328" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ATMEL_MEGA328P_AU_1328.jpg/512px-ATMEL_MEGA328P_AU_1328.jpg"></a></p>
+<p>The Atmel® ATMega328/P is a low-power CMOS 8-bit microcontroller based on the AVR® enhanced RISC architecture.</p>
+<section id="introducing-the-atmel-atmega328-mcu">
+<h3>Introducing the Atmel ATMega328 MCU<a class="headerlink" href="#introducing-the-atmel-atmega328-mcu" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>This is an 8-bit CMOS microcontroller based on the AVR® enhanced <strong>RISC architecture</strong> with 131 instructions.</p></li>
+<li><p>It has 2KB of Internal SRAM, 32 KB of Flash Memory and 1 KB of EEPROM.</p></li>
+<li><p>It has <strong>32 General Purpose Registers</strong>.</p></li>
+<li><p>It can achieve up to 20 MIPS at 20 MHz (maximum clock frequency).</p></li>
+<li><p>There are <strong>8 Analog I/O</strong> pins connected to <strong>10-bit analogue to digital converter (ADC)</strong>.</p></li>
+<li><p>There are <strong>22 Digital I/O pins</strong> (6 capable of <em>pulse-width modulation</em> (PWM)).</p></li>
+<li><p>The AVR core uses a <strong>Harvard memory architecture</strong> – with separate memories and busses for program and data.</p></li>
+</ul>
+<section id="arithmetic-logic-unit">
+<h4>Arithmetic Logic Unit<a class="headerlink" href="#arithmetic-logic-unit" title="Permalink to this heading">#</a></h4>
+<p>The <strong>Arithmetic Logic Unit</strong> (ALU) (<a class="reference internal" href="#fig-week1-alu"><span class="std std-numref">Fig. 9</span></a>), is the part of the processor that performs arithmetic and logic operations on numbers from the storage area – it is essentially the “brain” of the microcontroller.</p>
+<figure class="align-center" id="fig-week1-alu">
+<a class="reference internal image-reference" href="../../_images/alu.png"><img alt="General purpose arithmetic logic unit (ALU)" src="../../_images/alu.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">General purpose arithmetic logic unit (ALU)</span><a class="headerlink" href="#fig-week1-alu" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>First, numbers are read from storage into the ALU’s data input ports.</p></li>
+<li><p>Once inside the ALU, they’re modified by means of an arithmetic or logic operation (<code class="docutils literal notranslate"><span class="pre">ADD</span></code>, <code class="docutils literal notranslate"><span class="pre">SUB</span></code>, <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>…), and</p></li>
+<li><p>Finally, the data is written back to storage via the ALU’s output port.</p></li>
+</ul>
+<section id="example-instruction">
+<h5>Example instruction<a class="headerlink" href="#example-instruction" title="Permalink to this heading">#</a></h5>
+<p><img alt="Add without carry instruction for the ATMega328" src="../../_images/add_instruction.png" /></p>
+</section>
+<section id="example-of-the-alu-from-the-74ls181">
+<h5>Example of the ALU from the 74LS181<a class="headerlink" href="#example-of-the-alu-from-the-74ls181" title="Permalink to this heading">#</a></h5>
+<p>The 74LS181 is a 4-bit microcontroller that supports 16 logical and 16 arithmetic operations.</p>
+<p>You do not need to understand <a class="reference internal" href="#ls181"><span class="std std-numref">Fig. 10</span></a>, it is just and example to show that an ALU isn’t just a black box. Rather it contains complex logic circuitry by means of which it performs its operations.</p>
+<figure class="align-default" id="ls181">
+<img alt="The ALU for the 74LS181 MCU" src="../../_images/74LS181_ALU.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">The ALU for the 74LS181 MCU</span><a class="headerlink" href="#ls181" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="registers">
+<h3>Registers<a class="headerlink" href="#registers" title="Permalink to this heading">#</a></h3>
+<p>A register is a group of memory bits with special addressing characteristics which is often used for a particular purpose.</p>
+<ul class="simple">
+<li><p>In most modern processors, regardless of architecture, data is loaded from a larger memory space into special registers where it is used for arithmetic operations, manipulation or testing by various machine instructions.</p></li>
+<li><p>Data is then temporarily held in a register until it is overwritten, or the immediate instruction stores it back to main memory.</p></li>
+</ul>
+<p><img alt="Use of registers in ATMega328 programms" src="../../_images/registers.png" /></p>
+<section id="registers-in-the-atmega328-mcu">
+<h4>Registers in the ATMega328 MCU<a class="headerlink" href="#registers-in-the-atmega328-mcu" title="Permalink to this heading">#</a></h4>
+<p>The Atmel ATmega328 is an 8-bit microcontroller and has 256
+addressable registers within the user data space.The first 32
+locations address the Register File, the next 64 location the standard
+I/O memory and then the remaining 160 locations for Extended I/O
+memory.</p>
+<p><a class="reference internal" href="#memmap"><span class="std std-numref">Fig. 1</span></a> summarizes the memory map of the ATMega328 MCU. <a class="reference internal" href="#mem-map2"><span class="std std-numref">Fig. 11</span></a> shows part of the full memory map that is given in pages 275-280 of the Atmel ATMega280/P data sheet.</p>
+<figure class="align-center" id="mem-map2">
+<a class="reference internal image-reference" href="../../_images/mem_map_atmel.png"><img alt="Part of the memory map of the Atmel ATMega328/P MCU" src="../../_images/mem_map_atmel.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Part of the memory map of the Atmel ATMega328/P MCU</span><a class="headerlink" href="#mem-map2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-register-file">
+<h4>The Register File<a class="headerlink" href="#the-register-file" title="Permalink to this heading">#</a></h4>
+<p>The Register file (see <a class="reference internal" href="#reg-file"><span class="std std-numref">Fig. 12</span></a>) contains 32 x 8-bit wide registers that are often referred to as general purpose or working registers in the CPU.</p>
+<figure class="align-center" id="reg-file">
+<a class="reference internal image-reference" href="../../_images/reg_file.jpg"><img alt="The register file for the Atmel ATMega328/P MCU" src="../../_images/reg_file.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">The register file for the Atmel ATMega328/P MCU</span><a class="headerlink" href="#reg-file" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Each register is also assigned a data memory address, mapping them directly into the first 32 locations of the <strong>user data space</strong>.</p>
+<p>Most of the instructions operating on the Register File have direct access to all registers, and most of them are single cycle instructions, however:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">R0</span></code> – <code class="docutils literal notranslate"><span class="pre">R15</span></code> are not available for all instructions, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">R26</span></code> – <code class="docutils literal notranslate"><span class="pre">R31</span></code> have some added functions as pointer registers.</p></li>
+</ul>
+</section>
+<section id="using-the-register-file">
+<h4>Using the Register File<a class="headerlink" href="#using-the-register-file" title="Permalink to this heading">#</a></h4>
+<p><img alt="Using the registers for an ADD without carry operation." src="../../_images/reg_file1.png" /></p>
+<p><img alt="Using the registers for an Load immediate (LDI) operation." src="../../_images/reg_file2.png" /></p>
+</section>
+<section id="x-y-z-pointer-registers">
+<h4>X- Y- Z-Pointer Registers<a class="headerlink" href="#x-y-z-pointer-registers" title="Permalink to this heading">#</a></h4>
+<p><img alt="The x-, y- and z- registers" src="../../_images/x-y-z-reg.png" /></p>
+<p>In addition to acting as general purpose
+registers, <code class="docutils literal notranslate"><span class="pre">R26</span></code> - <code class="docutils literal notranslate"><span class="pre">R31</span></code> can be used as 16-bit address pointers and
+referred to as the X-,Y-, Z-registers. These pointers can be used to
+indirectly address the SRAM portion of the data space.</p>
+<p>The start address of SRAM is 0x0100, this cannot be accessed with 8-bits (maximum is 0x00FF).</p>
+<p>Note: We will look at this in more detail at the end of the module but this approach can be useful to access sets of data where we don’t necessarily know the address.</p>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this lecture we have:</p>
+<ul class="simple">
+<li><p>Familiarized ourselves with what a microcontroller is and where they are used.</p></li>
+<li><p>Introduced describing a microcontroller by considering parts of its
+architecture and</p></li>
+<li><p>Began to look at the Atmel ATmega328 microcontroller focusing on
+its register file and the general-purpose registers.</p></li>
+</ul>
+</section>
+<section id="on-canvas">
+<h2>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h2>
+<p>There is a quiz which tests your recall of the topics covered in this lecture</p>
+</section>
+<section id="next-week">
+<h2>Next week<a class="headerlink" href="#next-week" title="Permalink to this heading">#</a></h2>
+<p>Next week we will look at <a class="reference internal" href="../week02/index.html#week02"><span class="std std-ref">Architecture of the Atmel ATmega 328 Microcontroller</span></a>.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="acknowledgements" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>The history presented here was written by Dr Davies.</p>
+</aside>
+<aside class="footnote brackets" id="defn" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>“architecture, n., sense 6”. Oxford English Dictionary, Oxford University Press, July 2023, <a class="reference external" href="https://doi.org/10.1093/OED/5575991854">https://doi.org/10.1093/OED/5575991854</a></p>
+</aside>
+<aside class="footnote brackets" id="note1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>This gets around the bottleneck that can occur using a Von-Neumann memory architecture with lower costs than having two separate memories.</p>
+</aside>
+<aside class="footnote brackets" id="atmega328-data-sheet" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>Atmel ATMega328 Datasheet. 2015. Microchip. URL: <a class="reference external" href="https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf">ww1.microchip.com/downloads/en/DeviceDoc/Atmel-7810-Automotive-Microcontrollers-ATmega328P_Datasheet.pdf</a>. Accessed: 11 August 2022. <strong>TODO</strong> Put this into the references and cite it.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week01"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Croeso i Brifysgol Abertawe | Welcome to Swansea University</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../data_representation/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Introduction to Data Representation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#years-of-teaching-microprocessors-at-swansea">50 years of teaching microprocessors at Swansea!</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered-in-this-lecture">Topics Covered in this Lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-microcontroller">What is a Microcontroller?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#where-are-microcontrollers-used">Where are Microcontrollers Used?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#automotive-applications">Automotive applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#consumer-electronics">Consumer electronics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#industrial-applications">Industrial applications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#environmental-monitoring">Environmental monitoring</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#microcontroller-market-forecast">Microcontroller Market Forecast</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-do-we-describe-microcontrollers">How do we Describe Microcontrollers?</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#architecture">Architecture</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-bits">Number of Bits</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-of-8-bit-and-32-bit-mcus">Applications of 8-bit and 32-bit MCUs</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#market-share-of-8-bit-16-bit-and-32-bit-mcus-in-2021">Market share of 8-bit, 16-bit and 32-bit MCUs in 2021</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memory">Memory</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#embedded-vs-external-memory">Embedded vs external memory</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#volatile-vs-non-volatile-embedded-memory">Volatile vs non-volatile embedded memory</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#instruction-set-architectures">Instruction Set Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#reduced-instruction-set-computer-risc">Reduced instruction Set Computer (RISC)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-instruction-computer-cisc">Complex Instruction Computer (CISC)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-architectures">Memory Architectures</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#von-neumann-princeton-architecture">Von-Neumann (Princeton) architecture</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#harvard-architecture">Harvard architecture</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-harvard-architecture">Modified Harvard architecture</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-a-microcontroller-described">How is a Microcontroller Described?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#system-or-core-architecure">System or Core Architecure</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#atmel-atmega328p-avr">Atmel ATMega328P AVR</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#nxp-hcs08-mcu">NXP HCS08 MCU</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-atmel-atmega-328-microcontroller">The Atmel ATmega 328 Microcontroller</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-atmel-atmega328-mcu">Introducing the Atmel ATMega328 MCU</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-logic-unit">Arithmetic Logic Unit</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-instruction">Example instruction</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-alu-from-the-74ls181">Example of the ALU from the 74LS181</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#registers">Registers</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#registers-in-the-atmega328-mcu">Registers in the ATMega328 MCU</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-register-file">The Register File</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-the-register-file">Using the Register File</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#x-y-z-pointer-registers">X- Y- Z-Pointer Registers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#next-week">Next week</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

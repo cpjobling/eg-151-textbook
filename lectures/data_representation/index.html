@@ -1,0 +1,1292 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Data Representation &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/data_representation/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Architecture of the Atmel ATmega 328 Microcontroller" href="../week02/index.html" />
+    <link rel="prev" title="Introduction to Microcontrollers and Microcontroller Architecture" href="../week01/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/data_representation/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/data_representation/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Data Representation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered-in-this-lecture">Topics Covered in this Lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week2-intro2dr">Introduction to Data Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-data-stored-digitally">How is Data stored Digitally?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbering-systems-and-base-conversion">Numbering Systems and Base Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-number-representation">Decimal Number Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-other-bases">What About Other Bases?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-base-2">Binary (base 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#octal-base-8">Octal (base 8)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hexadecimal-base-16">Hexadecimal (base 16)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-number-conversion">Decimal Number Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#confirmation">Confirmation</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Confirmation</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Confirmation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tricks-and-tips">Tricks and Tips</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8">Example 8</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-number-systems">Summary of number systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-binary-encodings">Other binary encodings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-addition-and-subtraction">Binary Addition and Subtraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic">Binary Arithmetic</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-binary-addition">Rules for Binary Addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10">Example 10</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"></a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-11">Example 11</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-binary-subtraction">Rules for Binary Subtraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-12">Example 12</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-13">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic-and-flags">Binary Arithmetic and Flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-rules-for-binary-addition">Extended Rules for Binary Addition</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14">Example 14</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-the-status-register">Introduction to the Status Register</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic-example-14">Binary Arithmetic Example 14</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-data-representations">Other Data Representations</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-data-representation">
+<span id="data-representation"></span><h1>Introduction to Data Representation<a class="headerlink" href="#introduction-to-data-representation" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<span id="week2-introduction"></span><h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>The week’s lecture provides a background to data representation introducing some of the different terminologies used such as ‘bit’, ‘byte’, and ‘word’ before looking at different numbering systems, including binary and hexadecimal, that are used in computing and microcontrollers. The presentation covers a number of methods such as exponentiation and divide-by-n which can be used to convert between number bases and finishes with looking at how microcontrollers perform addition and subtraction.</p>
+</section>
+<section id="topics-covered-in-this-lecture">
+<span id="week2-toc"></span><h2>Topics Covered in this Lecture<a class="headerlink" href="#topics-covered-in-this-lecture" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#week2-intro2dr"><span class="std std-ref">Introduction to Data Representation</span></a></p></li>
+<li><p><a class="reference internal" href="#week2-numbering"><span class="std std-ref">Numbering Systems and Base Conversion</span></a></p></li>
+<li><p><a class="reference internal" href="#week2-addition-and-subtraction"><span class="std std-ref">Binary Addition and Subtraction</span></a></p></li>
+<li><p><a class="reference internal" href="#week2-sr"><span class="std std-ref">Introduction to the Status Register</span></a></p></li>
+</ul>
+</section>
+<section id="week2-intro2dr">
+<span id="id1"></span><h2>Introduction to Data Representation<a class="headerlink" href="#week2-intro2dr" title="Permalink to this heading">#</a></h2>
+<section id="how-is-data-stored-digitally">
+<h3>How is Data stored Digitally?<a class="headerlink" href="#how-is-data-stored-digitally" title="Permalink to this heading">#</a></h3>
+<p>Modern digital processors and microcontrollers contain millions of solid state devices known as transistors (<a class="reference internal" href="#fig-week2-transistor"><span class="std std-ref">A single transistor</span></a>).</p>
+<figure class="align-default" id="fig-week2-transistor">
+<a class="reference internal image-reference" href="../../_images/transistor.png"><img alt="A single transistor" src="../../_images/transistor.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">A single transistor</span><a class="headerlink" href="#fig-week2-transistor" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>With one transistor  we can control the
+flow of electrons creating an object with two states – on or off.
+This is known as a binary system.</p>
+<p>We can use the output (or input if wired to ground) of this transistor
+to connect to other transistors forming logic gates and eventually a bit of memory.</p>
+<p>With many transistors we can use these transistors to create memory and store data as bits (<a class="reference internal" href="#fig-week2-1-bit-of-memory"><span class="std std-ref">One bit of SRAM memory. (Image source: SRAM vs DRAM : How SRAM Works? How DRAM Works? Why SRAM is faster than RAM?, All About Electronics - YouTube.)</span></a>).</p>
+<figure class="align-default" id="fig-week2-1-bit-of-memory">
+<a class="reference internal image-reference" href="../../_images/memory.jpg"><img alt="One bit of SRAM memory." src="../../_images/memory.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">One bit of SRAM memory. (Image source: <a class="reference external" href="https://youtu.be/r787m_IaR1I">SRAM vs DRAM : How SRAM Works? How DRAM Works? Why SRAM is faster than RAM?</a>, All About Electronics - YouTube.)</span><a class="headerlink" href="#fig-week2-1-bit-of-memory" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="terminology">
+<h3>Terminology<a class="headerlink" href="#terminology" title="Permalink to this heading">#</a></h3>
+<p><strong>1 bit = 1 data unit</strong></p>
+<p><img alt="" src="../../_images/bit.png" /></p>
+<p><strong>1 nybble = 4 data units (4 bits)</strong></p>
+<p><img alt="" src="../../_images/nybble.png" /></p>
+<p><strong>1 byte = 8 data units (8 bits, 2 nybbles)</strong></p>
+<p><img alt="" src="../../_images/byte.png" /></p>
+<p><strong>1 word = 16 data units (16 bits, 2 bytes, 4 nybbles)</strong></p>
+<p><img alt="" src="../../_images/word.png" /></p>
+</section>
+</section>
+<section id="numbering-systems-and-base-conversion">
+<span id="week2-numbering"></span><h2>Numbering Systems and Base Conversion<a class="headerlink" href="#numbering-systems-and-base-conversion" title="Permalink to this heading">#</a></h2>
+<section id="decimal-number-representation">
+<h3>Decimal Number Representation<a class="headerlink" href="#decimal-number-representation" title="Permalink to this heading">#</a></h3>
+<p>Take the decimal number (Base 10) 4623, what does this representation mean?</p>
+<div class="math notranslate nohighlight">
+\[4623\]</div>
+<div class="math notranslate nohighlight">
+\[4000 + 600 + 20 + 3\]</div>
+<div class="math notranslate nohighlight">
+\[(4\times 1000) + (6\times 100) + (2\times 10) + (3\times 1)\]</div>
+<div class="math notranslate nohighlight">
+\[\left(4\times 10^3\right) + \left(6\times 10^2\right) + \left(2\times 10^1\right) + \left(3\times 10^0\right)\]</div>
+<p>We can break down any base 10 (decimal) number <span class="math notranslate nohighlight">\(N\)</span> in the same way using the expression:</p>
+<div class="math notranslate nohighlight">
+\[N_{10} = \cdots  + \left(X\times 10^3\right) + \left(X\times 10^2\right) + \left(X\times 10^1\right) + \left(X\times 10^0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is any <em>digit</em> in the set <span class="math notranslate nohighlight">\(\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\)</span>.</p>
+</section>
+<section id="what-about-other-bases">
+<h3>What About Other Bases?<a class="headerlink" href="#what-about-other-bases" title="Permalink to this heading">#</a></h3>
+<p>We can apply the same techniques to any other base to convert the value into decimal (base 10).</p>
+<p>For programming (and digital systems more generally), the binary (base 2), octal (base 8) and hexadecimal (base 16) representations are commonly used.</p>
+<section id="binary-base-2">
+<h4>Binary (base 2)<a class="headerlink" href="#binary-base-2" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[N_2 = \cdots + \left(X\times 2^5\right) + \left(X\times 2^4\right) + \left(X\times 2^3\right) + \left(X\times 2^2\right) + \left(X\times 2^1\right) + \left(X\times 2^0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is any digit in the set <span class="math notranslate nohighlight">\(\{0, 1\}\)</span>.</p>
+<section id="example-1">
+<h5>Example 1<a class="headerlink" href="#example-1" title="Permalink to this heading">#</a></h5>
+<p>Consider the binary representation <span class="math notranslate nohighlight">\(N_2 = 10010011\)</span>. What is the value of <span class="math notranslate nohighlight">\(N_2\)</span> in decimal base 10?</p>
+<section id="solution">
+<h6>Solution<a class="headerlink" href="#solution" title="Permalink to this heading">#</a></h6>
+<div class="math notranslate nohighlight">
+\[N_{10} = \left(1\times 2^7\right) + \left(0\times 2^6\right) + \left(0\times 2^5\right) + \left(1\times 2^4\right) + \left(0\times 2^3\right) + \left(0\times 2^2\right) + \left(1\times 2^1\right) + \left(1\times 2^0\right)\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = \left(1\times 128\right) + \left(0\times 64\right) + \left(0\times 32\right) + \left(1\times 16\right) + \left(0\times 8\right) + \left(0\times 4\right) + \left(1\times 2\right) + \left(1\times 1\right)\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 128 + 16 + 2 + 1\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 147_{10}\]</div>
+</section>
+</section>
+</section>
+<section id="octal-base-8">
+<h4>Octal (base 8)<a class="headerlink" href="#octal-base-8" title="Permalink to this heading">#</a></h4>
+<p>Octal:</p>
+<div class="math notranslate nohighlight">
+\[N_{8} = \cdots  + \left(X\times 8^5\right) + \left(X\times 8^4\right) + \left(X\times 8^3\right) + \left(X\times 8^2\right) + \left(X\times 8^1\right) + \left(X\times 8^0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is any <em>digit</em> in the set <span class="math notranslate nohighlight">\(\{0, 1, 2, 3, 4, 5, 6, 7\}\)</span>.</p>
+<section id="example-2">
+<h5>Example 2<a class="headerlink" href="#example-2" title="Permalink to this heading">#</a></h5>
+<p>Consider the octal representation <span class="math notranslate nohighlight">\(N_8 = 712\)</span>. What is the value of <span class="math notranslate nohighlight">\(N_8\)</span> in decimal base 10?</p>
+<section id="id2">
+<h6>Solution<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h6>
+<div class="math notranslate nohighlight">
+\[N_8 = 713\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = \left(7\times 8^2\right) + \left(1·8^1\right) + \left(2·8^0\right)\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = (7\times 64) + (1\times 8) + (2\times 1)\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 448 + 8 + 2\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 458_{10}\]</div>
+</section>
+</section>
+</section>
+<section id="hexadecimal-base-16">
+<h4>Hexadecimal (base 16)<a class="headerlink" href="#hexadecimal-base-16" title="Permalink to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[N_{16} = \cdots  + \left(X\times 16^5\right) + \left(X\times 16^4\right) + \left(X\times 16^3\right) + \left(X\times 16^2\right) + \left(X\times 16^1\right) + \left(X\times 16^0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(X\)</span> is any <em>digit</em> in the set <span class="math notranslate nohighlight">\(\{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, \textrm{A}, \textrm{B}, \textrm{C}, \textrm{D}, \textrm{E}, \textrm{F}\}\)</span><a class="footnote-reference brackets" href="#hex-digits" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<section id="example-3">
+<h5>Example 3<a class="headerlink" href="#example-3" title="Permalink to this heading">#</a></h5>
+<p>Consider the hexadecimal representation <span class="math notranslate nohighlight">\(N_{16} = 3\textrm{C}4\)</span>. What is the value of <span class="math notranslate nohighlight">\(N_{16}\)</span> in decimal base 10?</p>
+<section id="id4">
+<h6>Solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h6>
+<div class="math notranslate nohighlight">
+\[N_{16} = \left(3\times 16^2\right) + \left(\textrm{C}\times 16^1\right) + \left(4\times 16^0\right)\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 3\times 256 + 12\times 16 + 4\times 1\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 768 + 192 + 4\]</div>
+<div class="math notranslate nohighlight">
+\[N_{10} = 964_{10}\]</div>
+</section>
+</section>
+</section>
+</section>
+<section id="decimal-number-conversion">
+<h3>Decimal Number Conversion<a class="headerlink" href="#decimal-number-conversion" title="Permalink to this heading">#</a></h3>
+<p>A decimal number can be converted into any other base using the <strong>divide-by-<span class="math notranslate nohighlight">\(n\)</span></strong> method where <span class="math notranslate nohighlight">\(n\)</span> represents the desired base.</p>
+<p>Step 1 (see <a class="reference internal" href="#divide-by-n-method"><span class="std std-numref">Fig. 15</span></a>) − Divide the decimal number by the value of the new base and get the quotient and a remainder.</p>
+<figure class="align-default" id="divide-by-n-method">
+<a class="reference internal image-reference" href="../../_images/dividion_method.png"><img alt="Illustration of a step in the divisision-by-n method of decimal number conversion." src="../../_images/dividion_method.png" style="width: 60%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">a step in the divisision-by-<span class="math notranslate nohighlight">\(n\)</span> method of decimal number conversion.</span><a class="headerlink" href="#divide-by-n-method" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Step 2 − Keep dividing the quotient of the previous divide by the new base and record the remainder</p>
+<p>Step 3 − Repeat Step 2, until the quotient becomes zero</p>
+<p>Step 4 – Read the remainders from bottom (MSB) to top (LSB).</p>
+<section id="example-4">
+<h4>Example 4<a class="headerlink" href="#example-4" title="Permalink to this heading">#</a></h4>
+<p>Convert <span class="math notranslate nohighlight">\(28_{10}\)</span> into binary (base 2).</p>
+<section id="id5">
+<h5>Solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h5>
+<p>Step 1: <span class="math notranslate nohighlight">\(28 \div 2 = 14\)</span> remainder <span class="math notranslate nohighlight">\(0\)</span></p>
+<p>Step 2: <span class="math notranslate nohighlight">\(14 \div 2 = 7\)</span> remainder <span class="math notranslate nohighlight">\(0\)</span></p>
+<p>Step 3: <span class="math notranslate nohighlight">\(7 \div 2 = 3\)</span> remainder <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>Step 4: <span class="math notranslate nohighlight">\(3 \div 2 = 1\)</span> remainder <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>Step 5: <span class="math notranslate nohighlight">\(1 \div 2 = 0\)</span> remainder <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>Binary value: <span class="math notranslate nohighlight">\(28_{10} = 11100_{2}\)</span>.</p>
+</section>
+<section id="confirmation">
+<h5>Confirmation<a class="headerlink" href="#confirmation" title="Permalink to this heading">#</a></h5>
+<div class="amsmath math notranslate nohighlight" id="equation-e801a713-9b60-4f24-be24-ce65c8633d5d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-e801a713-9b60-4f24-be24-ce65c8633d5d" title="Permalink to this equation">#</a></span>\[\begin{align}
+11000_2 &amp;= \left(1\times 2^4\right) + \left(1\times 2^3\right) + \left(1\times 2^2\right) + \left(0\times 2^1\right) + \left(0\times 2^0\right)\\
+&amp;= \left(1\times 16\right) + \left(1\times 8\right) + \left(1\times 4\right) + \left(0\times 2\right) + \left(0\times 1\right)\\
+&amp;= 16 + 8 + 4\\
+&amp;= 28_{10}
+\end{align}\]</div>
+</section>
+</section>
+<section id="example-5">
+<h4>Example 5<a class="headerlink" href="#example-5" title="Permalink to this heading">#</a></h4>
+<p>Convert <span class="math notranslate nohighlight">\(28_{10}\)</span> into octal (base 8).</p>
+<section id="id6">
+<h5>Solution<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h5>
+<p>Step 1: <span class="math notranslate nohighlight">\(28 \div 8 = 3\)</span> remainder <span class="math notranslate nohighlight">\(4\)</span></p>
+<p>Step 2: <span class="math notranslate nohighlight">\(3 \div 8 = 0\)</span> remainder <span class="math notranslate nohighlight">\(3\)</span></p>
+<p>Octal value: <span class="math notranslate nohighlight">\(28_{10} = 34_{8}\)</span>.</p>
+</section>
+<section id="id7">
+<h5>Confirmation<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h5>
+<div class="amsmath math notranslate nohighlight" id="equation-c6f68241-733f-449b-b8ee-81e3b908ad88">
+<span class="eqno">(2)<a class="headerlink" href="#equation-c6f68241-733f-449b-b8ee-81e3b908ad88" title="Permalink to this equation">#</a></span>\[\begin{align}
+34_8 &amp;= \left(3\times 8^1\right) + \left(4\times 8^0\right)\\
+&amp;= \left(3\times 8\right) + \left(4\times 1\right) \\
+&amp;= 24 + 4\\
+&amp;= 28_{10}
+\end{align}\]</div>
+</section>
+</section>
+<section id="example-6">
+<h4>Example 6<a class="headerlink" href="#example-6" title="Permalink to this heading">#</a></h4>
+<p>Convert <span class="math notranslate nohighlight">\(28_{10}\)</span> into hexadecimal (base 16).</p>
+<section id="id8">
+<h5>Solution<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h5>
+<p>Step 1: <span class="math notranslate nohighlight">\(28 \div 16 = 1\)</span> remainder <span class="math notranslate nohighlight">\(12\,\left(\textrm{C}_{16}\right)\)</span></p>
+<p>Step 2: <span class="math notranslate nohighlight">\(1 \div 16 = 0\)</span> remainder <span class="math notranslate nohighlight">\(1\)</span></p>
+<p>Hexadecimal value: <span class="math notranslate nohighlight">\(28_{10} = 1\textrm{C}_{16}\)</span>.</p>
+</section>
+<section id="id9">
+<h5>Confirmation<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h5>
+<div class="amsmath math notranslate nohighlight" id="equation-97d41ece-43dd-4c32-a04a-a2ea38de35d5">
+<span class="eqno">(3)<a class="headerlink" href="#equation-97d41ece-43dd-4c32-a04a-a2ea38de35d5" title="Permalink to this equation">#</a></span>\[\begin{align}
+1\textrm{C}_{16} &amp;= \left(1\times 16^1\right) + \left(\textrm{C}\times 16^0\right)\\
+&amp;= \left(1\times 16\right) + \left(12\times 1\right) \\
+&amp;= 16 + 12\\
+&amp;= 28_{10}
+\end{align}\]</div>
+</section>
+</section>
+</section>
+<section id="tricks-and-tips">
+<h3>Tricks and Tips<a class="headerlink" href="#tricks-and-tips" title="Permalink to this heading">#</a></h3>
+<p>All numbers are stored in a computer in binary form. Depending on the encoding, each digit takes up 1 (binary), 3 (octal) or 4 bits (decimal and hexadecimal).</p>
+<p>If the digit needs less bits than allowed for its representation, the remaining bits the the left of the number will be set to zero.</p>
+<p>For example:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(1_2\)</span> is represented as <code class="docutils literal notranslate"><span class="pre">0b00000001</span></code><a class="footnote-reference brackets" href="#note2" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> (binary, prefix <code class="docutils literal notranslate"><span class="pre">0b</span></code>, seven padding 0 bits + 1 bit for the value 1).</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(5_8\)</span> is <code class="docutils literal notranslate"><span class="pre">0005</span></code> (octal prefix <code class="docutils literal notranslate"><span class="pre">0</span></code> followed two 0 digits (2 bits plus 3 bits) (00 000 101).</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(10_{10} = 8 + 2\)</span> is <code class="docutils literal notranslate"><span class="pre">0b00010010</span></code>.</p></li>
+</ul>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\textrm{E}\)</span> is <code class="docutils literal notranslate"><span class="pre">0x00E</span></code> (hexadecimal prefix <code class="docutils literal notranslate"><span class="pre">0x0</span></code> followed by <code class="docutils literal notranslate"><span class="pre">0b0000</span></code>, and <code class="docutils literal notranslate"><span class="pre">0b1110</span></code> = <code class="docutils literal notranslate"><span class="pre">0b00001110</span></code>).</p></li>
+</ul>
+<p>For octal and hexadecimal values, the equivalent binary number is easily obtained by grouping from the right.</p>
+<ul class="simple">
+<li><p>For octal, the largest digit is 7 which needs three bits. So the octal representation of an 8 bit binary number will have 2 bits (0-3) + two groups of 3 bits. The maximum number allowed is <code class="docutils literal notranslate"><span class="pre">0b11</span> <span class="pre">111</span> <span class="pre">111</span></code> = <code class="docutils literal notranslate"><span class="pre">0377</span></code> = 255_{10}.</p></li>
+<li><p>For hexadecimal, four bits are needed to represent all values in the range 0-F. So an 8 bit value can only represent two hexadecimal digits <code class="docutils literal notranslate"><span class="pre">0x000</span></code> to <code class="docutils literal notranslate"><span class="pre">0x0FF</span></code>.</p></li>
+</ul>
+<p>To convert a binary number to octal or heaxdecimal, just group the binary digits and then read off the value.</p>
+<section id="example-7">
+<h4>Example 7<a class="headerlink" href="#example-7" title="Permalink to this heading">#</a></h4>
+<p>Convert the binary number <code class="docutils literal notranslate"><span class="pre">0x000011101</span></code> to octal and hexadecimal. Give the value in decimal.</p>
+<section id="id11">
+<h5>Solution<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h5>
+<p>Grouping <code class="docutils literal notranslate"><span class="pre">0x000011101</span></code> by threes gives <code class="docutils literal notranslate"><span class="pre">00</span></code> + <code class="docutils literal notranslate"><span class="pre">011</span></code> + <code class="docutils literal notranslate"><span class="pre">101</span></code> = <code class="docutils literal notranslate"><span class="pre">0035</span></code> = <span class="math notranslate nohighlight">\(35_8\)</span>.</p>
+<p>Grouping <code class="docutils literal notranslate"><span class="pre">0x000011101</span></code> by fours gives <code class="docutils literal notranslate"><span class="pre">0001</span></code> + <code class="docutils literal notranslate"><span class="pre">1101</span></code> = <code class="docutils literal notranslate"><span class="pre">0x01D</span></code> = <span class="math notranslate nohighlight">\(1\textrm{D}_{16}\)</span>.</p>
+<p>Taking the octal value <span class="math notranslate nohighlight">\(62_8 = \left(0\times 8^2\right) + \left(3\times 8^1\right) + (5\times 8^0) = 0 + 24 + 5 = 29_{10}\)</span>.</p>
+</section>
+</section>
+<section id="example-8">
+<h4>Example 8<a class="headerlink" href="#example-8" title="Permalink to this heading">#</a></h4>
+<p>Convert the octal number <span class="math notranslate nohighlight">\(62_8\)</span> (<code class="docutils literal notranslate"><span class="pre">0062</span></code>) to binary and hexadecimal. Give the value in decimal.</p>
+<section id="id12">
+<h5>Solution<a class="headerlink" href="#id12" title="Permalink to this heading">#</a></h5>
+<p>The octal digits <span class="math notranslate nohighlight">\(6_8\)</span> and <span class="math notranslate nohighlight">\(2_8\)</span> are the three-bit binary values  <code class="docutils literal notranslate"><span class="pre">0b110</span></code> and <code class="docutils literal notranslate"><span class="pre">0b010</span></code> respectively. So the equivalent 8-bit binary byte is obtained by combining these binary values and prepending with two zeros: <code class="docutils literal notranslate"><span class="pre">0b00</span> <span class="pre">110</span> <span class="pre">010</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">0b00110010</span></code>.</p>
+<p>Grouping the binary number <code class="docutils literal notranslate"><span class="pre">0b00110010</span></code> in blocks of 4 gives <code class="docutils literal notranslate"><span class="pre">0b</span> <span class="pre">0011</span> <span class="pre">0010</span></code> which gives the hexdecimal digits  <span class="math notranslate nohighlight">\(3_{16}\)</span> and <span class="math notranslate nohighlight">\(2_{16}\)</span> respectively. So <span class="math notranslate nohighlight">\(62_8 = 32_{16}\)</span>.</p>
+<p>The equivalent decimal number is <span class="math notranslate nohighlight">\(\left(3\times 16^1\right) + \left(2\times 16^0\right) = 48 + 2 = 50_{10}\)</span>.<a class="footnote-reference brackets" href="#note3" id="id13" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+</section>
+</section>
+</section>
+<section id="summary-of-number-systems">
+<h3>Summary of number systems<a class="headerlink" href="#summary-of-number-systems" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#week2-table-number-values"><span class="std std-ref">Representation of integer values in 8 bit computer systems</span></a> shows the equivalent binary, octal and hexadecimal values for decimal numbers 0-16. Note that we need just 1 nybble to represent a value in the range 0-154 but we need two nybbles (1 byte) for numbers greater than 15. The maximum value representable in one byte of data is <span class="math notranslate nohighlight">\(2^8 - 1 = 255\)</span>. The concept can of course be extended to words (16 bits). The maximum value that can be represented with 16 bits is <span class="math notranslate nohighlight">\(2^{16} - 1 = 65,535\)</span>.</p>
+<table class="table" id="week2-table-number-values">
+<caption><span class="caption-number">Table 1 </span><span class="caption-text">Representation of integer values in 8 bit computer systems</span><a class="headerlink" href="#week2-table-number-values" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Decimal (Code)</p></th>
+<th class="head"><p>Binary (Code)</p></th>
+<th class="head"><p>Octal (Code)</p></th>
+<th class="head"><p>Hexadecimal (Code)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(0\)</span> (<code class="docutils literal notranslate"><span class="pre">0</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000000</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span> (<code class="docutils literal notranslate"><span class="pre">000</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span> (<code class="docutils literal notranslate"><span class="pre">0x00</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">1</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000001</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">001</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">0x01</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(2\)</span> (<code class="docutils literal notranslate"><span class="pre">2</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000010</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span> (<code class="docutils literal notranslate"><span class="pre">002</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(2\)</span> (<code class="docutils literal notranslate"><span class="pre">0x02</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(3\)</span> (<code class="docutils literal notranslate"><span class="pre">3</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000011</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">003</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1\)</span> (<code class="docutils literal notranslate"><span class="pre">0x03</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(4\)</span> (<code class="docutils literal notranslate"><span class="pre">4</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(100\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000100</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span> (<code class="docutils literal notranslate"><span class="pre">004</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(4\)</span> (<code class="docutils literal notranslate"><span class="pre">0x04</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(5\)</span> (<code class="docutils literal notranslate"><span class="pre">5</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(101\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000101</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span> (<code class="docutils literal notranslate"><span class="pre">005</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(5\)</span> (<code class="docutils literal notranslate"><span class="pre">0x05</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(6\)</span> (<code class="docutils literal notranslate"><span class="pre">6</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(110\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000110</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span> (<code class="docutils literal notranslate"><span class="pre">006</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(6\)</span> (<code class="docutils literal notranslate"><span class="pre">0x06</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(7\)</span> (<code class="docutils literal notranslate"><span class="pre">7</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(111\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00000111</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span> (<code class="docutils literal notranslate"><span class="pre">007</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(7\)</span> (<code class="docutils literal notranslate"><span class="pre">0x07</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(8\)</span> (<code class="docutils literal notranslate"><span class="pre">8</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1000\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001000</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span> (<code class="docutils literal notranslate"><span class="pre">010</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(8\)</span> (<code class="docutils literal notranslate"><span class="pre">0x08</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(9\)</span> (<code class="docutils literal notranslate"><span class="pre">9</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1001\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001001</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(11\)</span> (<code class="docutils literal notranslate"><span class="pre">011</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(9\)</span> (<code class="docutils literal notranslate"><span class="pre">0x09</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(10\)</span> (<code class="docutils literal notranslate"><span class="pre">10</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1010\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001010</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(12\)</span> (<code class="docutils literal notranslate"><span class="pre">012</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{A}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0A</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(11\)</span> (<code class="docutils literal notranslate"><span class="pre">11</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1011\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001011</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(13\)</span> (<code class="docutils literal notranslate"><span class="pre">013</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{B}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0B</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(12\)</span> (<code class="docutils literal notranslate"><span class="pre">12</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1100\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001100</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(14\)</span> (<code class="docutils literal notranslate"><span class="pre">014</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{C}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0C</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(13\)</span> (<code class="docutils literal notranslate"><span class="pre">13</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1101\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001101</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(15\)</span> (<code class="docutils literal notranslate"><span class="pre">015</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{D}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0D</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(14\)</span> (<code class="docutils literal notranslate"><span class="pre">14</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1110\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001110</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(16\)</span> (<code class="docutils literal notranslate"><span class="pre">016</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{E}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0E</span></code>)</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(15\)</span> (<code class="docutils literal notranslate"><span class="pre">15</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1111\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00001111</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(17\)</span> (<code class="docutils literal notranslate"><span class="pre">017</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(\textrm{F}\)</span> (<code class="docutils literal notranslate"><span class="pre">0x0F</span></code>)</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(16\)</span> (<code class="docutils literal notranslate"><span class="pre">16</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(10000\)</span> (<code class="docutils literal notranslate"><span class="pre">0b00010000</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(20\)</span> (<code class="docutils literal notranslate"><span class="pre">020</span></code>)</p></td>
+<td><p><span class="math notranslate nohighlight">\(10\)</span> (<code class="docutils literal notranslate"><span class="pre">0x10</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="other-binary-encodings">
+<h3>Other binary encodings<a class="headerlink" href="#other-binary-encodings" title="Permalink to this heading">#</a></h3>
+<p>Numbers are not the only type of data that can be encoded using binary values. In fact, all data that is manipulated by computers is represented by an encoding of binary numbers.</p>
+<p>Some examples of codings that you will see are:</p>
+<ul class="simple">
+<li><p>Characters which are represented as ASCII code (7 bits), extended ASCII (8 bits) or UTF (16 or more bits) used to represent other characters (e.g. for accented charcters, other alphabets and languages, math symbols, emojis, and other purposes.</p></li>
+<li><p>Other numerical encodings, such as Binary Coded Decimal (BCD)</p></li>
+<li><p>Machine codes, which is how computers represent exercutable programmes, are also represented in binary numbers. These are usually generated by an assembler, compiler, or interpreter from human-readable code that is stored in text files that are themselves use characters encoded in ASCII or UTF.</p></li>
+</ul>
+<p>Additional self-directed learning materials which explore some of these extra encodings are provided on Canvas. We will dicuss some of the encodings used for machine code in later lectures.</p>
+</section>
+</section>
+<section id="binary-addition-and-subtraction">
+<span id="week2-addition-and-subtraction"></span><h2>Binary Addition and Subtraction<a class="headerlink" href="#binary-addition-and-subtraction" title="Permalink to this heading">#</a></h2>
+<p>How do computers add and subtract numbers?</p>
+<section id="binary-arithmetic">
+<h3>Binary Arithmetic<a class="headerlink" href="#binary-arithmetic" title="Permalink to this heading">#</a></h3>
+<p>Microcontrollers work with 0’s and 1’s (binary)</p>
+<p>In order to add or subtract two binary numbers there are a series of rules similar to in decimal arithmetic.</p>
+<section id="rules-for-binary-addition">
+<h4>Rules for Binary Addition<a class="headerlink" href="#rules-for-binary-addition" title="Permalink to this heading">#</a></h4>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+0 + 0 &amp;= 0\\
+0 + 1 &amp;= 1\\
+1 + 0 &amp;= 1\\
+1 + 1 &amp;= 10\quad\textrm{i.e.}\, 0 + \textrm{carry}\, 1
+\end{align*}\]</div>
+<section id="example-10">
+<h5>Example 10<a class="headerlink" href="#example-10" title="Permalink to this heading">#</a></h5>
+<p>Confirm using binary addition that <span class="math notranslate nohighlight">\(14_{10} + 19_{10} = 33_{10}\)</span>.</p>
+<section id="id14">
+<h6><a class="headerlink" href="#id14" title="Permalink to this heading">#</a></h6>
+<p>Solution</p>
+<p><img alt="Example of binary addition: 14 + 19 = 33" src="../../_images/addition1.png" /></p>
+</section>
+</section>
+<section id="example-11">
+<h5>Example 11<a class="headerlink" href="#example-11" title="Permalink to this heading">#</a></h5>
+<p>Confirm using binary addition that <span class="math notranslate nohighlight">\(46_{10} + 147_{10} = 193\)</span>.</p>
+<section id="id15">
+<h6>Solution<a class="headerlink" href="#id15" title="Permalink to this heading">#</a></h6>
+<p><img alt="Example of binary addition: 46 + 147 = 193" src="../../_images/addition2.png" /></p>
+</section>
+</section>
+</section>
+<section id="rules-for-binary-subtraction">
+<h4>Rules for Binary Subtraction<a class="headerlink" href="#rules-for-binary-subtraction" title="Permalink to this heading">#</a></h4>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+0 - 0 &amp;= 0\\
+1 - 0 &amp;= 1\\
+1 - 1 &amp;= 0\\
+0 - 1 &amp;= 10 - 1 +\,\textrm{borrow} = 1+ \textrm{borrow}
+\end{align*}\]</div>
+<section id="example-12">
+<h5>Example 12<a class="headerlink" href="#example-12" title="Permalink to this heading">#</a></h5>
+<p>Confirm using binary subtraction that <span class="math notranslate nohighlight">\(27_{10} - 14_{10} = 13_{10}\)</span>.</p>
+<section id="id16">
+<h6>Solution<a class="headerlink" href="#id16" title="Permalink to this heading">#</a></h6>
+<p><img alt="Example of binary subtraction: 27 - 14 = 13" src="../../_images/subtraction1.png" /></p>
+</section>
+</section>
+<section id="example-13">
+<h5>Example 13<a class="headerlink" href="#example-13" title="Permalink to this heading">#</a></h5>
+<p>Show using binary subtraction that <span class="math notranslate nohighlight">\(175_{10} - 83_{10} = 92_{10}\)</span>.</p>
+<section id="id17">
+<h6>Solution<a class="headerlink" href="#id17" title="Permalink to this heading">#</a></h6>
+<p><img alt="Example of binary subtraction: 175 - 83 = 92" src="../../_images/subtraction2.png" /></p>
+</section>
+</section>
+</section>
+<section id="binary-arithmetic-and-flags">
+<h4>Binary Arithmetic and Flags<a class="headerlink" href="#binary-arithmetic-and-flags" title="Permalink to this heading">#</a></h4>
+<p>What happens when the result is larger than 8-bits?</p>
+<section id="extended-rules-for-binary-addition">
+<h5>Extended Rules for Binary Addition<a class="headerlink" href="#extended-rules-for-binary-addition" title="Permalink to this heading">#</a></h5>
+<p>We need to extend the rules of binary addition to introduce an overflow that is indicated by a carry flag.</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+0 + 0 &amp;= 0 \\
+0 + 1 &amp;= 1 \\
+1 + 0 &amp;= 1 \\
+1 + 1 &amp;= 10\quad \textrm{i.e.}\, 0 + \textrm{carry}\, 1 \\
+1 + 1 + 1 &amp;= 11\quad \textrm{i.e.}\, 1 + \textrm{carry}\, 1
+\end{align*}\]</div>
+</section>
+<section id="example-14">
+<span id="week2-example14"></span><h5>Example 14<a class="headerlink" href="#example-14" title="Permalink to this heading">#</a></h5>
+<p>Show using binary addition that <span class="math notranslate nohighlight">\(110_{10} + 227_{10} = 337_{10}\)</span>.</p>
+<section id="id18">
+<h6>Solution<a class="headerlink" href="#id18" title="Permalink to this heading">#</a></h6>
+<p><img alt="Example of binary subtraction with overflow: 110 + 227 = 337" src="../../_images/addition3.png" /></p>
+<p>The overflow is acknowledged in the <strong>status register</strong> by the carry flag</p>
+</section>
+</section>
+</section>
+</section>
+</section>
+<section id="introduction-to-the-status-register">
+<span id="week2-sr"></span><h2>Introduction to the Status Register<a class="headerlink" href="#introduction-to-the-status-register" title="Permalink to this heading">#</a></h2>
+<p>The microcontroller has an 8-bit register containing a number of flags which can be set based on the condition of the microcontroller.</p>
+<p>The status register for the Atmel ATMega328/P is illustrated in <a class="reference internal" href="#fig-week2-sr"><span class="std std-numref">Fig. 16</span></a>.</p>
+<figure class="align-center" id="fig-week2-sr">
+<a class="reference internal image-reference" href="../../_images/status_register.png"><img alt="The Status Register of the Atmel ATMega328/P" src="../../_images/status_register.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">The Status Register of the Atmel ATMega328/P</span><a class="headerlink" href="#fig-week2-sr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>The Half Carry Flag <code class="docutils literal notranslate"><span class="pre">H</span></code> is set (to 1) if there was a carry from bit 3; it is cleared (set to 0) otherwise.</p></li>
+<li><p>The Zero Flag <code class="docutils literal notranslate"><span class="pre">Z</span></code> is set if the result is <code class="docutils literal notranslate"><span class="pre">0x00000000</span></code>; cleared otherwise.</p></li>
+<li><p>The Carry Flag <code class="docutils literal notranslate"><span class="pre">C</span></code> is set if there was a carry from the most significant bit (MSB)<a class="footnote-reference brackets" href="#note-msb" id="id19" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a> of the result; cleared otherwise.</p></li>
+</ul>
+<p>We will look at the status register in detail in <a class="reference internal" href="../week02/index.html#week02"><span class="std std-ref">Architecture of the Atmel ATmega 328 Microcontroller</span></a>.</p>
+<section id="binary-arithmetic-example-14">
+<h3>Binary Arithmetic Example 14<a class="headerlink" href="#binary-arithmetic-example-14" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#fig-week2-ex15"><span class="std std-numref">Fig. 17</span></a> shows the condition of the status register after completing the addition from <a class="reference internal" href="#week2-example14"><span class="std std-ref">Example 14</span></a>.</p>
+<figure class="align-center" id="fig-week2-ex15">
+<a class="reference internal image-reference" href="../../_images/sr_after_ex14.png"><img alt="The condition of the status register after completing the sum" src="../../_images/sr_after_ex14.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">The condition of the status register after completing the sum <span class="math notranslate nohighlight">\(110_{10} + 227_{10} = 337\)</span>.</span><a class="headerlink" href="#fig-week2-ex15" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="other-data-representations">
+<h2>Other Data Representations<a class="headerlink" href="#other-data-representations" title="Permalink to this heading">#</a></h2>
+<p>We have provided notes and videos that introduce other commonly used data representations in <a class="reference internal" href="../../appendix/appendix_a.html#appendixa"><span class="std std-ref">Appendix A: Other Data Representations</span></a>. These notes are examinable, but we encourage you to study these for yourself.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="hex-digits" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">1</a><span class="fn-bracket">]</span></span>
+<p>Note we have to introduce the letters A-F to represent the two-digit decinal numbers 10-15. Thus <span class="math notranslate nohighlight">\(\textrm{A}_{16} = 10_{10}\)</span>, <span class="math notranslate nohighlight">\(\textrm{B}_{16} = 11_{10}\)</span>, <span class="math notranslate nohighlight">\(\textrm{C}_{16} = 12_{10}\)</span>, <span class="math notranslate nohighlight">\(\textrm{D}_{16} = 13_{10}\)</span>, <span class="math notranslate nohighlight">\(\textrm{E}_{16} = 14_{10}\)</span>, <span class="math notranslate nohighlight">\(\textrm{F}_{16} = 15_{10}\)</span>,</p>
+</aside>
+<aside class="footnote brackets" id="note2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">2</a><span class="fn-bracket">]</span></span>
+<p>The prefix <code class="docutils literal notranslate"><span class="pre">0b</span></code> is used in C code and many other languages as the prefix for the text representation of a binary value. <code class="docutils literal notranslate"><span class="pre">0</span></code> is used for octal values and <code class="docutils literal notranslate"><span class="pre">0x</span></code> for hexadecimal values. If there is no leading zero, the number is assumed to be decimal. However a number is defined in program code, the actual value stored in memory to represent that number will be a binary number.</p>
+</aside>
+<aside class="footnote brackets" id="note3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id13">3</a><span class="fn-bracket">]</span></span>
+<p>The calculator app on both Windows and MacOS have a programmer view that makes it easy to confirm these results.</p>
+</aside>
+<aside class="footnote brackets" id="note-msb" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id19">4</a><span class="fn-bracket">]</span></span>
+<p>The most significant bit is the left most bit. It corresponds to the numerical value <span class="math notranslate nohighlight">\(2^7 = 128\)</span>. For certain operations, it may also indicate a negative number.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/data_representation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week01/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Microcontrollers and Microcontroller Architecture</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week02/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Architecture of the Atmel ATmega 328 Microcontroller</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered-in-this-lecture">Topics Covered in this Lecture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#week2-intro2dr">Introduction to Data Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-is-data-stored-digitally">How is Data stored Digitally?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terminology">Terminology</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numbering-systems-and-base-conversion">Numbering Systems and Base Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-number-representation">Decimal Number Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-about-other-bases">What About Other Bases?</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-base-2">Binary (base 2)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1">Example 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#octal-base-8">Octal (base 8)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2">Example 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#hexadecimal-base-16">Hexadecimal (base 16)</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3">Example 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decimal-number-conversion">Decimal Number Conversion</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-4">Example 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#confirmation">Confirmation</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5">Example 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Confirmation</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6">Example 6</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Solution</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Confirmation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tricks-and-tips">Tricks and Tips</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-7">Example 7</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-8">Example 8</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-number-systems">Summary of number systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-binary-encodings">Other binary encodings</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-addition-and-subtraction">Binary Addition and Subtraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic">Binary Arithmetic</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-binary-addition">Rules for Binary Addition</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-10">Example 10</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"></a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-11">Example 11</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id15">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rules-for-binary-subtraction">Rules for Binary Subtraction</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-12">Example 12</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id16">Solution</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-13">Example 13</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id17">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic-and-flags">Binary Arithmetic and Flags</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-rules-for-binary-addition">Extended Rules for Binary Addition</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-14">Example 14</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#id18">Solution</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-the-status-register">Introduction to the Status Register</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-arithmetic-example-14">Binary Arithmetic Example 14</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#other-data-representations">Other Data Representations</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

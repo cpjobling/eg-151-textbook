@@ -1,0 +1,92 @@
+(programming_in_c_5)=
+# Setting up I/O connections
+
+<!-- #region -->
+(step3)=
+## Step 3
+
+Within the Arduino IDE, several library files containing useful definitions and functions are automatically included. One of these files contains a map of the memory address of each port register with masks that allow access to each bit/pin individually to labels that are the same as the connection label printed on the Arduino nano circuit board. Whilst this is convenient, it is good practice to define variables with more practical names which represent what is connected to them that the programmer can use throughout the program. A variable must be declared before it is used within the program and there are three different ways to achieve this:
+
+1. Declare the variable at the start of the program before `void setup` (this is the best option)
+2. Declare the variable at the start of the function (in this case, at the top of `void loop`)
+3. Declare the variable inline.
+
+As a minimum, the variable declaration must specify the data type and a name to be used, however this can also set the initial value of the variable. In the code, a variable is declared for each I/O connection of the circuit and given the value of the pin connection as follows:
+
+(pin_defs)=
+### Variable definitions
+```c
+//Pin Definitions
+const int pushButton = 8;
+const int inputSignal = A0;
+const int ledPin0 = 0;
+const int ledPin1 = 1;
+const int ledPin2 = 2;
+const int ledPin3 = 3;
+const int ledPin4 = 4;
+const int ledPin5 = 5;
+const int ledPin6 = 6;
+const int ledPin7 = 7;
+```
+
+
+For example, the first of these declarations sets up the label "`pushButton`" in place of the value 8, this allows the programmer to use "`pushButton`" instead of the pin number when an operation needs to be performed.
+
+Note: In the above variable definitions the qualifier `const` is added at the start of each declaration. This tells the compiler this value is a constant and essentially makes it read-only[^const].
+<!-- #endregion -->
+
+(step4)=
+## Step 4
+
+The next step is to set up the ports/pins that the external hardware is connected to including the data direction or mode and the default state of any outputs. 
+
+When setting up the ports/pins, first set the data direction using the pre-defined Arduino function “`pinMode`”. This function takes two input arguments, the first is the connection label and the second is the mode itself. The syntax of this function is:
+
+```c
+pinMode(pin, mode)
+```
+
+where mode can be `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. More information on this function can be found in the [pinMode](https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/) section of the Arduino reference library.
+
+Implementing the setup we described {ref}`programming_in_c_3` and using the names defined in {ref}`pin_defs`, the data direction/`pinMode` for the connections can be written as follows:
+
+```c
+pinMode(pushButton, INPUT_PULLUP); // Default value is high, pressed value is low
+pinMode(inputSignal, INPUT);
+pinMode(ledPin0, OUTPUT);
+pinMode(ledPin1, OUTPUT);
+pinMode(ledPin2, OUTPUT);
+pinMode(ledPin3, OUTPUT);
+pinMode(ledPin4, OUTPUT);
+pinMode(ledPin5, OUTPUT);
+pinMode(ledPin6, OUTPUT);
+pinMode(ledPin7, OUTPUT);
+```
+
+The default state of the LEDs can be set using the pre-defined Arduino function "digitalWrite”. This function takes two input arguments, the first is the connection label and the second is the value to set. The syntax of this function is:
+
+```c
+digitalWrite(pin, value)
+```
+
+where value can be `HIGH` or `LOW`. More information on this function can be found in the [digitalWrite](https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/) section of the Arduino reference library.
+
+Implementing the setup we described in {ref}`programming_in_c_3` and using the names defined in {ref}`pin_defs`, the code to set the initial state of the LEDs to off can be written as follows:
+
+```c
+//Set the initial state of the LEDs to be off
+digitalWrite(ledPin0, LOW);
+digitalWrite(ledPin1, LOW);
+digitalWrite(ledPin2, LOW);
+digitalWrite(ledPin3, LOW);
+digitalWrite(ledPin4, LOW);
+digitalWrite(ledPin5, LOW);
+digitalWrite(ledPin6, LOW);
+digitalWrite(ledPin7, LOW);
+```
+
+
+[^const]: If a value will not change, it can be stored as part of the programme in read-only-memory. This will release a small amount of space in working memory which is often limited in a microcontroller.
+
+
+

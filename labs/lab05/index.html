@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Experiment 5: LCD Display Panel &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'labs/lab05/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mini Projects" href="../../projects/index.html" />
+    <link rel="prev" title="Experiment 4: Arrays" href="../lab04/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lectures/week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flabs/lab05/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/labs/lab05/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Experiment 5: LCD Display Panel</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alphanumeric-display-module">Alphanumeric Display module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinout-of-the-alphanumeric-display-module">Pinout of the Alphanumeric Display module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-for-lcd">Library for LCD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-the-demonstration-programme">Functions of the Demonstration Programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-for-experiment-5">Task for Experiment 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-experiment-5">Assessment of Experiment 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-code-listing">Appendix A: Code Listing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-9-lcd-panel-demonstration-programme">Listing 9: LCD Panel Demonstration Programme.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-photograph-of-prototype-board-with-lcd-panel-display">Appendix B Photograph of Prototype Board with LCD Panel Display</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="experiment-5-lcd-display-panel">
+<span id="lab-5"></span><h1>Experiment 5: LCD Display Panel<a class="headerlink" href="#experiment-5-lcd-display-panel" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Experiment 5 introduces two new concepts. A new piece of hardware, the
+alphanumeric liquid crystal display, and a new software structure, the
+library.</p>
+</section>
+<section id="alphanumeric-display-module">
+<h2>Alphanumeric Display module<a class="headerlink" href="#alphanumeric-display-module" title="Permalink to this heading">#</a></h2>
+<p>You will be given an Alphanumeric Display module. This
+module can display two lines of 16 characters, using any characters in
+the ASCII standard list plus several special characters and up to eight
+user-defined characters. The interface to the display module is
+straightforward. Characters are written directly to the display and
+appear at the cursor position. Command characters can be sent which set
+the mode of operation of the display and allow the cursor to be moved
+around.</p>
+<p>Direct information on this module can be obtained from the <a class="reference external" href="https://uk.farnell.com/">Farnell
+website</a>, part number 3759026. Displays of this type are all
+based on a complex integrated circuit produced by Hitachi, part number
+HD 44780.</p>
+<p>One complication of using the alphanumeric display module is the small
+number of input-output pins on the Arduino Nano. A special mode of
+operation is employed, in which eight-bit data bytes are transferred as
+two, four-bit “nibbles”. A demonstration programme that is available to
+you shows you how numeric values and character strings can be
+displayed.</p>
+<p>A copy of the data sheet for the
+display and a list of ASCII characters]
+can be found on <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/files/4630684?module_item_id=2258159">Canvas</a>.</p>
+</section>
+<section id="pinout-of-the-alphanumeric-display-module">
+<h2>Pinout of the Alphanumeric Display module<a class="headerlink" href="#pinout-of-the-alphanumeric-display-module" title="Permalink to this heading">#</a></h2>
+<figure class="align-center" id="fig-ex5-1">
+<a class="reference internal image-reference" href="../../_images/lcd_panel.png"><img alt="LCD Display Panel and its pinout." src="../../_images/lcd_panel.png" style="width: 587px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 154 </span><span class="caption-text">LCD Display Panel and its pinout.</span><a class="headerlink" href="#fig-ex5-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>There are 18 pins arranged in a straight line, which allows the module
+to be plugged into a standard breadboard. The pins are grouped as eight
+for data, three for control, and three for power and contrast. A further
+four pins (pins 15 to 18) are used to illuminate the RGB “back light”.
+The functions of the pins are as follows:</p>
+<p><strong>Pin 1</strong>: Ground/Zero Volts</p>
+<p><strong>Pin 2</strong>: Supply positive, typically 5 V.</p>
+<p><strong>Pin 3</strong>: Contrast pin. Connected to a potentiometer to set the display
+contrast.</p>
+<p><strong>Pin 4</strong>: Register Select: an address line, selecting either command or
+data.</p>
+<p><strong>Pin 5</strong>: Read/Write: logic “0” for writes, logic “1” for reads.</p>
+<p><strong>Pin 6</strong>: Enable: writes a command or data to the display.</p>
+<p><strong>Pins 7 to 14</strong>: Data pins D0 to D7 respectively.</p>
+<p><strong>Pin 15</strong>: +5 V +5V connection for backlight.</p>
+<p><strong>Pins 16 to 18</strong>: zero volts for backlights red, green, blue respectively.</p>
+</section>
+<section id="library-for-lcd">
+<h2>Library for LCD<a class="headerlink" href="#library-for-lcd" title="Permalink to this heading">#</a></h2>
+<p>Many devices such as the LCD require some complex software. A library,
+in this context, refers to additional code which is linked into the main
+programme using “#include” and is accessed using specific commands. In
+this case, the LCD library is included as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;LiquidCrystal.h&gt;</span>
+</pre></div>
+</div>
+<p>Some libraries, such as the SPI and IIC libraries, are present in the
+standard version of the Arduino IDE. Other libraries must be added using
+“Tools/Manage Libraries” from within the Arduino IDE.</p>
+<p>Here are some examples of the extra commands that the library contains:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lcd</span><span class="p">.</span><span class="n">setCursor</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This command moves the cursor of the LCD to the start of the second line
+of the display.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lcd</span><span class="p">.</span><span class="n">print</span><span class="p">(</span><span class="s">&quot;hello, world!&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In this case, the alphanumeric string, variables, or arithmetic
+expression contained within the brackets is printed at the current
+cursor position.</p>
+<p>The best way to understand how the LCD hardware and software work, is to
+build the circuit that follows on plug-in breadboard and to try the
+example programme in <a class="reference internal" href="#listing9"><span class="std std-ref">Listing 9: LCD Panel Demonstration Programme.</span></a>.</p>
+<figure class="align-default" id="fig-ex5-2">
+<a class="reference internal image-reference" href="../../_images/Expt5PBB-1.jpg"><img alt="Diagram of breadboard with LCD display panel fitted." src="../../_images/Expt5PBB-1.jpg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 155 </span><span class="caption-text">Demonstration Circuit on Plug-in Breadboard.</span><a class="headerlink" href="#fig-ex5-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="functions-of-the-demonstration-programme">
+<h2>Functions of the Demonstration Programme<a class="headerlink" href="#functions-of-the-demonstration-programme" title="Permalink to this heading">#</a></h2>
+<p>As explained previously, the LCD module is connected in “4-bit mode”, to
+minimise the number of connections to the Arduino Nano processor. In
+addition to the 4 data bits, there are two command signals, Register
+Select (RS) and Enable (E). These are the absolute minimum number of
+connections between the LCD and the processor. An additional command
+signal, Read/Write, (R/W) is connected permanently to logic “0”.</p>
+<p>There are two potentiometers on the demonstration board. One sets the
+contrast of the LCD, which is necessary to adjust the correct balance
+between the illuminated and dark pixels. The other potentiometer sets
+the voltage on analogue input <code class="docutils literal notranslate"><span class="pre">A7</span></code>.</p>
+<p>Two push buttons are provided, connected to digital inputs <code class="docutils literal notranslate"><span class="pre">D10</span></code> and
+<code class="docutils literal notranslate"><span class="pre">D11</span></code>. Note the use of <code class="docutils literal notranslate"><span class="pre">pinmode</span></code> in <code class="docutils literal notranslate"><span class="pre">setup()</span></code>, which turns on the
+pull-up resistors associated with inputs <code class="docutils literal notranslate"><span class="pre">D10</span></code> and <code class="docutils literal notranslate"><span class="pre">D11</span></code>.</p>
+<p>Copy the text of the demonstration programme into a new Arduino sketch,
+and compile and upload in the usual way. When the programme is running,
+it should display the message “hello world!” on the first line. On the
+second line, the first few characters are a count in seconds since the
+board was reset. The remainder of the second line shows the message “ADC
+= xxxx”, where “xxxx” represents a number between 0 and 1023, as
+determined by the setting of the potentiometer. Pressing the push
+buttons should result in the characters “R” or “L” being displayed near
+the end of the first line of the display.</p>
+<p>The example code provides examples of how to set the display and write
+messages and variables. The example code can form the basis of the
+exercise that follows.</p>
+</section>
+<section id="task-for-experiment-5">
+<h2>Task for Experiment 5<a class="headerlink" href="#task-for-experiment-5" title="Permalink to this heading">#</a></h2>
+<p>The exercise for this experiment is to configure the demonstration board
+as a bar graph display, similar to the exercise in Experiment 3. But in
+this new exercise, the bar graph is not a line of LEDs, it is the top
+line of the LCD. There are 16 character positions, so that each “block”
+of the bar graph will correspond to 64 values from the ADC (which is 10
+bits, so there are 1024 possible values).</p>
+<p>Here is the required display. Retain the line “ADC = ” followed by the
+ADC value displayed on the second line, this will be useful when testing
+your programme.</p>
+<p>ADC value = 0;        Display = “<code class="docutils literal notranslate">&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </code>” (all spaces)</p>
+<p>ADC value = 1-63;     Display = “<code class="docutils literal notranslate"><span class="pre">#</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </code> ” (only first block)</p>
+<p>ADC value = 64-127;   Display = “<code class="docutils literal notranslate"><span class="pre">##</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; </code> ” (first two blocks)</p>
+<p>and so on until:</p>
+<p>ADC value = 1018-1023 Display = “<code class="docutils literal notranslate"><span class="pre">#################</span></code>” (all 16 blocks)</p>
+<p></p>
+<p>The “<code class="docutils literal notranslate"><span class="pre">#</span></code>” character is only here as an example. A more suitable character
+is available on the LCD, which corresponds to ASCII code 255 and appears
+as a rectangle of 7 by 5 pixels. It can be printed as
+follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">lcd</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">byte</span><span class="p">(</span><span class="mi">255</span><span class="p">));</span>
+</pre></div>
+</div>
+<p>There are a number of ways to achieve this programme. One would be to
+“trap out” the zero value, and print a line of 16 space characters, then
+divide the ADC value by 64 and use this as an index in a character
+array.</p>
+<p>An alternative would be to write a programme loop which decrements the
+scaled ADC value and printing “#” until the result is
+zero.</p>
+</section>
+<section id="assessment-of-experiment-5">
+<h2>Assessment of Experiment 5<a class="headerlink" href="#assessment-of-experiment-5" title="Permalink to this heading">#</a></h2>
+<p>As with previous exercises, the plug-in breadboard should be
+photographed with your student card and added to your laboratory diary.
+A listing of your programme should be included, with plenty of comments.
+A programme without comments is of only limited value, as nobody else
+can follow it!</p>
+</section>
+<section id="appendix-a-code-listing">
+<h2>Appendix A: Code Listing<a class="headerlink" href="#appendix-a-code-listing" title="Permalink to this heading">#</a></h2>
+<section id="listing-9-lcd-panel-demonstration-programme">
+<span id="listing9"></span><h3>Listing 9: LCD Panel Demonstration Programme.<a class="headerlink" href="#listing-9-lcd-panel-demonstration-programme" title="Permalink to this heading">#</a></h3>
+<p>View and download the code from GitHub gist
+<a class="reference external" href="https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462">lcd_panel.ino</a></p>
+<script src="https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462.js"></script></section>
+</section>
+<section id="appendix-b-photograph-of-prototype-board-with-lcd-panel-display">
+<h2>Appendix B Photograph of Prototype Board with LCD Panel Display<a class="headerlink" href="#appendix-b-photograph-of-prototype-board-with-lcd-panel-display" title="Permalink to this heading">#</a></h2>
+<p>The following photograph (<a class="reference internal" href="#photo-ex5-1"><span class="std std-numref">Fig. 156</span></a>) has been provided by Dr Davies who created this experiment.</p>
+<figure class="align-center" id="photo-ex5-1">
+<a class="reference internal image-reference" href="../../_images/NewExpt5.jpg"><img alt="Photograph of breadboard with LCD panel fitted" src="../../_images/NewExpt5.jpg" style="width: 70%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 156 </span><span class="caption-text">Photograph of the Arduino Nano and LCD Display Panel with example programme running.</span><a class="headerlink" href="#photo-ex5-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./labs/lab05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../lab04/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Experiment 4: Arrays</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../projects/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mini Projects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alphanumeric-display-module">Alphanumeric Display module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pinout-of-the-alphanumeric-display-module">Pinout of the Alphanumeric Display module</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#library-for-lcd">Library for LCD</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functions-of-the-demonstration-programme">Functions of the Demonstration Programme</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-for-experiment-5">Task for Experiment 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment-of-experiment-5">Assessment of Experiment 5</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-a-code-listing">Appendix A: Code Listing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#listing-9-lcd-panel-demonstration-programme">Listing 9: LCD Panel Demonstration Programme.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-b-photograph-of-prototype-board-with-lcd-panel-display">Appendix B Photograph of Prototype Board with LCD Panel Display</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

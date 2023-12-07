@@ -1,0 +1,1311 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Interfacing to digital I/O with C &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week05/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interfacing to Analogue I/O with C" href="../week06/index.html" />
+    <link rel="prev" title="Introduction to Programming with C" href="../week04/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week05/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week05/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interfacing to digital I/O with C</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-i-o-work-using-the-arduino-ide">How does I/O work using the Arduino IDE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-control">Digital Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-include-file-arduino-h">The include file Arduino.h</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-library-file-wiring-digital-c">The library file wiring_digital.c</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-from-wiring-digital-c">Extracts from wiring_digital.c</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#pinmode-line-29">pinMode (line 29)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#function-digitalwrite-line-138">function digitalWrite (line 138)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-and-disadvantages-of-using-the-arduino-ide">Advantages and Disadvantages of using the Arduino IDE</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitmasking">Bitmasking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-bitwise-operators">Logical Bitwise Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truth-tables-for-the-bitwise-logical-operators">Truth tables for the bitwise logical operators.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masking">Masking</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masking-example">Masking Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-us-revisit-the-task">Let us revisit the task</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#atmel-atmega328-i-0-architecture-recap">Atmel ATmega328 I/0 Architecture Recap</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-with-bit-masking">Solution with bit masking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-i-o-example-program">Digital I/O Example Program</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breadboard">Example - breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-statement-1">Example Code - statement 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-aligning-port-names-to-the-i-o-memory-map">Example code - aligning port names to the I/O memory map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-the-main-function">Example Code - the main function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-set-data-direction-registers">Example Code - Set data direction registers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-set-pull-ups-for-inputs-and-initialize-outputs">Example Code - Set pull-ups for inputs and initialize outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-the-infinite-for-loop">Example Code - The infinite for loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-reading-the-button">Example Code - Reading the button</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-program">The full program</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interfacing-to-digital-i-o-with-c">
+<span id="week05"></span><h1>Interfacing to digital I/O with C<a class="headerlink" href="#interfacing-to-digital-i-o-with-c" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<section id="topics-covered">
+<h3>Topics Covered<a class="headerlink" href="#topics-covered" title="Permalink to this heading">#</a></h3>
+<p>In this section we will be looking at two different approaches to reading and writing to ports on a microcontroller. The first approach discussed is using library files and predefined functions to control I/O ports as is conventionally done with the Arduino IDE, the second approach will look at accessing I/O bits directly using bit masks to select the desired pins. The section begins by looking at digital inputs and outputs before moving onto to show a detailed example program implemented on the Atmel ATmega328 microcontroller.</p>
+</section>
+<section id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk5-arduino-ide"><span class="std std-ref">How does I/O work using the Arduino IDE</span></a></p></li>
+</ul>
+<ul class="simple">
+<li><p>Bit masking</p></li>
+</ul>
+<ul class="simple">
+<li><p>Digital I/O example using LEDs and push buttons.</p></li>
+</ul>
+</section>
+</section>
+<section id="how-does-i-o-work-using-the-arduino-ide">
+<span id="wk5-arduino-ide"></span><h2>How does I/O work using the Arduino IDE<a class="headerlink" href="#how-does-i-o-work-using-the-arduino-ide" title="Permalink to this heading">#</a></h2>
+<img alt="Decorative section background - showing an Arduino nano microcontroller and an LED light strip" src="../../_images/arduino_nano_wallpaper.jpg" />
+<p>Image source: <a class="reference external" href="https://www.flickr.com/photos/netlcom/36486445205/">This Photo</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC</a></p>
+<section id="digital-control">
+<h3>Digital Control<a class="headerlink" href="#digital-control" title="Permalink to this heading">#</a></h3>
+<p>Imagine a circuit with LEDs connected to <code class="docutils literal notranslate"><span class="pre">D8</span></code> and <code class="docutils literal notranslate"><span class="pre">D9</span></code> of the Atmel ATmega328 microcontroller.</p>
+<p>Both LEDs will be wired to PORTD. How can the LED at <code class="docutils literal notranslate"><span class="pre">D9</span></code> be switched on without changing the state of the LED at <code class="docutils literal notranslate"><span class="pre">D8</span></code>?</p>
+<p>The answer is to use the <em>pin</em> functions provided by the Arduino library. These functions allow programmers to gain direct access to particular pins</p>
+<p>Using the Arduino IDE, the programmer would first define the pin as an output and then use the <code class="docutils literal notranslate"><span class="pre">digitalWrite</span></code> function to write <code class="docutils literal notranslate"><span class="pre">HIGH</span></code> (integer <code class="docutils literal notranslate"><span class="pre">0x1</span></code>) or <code class="docutils literal notranslate"><span class="pre">LOW</span></code> (integer <code class="docutils literal notranslate"><span class="pre">0x0</span></code>) to the pin as required.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// put your setup code here, to run once:</span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">OUTPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// put your main code here, to run repeatedly:</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">HIGH</span><span class="p">);</span>
+<span class="w">  </span><span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+<span class="w">  </span><span class="n">digitalWrite</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="w"> </span><span class="n">LOW</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This is because for each “sketch” the Arduino IDE automatically includes a the include file  <code class="docutils literal notranslate"><span class="pre">Arduino.h</span></code> and the library file <code class="docutils literal notranslate"><span class="pre">wiring_digital.c</span></code><a class="footnote-reference brackets" href="#where-to-find" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<section id="the-include-file-arduino-h">
+<h4>The include file Arduino.h<a class="headerlink" href="#the-include-file-arduino-h" title="Permalink to this heading">#</a></h4>
+<p>Amongst a number of other definitions<a class="footnote-reference brackets" href="#arduino-h" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>, the <code class="docutils literal notranslate"><span class="pre">Arduino.h</span></code> file contains the declarations for the commonly used digital I/O functions: <code class="docutils literal notranslate"><span class="pre">pinMode</span></code>, <code class="docutils literal notranslate"><span class="pre">digitalWrite</span></code> and <code class="docutils literal notranslate"><span class="pre">digitalRead</span></code> as well as the functions used for Analog I/0: <code class="docutils literal notranslate"><span class="pre">analogRead</span></code>, <code class="docutils literal notranslate"><span class="pre">analogReference</span></code> and <code class="docutils literal notranslate"><span class="pre">analogWrite</span></code> to be discussed in <a class="reference internal" href="../week07/index.html#week07"><span class="std std-ref">Introduction to Assembly Language</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">pinMode</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">digitalRead</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">analogRead</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">analogReference</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mode</span><span class="p">);</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">analogWrite</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">val</span><span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pinMode</span></code> takes two <em>unsigned</em> 8-bit integers as arguments and has return type of void (returns nothing).</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">digitalWrite</span></code> takes two unsigned 8-bit integers as arguments and has return type of void (returns nothing).</p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">digitalRead</span></code> takes one unsigned 8-bit integer as an argument and returns a <em>signed</em> integer value.</p></li>
+</ul>
+<p><strong>Remember the function declaration only tells the compiler about a function’s name, return type, and arguments</strong>.</p>
+<p>The actual definition of these functions lies elsewhere in the Arduino core library.</p>
+</section>
+<section id="the-library-file-wiring-digital-c">
+<h4>The library file wiring_digital.c<a class="headerlink" href="#the-library-file-wiring-digital-c" title="Permalink to this heading">#</a></h4>
+<p>The <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c">wiring_digital.c</a> file contains the definitions for the pinMode, <code class="docutils literal notranslate"><span class="pre">digitalWrite</span></code> and <code class="docutils literal notranslate"><span class="pre">digitalRead</span></code> functions<a class="footnote-reference brackets" href="#wiring-analog" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p>
+<section id="extracts-from-wiring-digital-c">
+<h5>Extracts from wiring_digital.c<a class="headerlink" href="#extracts-from-wiring-digital-c" title="Permalink to this heading">#</a></h5>
+<section id="pinmode-line-29">
+<h6><a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c#L29">pinMode</a> (line 29)<a class="headerlink" href="#pinmode-line-29" title="Permalink to this heading">#</a></h6>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">pinMode</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">mode</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalPinToBitMask</span><span class="p">(</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalPinToPort</span><span class="p">(</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">	</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">reg</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">;</span>
+
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">port</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NOT_A_PIN</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">	</span><span class="c1">// JWS: can I let the optimizer do this?</span>
+<span class="w">	</span><span class="n">reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portModeRegister</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+<span class="w">	</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portOutputRegister</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INPUT</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<span class="w">		</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">oldSREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SREG</span><span class="p">;</span>
+<span class="w">                </span><span class="n">cli</span><span class="p">();</span>
+<span class="w">		</span><span class="o">*</span><span class="n">reg</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">bit</span><span class="p">;</span>
+<span class="w">		</span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">bit</span><span class="p">;</span>
+<span class="w">		</span><span class="n">SREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldSREG</span><span class="p">;</span>
+<span class="w">	</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">mode</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">INPUT_PULLUP</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">oldSREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SREG</span><span class="p">;</span>
+<span class="w">                </span><span class="n">cli</span><span class="p">();</span>
+<span class="w">		</span><span class="o">*</span><span class="n">reg</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">bit</span><span class="p">;</span>
+<span class="w">		</span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">bit</span><span class="p">;</span>
+<span class="w">		</span><span class="n">SREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldSREG</span><span class="p">;</span>
+<span class="w">	</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">oldSREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SREG</span><span class="p">;</span>
+<span class="w">                </span><span class="n">cli</span><span class="p">();</span>
+<span class="w">		</span><span class="o">*</span><span class="n">reg</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">bit</span><span class="p">;</span>
+<span class="w">		</span><span class="n">SREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldSREG</span><span class="p">;</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="function-digitalwrite-line-138">
+<h6>function <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c#L138">digitalWrite</a> (line 138)<a class="headerlink" href="#function-digitalwrite-line-138" title="Permalink to this heading">#</a></h6>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span><span class="w"> </span><span class="nf">digitalWrite</span><span class="p">(</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">pin</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">val</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">timer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalPinToTimer</span><span class="p">(</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">bit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalPinToBitMask</span><span class="p">(</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">digitalPinToPort</span><span class="p">(</span><span class="n">pin</span><span class="p">);</span>
+<span class="w">	</span><span class="k">volatile</span><span class="w"> </span><span class="kt">uint8_t</span><span class="w"> </span><span class="o">*</span><span class="n">out</span><span class="p">;</span>
+
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">port</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">NOT_A_PIN</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="p">;</span>
+
+<span class="w">	</span><span class="c1">// If the pin that support PWM output, we need to turn it off</span>
+<span class="w">	</span><span class="c1">// before doing a digital write.</span>
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timer</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">NOT_ON_TIMER</span><span class="p">)</span><span class="w"> </span><span class="n">turnOffPWM</span><span class="p">(</span><span class="n">timer</span><span class="p">);</span>
+
+<span class="w">	</span><span class="n">out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portOutputRegister</span><span class="p">(</span><span class="n">port</span><span class="p">);</span>
+
+<span class="w">	</span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">oldSREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SREG</span><span class="p">;</span>
+<span class="w">	</span><span class="n">cli</span><span class="p">();</span>
+
+<span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">val</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">LOW</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">&amp;=</span><span class="w"> </span><span class="o">~</span><span class="n">bit</span><span class="p">;</span>
+<span class="w">	</span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">		</span><span class="o">*</span><span class="n">out</span><span class="w"> </span><span class="o">|=</span><span class="w"> </span><span class="n">bit</span><span class="p">;</span>
+<span class="w">	</span><span class="p">}</span>
+
+<span class="w">	</span><span class="n">SREG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">oldSREG</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="advantages-and-disadvantages-of-using-the-arduino-ide">
+<h4>Advantages and Disadvantages of using the Arduino IDE<a class="headerlink" href="#advantages-and-disadvantages-of-using-the-arduino-ide" title="Permalink to this heading">#</a></h4>
+<section id="advantages">
+<h5>Advantages<a class="headerlink" href="#advantages" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Code is cross processor compatible.</p></li>
+<li><p>Code is easy to understand.</p></li>
+<li><p>Code controls a named pin on the board and is therefore easy to wire up</p></li>
+<li><p>Changing code to use different pins is trivial..</p></li>
+</ul>
+</section>
+<section id="disadvantages">
+<h5>Disadvantages<a class="headerlink" href="#disadvantages" title="Permalink to this heading">#</a></h5>
+<ul class="simple">
+<li><p>Code is slower than accessing the ports directly.</p></li>
+<li><p>You cannot perform multiple bit reads or writes in a single action.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<section id="bitmasking">
+<h2>Bitmasking<a class="headerlink" href="#bitmasking" title="Permalink to this heading">#</a></h2>
+<img alt="Decorative section background - showing an Arduino nano microcontroller and an LED light strip" src="../../_images/arduino_nano_wallpaper.jpg" />
+<p>Image source: <a class="reference external" href="https://www.flickr.com/photos/netlcom/36486445205/">This Photo</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-nc/3.0/">CC BY-NC</a></p>
+<section id="logical-bitwise-operators">
+<h3>Logical Bitwise Operators<a class="headerlink" href="#logical-bitwise-operators" title="Permalink to this heading">#</a></h3>
+<p>As we saw in <a class="reference internal" href="../week04/index.html#wk4-bitwise-ops"><span class="std std-ref">Bitwise logical operators in C</span></a>, there is a group of operators within the C programming language which are referred to as <strong>bitwise logical operators</strong> (<a class="reference internal" href="#bitwise-logic-operators"><span class="std std-numref">Table 3</span></a>).</p>
+<table class="table" id="bitwise-logic-operators">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">The bitwise logic operators</span><a class="headerlink" href="#bitwise-logic-operators" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Logical Operation</p></th>
+<th class="head"><p>Operator</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>AND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>OR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>XOR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>NOT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Shift right</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Shift left</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>These are important when working with inputs and outputs as they can be used to apply masks to ports (registers) to work with only specific bits<a class="footnote-reference brackets" href="#io-bits" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+</section>
+<section id="truth-tables-for-the-bitwise-logical-operators">
+<h3>Truth tables for the bitwise logical operators.<a class="headerlink" href="#truth-tables-for-the-bitwise-logical-operators" title="Permalink to this heading">#</a></h3>
+<p>The truth tables for bitwise logical operators are given for AND (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>) in <a class="reference internal" href="#truth-table-and"><span class="std std-numref">Table 4</span></a>, OR (<code class="docutils literal notranslate"><span class="pre">|</span></code>) in <a class="reference internal" href="#truth-table-or"><span class="std std-numref">Table 5</span></a>, XOR (<code class="docutils literal notranslate"><span class="pre">^</span></code>) in <a class="reference internal" href="#truth-table-xor"><span class="std std-numref">Table 6</span></a>, and NOT (<code class="docutils literal notranslate"><span class="pre">^</span></code>) in <a class="reference internal" href="#truth-table-not"><span class="std std-numref">Table 7</span></a>.</p>
+<table class="table" id="truth-table-and">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">Bitwise AND</span><a class="headerlink" href="#truth-table-and" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>Out</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="truth-table-or">
+<caption><span class="caption-number">Table 5 </span><span class="caption-text">Bitwise OR</span><a class="headerlink" href="#truth-table-or" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>Out</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="truth-table-xor">
+<caption><span class="caption-number">Table 6 </span><span class="caption-text">Bitwise XOR</span><a class="headerlink" href="#truth-table-xor" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>Out</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<table class="table" id="truth-table-not">
+<caption><span class="caption-number">Table 7 </span><span class="caption-text">Bitwise NOT</span><a class="headerlink" href="#truth-table-not" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>Out</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="masking">
+<h3>Masking<a class="headerlink" href="#masking" title="Permalink to this heading">#</a></h3>
+<section id="masking-example">
+<h4>Masking Example<a class="headerlink" href="#masking-example" title="Permalink to this heading">#</a></h4>
+<p>Consider an example where you want to know if bits 0 and 7 are both on / high / logic 1 but you don’t care about any other bits.</p>
+<p>Programmatically, this would be done using an <em>if</em> statement with a bitwise <em>and</em> operator:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b10100011</span><span class="p">;</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">input</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b10000001</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mb">0b10000001</span><span class="w"> </span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">	</span><span class="c1">// do something;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If bits 0 and 7 are <code class="docutils literal notranslate"><span class="pre">HIGH</span></code></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lcrr}
+\mathrm{Bit\ No.}  &amp; &amp; 7654 &amp; 3210 \\\hline
+\mathrm{Input}  &amp;    &amp; \mathbf{1}010 &amp; 001\mathbf{1} \\
+\mathrm{Mask}   &amp; \&amp; &amp; 1000 &amp; 0001 \\\hline
+\mathrm{Result} &amp;    &amp; 1000 &amp; 0001
+\end{array}\end{split}\]</div>
+<p>If bits 0 and 7 are <code class="docutils literal notranslate"><span class="pre">LOW</span></code></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lcrr}
+\mathrm{Bit\ No.} &amp; &amp; 7654 &amp; 3210 \\\hline
+\mathrm{Input}  &amp;    &amp; \mathbf{0}010 &amp; 001\mathbf{0} \\
+\mathrm{Mask}   &amp; \&amp; &amp; 1000 &amp; 0001 \\\hline
+\mathrm{Result} &amp;    &amp; 0000 &amp; 0000
+\end{array}\end{split}\]</div>
+<p>In both examples, it doesn’t matter what bits 1-6 are, they don’t affect the result.</p>
+</section>
+<section id="let-us-revisit-the-task">
+<h4>Let us revisit the task<a class="headerlink" href="#let-us-revisit-the-task" title="Permalink to this heading">#</a></h4>
+<p>Imagine a circuit with LED’s connected to D8 and D9 of the Atmel ATmega328 microcontroller.</p>
+<figure class="align-default" id="wk5-fig-pins-8-and-9">
+<a class="reference internal image-reference" href="../../_images/pins_8_and_9.png"><img alt="Schematic of Arduino nano board identifying pins D8 and D9." src="../../_images/pins_8_and_9.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 62 </span><span class="caption-text">Schematic of Arduino nano board identifying pins D8 and D9<a class="footnote-reference brackets" href="#d8-and-d9" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</span><a class="headerlink" href="#wk5-fig-pins-8-and-9" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>How can the LED at <code class="docutils literal notranslate"><span class="pre">D9</span></code> be switched on without changing the state of the LED at <code class="docutils literal notranslate"><span class="pre">D8</span></code>?</p>
+<section id="atmel-atmega328-i-0-architecture-recap">
+<h5>Atmel ATmega328 I/0 Architecture Recap<a class="headerlink" href="#atmel-atmega328-i-0-architecture-recap" title="Permalink to this heading">#</a></h5>
+<img alt="Arduino ATmega328 Memory map for I/O" src="../../_images/io_map.png" />
+<p>Recall:</p>
+<p>Three I/O memory address locations are allocated for each port, one each for the <em>Data Register</em> – <code class="docutils literal notranslate"><span class="pre">PORTx</span></code>, <em>Data Direction Register</em> – <code class="docutils literal notranslate"><span class="pre">DDRx</span></code>, and the <em>Port Input Pins</em> – <code class="docutils literal notranslate"><span class="pre">PINx</span></code>, where <code class="docutils literal notranslate"><span class="pre">x</span></code> refers to the numbering letter for the port (<code class="docutils literal notranslate"><span class="pre">B</span></code>, <code class="docutils literal notranslate"><span class="pre">C</span></code> or <code class="docutils literal notranslate"><span class="pre">D</span></code> in our case).</p>
+</section>
+</section>
+<section id="solution-with-bit-masking">
+<h4>Solution with bit masking<a class="headerlink" href="#solution-with-bit-masking" title="Permalink to this heading">#</a></h4>
+<p>Imagine a circuit with LED’s connected to D8 and D9 of the Atmel ATmega328 microcontroller.</p>
+<p>How can the LED at <code class="docutils literal notranslate"><span class="pre">D9</span></code> be switched on without changing the state of the LED at <code class="docutils literal notranslate"><span class="pre">D8</span></code>?</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D8</span> <span class="pre">=</span> <span class="pre">PortB0</span></code></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D9</span> <span class="pre">=</span> <span class="pre">PortB1</span></code></p></li>
+</ul>
+<p>Let us assume Port B currently reads <span class="math notranslate nohighlight">\(1010\,0001\)</span> and we execute<a class="footnote-reference brackets" href="#shortcut" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b00000010</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrrl}
+  &amp; 1010 &amp; 0001 &amp; \mathrm{Port\ B}\\
+| &amp; 0000 &amp; 0010 &amp; \mathrm{Bitmask\ for\ D9} \\ \hline
+  &amp; 1010 &amp; 00\mathbf{1}1 &amp; \mathrm{D9\ is\ on}
+\end{array}\end{split}\]</div>
+<p>To turn but 9 off, we use the logical AND.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xb11111101</span><span class="p">;</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrrl}
+  &amp; 1010 &amp; 0001 &amp; \mathrm{Port\ B}\\
+\&amp; &amp; 1111 &amp; 1101 &amp; \mathrm{Bitmask\ for\ D9} \\ \hline
+  &amp; 1010 &amp; 00\mathbf{0}1 &amp; \mathrm{D9\ is\ off}
+\end{array}\end{split}\]</div>
+</section>
+</section>
+</section>
+<section id="digital-i-o-example-program">
+<span id="wk5-example-program"></span><h2>Digital I/O Example Program<a class="headerlink" href="#digital-i-o-example-program" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/breadboard_wallpaper.jpg"><img alt="Decorative background image showing the circuit discussed in the example." src="../../_images/breadboard_wallpaper.jpg" style="width: 75%;" /></a>
+<section id="example-breadboard">
+<h3>Example - breadboard<a class="headerlink" href="#example-breadboard" title="Permalink to this heading">#</a></h3>
+<p>Consider the Ardunino nano circuit shown in <a class="reference internal" href="#wk6-fig-example-circuit"><span class="std std-numref">Fig. 63</span></a>. The left and right push buttons are connected to the digital inputs <code class="docutils literal notranslate"><span class="pre">D3</span></code> and <code class="docutils literal notranslate"><span class="pre">D2</span></code> on the Arduino nano board. These correspond with Port D Bits 3 and 2 on the Atmega328 microcontroller.</p>
+<figure class="align-default" id="wk6-fig-example-circuit">
+<a class="reference internal image-reference" href="../../_images/breadboard.jpg"><img alt="A photograph of the example circuit which has two buttons and two LEDs." src="../../_images/breadboard.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 63 </span><span class="caption-text">A photograph of the example circuit which has two buttons and two LEDs. When the left button is pressed, the red LED lights up. When the right button is pressed the green LED lights up.</span><a class="headerlink" href="#wk6-fig-example-circuit" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>When the left push button is pressed, the red LED (Port B Bit 1) is illuminated and the green LED (Port B Bit 0) illuminated when the right push button is pressed.</p>
+<p>The buttons are digital inputs with pull-up resistors (so <em>active low</em>) and are connected to pins 1 and 2 of port D respectively.</p>
+<p>What does the code for this look like without using the predefined Arduino functions – <code class="docutils literal notranslate"><span class="pre">pinMode</span></code> and <code class="docutils literal notranslate"><span class="pre">digitalRead</span></code>?</p>
+</section>
+<section id="example-code-statement-1">
+<h3>Example Code - statement 1<a class="headerlink" href="#example-code-statement-1" title="Permalink to this heading">#</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">#include</span></code> is a <strong>preprocessor directive</strong> used to <strong>include header files</strong> which contain <strong>definitions and declarations</strong> of existing and frequently used functions.</p>
+<p>The <strong>&lt;&gt;</strong> variant is used for <strong>system header files</strong> that are included as part of the C language compiler.</p>
+<p>The <em>stdint.h</em> header file provides a set of <strong>type definitions (typedefs)</strong> that specify exact-width integer types, together with the defined minimum and maximum allowable values for each type, using macros. The types are tabulated in <a class="reference internal" href="#integer-types"><span class="std std-numref">Table 8</span></a>.</p>
+<table class="table" id="integer-types">
+<caption><span class="caption-number">Table 8 </span><span class="caption-text">Specific integral type limits</span><a class="headerlink" href="#integer-types" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Specifier</strong></p></th>
+<th class="head"><p><strong>Signing</strong></p></th>
+<th class="head"><p><strong>Bits</strong></p></th>
+<th class="head"><p><strong>Bytes</strong></p></th>
+<th class="head"><p><strong>Minimum Value</strong></p></th>
+<th class="head"><p><strong>Maximum Value</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int8_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>8</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^7\)</span> which equals <span class="math notranslate nohighlight">\(-128\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^7 - 1\)</span> which equals <span class="math notranslate nohighlight">\(127\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint8_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>8</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^8 - 1\)</span> which equals <span class="math notranslate nohighlight">\(255\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int16_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>16</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^7\)</span> which equals <span class="math notranslate nohighlight">\(-32,768\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^7 - 1\)</span> which equals <span class="math notranslate nohighlight">\(32,767\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint16_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>16</p></td>
+<td><p>2</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{16} - 1\)</span> which equals <span class="math notranslate nohighlight">\(65,535\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int32_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>32</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^{31}\)</span> which equals <span class="math notranslate nohighlight">\(-2,147,483,648\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{31} - 1\)</span> which equals <span class="math notranslate nohighlight">\(2,147,483,647\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint32_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>32</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{32} - 1\)</span> which equals <span class="math notranslate nohighlight">\(4,294,967,295\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">int64_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>64</p></td>
+<td><p>8</p></td>
+<td><p><span class="math notranslate nohighlight">\(-2^{63}\)</span> which equals <span class="math notranslate nohighlight">\(-9,223,372,036,854.775,808\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{63} - 1\)</span> which equals <span class="math notranslate nohighlight">\(9,223,372,036,854.775,807\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">uint32_t</span></code></p></td>
+<td><p>Signed</p></td>
+<td><p>32</p></td>
+<td><p>4</p></td>
+<td><p><span class="math notranslate nohighlight">\(0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(2^{64} - 1\)</span> which equals <span class="math notranslate nohighlight">\(18,446,744,073,709,551,615\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-code-aligning-port-names-to-the-i-o-memory-map">
+<span id="aligin-to-io-mem-map"></span><h3>Example code - aligning port names to the I/O memory map<a class="headerlink" href="#example-code-aligning-port-names-to-the-i-o-memory-map" title="Permalink to this heading">#</a></h3>
+<p>The I/O memory map is shown in <a class="reference internal" href="#wk5-fig-io-mem-map"><span class="std std-numref">Fig. 64</span></a>.</p>
+<figure class="align-center" id="wk5-fig-io-mem-map">
+<a class="reference internal image-reference" href="../../_images/io_mem_map.png"><img alt="Memory map for the I/O ports in the Atmel ATmega328" src="../../_images/io_mem_map.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 64 </span><span class="caption-text">Memory map for the I/O ports in the Atmel ATmega328</span><a class="headerlink" href="#wk5-fig-io-mem-map" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>We need to map a port to the address used by the port. We use <code class="docutils literal notranslate"><span class="pre">#define</span></code> for this:</p>
+<ol class="arabic simple">
+<li><p>Preprocessor directive: <code class="docutils literal notranslate"><span class="pre">#define</span></code></p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Convenient name that the processor can use in code: <code class="docutils literal notranslate"><span class="pre">PORTD</span></code></p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>The size is an 8 bit unsigned integer: <code class="docutils literal notranslate"><span class="pre">unit8_t</span></code></p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>Memory address of the specific register from the datasheet (reproduced here as <a class="reference internal" href="#wk5-fig-io-mem-map"><span class="std std-numref">Fig. 64</span></a>): <code class="docutils literal notranslate"><span class="pre">0x2B</span></code>.</p></li>
+</ol>
+<p>The full command is<a class="footnote-reference brackets" href="#volatile" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define PORTD(*(volatile unint8_t *)(0x2B))</span>
+</pre></div>
+</div>
+<p>The full set up which sets up the ports, data direction registers and pins is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//I/O and ADC Register definitions taken from datasheet</span>
+<span class="cp">#define	PORTD (*(volatile uint8_t *)(0x2B))</span>
+<span class="cp">#define DDRD  (*(volatile uint8_t *)(0x2A))</span>
+<span class="cp">#define PIND  (*(volatile uint8_t *)(0x29))</span>
+
+<span class="cp">#define PORTB (*(volatile uint8_t *)(0x25))</span>
+<span class="cp">#define DDRB  (*(volatile uint8_t *)(0x24))</span>
+<span class="cp">#define PINB  (*(volatile uint8_t *)(0x23))</span>
+</pre></div>
+</div>
+</section>
+<section id="example-code-the-main-function">
+<span id="main-c"></span><h3>Example Code - the main function<a class="headerlink" href="#example-code-the-main-function" title="Permalink to this heading">#</a></h3>
+<p>This is the starting point for any program<a class="footnote-reference brackets" href="#main" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// code</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The return type is declared as integer meaning the function returns some integer even ‘0’ at the end of the program execution. By convention, a return of ‘0’ represents the successful execution of a program.</p>
+</section>
+<section id="example-code-set-data-direction-registers">
+<h3>Example Code - Set data direction registers<a class="headerlink" href="#example-code-set-data-direction-registers" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/dd.gif"><img alt="Video illustrating the setting up of the data direction regsisters." src="../../_images/dd.gif" style="width: 100%;" /></a>
+</section>
+<section id="example-code-set-pull-ups-for-inputs-and-initialize-outputs">
+<h3>Example Code - Set pull-ups for inputs and initialize outputs<a class="headerlink" href="#example-code-set-pull-ups-for-inputs-and-initialize-outputs" title="Permalink to this heading">#</a></h3>
+<a class="reference internal image-reference" href="../../_images/pullup.gif"><img alt="Video illustrating the setting of the port D for input and resetting port B." src="../../_images/pullup.gif" style="width: 100%;" /></a>
+</section>
+<section id="example-code-the-infinite-for-loop">
+<h3>Example Code - The infinite for loop<a class="headerlink" href="#example-code-the-infinite-for-loop" title="Permalink to this heading">#</a></h3>
+<p>The <strong>infinite <em>for</em> loop</strong> is quite a common idiom in C:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(;;;)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="c1">// code that repeats forever</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Any code that is placed inside the for loop will run forever.</p>
+<p>The Arduino IDE does the same thing behind the scenes - <code class="docutils literal notranslate"><span class="pre">void</span> <span class="pre">loop</span></code> is actually a function that is repeatedly called inside an infinite for loop<a class="footnote-reference brackets" href="#main" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">setup</span><span class="p">();</span>
+<span class="w">    </span>
+<span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">	</span><span class="n">loop</span><span class="p">();</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="w">        </span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-code-reading-the-button">
+<h3>Example Code - Reading the button<a class="headerlink" href="#example-code-reading-the-button" title="Permalink to this heading">#</a></h3>
+<p>This <em>if</em> statement is at the heart of the program. Each time though the loop it tests the condition of bit 2 in the <code class="docutils literal notranslate"><span class="pre">PIND</span></code> register (<code class="docutils literal notranslate"><span class="pre">D3</span></code>). The pin linked to this bit has been configured as an input with the pull-up resistor enabled and it has been wired to the left button. This means the default state is 1 (<code class="docutils literal notranslate"><span class="pre">HIGH</span></code>) and pressing the button will ground the input to 0 (<code class="docutils literal notranslate"><span class="pre">LOW</span></code>).</p>
+<p>We then use a bit mask to query bit 2 only, and if the result is zero, we turn on bit 1 of <code class="docutils literal notranslate"><span class="pre">PORTB</span></code> - which illuminates the red LED.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">PIND</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b00000100</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00000001</span><span class="p">;</span><span class="w"> </span><span class="c1">// Sets port B, bit 0 to logic 1/high which switches the LED connected to D8 on.</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/buttons.gif"><img alt="Video showing how the state of the buttons is interogated using bit masks." src="../../_images/buttons.gif" style="width: 100%;" /></a>
+<p>Similar code is used to test the left button on <code class="docutils literal notranslate"><span class="pre">PORTD</span></code> pin 3 to illuminate the green LED on <code class="docutils literal notranslate"><span class="pre">PORTB</span></code> pin 0. See if you can write this code.</p>
+</section>
+<section id="the-full-program">
+<h3>The full program<a class="headerlink" href="#the-full-program" title="Permalink to this heading">#</a></h3>
+<p>The full program is available as a GitHub gist: <a class="reference external" href="https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883">main.c</a>. You will need a fully featured IDE, such as <a class="reference external" href="https://www.microchip.com/en-us/tools-resources/develop/microchip-studio">Atmel (now Microchip) Studio</a>, to compile and upload the code to the Ardino nano board.</p>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this section we have:</p>
+<ul class="simple">
+<li><p>Begun to look at I/O operations on the Atmel Atmega 328 microcontroller including the registers and checking/setting states based on flow control statements.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Introduced bit masking to read/write individual bits of a register without affecting the remainder of it.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Looked at a detailed example program which uses the state of two pushbuttons to set whether an LED is illuminated or not.</p></li>
+</ul>
+<section id="on-canvas">
+<h3>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h3>
+<p>This week on the <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/pages/direct-port-manipulation-in-c">canvas course page</a>, you will find the sample programs from today’s lecture, look through these and ensure you are confident in how they work and how the masks are defined. There is also a short quiz to test your knowledge on these topics.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="where-to-find" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p><code class="docutils literal notranslate"><span class="pre">Arduino.h</span></code> and <code class="docutils literal notranslate"><span class="pre">wiring_digital.c</span></code> are hidden away in the installation folders for the Arduino IDE. The examples versions shown here are taken from the GitHub repository <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr">github.com/arduino/ArduinoCore-avr</a></p>
+</aside>
+<aside class="footnote brackets" id="arduino-h" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>To see the full contents see: <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/Arduino.h">Arduino.h</a> on GitHub.</p>
+</aside>
+<aside class="footnote brackets" id="wiring-analog" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>The analog functions are defined in <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_analog.c">wiring_analog.c</a>.</p>
+</aside>
+<aside class="footnote brackets" id="io-bits" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>In the case of I/O specific bits refers to individual I/O pins</p>
+</aside>
+<aside class="footnote brackets" id="d8-and-d9" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>are bits 0 and 1 respectively of Port B.</p>
+</aside>
+<aside class="footnote brackets" id="shortcut" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>Idiomatic C often uses the shortcut <code class="docutils literal notranslate"><span class="pre">PORTB</span> <span class="pre">|=</span> <span class="pre">0x00000010;</span></code> There are many such <em>assignment operators</em> in C. For example: <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;=</span></code> etc. They all mean the same thing: <code class="docutils literal notranslate"><span class="pre">var</span> <span class="pre">=</span> <span class="pre">var</span> <span class="pre">op</span> <span class="pre">argument</span></code>. Internally, the C compiler treats both forms the same so their use is a matter of style. The full version is easier to read and understand. The shortcut is quicker to type, but arguably less easy to read and understand.</p>
+</aside>
+<aside class="footnote brackets" id="volatile" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>In this definition we use the qualifier volatile to inform the compiler that the variable value can be changed any time without any task given by the source code. Without this qualifier, depending on the optimisation level of the compiler this may result in code that doesn’t work as it doesn’t know the value can be changed by external sources. The asterisk symbol is used to denote a pointer, for now you do not need to know what this explicitly mean but in short a pointer is a variable whose value is the address of another variable, i.e., direct address of the memory location rather than a value.</p>
+</aside>
+<aside class="footnote brackets" id="main" role="note">
+<span class="label"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id8">1</a>,<a role="doc-backlink" href="#id9">2</a>)</span>
+<p>The actual code is slightly different and if you are interested you can access it here: <a class="reference external" href="https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/main.cpp">main.cpp</a>. Note that the sketch function <code class="docutils literal notranslate"><span class="pre">setup()</span></code> is called once first, then <code class="docutils literal notranslate"><span class="pre">loop()</span></code> is called each time through the infinite loop.
+:</p>
+</aside>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week05"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week04/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Programming with C</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week06/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interfacing to Analogue I/O with C</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-covered">Topics Covered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-does-i-o-work-using-the-arduino-ide">How does I/O work using the Arduino IDE</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-control">Digital Control</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-include-file-arduino-h">The include file Arduino.h</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-library-file-wiring-digital-c">The library file wiring_digital.c</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#extracts-from-wiring-digital-c">Extracts from wiring_digital.c</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#pinmode-line-29">pinMode (line 29)</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#function-digitalwrite-line-138">function digitalWrite (line 138)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-and-disadvantages-of-using-the-arduino-ide">Advantages and Disadvantages of using the Arduino IDE</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages">Advantages</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#disadvantages">Disadvantages</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bitmasking">Bitmasking</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-bitwise-operators">Logical Bitwise Operators</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#truth-tables-for-the-bitwise-logical-operators">Truth tables for the bitwise logical operators.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#masking">Masking</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#masking-example">Masking Example</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#let-us-revisit-the-task">Let us revisit the task</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#atmel-atmega328-i-0-architecture-recap">Atmel ATmega328 I/0 Architecture Recap</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-with-bit-masking">Solution with bit masking</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#digital-i-o-example-program">Digital I/O Example Program</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-breadboard">Example - breadboard</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-statement-1">Example Code - statement 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-aligning-port-names-to-the-i-o-memory-map">Example code - aligning port names to the I/O memory map</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-the-main-function">Example Code - the main function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-set-data-direction-registers">Example Code - Set data direction registers</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-set-pull-ups-for-inputs-and-initialize-outputs">Example Code - Set pull-ups for inputs and initialize outputs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-the-infinite-for-loop">Example Code - The infinite for loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-code-reading-the-button">Example Code - Reading the button</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-full-program">The full program</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

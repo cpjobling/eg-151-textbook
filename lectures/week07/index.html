@@ -1,0 +1,1154 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Assembly Language &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week07/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Microcontroller Architecture – Program Operation" href="../week08/index.html" />
+    <link rel="prev" title="Interfacing to Analogue I/O with C" href="../week06/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week07/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week07/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Assembly Language</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-discussed">Topics discussed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-code-and-assembly-language">Machine Code and Assembly Language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-code">Machine code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-wrong-with-machine-code">So what is wrong with machine code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language">Assembly Language</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-short-history-of-assembly-languages">A Short history of assembly languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-learn-low-level-languages">Why learn low level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-people-use-assembly-language">Why do people use assembly language?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wk7-sect2">Introduction to Assembly Language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-101">Assembly Language 101</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-labels">Assembly language labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-operators">Assembly Language Operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-mnemonics">Assembly mnemonics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembler-directives">Assembler Directives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-operands">Assembly Language Operands</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-1">Examples 1</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-comments">Assembly Language Comments</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-2">Examples 2</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembler">Assembler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfacing-with-digital-i-o-example">Interfacing with Digital I/O example.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language-code">C-Language Code</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-addresses">I/O Addresses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-a-name-to-the-i-o-addresses">Assigning a name to the I/O addresses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-equivalent-of-int-main-void">Assembly equivalent of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-port-access-and-bitmasking-operations">I/O port access and bitmasking operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-i-o-ports">Setting up the I/O Ports</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-loop">Infinite loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-a-button-press">Detecting a button press</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-c">Comparison with C</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-advantage-of-assembly-language">An Advantage of Assembly Language</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-assembly-language">
+<span id="week07"></span><h1>Introduction to Assembly Language<a class="headerlink" href="#introduction-to-assembly-language" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>So far in this course a number of topics have been covered including <a class="reference internal" href="../data_representation/index.html#data-representation"><span class="std std-ref">Introduction to Data Representation</span></a>, <a class="reference internal" href="../week02/index.html#week02"><span class="std std-ref">Architecture of the Atmel ATmega 328 Microcontroller</span></a>, <a class="reference internal" href="../week03/index.html#week03"><span class="std std-ref">Introduction to Programming and Program Development</span></a> and <a class="reference internal" href="../week04/index.html#week04"><span class="std std-ref">Introduction to Programming with C</span></a>. In this section we will study assembly language which is a low level language that provides a one-to-one mapping between mnemonic instructions and the machine code that is executed on the microcontroller. This will allow you to see how complex high-level instructions and functions in C are written in assembly language and the final program that gets transferred to the microcontroller.</p>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<section id="topics-discussed">
+<h3>Topics discussed<a class="headerlink" href="#topics-discussed" title="Permalink to this heading">#</a></h3>
+<p>In this lecture we will present an introduction to assembly language, including program structure and syntax as well as operation classifications. We will also revisit the <strong>Direct Port Manipulation in C</strong> example from <a class="reference internal" href="../week05/index.html#wk5-example-program"><span class="std std-ref">Digital I/O Example Program</span></a> and translates this into assembly language looking at some of the key instructions involved.</p>
+</section>
+<section id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk7-sect1"><span class="std std-ref">Machine Code and Assembly Language</span></a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk7-sect2"><span class="std std-ref">Introduction to Assembly Language</span></a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk7-sect3"><span class="std std-ref">Interfacing with Digital I/O example.</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="machine-code-and-assembly-language">
+<span id="wk7-sect1"></span><h2>Machine Code and Assembly Language<a class="headerlink" href="#machine-code-and-assembly-language" title="Permalink to this heading">#</a></h2>
+<img alt="a decaorative image of machine code" src="../../_images/machine_code_wallpaper.jpg" />
+<p><a class="reference external" href="https://stackoverflow.com/questions/16512580/how-do-i-stop-xcode-from-showing-me-this-assembly-language-when-im-debugging-an">This Photo</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA</a></p>
+<section id="machine-code">
+<h3>Machine code<a class="headerlink" href="#machine-code" title="Permalink to this heading">#</a></h3>
+<p>Programs are stored on a microcontroller as a series of binary codes located within sequential memory addresses …</p>
+<p>… this is known as <strong>machine code</strong><a class="footnote-reference brackets" href="#id7" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p>The program in our microntroller looks like this</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1000101010110001</span> <span class="mi">1000001101111111</span> <span class="mi">1000101010111001</span> 
+<span class="mi">1000010010110001</span> <span class="mi">1000001101100000</span> <span class="mi">1000010010111001</span>
+<span class="mi">1000010110110001</span> <span class="mi">1000110001111111</span> <span class="mi">1000010110111001</span>
+</pre></div>
+</div>
+</section>
+<section id="so-what-is-wrong-with-machine-code">
+<h3>So what is wrong with machine code?<a class="headerlink" href="#so-what-is-wrong-with-machine-code" title="Permalink to this heading">#</a></h3>
+<img alt="A photograph showing some machine code" src="../../_images/machine_code.png" />
+<p>Source: <a class="reference external" href="https://www.shutterstock.com/image-vector/binary-code-digital-numbers-green-background-1724376772">www.shutterstock.com/image-vector/binary-code-digital-numbers-green-background-1724376772</a></p>
+<p>Well nothing really … if you are a computer!</p>
+<img alt="Human beings looking confused" src="../../_images/confused_human.png" />
+<p><a class="reference external" href="https://www.shutterstock.com/search/confused+person">www.shutterstock.com/search/confused+person</a></p>
+<p>Otherwise … if you’re a human, machine code is difficult to:</p>
+<ul class="simple">
+<li><p>Write</p></li>
+</ul>
+<ul class="simple">
+<li><p>Read</p></li>
+</ul>
+<ul class="simple">
+<li><p>Understand</p></li>
+</ul>
+<ul class="simple">
+<li><p>Debug,</p></li>
+</ul>
+<p>and most importantly</p>
+<ul class="simple">
+<li><p>Maintain</p></li>
+</ul>
+<p>Instead, instructions can be written in a mnemonic form termed <strong>assembly language</strong> and then translated into machine code by an <strong>assembler</strong>.</p>
+</section>
+<section id="assembly-language">
+<h3>Assembly Language<a class="headerlink" href="#assembly-language" title="Permalink to this heading">#</a></h3>
+<p>Every CPU (or family of CPU’s) has an instruction set where each operation that can be performed is represented by a certain binary combination.</p>
+<p>The next step up in language levels is to represent each of these binary patterns with a <strong>short mnemonic</strong>.</p>
+<p>Programs written using these mnemonics are known as <strong>assembly language programs</strong><a class="footnote-reference brackets" href="#disassembly" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<figure class="align-default" id="wk7-fig-adc-code">
+<img alt="An example of an assembly code instruction" src="../../_images/adc_code.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 87 </span><span class="caption-text">An example of an assembly code instruction <code class="docutils literal notranslate"><span class="pre">ADC</span></code> - Add with carry. Extracted from the Atmel ATmega328 reference manual.</span><a class="headerlink" href="#wk7-fig-adc-code" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="a-short-history-of-assembly-languages">
+<h3>A Short history of assembly languages<a class="headerlink" href="#a-short-history-of-assembly-languages" title="Permalink to this heading">#</a></h3>
+<p>Assembly languages were first developed in the 1950s and were referred to as <strong>2nd generation programming language</strong>. Assembly language is a low level language that uses mnemonic codes (symbols) to represent machine code instructions, rather than using the instructions’ numeric (binary) values.</p>
+<p>Essentially, assembly langauges are a much more readable but directly translatable representation of machine code.</p>
+<p>Assembly language is commonly called just assembly, ASM, or symbolic machine code.</p>
+<p>Despite the giant leap from machine code to assembly language, by the 1980s its use had largely been overtaken by higher-level languages such as Fortran and C and more recently Python for many applications.</p>
+</section>
+<section id="why-learn-low-level-languages">
+<h3>Why learn low level languages<a class="headerlink" href="#why-learn-low-level-languages" title="Permalink to this heading">#</a></h3>
+<p>High Level Language (HLL) programs are designed to be independent of a particular machine architecture. As a result, they rarely take into account any special features of the machine - features which are commonly available to assembly language programmers. Assembly language is therefore good for hardware-specific jobs such as device drivers.</p>
+<p>If you understand assembly language, you’ll have an appreciation for the compiler, and you’ll know exactly what it is doing with HLL statements. Once you see how compilers translate seemingly innocuous statements into a ton of machine code, you will begin to understand how HLL code could be optimised.</p>
+<p>Good assembly language programmers make better HLL programmers because they understand the limitations of the compiler and they know what it is doing with their code.</p>
+<p>As well as these points, assembly programmers will have a better understanding of</p>
+<ul class="simple">
+<li><p>how data is represented in memory and other external devices;</p></li>
+<li><p>how processors access and execute instructions and how instructions access and process data;</p></li>
+<li><p>how a program accesses external devices – I/O;
+*how to write efficient code as it requires less memory and execution time.</p></li>
+</ul>
+</section>
+<section id="why-do-people-use-assembly-language">
+<h3>Why do people use assembly language?<a class="headerlink" href="#why-do-people-use-assembly-language" title="Permalink to this heading">#</a></h3>
+<p>In short:</p>
+<ul class="simple">
+<li><p><strong>Speed</strong> - assembly language programs are generally the fastest programs around (up to ten times faster that optimized HLL programs (The Art of Assembly Language, 2010))<a class="footnote-reference brackets" href="#warning" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Space</strong> - assembly language programs are often the smallest.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Capability</strong> - you can do things in assembly which are difficult or impossible in HLLs.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Knowledge</strong> - your knowledge of assembly language will help you write better programs, even when using HLLs.</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Reverse Engineer/modify (Hack)</strong> pre-assembled programs.</p></li>
+</ul>
+</section>
+</section>
+<section id="wk7-sect2">
+<span id="id4"></span><h2>Introduction to Assembly Language<a class="headerlink" href="#wk7-sect2" title="Permalink to this heading">#</a></h2>
+<img alt="a decaorative image of assembly code" src="../../_images/assembly_wallpaper.png" />
+<p><a class="reference external" href="https://www.flickr.com/photos/132889348&#64;N07/20607150556">This Photo</a> by Unknown Author is licensed under <a class="reference external" href="https://creativecommons.org/licenses/by-sa/3.0/">CC BY-SA</a></p>
+<section id="assembly-language-101">
+<h3>Assembly Language 101<a class="headerlink" href="#assembly-language-101" title="Permalink to this heading">#</a></h3>
+<p>An assembly language program consists of a series of instructions to an assembler which will then produce the machine code program that is loaded to the microcontroller.</p>
+<p>A program is written as a sequence of statements - one statement per line:</p>
+<ul class="simple">
+<li><p>Lines can be empty to separate sections of code</p></li>
+<li><p>Statements cannot span multiple lines</p></li>
+</ul>
+<p>Each statement contains up to four fields each separated by a space or tab character as shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">label</span><span class="p">:]</span>    <span class="n">operator</span>    <span class="p">[</span><span class="n">operand</span><span class="p">]</span>     <span class="p">[;</span><span class="n">comment</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>All statements must have something in the Operator field, but the label, operand and comment fields can be empty.</p>
+<section id="assembly-language-labels">
+<h4>Assembly language labels<a class="headerlink" href="#assembly-language-labels" title="Permalink to this heading">#</a></h4>
+<p>The label field is used to create a reference point in the program than can be used to identify/locate a collection of instructions.</p>
+<p>Examples:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LOOP</span>        <span class="n">operator</span>
+
+  <span class="n">COUNTER</span><span class="p">:</span>  <span class="n">operator</span>
+
+<span class="n">MY_CODE</span>     <span class="n">operator</span>
+
+<span class="n">SECTION1</span>    <span class="n">operator</span>
+</pre></div>
+</div>
+<p>Labels must follow a set of rules and a particular format:</p>
+<ul class="simple">
+<li><p>All labels must be <strong>unique</strong> and cannot use <strong>system reserved phrases</strong>.</p></li>
+<li><p>All labels <strong>must start with a letter</strong>.</p></li>
+<li><p>Labels can contain <strong>letters, numbers, and special characters</strong> (symbols, such as <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>, <code class="docutils literal notranslate"><span class="pre">$,</span> </code>_` ).</p></li>
+<li><p>Labels that <strong>don’t begin at column 1</strong> must be followed by a colon character ( <code class="docutils literal notranslate"><span class="pre">:</span></code> ).</p></li>
+<li><p>Labels are written in <strong>all capitals</strong>.</p></li>
+</ul>
+</section>
+<section id="assembly-language-operators">
+<h4>Assembly Language Operators<a class="headerlink" href="#assembly-language-operators" title="Permalink to this heading">#</a></h4>
+<p>The <strong>operator field</strong> contains either an assembly directive or a mnemonic/instruction.</p>
+<p><strong>Assembly directives</strong>, sometimes termed <em>pseudo-operations</em> are directives to the assembler that will not be translated to machine code but provide information critical to the program’s function or is required by the assembler.</p>
+<p>Assembly directives can be used to specify the starting address in memory, generate fixed tables and data, indicate the end of a program and several others.</p>
+</section>
+<section id="assembly-mnemonics">
+<h4>Assembly mnemonics<a class="headerlink" href="#assembly-mnemonics" title="Permalink to this heading">#</a></h4>
+<p>A <strong>mnemonic</strong>  is an instruction that will be directly translated into machine code and is used to manipulate data in some way.</p>
+<p>The list of allowed mnemonics/instructions is called the <strong>instruction set</strong> and is specific to a particular microcontroller architecture.
+However in general, the mnemonics can be classified into one of six groups:</p>
+<ul class="simple">
+<li><p><strong>Data Transfer</strong>: <code class="docutils literal notranslate"><span class="pre">IN</span></code>, <code class="docutils literal notranslate"><span class="pre">LD</span></code>, <code class="docutils literal notranslate"><span class="pre">LDI</span></code>, <code class="docutils literal notranslate"><span class="pre">LDS</span></code>, <code class="docutils literal notranslate"><span class="pre">MOV</span></code>, <code class="docutils literal notranslate"><span class="pre">OUT</span></code>, <code class="docutils literal notranslate"><span class="pre">ST</span></code>, <code class="docutils literal notranslate"><span class="pre">STS</span></code>;</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Arithmetic</strong>: <code class="docutils literal notranslate"><span class="pre">ADD</span></code>, <code class="docutils literal notranslate"><span class="pre">ADC</span></code>, <code class="docutils literal notranslate"><span class="pre">ADIW</span></code>, <code class="docutils literal notranslate"><span class="pre">SUB</span></code>, <code class="docutils literal notranslate"><span class="pre">SUBI</span></code>, <code class="docutils literal notranslate"><span class="pre">SBC</span></code>, <code class="docutils literal notranslate"><span class="pre">INC</span></code>, <code class="docutils literal notranslate"><span class="pre">DEC</span></code>, <code class="docutils literal notranslate"><span class="pre">MUL</span></code>, <code class="docutils literal notranslate"><span class="pre">MULS</span></code>, <code class="docutils literal notranslate"><span class="pre">FMUL</span></code>;</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Logical</strong>: <code class="docutils literal notranslate"><span class="pre">AND</span></code>, <code class="docutils literal notranslate"><span class="pre">ANDI</span></code>, <code class="docutils literal notranslate"><span class="pre">EOR</span></code>, <code class="docutils literal notranslate"><span class="pre">OR</span></code>, <code class="docutils literal notranslate"><span class="pre">ORI</span></code>;</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Program flow</strong>: <code class="docutils literal notranslate"><span class="pre">BREQ</span></code>, <code class="docutils literal notranslate"><span class="pre">BRGE</span></code>, <code class="docutils literal notranslate"><span class="pre">BRNE</span></code>, <code class="docutils literal notranslate"><span class="pre">BRLO</span></code>, <code class="docutils literal notranslate"><span class="pre">BRMI</span></code>, <code class="docutils literal notranslate"><span class="pre">BRPL</span></code>, <code class="docutils literal notranslate"><span class="pre">CALL</span></code>, <code class="docutils literal notranslate"><span class="pre">JMP</span></code>, <code class="docutils literal notranslate"><span class="pre">RET</span></code>, <code class="docutils literal notranslate"><span class="pre">RJMP</span></code>;</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>Bit and Bit Test</strong>: <code class="docutils literal notranslate"><span class="pre">LSL</span></code>, <code class="docutils literal notranslate"><span class="pre">LSR</span></code>, <code class="docutils literal notranslate"><span class="pre">ROL</span></code>, <code class="docutils literal notranslate"><span class="pre">ROR</span></code>, <code class="docutils literal notranslate"><span class="pre">ASR</span></code>, <code class="docutils literal notranslate"><span class="pre">SBI</span></code>, <code class="docutils literal notranslate"><span class="pre">CBI</span></code>, <code class="docutils literal notranslate"><span class="pre">BSET</span></code>, <code class="docutils literal notranslate"><span class="pre">BCLR</span></code>;</p></li>
+</ul>
+<ul class="simple">
+<li><p><strong>MCU Control</strong>: <code class="docutils literal notranslate"><span class="pre">BREAK</span></code>, <code class="docutils literal notranslate"><span class="pre">NOP</span></code>, <code class="docutils literal notranslate"><span class="pre">SLEEP</span></code>, <code class="docutils literal notranslate"><span class="pre">WDR</span></code>.</p></li>
+</ul>
+<p>For this module we have been working  with an Atmel ATmega328 microcontroller which is based on the  AVR® enhanced (AVRe+) architecture.</p>
+</section>
+<section id="assembler-directives">
+<h4>Assembler Directives<a class="headerlink" href="#assembler-directives" title="Permalink to this heading">#</a></h4>
+<p>The <strong>operator field</strong> contains either an <strong>assembly directive</strong> or a <strong>mnemonic/instruction</strong>.</p>
+<p>Assembly directives, sometimes termed pseudo-operations are <strong>directives to the assembler</strong> that will not be translated to machine code but provide information critical to the programs function that is <strong>required by the assembler</strong>.</p>
+<p>Some common directives include;</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">.CSEG</span></code> / <code class="docutils literal notranslate"><span class="pre">.DSEG</span></code> / <code class="docutils literal notranslate"><span class="pre">.ESEG</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.ORG</span></code> / <code class="docutils literal notranslate"><span class="pre">.EXIT</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.EQU</span></code> / <code class="docutils literal notranslate"><span class="pre">.SET</span></code> / <code class="docutils literal notranslate"><span class="pre">.DEF</span></code> / <code class="docutils literal notranslate"><span class="pre">INCLUDE</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.DB</span></code> / <code class="docutils literal notranslate"><span class="pre">.DW</span> </code>/ <code class="docutils literal notranslate"><span class="pre">.BYTE</span></code></p></li>
+</ul>
+<p>Directives are specific to a particular microcontroller family (different to the instruction set). A list of supported directives for the AVR based microcontrollers can be found <a class="reference external" href="http://www.avr-asm-tutorial.net/avr_en/beginner/DIREXP.html">here</a>.</p>
+</section>
+<section id="assembly-language-operands">
+<h4>Assembly Language Operands<a class="headerlink" href="#assembly-language-operands" title="Permalink to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The operand field follows the operator and contains the <strong>address or data</strong> to be used by the instruction.</p></li>
+<li><p>A name (‘label’) can be used to represent the address of the data or a symbol to represent a data constant.</p></li>
+<li><p>The <strong>field can be empty</strong> if the instructions given by the operator do not need an address or data.</p>
+<ul>
+<li><p>As an example the operator <code class="docutils literal notranslate"><span class="pre">NOP</span></code> (no-operation) requires no operand.</p></li>
+</ul>
+</li>
+<li><p><strong>Some operators allow for multiple operands</strong> and in these cases the operands are separated by commas (<code class="docutils literal notranslate"><span class="pre">,</span></code>).</p></li>
+</ul>
+<section id="examples-1">
+<h5>Examples 1<a class="headerlink" href="#examples-1" title="Permalink to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDI</span>     <span class="n">R16</span><span class="p">,</span> <span class="mb">0b01010101</span>
+<span class="n">ADD</span>     <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>
+<span class="n">LDS</span>     <span class="n">R2</span><span class="p">,</span> <span class="mh">0xFF00</span>
+<span class="n">NOP</span>
+<span class="n">MOV</span>     <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="assembly-language-comments">
+<h4>Assembly Language Comments<a class="headerlink" href="#assembly-language-comments" title="Permalink to this heading">#</a></h4>
+<p>As with the C language, the comment field is there to allow the programmer to include any comments which may make the program easier to understand at a later time or by another reader.</p>
+<p>When the <strong>assembler is reading</strong> the line of text, the <strong>comment field is ignored</strong>.</p>
+<p>Comments also follow a set of rules and a particular format dependent on the assembler being used<a class="footnote-reference brackets" href="#comments-in-asm" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>:</p>
+<ul class="simple">
+<li><p>If an <strong>entire line</strong> is a comment, it must start with a <strong>semicolon</strong> or an <strong>asterisk symbol</strong> in the first column.</p></li>
+<li><p>If <strong>not starting in the first column</strong>, the comment must start with a <strong>semicolon</strong>.</p></li>
+<li><p>The comment must be separated from the operator or operand field by at least one space.</p></li>
+</ul>
+<section id="examples-2">
+<h5>Examples 2<a class="headerlink" href="#examples-2" title="Permalink to this heading">#</a></h5>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">;</span><span class="n">This</span> <span class="n">comment</span> <span class="n">line</span> <span class="n">starts</span> <span class="k">with</span> <span class="n">a</span> <span class="n">semicolon</span>
+<span class="o">*</span><span class="n">This</span> <span class="n">comment</span> <span class="n">line</span> <span class="n">starts</span> <span class="k">with</span> <span class="n">an</span> <span class="n">asterisk</span>
+
+<span class="n">operator</span> <span class="p">;</span><span class="n">This</span> <span class="n">comment</span> <span class="n">follows</span> <span class="n">an</span> <span class="n">operator</span>
+<span class="n">operator</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="assembler">
+<span id="wk7-assembler"></span><h4>Assembler<a class="headerlink" href="#assembler" title="Permalink to this heading">#</a></h4>
+<p>It is important to be aware of the assembler and the structure assembly language programs follow.</p>
+<p>The assembler takes the sequence of mnemonics (instructions) written in assembly language and translates them into machine code using the process illustrated in <a class="reference internal" href="#wk7-fig-assembly"><span class="std std-numref">Fig. 88</span></a>.</p>
+<figure class="align-default" id="wk7-fig-assembly">
+<a class="reference internal image-reference" href="../../_images/assembler.png"><img alt="The assembly process" src="../../_images/assembler.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 88 </span><span class="caption-text">The assembly process</span><a class="headerlink" href="#wk7-fig-assembly" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The assembler processes the assembly language file and generates an object file and listing file(s)</p>
+<ul class="simple">
+<li><p>An object file is essentially a one-to-one mapping of mnemonics against the binary (sometimes hexadecimal) instruction set</p></li>
+<li><p>The listing file shows each line of the assembly language input along with the memory addresses resolved by the assembler, resulting machine code or data and other diagnostic information.</p></li>
+</ul>
+<p>The linker combines multiple object files as well as any library files and generates an executable which can be loaded onto the microcontroller (this file is often a <code class="docutils literal notranslate"><span class="pre">*.hex</span></code> file).</p>
+</section>
+</section>
+</section>
+<section id="interfacing-with-digital-i-o-example">
+<span id="wk7-sect3"></span><h2>Interfacing with Digital I/O example.<a class="headerlink" href="#interfacing-with-digital-i-o-example" title="Permalink to this heading">#</a></h2>
+<a class="reference internal image-reference" href="../../_images/breadboard_wallpaper.jpg"><img alt="Decorative background image showing the circuit discussed in the example." src="../../_images/breadboard_wallpaper.jpg" style="width: 75%;" /></a>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">#</a></h3>
+<p>Recall the example from <a class="reference internal" href="../week05/index.html#wk5-example-program"><span class="std std-ref">Digital I/O Example Program</span></a> reproduced again here as <a class="reference internal" href="#wk7-fig-example-circuit"><span class="std std-numref">Fig. 89</span></a>. The left and right push buttons connected to the digital inputs <code class="docutils literal notranslate"><span class="pre">D3</span></code> and <code class="docutils literal notranslate"><span class="pre">D2</span></code> respectively corresponding with Port D Bits 3 and 2 on the Atmega328 microcontroller.</p>
+<p>When the left push button is pressed the red LED (Port B Bit 1) is illuminated and the green LED (Port B Bit 0) illuminated when the right push button is pressed.</p>
+<figure class="align-default" id="wk7-fig-example-circuit">
+<a class="reference internal image-reference" href="../../_images/breadboard.jpg"><img alt="A photograph of the example circuit which has two buttons and two LEDs." src="../../_images/breadboard.jpg" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 89 </span><span class="caption-text">A photograph of the example circuit which has two buttons and two LEDs discussed in <a class="reference internal" href="../week05/index.html#wk5-example-program"><span class="std std-ref">Digital I/O Example Program</span></a>.</span><a class="headerlink" href="#wk7-fig-example-circuit" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="c-language-code">
+<h4>C-Language Code<a class="headerlink" href="#c-language-code" title="Permalink to this heading">#</a></h4>
+<p>Let us start with the C-language program we wrote for this (<a class="reference external" href="https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883">main.c</a>).</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdint.h&gt;</span>
+
+<span class="c1">//I/O and ADC Register definitions taken from datasheet</span>
+<span class="cp">#define	PORTD (*(volatile uint8_t *)(0x2B))</span>
+<span class="cp">#define DDRD (*(volatile uint8_t *)(0x2A))</span>
+<span class="cp">#define PIND (*(volatile uint8_t *)(0x29))</span>
+
+<span class="cp">#define PORTB (*(volatile uint8_t *)(0x25))</span>
+<span class="cp">#define DDRB (*(volatile uint8_t *)(0x24))</span>
+<span class="cp">#define PINB (*(volatile uint8_t *)(0x23))</span>
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">	</span><span class="c1">//Set Data Direction Registers</span>
+<span class="w">	</span><span class="n">DDRD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DDRD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11110011</span><span class="p">;</span><span class="w"> </span><span class="c1">//setup bits 2 and 3 of port D as inputs</span>
+<span class="w">	</span><span class="n">DDRB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DDRB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b00000011</span><span class="p">;</span><span class="w"> </span><span class="c1">//setup bits 0 and 1 of port B as outputs</span>
+
+<span class="w">	</span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11111100</span><span class="p">;</span><span class="w"> </span><span class="c1">//both pins B0 (D8) and B1 (D9) start low</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="n">PORTD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTD</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b00001100</span><span class="p">;</span><span class="w"> </span><span class="c1">// Enable the pull up resistor for bits 2 and 3 of port D</span>
+<span class="w">	</span>
+<span class="w">	</span><span class="k">for</span><span class="p">(;;)</span>
+<span class="w">	</span><span class="p">{</span>
+<span class="w">		</span><span class="k">if</span><span class="p">((</span><span class="n">PIND</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b00000100</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">		</span><span class="p">{</span>
+<span class="w">			</span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b00000001</span><span class="p">;</span><span class="w"> </span><span class="c1">//sets port B, bit 0 to logic 1/high, switches the LED connected to D8 on</span>
+<span class="w">		</span><span class="p">}</span>
+<span class="w">		</span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">PIND</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b00001000</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="w">		</span><span class="p">{</span>
+<span class="w">			</span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mb">0b00000010</span><span class="p">;</span><span class="w"> </span><span class="c1">//sets port B, bit 1 to logic 1/high, switches the LED connected to D9 on</span>
+<span class="w">		</span><span class="p">}</span>
+<span class="w">		</span><span class="k">else</span>
+<span class="w">		</span><span class="p">{</span>
+<span class="w">			</span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PORTB</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11111100</span><span class="p">;</span><span class="w"> </span><span class="c1">//sets bits 0-5 of port B to logic 0/low, switches off both the LED&#39;s</span>
+<span class="w">		</span><span class="p">}</span>
+<span class="w">	</span><span class="p">}</span>
+<span class="w">	</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="i-o-addresses">
+<h4>I/O Addresses<a class="headerlink" href="#i-o-addresses" title="Permalink to this heading">#</a></h4>
+<figure class="align-default" id="wk7-fig-io-addresses">
+<a class="reference internal image-reference" href="../../_images/io_registers.png"><img alt="The addresses of the IO registers with information on which can be used in particular contexts." src="../../_images/io_registers.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 90 </span><span class="caption-text">The addresses of the IO registers with information on which can be used in particular contexts.</span><a class="headerlink" href="#wk7-fig-io-addresses" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="assigning-a-name-to-the-i-o-addresses">
+<h4>Assigning a name to the I/O addresses<a class="headerlink" href="#assigning-a-name-to-the-i-o-addresses" title="Permalink to this heading">#</a></h4>
+<p>We use <code class="docutils literal notranslate"><span class="pre">.EQU</span></code>, <code class="docutils literal notranslate"><span class="pre">.SET</span></code> or <code class="docutils literal notranslate"><span class="pre">.DEF</span></code> to assign a name to a memory location<a class="footnote-reference brackets" href="#assembly-names" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">.</span><span class="n">EQU</span> <span class="n">label</span> <span class="o">=</span> <span class="mi">12345</span>
+<span class="o">.</span><span class="n">SET</span> <span class="n">variable</span> <span class="o">=</span> <span class="mh">0x0100</span>
+<span class="o">.</span><span class="n">DEF</span> <span class="n">my_register</span> <span class="o">=</span> <span class="n">R16</span>
+</pre></div>
+</div>
+<img alt="First assembler example - assigning names" src="../../_images/asm1.png" />
+</section>
+<section id="assembly-equivalent-of-int-main-void">
+<h4>Assembly equivalent of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code><a class="headerlink" href="#assembly-equivalent-of-int-main-void" title="Permalink to this heading">#</a></h4>
+<p>In C language we put our code (or calls to external functions) within a main function, written as:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Program code</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In assembly language, there isn’t a main function as such but rather <code class="docutils literal notranslate"><span class="pre">.CSEG</span></code> / <code class="docutils literal notranslate"><span class="pre">.DSEG</span></code> / <code class="docutils literal notranslate"><span class="pre">.ESEG</span></code> directive along with the <code class="docutils literal notranslate"><span class="pre">.ORG</span></code> directive are used to define the start address of code, data and EEPROM segments in memory.</p>
+<p>In these lines we are telling the assembler that we want the code segment to start at memory location with address <span class="math notranslate nohighlight">\(200_{16}\)</span>.</p>
+<img alt="Second assembler example - setting the start address for a program" src="../../_images/asm2.png" />
+</section>
+<section id="i-o-port-access-and-bitmasking-operations">
+<h4>I/O port access and bitmasking operations<a class="headerlink" href="#i-o-port-access-and-bitmasking-operations" title="Permalink to this heading">#</a></h4>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">IN</span></code> and <code class="docutils literal notranslate"><span class="pre">OUT</span></code> operations for reading from and writing to ports respectively, and the <code class="docutils literal notranslate"><span class="pre">ANDI</span></code> and <code class="docutils literal notranslate"><span class="pre">ORI</span></code> operations for setting up bitmasks.</p>
+<p>We include scans of the documentation for these operators in the following images.</p>
+<img alt="The IN operator" src="../../_images/in.png" />
+<img alt="The OUT operator" src="../../_images/out.png" />
+<img alt="The ANDI operator" src="../../_images/andi.png" />
+<img alt="The ORI operator" src="../../_images/ori.png" />
+</section>
+<section id="setting-up-the-i-o-ports">
+<h4>Setting up the I/O Ports<a class="headerlink" href="#setting-up-the-i-o-ports" title="Permalink to this heading">#</a></h4>
+<p>Using the C language, we wrote:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">DDRD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DDRD</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b11110011</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>to ensure bits 2 and 3 of port D are configured as inputs.</p>
+<p>Similar lines were written to set up the output bits in Port B, the starting condition of these bits and then to enable the pull up resistors on Port D.</p>
+<p>The direct translation to Assembly language involves three lines for each action as illustrated in <a class="reference internal" href="#wk7-fig-port-io"><span class="std std-numref">Fig. 91</span></a>.</p>
+<figure class="align-default" id="wk7-fig-port-io">
+<a class="reference internal image-reference" href="../../_images/port_io.png"><img alt="Setting up and accessing I/O in assembler" src="../../_images/port_io.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 91 </span><span class="caption-text">Setting up and accessing I/O in assembler</span><a class="headerlink" href="#wk7-fig-port-io" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="infinite-loop">
+<h4>Infinite loop<a class="headerlink" href="#infinite-loop" title="Permalink to this heading">#</a></h4>
+<p>Using the C language, we created an infinite loop as follows:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(;;)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Program code</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This essentially “<em>traps</em>” the program to ensure it continuously loops executing the program code within the code block.</p>
+<p>In assembly language we can produce the same result by creating a “Label” and using the operation <code class="docutils literal notranslate"><span class="pre">RJMP</span></code> (<em>relative jump</em>):</p>
+<img alt="An infinite loop using a label and rjmp." src="../../_images/inf_loop.png" />
+<p>documented as shown here</p>
+<img alt="The RJMP operators" src="../../_images/rjmp.png" />
+</section>
+<section id="detecting-a-button-press">
+<h4>Detecting a button press<a class="headerlink" href="#detecting-a-button-press" title="Permalink to this heading">#</a></h4>
+<p>In C language, to detect a button press we used the ‘if statement’ below with a bit mask corresponding to a particular bit of the port and monitoring for its state changing to 0 or Low.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="w"> </span><span class="p">(</span><span class="n">PIND</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mb">0b00000100</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="n">PORTB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mb">0b00000001</span><span class="p">;</span><span class="w">	 </span><span class="c1">// sets port B, bit 0 to logic 1 (high)</span>
+<span class="w">                         </span><span class="c1">// which switches the LED connected to D8 on</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In assembly we can use the <em>compare</em> (<code class="docutils literal notranslate"><span class="pre">CP</span></code>) and <em>branch if equal</em> (<code class="docutils literal notranslate"><span class="pre">BREQ</span></code>) instructions to achieve this same implementation.</p>
+<img alt="Documentation for the CP (compare) operation" src="../../_images/cp.png" />
+<img alt="Documentation for the BREQ (branch if equal) operation" src="../../_images/breq.png" />
+<p>Consider the assembly code shown below.</p>
+<ul class="simple">
+<li><p>In lines 32-36 we read <code class="docutils literal notranslate"><span class="pre">PIND</span></code>, use a bit mask to select bit 2, compare the value of the selected bit with zero and branch to label <code class="docutils literal notranslate"><span class="pre">LED1</span></code> if the value is zero (<code class="docutils literal notranslate"><span class="pre">0x00</span></code>).</p></li>
+<li><p>In lines 38-42 we read <code class="docutils literal notranslate"><span class="pre">PIND</span></code>, use a bit mask to select bit 3, compare the value of the selected bit with zero and branch to label <code class="docutils literal notranslate"><span class="pre">LED2</span></code> if the value is zero (<code class="docutils literal notranslate"><span class="pre">0x00</span></code>).</p></li>
+<li><p>If we reach lines 44, then both buttons were high (not pressed) so we use the bitmask <code class="docutils literal notranslate"><span class="pre">0x11111100</span></code> to ensure that both LEDs connected to bits 0 and 1 of port B are turned off. We then jump to the label <code class="docutils literal notranslate"><span class="pre">LOOP</span></code> (lines 45-47).</p></li>
+</ul>
+<img alt="Detecting a button press in assembly code" src="../../_images/detect_switch.png" />
+<p>In the next few lines (49-59) we read the current value of Port B into <code class="docutils literal notranslate"><span class="pre">R16</span></code> before performing a bitwise or operation with the immediate pattern provided (mask). The new value stored in R16 is then sent to the <code class="docutils literal notranslate"><span class="pre">PORTB</span></code> register essentially changing the state of the LED to on. Finally the <code class="docutils literal notranslate"><span class="pre">RJMP</span></code> instruction ensures the program loops back to the start.</p>
+<img alt="Assembly code to switch on LEDs" src="../../_images/leds.png" />
+<p>A similar process is used for LED2.</p>
+</section>
+<section id="comparison-with-c">
+<h4>Comparison with C<a class="headerlink" href="#comparison-with-c" title="Permalink to this heading">#</a></h4>
+<p>In <a class="reference internal" href="#wk7-fig-comp-asm-with-c"><span class="std std-numref">Fig. 92</span></a> we compare the C program with the equivalent assembly program.</p>
+<figure class="align-default" id="wk7-fig-comp-asm-with-c">
+<a class="reference internal image-reference" href="../../_images/comp_asm_with_c.png"><img alt="Comparing an I/O program written in C with an equvalent assembly program." src="../../_images/comp_asm_with_c.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 92 </span><span class="caption-text">Comparing an I/O program written in C with an equvalent assembly program.</span><a class="headerlink" href="#wk7-fig-comp-asm-with-c" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The assembly code is available for study as a GIST <a class="reference external" href="https://gist.github.com/cpjobling/e72f37ff363353b6ed10ecdbeaa970af">main.asm</a>.</p>
+</section>
+<section id="an-advantage-of-assembly-language">
+<h4>An Advantage of Assembly Language<a class="headerlink" href="#an-advantage-of-assembly-language" title="Permalink to this heading">#</a></h4>
+<p>Using C language, it is not possible to read or write individual bits of a register or I/O port.</p>
+<p>In assembly language, this <em>is possible</em> using bit operations such <code class="docutils literal notranslate"><span class="pre">SBI</span></code>, <code class="docutils literal notranslate"><span class="pre">CBI</span></code>, <code class="docutils literal notranslate"><span class="pre">SBIC</span></code>, <code class="docutils literal notranslate"><span class="pre">SBIS</span></code> and a handful of others:</p>
+<img alt="The SBI operation." src="../../_images/sbi.png" />
+<img alt="The SBIC operation." src="../../_images/sbic.png" />
+<p>These can only be used on certain registers as identified in the documentation for the I/O memory map:</p>
+<img alt="The I/O memory map showing the registers for which bitwise operations are available." src="../../_images/io_mem_map2.png" />
+</section>
+<section id="comparisons">
+<h4>Comparisons<a class="headerlink" href="#comparisons" title="Permalink to this heading">#</a></h4>
+<p>In <a class="reference internal" href="#wk7-fig-comparison"><span class="std std-numref">Fig. 93</span></a> we show the original C program, the first version of the assembly program, and a version that is using <code class="docutils literal notranslate"><span class="pre">SBIC</span></code> to directly branch based on the value of a single bit in Port D. These will work in the same way.</p>
+<figure class="align-default" id="wk7-fig-comparison">
+<a class="reference internal image-reference" href="../../_images/comparison.png"><img alt="Comparison of three equivalent programs" src="../../_images/comparison.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 93 </span><span class="caption-text">Comparison of three equivalent programs</span><a class="headerlink" href="#wk7-fig-comparison" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this section:</p>
+<ul class="simple">
+<li><p>We have introduced assembly language as a direct mapping of mnemonics to machine code.</p></li>
+<li><p>We have explored the basic structure of an assembly language program including operator classification, operands and comments.</p></li>
+<li><p>Finally, we have revisited out digital switch example from C and looked at how this can directly translate to Assembly language and how it can be optimized using specific features of the Atmel ATmega328 microcontroller.</p></li>
+</ul>
+</section>
+<section id="on-canvas">
+<h2>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h2>
+<p>This week on the canvas course pages, you will find the sample program from today’s lecture, look through this and ensure you are confident in how it works and how the masks are defined and registers set.</p>
+<p>There is also a short quiz to test your knowledge on these topics.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="id7" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Programs are stored on a microcontroller as a series of binary codes located within sequential memory addresses. These instructions are executed in order, dictated by the program counter, unless an instruction modifies the program counter and changes the program flow e.g. for a function call.</p>
+</aside>
+<aside class="footnote brackets" id="disassembly" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Because each mnemonic is associated with a single machine code, it is also easy to convert machine code to assembly language. This is sometimes useful for debugging programs. It is known as <strong>disassembly</strong>.</p>
+</aside>
+<aside class="footnote brackets" id="warning" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Please don’t get carried away! There are few tasks for the cost of not starting in a HLL is going to be paid back by writing complete programs in assembly code.</p>
+</aside>
+<aside class="footnote brackets" id="comments-in-asm" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">4</a><span class="fn-bracket">]</span></span>
+<p>As assembly codes are generally less readable than higher level languages, like the C language, it is good practice to be very liberal with comments in assembly code programs.</p>
+</aside>
+<aside class="footnote brackets" id="assembly-names" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">5</a><span class="fn-bracket">]</span></span>
+<p>The purpose of these assembly directives is to assign a meaningful name to a label, constant, data value (<em>variable</em>), or memory location.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week07"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week06/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Interfacing to Analogue I/O with C</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week08/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Microcontroller Architecture – Program Operation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-discussed">Topics discussed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-code-and-assembly-language">Machine Code and Assembly Language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-code">Machine code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#so-what-is-wrong-with-machine-code">So what is wrong with machine code?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language">Assembly Language</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#a-short-history-of-assembly-languages">A Short history of assembly languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-learn-low-level-languages">Why learn low level languages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-do-people-use-assembly-language">Why do people use assembly language?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wk7-sect2">Introduction to Assembly Language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-101">Assembly Language 101</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-labels">Assembly language labels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-operators">Assembly Language Operators</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-mnemonics">Assembly mnemonics</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembler-directives">Assembler Directives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-operands">Assembly Language Operands</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-1">Examples 1</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-language-comments">Assembly Language Comments</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-2">Examples 2</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembler">Assembler</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfacing-with-digital-i-o-example">Interfacing with Digital I/O example.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language-code">C-Language Code</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-addresses">I/O Addresses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-a-name-to-the-i-o-addresses">Assigning a name to the I/O addresses</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#assembly-equivalent-of-int-main-void">Assembly equivalent of <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">main(void)</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-port-access-and-bitmasking-operations">I/O port access and bitmasking operations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-i-o-ports">Setting up the I/O Ports</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#infinite-loop">Infinite loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-a-button-press">Detecting a button press</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparison-with-c">Comparison with C</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#an-advantage-of-assembly-language">An Advantage of Assembly Language</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisons">Comparisons</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

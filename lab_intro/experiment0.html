@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Experiment: to construct an oscillator &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_intro/experiment0';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Simulation Exercise" href="simulation.html" />
+    <link rel="prev" title="Laboratory Safety" href="lab_safety.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flab_intro/experiment0.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lab_intro/experiment0.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Experiment: to construct an oscillator</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-in-breadboard">Plug-In Breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-diagram">Circuit Diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-rohde-schwarz-hmc-8043-triple-output-power-supply">Introducing – The Rohde &amp; Schwarz HMC 8043 Triple-Output Power Supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-power-supply">Setting up the power supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-rohde-schwarz-rtm2024-real-time-digital-oscilloscope">Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-oscilloscope-h3">Setting up the Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oscilloscope-screen-capture">Oscilloscope screen capture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-circuit">Testing the circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laboratory-diary">Laboratory Diary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-circuits-and-ocilloscope-traces">Example circuits and ocilloscope traces</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="experiment-to-construct-an-oscillator">
+<span id="experiment0"></span><h1>Experiment: to construct an oscillator<a class="headerlink" href="#experiment-to-construct-an-oscillator" title="Permalink to this heading">#</a></h1>
+<p>This experiment will involve the construction of a two-transistor oscillator on a plug-in breadboard and then a series of measurements using the Rohde &amp; Schwarz oscilloscope. This oscillator circuit is identical to the one we shall be using in the construction exercise later on.</p>
+<section id="plug-in-breadboard">
+<h2>Plug-In Breadboard<a class="headerlink" href="#plug-in-breadboard" title="Permalink to this heading">#</a></h2>
+<figure class="align-center" id="fig1">
+<a class="reference internal image-reference" href="../_images/bread_board.png"><img alt="An x-ray view of the plug-in breadboard illustrates how the plugs are electrically interconnected" src="../_images/bread_board.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 117 </span><span class="caption-text">X-ray view of the plug-in breadboard.</span><a class="headerlink" href="#fig1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If you place the plug-in breadboard under an X-ray machine, you will see the metal springs inside the plastic cover laid out, as seen in <a class="reference internal" href="#fig1"><span class="std std-numref">Fig. 117</span></a> above. The long horizontal tracks are used for power supply connections, and the short vertical tracks are used for the interconnection of resistors, capacitors and transistors. The plug-in breadboard is very useful for trying out experimental circuits. Components can be plugged in and interconnected with minimal fuss and without soldering. Changing a component for one of a different value takes only a matter of seconds, and after the experiment, all the parts can be recovered intact for future experiments.</p>
+</section>
+<section id="circuit-diagram">
+<h2>Circuit Diagram<a class="headerlink" href="#circuit-diagram" title="Permalink to this heading">#</a></h2>
+<figure class="align-center" id="fig2">
+<a class="reference internal image-reference" href="../_images/circuit-diagram.png"><img alt="The circuit diagram of the oscillator which is to be constructed and tested in this laboratory exercise." src="../_images/circuit-diagram.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 118 </span><span class="caption-text">Circuit diagram of an oscillator.</span><a class="headerlink" href="#fig2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Referring to the circuit in <a class="reference internal" href="#fig2"><span class="std std-numref">Fig. 118</span></a> above, there are only eight electronic components arranged symmetrically. The circuit symbols bear no resemblance to their practical components – for example, the transistors are black plastic D-shapes with three wires emerging from one end, and the capacitors are little blue or yellow discs. The theoretical circuit must be translated into a practical layout on the plug-in breadboard, taking into account the physical size of the components and their connections. A recommended layout is given in <a class="reference internal" href="#fig3"><span class="std std-numref">Fig. 119</span></a> below. There are six wire links – four on the breadboard and two between the breadboard and the red and black terminals. These can be cut from single-strand insulated wire.</span></p></p>
+<figure class="align-center" id="fig3">
+<a class="reference internal image-reference" href="../_images/circuit-laid-out.png"><img alt="The oscillator circuit as it would be laid out with the physical components on the plug-in breadboard." src="../_images/circuit-laid-out.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 119 </span><span class="caption-text">Suggested Layout on Plug-in Breadboard.</span><a class="headerlink" href="#fig3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Resistors can be identified by their coloured bands, but to give confidence using the Rohde &amp; Schwarz multimeter. Switch the instrument on, and press the button labelled “Ω”. Connect a red flexible lead to the red socket labelled “VΩ” and a black flexible lead to the black socket labelled “COM”. Touch the plug ends to the component leads and read off the value on the display.</p>
+</section>
+<section id="introducing-the-rohde-schwarz-hmc-8043-triple-output-power-supply">
+<span id="sec5-3"></span><h2>Introducing – The Rohde &amp; Schwarz HMC 8043 Triple-Output Power Supply<a class="headerlink" href="#introducing-the-rohde-schwarz-hmc-8043-triple-output-power-supply" title="Permalink to this heading">#</a></h2>
+<figure class="align-center" id="fig4">
+<a class="reference internal image-reference" href="../_images/r&amp;s-power-supply.jpg"><img alt="A photograph of the Rohde &amp;amp; Schwartz HMC 8043 Triple-Output Power Supply." src="../_images/r&amp;s-power-supply.jpg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 120 </span><span class="caption-text">Rohde &amp; Schwartz HMC 8043 Triple-Output Power Supply</span><a class="headerlink" href="#fig4" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Each workstation in the laboratory is equipped with two power supplies, the Rohde &amp; Schwarz HMC 8043 and the Rohde &amp; Schwarz HMC 8042. The HMC 8042 is similar to the HMC 8043, but it only has two outputs. For our laboratory introduction, either power supply can be used as only one output is necessary.</p>
+<p>The three power supply outputs are independent, so they can be connected in series if necessary to make a “split supply”. We shall use this feature in the second-semester laboratory, EG-152. For this first experiment, only one output, CH1, will be used to power our test circuit.</p>
+<p>The buttons on the top row, labelled CH1, CH2 and CH3, determine which power supplies are selected for setting voltage and current limit. The second row of buttons labelled CH1 ON/OFF, and so on are used to isolate individual outputs. Finally, there is a button labelled MASTER ON/OFF, which disconnects all power supply outputs from the red and blue terminals.</p>
+<p>In <a class="reference internal" href="#fig4"><span class="std std-numref">Fig. 120</span></a> above, the HMC 8043 only has one output selected, CH1 (you can see that the button is illuminated). On the display, CH1 is highlighted, and the cursor is positioned to allow the terminal voltage to be adjusted using the navigation buttons and wheel on the right of the power supply.</span></p></p>
+<p>The right-hand field of the display has two functions. Until MASTER ON/OFF is selected, the current shown is the maximum allowable, also known as the current limit. When the MASTER ON/OFF is illuminated, the current shown will be the actual value delivered to the external circuit, up to the current limit.</p>
+</section>
+<section id="setting-up-the-power-supply">
+<h2>Setting up the power supply<a class="headerlink" href="#setting-up-the-power-supply" title="Permalink to this heading">#</a></h2>
+<p>Next the power supply must be set up. As mentioned in <a class="reference internal" href="#sec5-3"><span class="std std-ref">Introducing – The Rohde &amp; Schwarz HMC 8043 Triple-Output Power Supply</span></a>, each workstation in the laboratory is equipped with a Rohde &amp; Schwarz HMC 8043 triple output power supply. Each channel can be adjusted from zero to 32 volts, with a maximum current of 3 amps. The Channel 1 output is used for this part of the experiment. The other outputs are identical to Channel 1 in capability but are not used for this experiment.</p>
+<ol class="arabic simple">
+<li><p>Turn the power supply ON by pressing the button in the lower-left corner of the front panel.</p></li>
+<li><p>The display shows the settings for all three outputs, with voltage on the left and current on the right. The current shown is the maximum available from that channel.</p></li>
+<li><p>Press the button CH1; a soft menu appears.</p></li>
+<li><p>Press the soft key labelled Voltage; the voltage for channel 1 can be varied using the up/down arrows on the navigation control or by turning the rotary control. Individual digits can be selected using the left/right arrows on the navigation control.</p></li>
+<li><p>Adjust the voltage to read 3V on the display, then press the rotary control to confirm.</p></li>
+<li><p>Press the button CH1; a soft menu appears.</p></li>
+<li><p>Press the soft key labelled Current; the maximum current (also known as current limit) can be varied using the up/down arrows on the navigation control or by turning the rotary control. Individual digits can be selected using the left/right arrows on the navigation control.</p></li>
+<li><p>Adjust the maximum current to read 0.1A on the display, then press the rotary control to confirm.</p></li>
+<li><p>Press the button CH1 ON/OFF; although it is illuminated, the output is still not active.</p></li>
+<li><p>Press the button Master ON/OFF; now the channel 1 output is active, and the current display shows the ACTUAL current flowing, rather than the maximum available.</p></li>
+<li><p>Press the button Master ON/OFF again, to isolate the output until it is needed.</p></li>
+<li><p>Congratulations! You have set up the power supply for the experiment.</p></li>
+</ol>
+<p>Connect the power supply to the breadboard using flexible leads with 4mm plugs at each end, observing the colour convention <strong>red = +3V</strong>, <strong>black = 0V</strong>.</p>
+</section>
+<section id="introducing-the-rohde-schwarz-rtm2024-real-time-digital-oscilloscope">
+<span id="r-s-socilloscope"></span><h2>Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope<a class="headerlink" href="#introducing-the-rohde-schwarz-rtm2024-real-time-digital-oscilloscope" title="Permalink to this heading">#</a></h2>
+<figure class="align-default" id="fig5-5">
+<a class="reference internal image-reference" href="../_images/r&amp;s-digital-oscilloscope.jpg"><img alt="A photograph of the Rohde &amp;amp; Schwarz RTM2024 Real-Time Digital Oscilloscope." src="../_images/r&amp;s-digital-oscilloscope.jpg" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 121 </span><span class="caption-text">A Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope</span><a class="headerlink" href="#fig5-5" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>An oscilloscope is an essential instrument for Electronic Engineers. It provides a “window” into the circuit, showing the changing voltages as a function of time. Our standard laboratory oscilloscope is one of a series produced by Rohde &amp; Schwarz, and, in reality, far exceeds in its specification what we need for our modest experiments. Former students often tell us that the instruments in their place of work are not as sophisticated as the ones we use every day!</p>
+<p>Refer to the photograph shown in <a class="reference internal" href="#fig5-5"><span class="std std-numref">Fig. 121</span></a> and note the following groups of controls.</p>
+<ul class="simple">
+<li><p>The VERTICAL group of controls selects which channels are active (currently on-screen) and allows us to move the selected trace up and down. The illuminated buttons show which channel is selected.</p></li>
+<li><p>The SCALE control adjusts the vertical sensitivity, normally expressed in Volts per division. The POSITION control allows us to move the selected trace up and down so that it fits into the screen area. Measurements on the vertical axis can be achieved by the simple expedient of counting squares, or, more precisely, using the cursors as described later in this document.</p></li>
+<li><p>The HORIZONTAL group of controls determines the time axis of the display. Increasing or decreasing the horizontal SCALE causes the trace to expand or contract so that one or more cycles of the waveform under examination are visible on the display. The POSITION control allows us to move the trace left and right on the display.</span></p></p></li>
+<li><p>The two other major groups of controls, NAVIGATION and TRIGGER, will be dealt with later when we start to take some real measurements.</p></li>
+</ul>
+</section>
+<section id="setting-up-the-oscilloscope-h3">
+<span id="setup-oscilloscope"></span><h2>Setting up the Oscilloscope</h3><a class="headerlink" href="#setting-up-the-oscilloscope-h3" title="Permalink to this heading">#</a></h2>
+<p>Each workstation in the laboratory is equipped with a Rohde &amp; Schwarz RTM 2024 digital oscilloscope. This is a sophisticated instrument with many features. In this experiment we shall use two of its four input channels to view waveforms in our practical circuit.</p>
+<ol class="arabic simple">
+<li><p>Turn the instrument on by pressing the button POWER in the lower left corner.</p></li>
+<li><p>To set up the vertical input CH1, press the button labelled CH1. The vertical controls will light up yellow to indicate that they are in control of channel</p></li>
+<li><p>Rotate SCALE until the indicator at the top of the screen shows CH1: 1V; each vertical unit as defined by the grid lines now represents one volt.</p></li>
+<li><p>To set up the vertical input CH2, press the button labelled CH2. The vertical controls will light up green to indicate that they are in control of channel 2.</p></li>
+<li><p>Rotate SCALE until the indicator at the top of the screen shows CH2: 1V; each vertical unit as defined by the grid lines now represents one volt.</p></li>
+<li><p>To set up the time base, refer to the controls in the box marked HORIZONTAL. Rotate the control marked SCALE until the indicator at the top left corner of the screen reads TB: 50µs. Every horizontal unit now represents a time interval of 50µs.</p></li>
+<li><p>Press CH1 and adjust POSITION until the yellow trace is in the top half of the screen.</p></li>
+<li><p>Press CH2 and adjust POSITION until the green trace is in the lower half of the screen.</p></li>
+<li><p>Look to the right of the controls. Press SOURCE followed by the soft key (below the screen) to select channel one as the trigger source for the time base.&lt;</p></li>
+<li><p>Connect the probe for channel 1 to TP1 (the collector of one transistor).</p></li>
+<li><p>Connect the probe for channel 2 to TP4 (the collector of the other transistor).</p></li>
+<li><p>Connect both earth clips to suitable points on the plug-in breadboard track connected to zero volts.</p></li>
+</ol>
+</section>
+<section id="oscilloscope-screen-capture">
+<span id="screen-capture"></span><h2>Oscilloscope screen capture<a class="headerlink" href="#oscilloscope-screen-capture" title="Permalink to this heading">#</a></h2>
+<p>There are several ways of saving pictures captured on the oscilloscope screen. The simplest is to plug a USB memory stick into the front panel socket and press the button PRINT. The screen image will be saved onto the memory stick with automatic numbering. The size of the file depends on the mode selected. The typical size of a file type PNG is 30 kbyte, and the typical size of a file type BMP is 2.4 Mbyte.</p>
+<p>The oscilloscope is connected to the PC using Ethernet. A utility is available to copy the oscilloscope screen directly into an open WORD document. e.g. your lab diary, using the “Add-ins” tab.</p>
+<p>The oscilloscope can be accessed from a web browser by typing in the URL <a class="reference external" href="http://192.168.29.2">192.168.29.2</a>. The pages which appear allow the oscilloscope to be remote controlled and to capture the screen.</p>
+</section>
+<section id="testing-the-circuit">
+<h2>Testing the circuit<a class="headerlink" href="#testing-the-circuit" title="Permalink to this heading">#</a></h2>
+<p>Before turning the supply on to your oscillator ask one of the demonstrators to check that everything is correct. Then press the power supply button MASTER ON/OFF and, if all is well, two square waves should appear on the oscilloscope screen. Adjust the vertical position controls and vertical span controls if necessary to give a display like the example, <a class="reference internal" href="#fig5-7"><span class="std std-numref">Fig. 123</span></a>, shown in this document.</p>
+<p>When the traces are displayed to your satisfaction, the next step is to superimpose cursors to make time and voltage measurements of the waveforms.</p>
+<ol class="arabic simple">
+<li><p>Press the button labelled CURSOR.</p></li>
+<li><p>Press the soft key labelled Measurement Type and select Voltage &amp; Time from the drop-down menu.</p></li>
+<li><p>Press the soft key labelled Source and select CH1 from the drop-down menu.</p></li>
+<li><p>There should be two horizontal cursors and two vertical cursors on screen, labelled 1 to 4.</p></li>
+<li><p>Rotate NAVIGATION until cursor 1 is at the start of a cycle. Press NAVIGATION.</p></li>
+<li><p>Rotate NAVIGATION until cursor 2 is at the end of the same cycle. Press NAVIGATION.</p></li>
+<li><p>Rotate NAVIGATION until cursor 3 is at the top of the yellow trace. Press NAVIGATION.</p></li>
+<li><p>Rotate NAVIGATION until cursor 4 is at the bottom of the yellow trace. Press NAVIGATION.</p></li>
+<li><p>Read off the period of the square wave and its amplitude from the on-screen display. The difference between C1 and C2 appears as <span class="math notranslate nohighlight">\(\Delta t\)</span> and the difference between C3 and C4 appears as <span class="math notranslate nohighlight">\(\Delta t\)</span>.</p></li>
+</ol>
+<p>Record <span class="math notranslate nohighlight">\(\Delta t\)</span> and <span class="math notranslate nohighlight">\(\Delta V\)</span> as text in your lab diary. The oscilloscope traces can be saved in your lab diary document using one of the methods outlined in <a class="reference internal" href="#screen-capture"><span class="std std-ref">Oscilloscope screen capture</span></a>. Use this procedure to record the waveforms at test points TP1 and TP4. Make sure that the maximum amount of information is on the screen, including vertical and horizontal cursors and voltage and time readings along the lower edge of the screen.</p>
+<p>Next, move the oscilloscope probe on TP4 to TP2. Now, instead of two square waves, the oscilloscope will display a square wave and a complex waveform showing the charging of one of the capacitors. Again, use the cursors to measure times and voltages and record them as text in your lab diary. Copy the screen to the PC and paste it into the lab diary</p>
+<p>Now try varying the supply voltage. On the Rohde &amp; Schwarz power supply, press the soft key Voltage so that the voltage field is selected, then carefully turn the navigation control to reduce the supply to 1.5V. If necessary, adjust the vertical scale of the oscilloscope channels to enlarge the traces. Use the horizontal cursors to measure and record the period (and hence frequency) of the square wave. Repeat the measurements for TP1, TP4 and TP3, and TP4 and copy the screens to the PC and your lab diary as before.</p>
+<p>Finally, turn on all four input channels of the Rohde &amp; Schwarz oscilloscope, and connect them to TP1, TP2, TP3, TP4 respectively. Copy the screen to your lab diary.</p>
+</section>
+<section id="laboratory-diary">
+<h2>Laboratory Diary<a class="headerlink" href="#laboratory-diary" title="Permalink to this heading">#</a></h2>
+<p>All experiments must be recorded in your lab diary (a Word document) for assessment. It is particularly important to record your observations at the time, rather than scribble them down on a random piece of paper and write them up later. You must not accumulate a backlog of incomplete experiments, so it is vital to make clear, concise notes on the spot. The objective is not to produce an impeccable lab diary but to have a clear record which could form the basis of a formal laboratory report later.</p>
+<p>TODO: check link More information on how to set up and maintain your lab diary is available on Canvas: <a class="reference external" href="https://canvas.swansea.ac.uk">✅  To Do: Obtain and Keep a Lab Diary</a>.</p>
+</section>
+<section id="assessment">
+<h2>Assessment<a class="headerlink" href="#assessment" title="Permalink to this heading">#</a></h2>
+<p>The assessment of this laboratory introduction will be as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Inspection of the lab diary</strong>. You must <strong>submit a copy of your lab diary</strong> containing screenshots of the waveforms from the oscillator circuit and from the simulation exercise that follows, with appropriate observations of voltage, time and frequency. The lab diary should also contain the answers to the questions posed in <a class="reference internal" href="questions.html#questions"><span class="std std-ref">Questions</span></a> which you will enter into your lab diaries and also into a <strong>Canvas Quiz for grading</strong>. A mark will be awarded out of five for the lab diary and five for the answers to the questions. You will also be given formative feedback on the structure of the lab diary so that you can address any presentation issues before the submission of a complete lab diary at the end of the module.</p></li>
+<li><p><strong>Inspection of the continuity tester</strong>. The technician in charge will mark the construction exercise out of 5. Marks will be taken off for poor soldering and untidy component placement. It is your responsibility to make sure that the technician in charge sees your work.</p></li>
+</ol>
+<p>The total mark available for the laboratory introduction is 15. To put this into perspective, a typical exam question is worth about 25 marks.</p>
+<p>The remaining 85 marks in EG-151 are carried by the formal assessment of the Microcontrollers laboratory, the project and the class test.</p>
+</section>
+<section id="example-circuits-and-ocilloscope-traces">
+<h2>Example circuits and ocilloscope traces<a class="headerlink" href="#example-circuits-and-ocilloscope-traces" title="Permalink to this heading">#</a></h2>
+<p>These images are produced for guidance. They <strong>must not</strong> be copied and included in your lab diary! Gnenerate your own versions.</p>
+<figure class="align-default" id="fig5-6">
+<img alt="A photograph of the completed oscillator circuit as prototyped on breadboard." src="../_images/prototype-circuit.jpg" />
+<figcaption>
+<p><span class="caption-number">Fig. 122 </span><span class="caption-text">A photograph of the completed oscillator circuit as prototyped on breadboard.</span><a class="headerlink" href="#fig5-6" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig5-7">
+<img alt="Waveforms on Rohde &amp;amp; Schwarz Oscilloscope at test points 1 and 4." src="../_images/r&amp;s-trace1.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 123 </span><span class="caption-text">Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 4.</span><a class="headerlink" href="#fig5-7" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig5-8">
+<img alt="Waveforms on Rohde &amp;amp; Schwarz Oscilloscope at test points 1 and 2." src="../_images/r&amp;s-trace2.png" />
+<figcaption>
+<p><span class="caption-number">Fig. 124 </span><span class="caption-text">Waveforms on Rohde &amp; Schwarz Oscilloscope at test points 1 and 2.</span><a class="headerlink" href="#fig5-8" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lab_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lab_safety.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Laboratory Safety</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="simulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Simulation Exercise</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plug-in-breadboard">Plug-In Breadboard</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#circuit-diagram">Circuit Diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-rohde-schwarz-hmc-8043-triple-output-power-supply">Introducing – The Rohde &amp; Schwarz HMC 8043 Triple-Output Power Supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-power-supply">Setting up the power supply</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introducing-the-rohde-schwarz-rtm2024-real-time-digital-oscilloscope">Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-oscilloscope-h3">Setting up the Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#oscilloscope-screen-capture">Oscilloscope screen capture</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-the-circuit">Testing the circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#laboratory-diary">Laboratory Diary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#assessment">Assessment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-circuits-and-ocilloscope-traces">Example circuits and ocilloscope traces</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

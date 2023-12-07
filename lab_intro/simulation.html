@@ -1,0 +1,772 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Simulation Exercise &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lab_intro/simulation';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Questions" href="questions.html" />
+    <link rel="prev" title="Experiment: to construct an oscillator" href="experiment0.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../lectures/index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lectures/week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flab_intro/simulation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/lab_intro/simulation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Simulation Exercise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-multisim">Use of Multisim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-components">Selection of Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-the-circuit">Wiring the circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-the-oscilloscope">Connecting the Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-simulation">Running the simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-measurements">Making Measurements</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="simulation-exercise">
+<span id="id1"></span><h1>Simulation Exercise<a class="headerlink" href="#simulation-exercise" title="Permalink to this heading">#</a></h1>
+<p>There are several circuit simulation packages available to students in
+the Department of Electronic and Electrical Engineering. In this exercise we
+shall be
+using Multisim 14.2, from National Instruments. We
+shall use it again in two other laboratories in your first year of
+study, EG-143 Digital Design and EG-152 Analogue Design.</p>
+<section id="use-of-multisim">
+<h2>Use of Multisim<a class="headerlink" href="#use-of-multisim" title="Permalink to this heading">#</a></h2>
+<p>Starting from the Windows desktop, click on “Zenworks” followed by
+“Engineering” and select NI Multisim 14.2 from the list of available
+packages. The main screen should look like <a class="reference internal" href="#fig6-1"><span class="std std-numref">Fig. 125</span></a>:</p>
+<figure class="align-center" id="fig6-1">
+<a class="reference internal image-reference" href="../_images/multisim-home-screen.png"><img alt="The Multisim home screen." src="../_images/multisim-home-screen.png" style="width: 100.0%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 125 </span><span class="caption-text">The National Instruments Multisim home
+screen.</span><a class="headerlink" href="#fig6-1" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>If there is a wide dialogue box at the bottom of the screen, click on
+“View” and untick the item “Spreadsheet view”. The dialogue box
+should disappear.</p>
+<p>We shall now use Multisim to create a simulated circuit and
+oscilloscope, that is identical in function to the oscillator built on
+breadboard in section 4.</p>
+<p>The toolbar of the Multisim programme looks like <a class="reference internal" href="#fig6-2"><span class="std std-numref">Fig. 126</span></a>:</p>
+<figure class="align-center" id="fig6-2">
+<a class="reference internal image-reference" href="../_images/ms-toolbar.png"><img alt="The Multisim toolbar with the key controls" src="../_images/ms-toolbar.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 126 </span><span class="caption-text">The toolbar of the Multisim programme</span><a class="headerlink" href="#fig6-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The actual appearance may differ depending on the screen resolution and
+the available options.</p>
+</section>
+<section id="selection-of-components">
+<h2>Selection of Components<a class="headerlink" href="#selection-of-components" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Click on the “Ground” A dialogue box “Select a component”
+appears.</p></li>
+<li><p>Select “Power Source” from the left-hand Click on “DC Power” in
+the right-hand column, followed by “OK”. The dialogue box
+disappears, and a battery symbol appears. Move the symbol to the
+desired location. When the symbol has been placed (left click), the
+dialogue box reappears.</p></li>
+<li><p>Click on “Ground” on the right-hand Click on “OK”, and the
+dialogue box disappears. Place the ground symbol in the desired
+location. The dialogue box reappears.</p></li>
+<li><p>Click “OK” and place another ground symbol on the Repeat until
+there are five in total.</p></li>
+<li><p>Dismiss the “Select a Component” dialogue by clicking on
+“Close”.</p></li>
+</ul>
+<p>The battery voltage must be changed to 3V. Place the cursor exactly in
+the middle of the battery and right-click. A dialogue box appears.
+Select “Properties” and change the value to 3V.</p>
+<ul class="simple">
+<li><p>Click on the “Resistors” A dialogue box “Select a Component”
+appears.</p></li>
+<li><p>Click on “Resistor” on the left-hand column.</p></li>
+<li><p>Scroll the right-hand column until the value “1k” Click on “OK”.</p></li>
+<li><p>Place four resistors using the same procedure as for the ground</p></li>
+<li><p>Click on “Capacitor” in the left-hand column.</p></li>
+<li><p>Scroll the right-hand column until the value “10nF” Click on
+“OK”.</p></li>
+<li><p>Place three capacitors using the same procedure as for the ground
+symbols and resistors.</p></li>
+<li><p>Dismiss the “Select a Component” dialogue by clicking on
+“Close”.</p></li>
+</ul>
+<p>The resistors are all oriented in a horizontal position. We need to turn
+them through 90 degrees and change the value of two of them to 15k.
+Begin by placing the cursor exactly in the middle of a resistor.
+Right-click to reveal a dialogue box. Select “Rotate 90 deg
+clockwise”. Repeat this for all four resistors. To change the value of
+a resistor, right-click on the resistor, select “Properties”, and
+change the value to 15k. All four resistors should now be vertical, with
+two valued 1k and two valued 15k.</p>
+<p>Use the same procedure to change the value of ONE capacitor to 10pF.
+Next, we shall select and place two transistors.</p>
+<ul class="simple">
+<li><p>Click on the “Transistors” A dialogue box “Select a Component”
+appears.</p></li>
+<li><p>Click on “BJT NPN” in the left-hand column.</p></li>
+<li><p>Scroll the right-hand column until the value “BC547BP” Click on
+“OK”.</p></li>
+<li><p>Place two transistors using the same procedure as for the ground
+symbols and</p></li>
+<li><p>Dismiss the “Select a Component” dialogue by clicking on
+“Close”.</p></li>
+</ul>
+<p>Both transistors are “facing left”. We want them to face each other,
+so one must be flipped in the horizontal direction. Begin by placing the
+cursor exactly in the middle of a transistor. Right-click to reveal a
+dialogue box. Select “Flip Horizontally”.</p>
+</section>
+<section id="wiring-the-circuit">
+<h2>Wiring the circuit<a class="headerlink" href="#wiring-the-circuit" title="Permalink to this heading">#</a></h2>
+<p>Components can be repositioned by placing the cursor exactly in the
+middle of the component and holding down the left mouse button as the
+component is moved; when the component is in the correct position, then
+release the left mouse button (“drag and drop”).</p>
+<p>When the components are arranged to your satisfaction, wire them up
+according to <a class="reference internal" href="#fig6-3"><span class="std std-numref">Fig. 127</span></a> below. Place the cursor at the end of a component,
+and when the “blob” appears, drag a wire to the next component and
+release the mouse button. If you drag a connection to the middle of an
+existing wire and left click, a new “blob” appears. Wires can be
+re-positioned by placing the cursor on the wire and dragging it in the
+required direction.</p>
+</section>
+<section id="connecting-the-oscilloscope">
+<h2>Connecting the Oscilloscope<a class="headerlink" href="#connecting-the-oscilloscope" title="Permalink to this heading">#</a></h2>
+<p>We need some means of observing the operation of the circuit. Run the
+cursor down the list of icons on the right-hand side of the screen. Find
+the oscilloscope. Click to select, and the oscilloscope icon appears on
+the screen. Drag the oscilloscope icon to the desired position. This
+icon is just for connecting to the rest of the circuit; the “real
+thing” is revealed when the icon is double-clicked.</p>
+<p>Note that the oscilloscope icon has pairs of connections to each of its
+“y” channel inputs A and B. Begin by connecting the “ground” side of
+each input to a ground symbol. Both grounds can go to the same ground
+symbol. Connect one of the “y” inputs to TP1 and the other to TP2. Now
+double-click the oscilloscope icon to reveal the instrument’s front
+panel. Use the up and down arrows in the Channel A, Channel B and
+Timebase “Scale” boxes to set the vertical sensitivity to 2V per
+division and the timebase to 0.05ms per division. The simulation circuit
+is now ready to run.</p>
+<figure class="align-center" id="fig6-3">
+<a class="reference internal image-reference" href="../_images/circuit.png"><img alt="The completed circuit and oscilloscope display as they should appear when the simulation is run." src="../_images/circuit.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 127 </span><span class="caption-text">The completed circuit being simulated in Multisim with the oscilloscope trace visible.</span><a class="headerlink" href="#fig6-3" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p></p>
+</section>
+<section id="running-the-simulation">
+<h2>Running the simulation<a class="headerlink" href="#running-the-simulation" title="Permalink to this heading">#</a></h2>
+<p>The circuit can now be turned on using the green triangle in the command
+line. A waveform should appear on the screen. Use “Y-pos” to move
+Channel B down the screen so that it is separate from Channel A. Click
+the button marked “pause/resume” to give a stationary display with 2
+or 3 cycles visible. Here are some hints for running the simulation:</p>
+<ul class="simple">
+<li><p>Click on “reverse” to give a white background instead of a black
+one. This saves ink if you print out the simulation and looks
+neater.</p></li>
+<li><p>Sometimes, there is an error message when the simulation is started.
+Try changing the following setting: Simulate/Interactive, then
+select “Initial Condition - Set to Zero”. Select “Max time step”
+and alter the value to 1e-006. Click on OK.</p></li>
+<li><p>When you are preparing a screen to be saved, click on the Trigger
+setting “Single” instead of “Auto”. Now every time you click the
+“Pause” button (alongside the green triangle), a full screen will
+appear on the oscilloscope display.</p></li>
+</ul>
+</section>
+<section id="making-measurements">
+<h2>Making Measurements<a class="headerlink" href="#making-measurements" title="Permalink to this heading">#</a></h2>
+<p>The practical oscilloscope has X and Y cursors so that readings of time
+and voltage can be made from the display. The simulated oscilloscope is
+slightly different. It has X cursors only; however, the oscilloscope
+reports time and voltage for each X cursor, so the same information is
+available. The only omission is a <span class="math notranslate nohighlight">\(1/t\)</span> or frequency readout - you must
+calculate it yourself!</p>
+<p>Look at the top left of the simulated oscilloscope display. There are
+two coloured triangles which can be dragged across the display. Position
+one cursor at the start of a cycle and the other cursor at the start of
+the next cycle. The period of the waveform can be read from the
+“T2-T1” box.</p>
+<p>Record the values measured for the period and calculate the frequencies
+(be careful to use sensible units) in your lab diary.</p>
+<p>Screengrab the simulation display and copy it into your lab diary:</p>
+<ul class="simple">
+<li><p>Select “Tools - Capture Screen Area”. A dotted box appears on the
+computer</p></li>
+<li><p>Expand the dotted box and move it to enclose the part of the screen
+you want to save. Click on the icon found at the top left of the
+dotted box. The selected area has now been copied to the</p></li>
+<li><p>Bring up WORD and paste the simulation image into your lab diary.</p></li>
+</ul>
+<p>Stop the simulation by pressing the pause icon on the command line.
+Move Channel B’s oscilloscope input from TP1 to TP3, then run the
+simulation and copy the new screen image to your lab diary. Use the
+cursors to measure and record the amplitude, period and frequency of the
+waveforms.</p>
+<p>Finally, change the property of the battery from 3V to 1.5V and repeat
+the above measurements. You will need to change the oscilloscope
+settings, Channel A Scale and Y-Pos, Channel B Scale and Y- Pos;
+otherwise, the waveforms will be too small in the vertical direction.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lab_intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="experiment0.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Experiment: to construct an oscillator</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="questions.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Questions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-of-multisim">Use of Multisim</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selection-of-components">Selection of Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wiring-the-circuit">Wiring the circuit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connecting-the-oscilloscope">Connecting the Oscilloscope</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-simulation">Running the simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#making-measurements">Making Measurements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

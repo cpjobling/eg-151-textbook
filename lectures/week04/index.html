@@ -1,0 +1,1622 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Programming with C &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week04/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Interfacing to digital I/O with C" href="../week05/index.html" />
+    <link rel="prev" title="Introduction to Programming and Program Development" href="../week03/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week09/index.html">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week04/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week04/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Programming with C</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language">C-language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-formatting">Code formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language-comments">C language comments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-comments">Examples of comments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processor-directives">Pre-processor directives</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-pre-processor-directives">Some pre-processor directives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-include-directive">The <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-define-directive">The <code class="docutils literal notranslate"><span class="pre">#define</span></code> directive</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-define-a-value-for-a-symbol">Example: define a value for a symbol</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-define-a-block-of-reusable-code">Example: define a block of reusable code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statements-in-c">Statements in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-functions">C functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-code-for-a-function">C code for a function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-c">Variables in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-c">Operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-operators-in-c"><strong>Data transfer</strong> operators in C</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators-in-c"><strong>Arithmetic</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators-in-c"><strong>Logical</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-and-operator">Example of the <em>and</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-or-operator">Example of the <em>or</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-not-operator">Example of the <em>not</em> operator (<code class="docutils literal notranslate"><span class="pre">!</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-logical-operators-in-c"><strong>Bitwise logical</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-and-operator">Example of the bitwise and operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-or-operator">Example of the bitwise or operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-not-operator">Example of the bitwise not operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-used-for-i-o-ports">Bitwise operators used for I/O ports</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-operators-in-c"><strong>Relational</strong> operators in C</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-control-operators-in-c"><strong>Program control</strong> operators in C</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control">Flow control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-structures-in-c">Flow control structures in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-structures-to-be-considered">Flow control structures to be considered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-statement-in-c">The <em>if</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-else-statement">The <em>if-else</em> statement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-elseif-else-statement">The <em>if-elseif-else</em> statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-switch-statement-in-c">The <em>switch</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-switch-statement">Example switch statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-while-statement-in-c">The <em>while</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-do-while-statement">The <em>do-while</em> statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-for-statement-in-c">The <em>for</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-for-loop">Example for loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalence-of-for-and-while">Equivalence of <em>for</em> and <em>while</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-for-statements">Nested <em>for</em> statements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-programming-with-c">
+<span id="week04"></span><h1>Introduction to Programming with C<a class="headerlink" href="#introduction-to-programming-with-c" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<p>C is a high-level structured programming language which is often used for writing microcontroller applications. This weeks lecture will cover good coding practices, C language operators and how they can be grouped as well as flow control structures.</p>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<section id="lecture-topics">
+<h2>Lecture Topics<a class="headerlink" href="#lecture-topics" title="Permalink to this heading">#</a></h2>
+<p>In this chapter we will be looking at how to produce clear well commented programs; data transfer, arithmetic, logic and relational operators; and flow control structures including <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">switch-case</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span></code>.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk4-c-language"><span class="std std-ref">C-language</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#wk4-code-formattting"><span class="std std-ref">Code formatting</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-comments"><span class="std std-ref">C language comments</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-pre-processor-directives"><span class="std std-ref">Pre-processor directives</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-statements"><span class="std std-ref">Statements in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-variables"><span class="std std-ref">Variables in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-operators"><span class="std std-ref">Operators in C</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#wk4-flow-control"><span class="std std-ref">Flow control</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#wk4-if"><span class="std std-ref">The if statement in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-switch"><span class="std std-ref">The switch statement in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-while"><span class="std std-ref">The while statement in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-for"><span class="std std-ref">The for statement in C</span></a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="c-language">
+<span id="wk4-c-language"></span><h2>C-language<a class="headerlink" href="#c-language" title="Permalink to this heading">#</a></h2>
+<p>Code Formatting, comments, pre-processor directives, statements and operators</p>
+<section id="code-formatting">
+<span id="wk4-code-formattting"></span><h3>Code formatting<a class="headerlink" href="#code-formatting" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p>Write comments that explain what the program does?</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>Use descriptive names for variables and functions</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p>Use tabs to indent nested code blocks</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>Give each class/function one purpose</p></li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Delete unnecessary/redundant code</p></li>
+</ol>
+<ol class="arabic simple" start="6">
+<li><p>Readability is more important than cleverness</p></li>
+</ol>
+<ol class="arabic simple" start="7">
+<li><p>Adopt and maintain a consistent coding style</p></li>
+</ol>
+<ol class="arabic simple" start="8">
+<li><p>Write good comments</p></li>
+</ol>
+<ol class="arabic simple" start="9">
+<li><p>Refactor, refactor, refactor</p></li>
+</ol>
+<ol class="arabic simple" start="10">
+<li><p>Take regular backups and implement version control</p></li>
+</ol>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">This is a demonstration program for EG-151 microcontrollers that shows a tidy well commented program.</span>
+
+<span class="cm">This program asks a user to input two numbers and uses the function findmax to determine which is the largest.</span>
+
+<span class="cm">Author: Ben Clifford</span>
+<span class="cm">Date: 12/10/2019</span>
+<span class="cm">*/</span>
+
+<span class="c1">// include library files</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="c1"> //Required for scanf and printf</span>
+
+<span class="c1">// main function</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="c1">// Variable Declarations</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">,</span><span class="w"> </span><span class="n">maxnum</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// Function Declarations</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">findmax</span><span class="p">(</span><span class="kt">int</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enter the first number: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%u&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num1</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Enter the second number: &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">scanf</span><span class="p">(</span><span class="s">&quot;%u&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">num2</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="cm">/* invoke the function findmax passing numl and num2 </span>
+<span class="cm">        as arguments and storing the result in the variable maxnum </span>
+<span class="cm">    */</span>
+<span class="w">    </span><span class="n">maxnum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">findmax</span><span class="p">(</span><span class="n">num1</span><span class="p">,</span><span class="w"> </span><span class="n">num2</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;The maximum number is %u&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">maxnum</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="c1">// Definition of the findmax function </span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">findmax</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">maximum_number</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">y</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">maximum_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">else</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">maximum_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">maximum_number</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><a class="reference external" href="https://onlinegdb.com/nGRrGSCI4">Execute this code using <strong>onlinegdb.com</strong></a></p>
+</section>
+<section id="c-language-comments">
+<span id="wk4-comments"></span><h3>C language comments<a class="headerlink" href="#c-language-comments" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Comments are added to code in order to make the program easier to read and understand at a later time or by another reader.</p></li>
+</ul>
+<ul class="simple">
+<li><p>When the compiler is reading the file, the comments are ignored.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Comments must follow a set of rules and a particular format.</p></li>
+</ul>
+<ul class="simple">
+<li><p>In the ‘C’ language comments are surrounded by <code class="docutils literal notranslate"><span class="pre">/*</span> <span class="pre">comment*/</span></code> and can span multiple lines <strong>or start with <code class="docutils literal notranslate"><span class="pre">//</span></code> if they are on a single line</strong>.</p></li>
+</ul>
+<section id="examples-of-comments">
+<h4>Examples of comments<a class="headerlink" href="#examples-of-comments" title="Permalink to this heading">#</a></h4>
+<p>Single line comment <span class="math notranslate nohighlight">\(\rightarrow\)</span> typically found after a statement</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="n">This</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="n">sets</span><span class="w"> </span><span class="n">variable</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">10</span>
+</pre></div>
+</div>
+<p>Multi line comment <span class="math notranslate nohighlight">\(\rightarrow\)</span> typically used at the start of a program or to detail a block of code or a function</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* This comment </span>
+<span class="cm">spans multiple lines */</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="pre-processor-directives">
+<span id="wk4-pre-processor-directives"></span><h3>Pre-processor directives<a class="headerlink" href="#pre-processor-directives" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The pre-processor is <strong>part of the compilation process</strong> and runs <em>before</em> the code is compiled.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The pre-processor looks for lines of <strong>code beginning with a <code class="docutils literal notranslate"><span class="pre">#</span></code></strong> and evaluates them before compilation.</p></li>
+</ul>
+<ul class="simple">
+<li><p>There are also a number of <strong>predefined <em>macros</em></strong> which can be called and these are surrounded by “<code class="docutils literal notranslate"><span class="pre">__</span></code>” characters.</p></li>
+</ul>
+<ul class="simple">
+<li><p>The most commonly used pre-processor directives, and also the ones we will be using, are <code class="docutils literal notranslate"><span class="pre">#include</span></code> and <code class="docutils literal notranslate"><span class="pre">#define</span></code>.</p></li>
+</ul>
+<section id="some-pre-processor-directives">
+<h4>Some pre-processor directives<a class="headerlink" href="#some-pre-processor-directives" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span>
+<span class="cp">#define</span>
+<span class="cp">#undef</span>
+<span class="cp">#if</span>
+<span class="cp">#elif</span>
+<span class="cp">#endif</span>
+<span class="cp">#ifdef</span>
+<span class="cp">#ifndef</span>
+<span class="cp">#error</span>
+<span class="n">__FILE__</span>
+<span class="n">__LINE__</span>
+<span class="n">__DATE__</span>
+<span class="n">__TIME__</span>
+<span class="n">__TIMESTAMP__</span>
+<span class="cp"># macro operator</span>
+<span class="cp">## macro operator</span>
+</pre></div>
+</div>
+</section>
+<section id="the-include-directive">
+<h4>The <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive<a class="headerlink" href="#the-include-directive" title="Permalink to this heading">#</a></h4>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">#include</span></code> directive</strong> is used to include <strong>header files</strong> which contain declarations of existing and frequently used functions that can be substituted into your program.</p>
+<p>Header files may contain custom function definitions, common functions, secondary data type definitions, etc.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* </span>
+<span class="cm">  This variant is used for system header files. </span>
+<span class="cm">  The pre-processor searches for a file named in a </span>
+<span class="cm">  standard list of system directories</span>
+<span class="cm">*/</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;header_file.h`&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* </span>
+<span class="cm">   This variant is used for header files of your own program. </span>
+<span class="cm">   It searches for the file name first in the current directory, </span>
+<span class="cm">   then in the same directories used for system header files. </span>
+<span class="cm">*/</span>
+<span class="cp">#include “my_library.h”</span>
+</pre></div>
+</div>
+</section>
+<section id="the-define-directive">
+<h4>The <code class="docutils literal notranslate"><span class="pre">#define</span></code> directive<a class="headerlink" href="#the-define-directive" title="Permalink to this heading">#</a></h4>
+<p>The <strong><code class="docutils literal notranslate"><span class="pre">#define</span></code> directive</strong> is used to <strong>define a macro</strong> – when the macro name appears in code it will be replaced with the definition stated.</p>
+<section id="example-define-a-value-for-a-symbol">
+<h5>Example: define a value for a symbol<a class="headerlink" href="#example-define-a-value-for-a-symbol" title="Permalink to this heading">#</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define pi 3.1415</span>
+</pre></div>
+</div>
+<p>In this example the programmer is stating that the letters <code class="docutils literal notranslate"><span class="pre">pi</span></code> represent the number 3.1415. Now, in the program they can write</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pi</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>and after pre-processing the compiler will see</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1414</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="example-define-a-block-of-reusable-code">
+<h5>Example: define a block of reusable code<a class="headerlink" href="#example-define-a-block-of-reusable-code" title="Permalink to this heading">#</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cp">#define cube(x) (x) * (x) * (x)</span>
+</pre></div>
+</div>
+<p>If the programmer writes:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cube</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="c1">// = 8</span>
+</pre></div>
+</div>
+<p>The compiler sees:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">v</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="o">//</span> <span class="o">=</span> <span class="mi">8</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="statements-in-c">
+<span id="wk4-statements"></span><h3>Statements in C<a class="headerlink" href="#statements-in-c" title="Permalink to this heading">#</a></h3>
+<p>C functions are made up from <strong>statements</strong>, each of which is <strong>terminated with a semicolon <code class="docutils literal notranslate"><span class="pre">;</span></code></strong>.<a class="footnote-reference brackets" href="#semicolon" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p><strong>A statement is made up of at least one <em>operator</em> and some <em>operands</em></strong>.</p>
+<p><em>Operands</em> can be variables or data.</p>
+<section id="c-functions">
+<h4>C functions<a class="headerlink" href="#c-functions" title="Permalink to this heading">#</a></h4>
+<p><a class="reference internal" href="#week04-fig-function-bd"><span class="std std-numref">Fig. 52</span></a> is a schematic diagram of the C function. You can think of it as something that takes some inputs (arguments) and returns some output.</p>
+<figure class="align-default" id="week04-fig-function-bd">
+<a class="reference internal image-reference" href="../../_images/function_bd.png"><img alt="A schematic diagram of a function in C" src="../../_images/function_bd.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text">A schematic diagram of a function in C</span><a class="headerlink" href="#week04-fig-function-bd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="c-code-for-a-function">
+<h4>C code for a function<a class="headerlink" href="#c-code-for-a-function" title="Permalink to this heading">#</a></h4>
+<p>A simple function is presented below.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* </span>
+<span class="cm">  This function is called a_function. </span>
+<span class="cm">  It takes no aguments (inputs).</span>
+<span class="cm">  It returns no output.  </span>
+<span class="cm">*/</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">a_function</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statement1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">statement2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="variables-in-c">
+<span id="wk4-variables"></span><h3>Variables in C<a class="headerlink" href="#variables-in-c" title="Permalink to this heading">#</a></h3>
+<p>The term <em>variable</em> is used for a name which describes a memory address. These names follow the same naming convention as used for functions<a class="footnote-reference brackets" href="#variable-names" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>.</p>
+<p>For example, a variable named <code class="docutils literal notranslate"><span class="pre">num1</span></code> describes a particular memory address at which the first number is found and a second variable <code class="docutils literal notranslate"><span class="pre">num2</span></code> describes a second memory address while a third variable, <code class="docutils literal notranslate"><span class="pre">total</span></code>, is a third memory address.</p>
+<p>In a function we may then have the following statements:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">num1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">num2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="n">total</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">num1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">num2</span><span class="p">;</span><span class="w"> </span><span class="c1">// 30!</span>
+</pre></div>
+</div>
+<p>Each of the statements in the example above tells the computer system to <strong>assign/store a value into the memory address</strong> described by the variable. This is called <em>assignment</em>.</p>
+<p>Assignment statements use the <strong>equals (<code class="docutils literal notranslate"><span class="pre">=</span></code>) sign</strong> to assign the value on the right of <code class="docutils literal notranslate"><span class="pre">=</span></code> to the variable on the left of <code class="docutils literal notranslate"><span class="pre">=</span></code><a class="footnote-reference brackets" href="#assignment" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
+</section>
+<section id="operators-in-c">
+<span id="wk4-operators"></span><h3>Operators in C<a class="headerlink" href="#operators-in-c" title="Permalink to this heading">#</a></h3>
+<p>Each statement or instruction is made up of operators and operands, where the <em>operator</em> represents an action and the <em>operands</em> represents the data.</p>
+<p>In C, the operators can be split into four categories based on the type of actions that they perform<a class="footnote-reference brackets" href="#similar-in-assembler" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>4<span class="fn-bracket">]</span></a>.</p>
+<p>They are:</p>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#wk4-data-transfer-ops"><span class="std std-ref">Data transfer operators in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-arithmetic-ops"><span class="std std-ref">Arithmetic operators in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-logical-ops"><span class="std std-ref">Logical operators in C</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk4-bitwise-ops"><span class="std std-ref">Bitwise logical operators in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-relational-ops"><span class="std std-ref">Relational operators in C</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#wk4-program-ctrl-ops"><span class="std std-ref">Program control operators in C</span></a></p></li>
+</ol>
+<p>We will consider each of these in the following sections.</p>
+<section id="data-transfer-operators-in-c">
+<span id="wk4-data-transfer-ops"></span><h4><strong>Data transfer</strong> operators in C<a class="headerlink" href="#data-transfer-operators-in-c" title="Permalink to this heading">#</a></h4>
+<p>In the C language, the data transfer operations are mostly covered by assignment without ever having to deal directly with the registers.</p>
+<p>For example:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="p">;</span>
+<span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="p">;</span>
+<span class="n">PTFD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">;</span><span class="w"> </span><span class="c1">// output total to PORT F</span>
+</pre></div>
+</div>
+<p>This is because C ia highs -level language and the compiler takes care of he details.</p>
+</section>
+<section id="arithmetic-operators-in-c">
+<span id="wk4-arithmetic-ops"></span><h4><strong>Arithmetic</strong> operators in C<a class="headerlink" href="#arithmetic-operators-in-c" title="Permalink to this heading">#</a></h4>
+<p>The order of arithmetic operations follow the <a class="reference external" href="https://en.wikipedia.org/wiki/Order_of_operations#Mnemonics">BODMAS (BIDMAS)</a> rules<a class="footnote-reference brackets" href="#bodmas-rules" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>5<span class="fn-bracket">]</span></a>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operator</strong></p></th>
+<th class="head"><p><strong>Used for</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">+</span></code></p></td>
+<td><p>Addition</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">-</span></code></p></td>
+<td><p>Subtraction</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">*</span></code></p></td>
+<td><p>Multiplication</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p>Division</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">%</span></code></p></td>
+<td><p>Modulus</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">++</span></code></p></td>
+<td><p>Increment</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--</span></code></p></td>
+<td><p>Decrement</p></td>
+</tr>
+</tbody>
+</table>
+<section id="examples">
+<h5>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h5>
+<p>Aassume <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code> and <code class="docutils literal notranslate"><span class="pre">c</span></code> are defined as variable of type integer (<code class="docutils literal notranslate"><span class="pre">int</span></code>)<a class="footnote-reference brackets" href="#integer-type" id="id6" role="doc-noteref"><span class="fn-bracket">[</span>6<span class="fn-bracket">]</span></a>.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">6</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">    </span><span class="c1">// -&gt; a = 12;</span>
+</pre></div>
+</div>
+<p>Brackets can be used to improve readability<a class="footnote-reference brackets" href="#rounding" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>7<span class="fn-bracket">]</span></a></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mf">3.14</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">r</span><span class="p">);</span><span class="w">   </span><span class="c1">// -&gt; b = 12 not 12.56!   </span>
+</pre></div>
+</div>
+<p>There are also special operators like <em>increment</em> and <em>decrement</em></p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="o">++</span><span class="p">;</span><span class="w">  </span><span class="c1">// -&gt; c = c + 1</span>
+<span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">d</span><span class="o">--</span><span class="p">;</span><span class="w">  </span><span class="c1">// -&gt; d = d - 1;</span>
+</pre></div>
+</div>
+<p>Assume <code class="docutils literal notranslate"><span class="pre">d</span></code> to <code class="docutils literal notranslate"><span class="pre">h</span></code> are defined as type integer variables (<code class="docutils literal notranslate"><span class="pre">int</span></code>) and <code class="docutils literal notranslate"><span class="pre">i</span></code> as a floating point number (<code class="docutils literal notranslate"><span class="pre">float</span></code>):</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="mi">5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">     </span><span class="c1">// -&gt; d = 1:  gives the whole part of the fraction</span>
+<span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="mi">5</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">    </span><span class="c1">// -&gt; e = 2: gives thremainder of the fraction</span>
+<span class="n">f</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mi">6</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">    </span><span class="c1">// -&gt; f = 0: gives 0 as there is no remainder</span>
+<span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w">   </span><span class="mf">5.5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// -&gt; g = 2: float is converted to int</span>
+<span class="n">h</span><span class="w">  </span><span class="o">=</span><span class="w">  </span><span class="mf">5.5</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w">  </span><span class="c1">// -&gt; invalid – will not compile</span>
+<span class="n">i</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="mf">5.5</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; i = 1.75	- evaluates correctly if i is defined as a float </span>
+</pre></div>
+</div>
+<p>The same  rules apply to multiplication operation.</p>
+</section>
+</section>
+<section id="logical-operators-in-c">
+<span id="wk4-logical-ops"></span><h4><strong>Logical</strong> operators in C<a class="headerlink" href="#logical-operators-in-c" title="Permalink to this heading">#</a></h4>
+<p>Logical operators are used in expressions which return <em>true</em> (<code class="docutils literal notranslate"><span class="pre">1</span></code>) or <em>false</em> (<code class="docutils literal notranslate"><span class="pre">0</span></code>).</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operator</strong></p></th>
+<th class="head"><p><strong>Meaning</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code></p></td>
+<td><p>Logical <em>and</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">||</span></code></p></td>
+<td><p>Logical <em>or</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">!</span></code> .</p></td>
+<td><p>Logical <em>not</em></p></td>
+</tr>
+</tbody>
+</table>
+<section id="example-of-the-and-operator">
+<h5>Example of the <em>and</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)<a class="headerlink" href="#example-of-the-and-operator" title="Permalink to this heading">#</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* </span>
+<span class="cm">   If the voltage is greater than 10 and the</span>
+<span class="cm">   current is less than 20 the condition is true</span>
+<span class="cm">   and the value of the expression will be 1, </span>
+<span class="cm">   otherwise it is false and the value of the </span>
+<span class="cm">   expression will be 0.</span>
+<span class="cm">*/</span>
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">voltage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span><span class="w"> </span><span class="p">{...}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-of-the-or-operator">
+<h5>Example of the <em>or</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)<a class="headerlink" href="#example-of-the-or-operator" title="Permalink to this heading">#</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
+<span class="cm">    If the voltage is greater than 10 or the</span>
+<span class="cm">    current is greater than 20 the condition is</span>
+<span class="cm">    true and the value of the expression will be</span>
+<span class="cm">    1, otherwise it is false and the expression </span>
+<span class="cm">    will be 0.</span>
+<span class="cm">*/</span>
+<span class="k">if</span><span class="p">((</span><span class="n">voltage</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">(</span><span class="n">current</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">20</span><span class="p">))</span><span class="w"> </span><span class="p">{...}</span>
+</pre></div>
+</div>
+</section>
+<section id="example-of-the-not-operator">
+<h5>Example of the <em>not</em> operator (<code class="docutils literal notranslate"><span class="pre">!</span></code>)<a class="headerlink" href="#example-of-the-not-operator" title="Permalink to this heading">#</a></h5>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* </span>
+<span class="cm">    The unary operator (!) is usually used to</span>
+<span class="cm">    turn true into false and vice versa.</span>
+<span class="cm">*/</span>
+<span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">	</span><span class="c1">// -&gt; c = 0 which is &quot;false&quot;</span>
+<span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">!</span><span class="n">c</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; d = 1 which is &quot;true&quot;.</span>
+</pre></div>
+</div>
+</section>
+<section id="bitwise-logical-operators-in-c">
+<span id="wk4-bitwise-ops"></span><h5><strong>Bitwise logical</strong> operators in C<a class="headerlink" href="#bitwise-logical-operators-in-c" title="Permalink to this heading">#</a></h5>
+<p>In addition to the logical operators designed to evaluate multiple conditions there are <strong>bitwise logical operators</strong> which operate on the binary digits (bits) of their operands.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Operator</strong></p></th>
+<th class="head"><p><strong>Used for</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
+<td><p>bitwise AND</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">|</span></code></p></td>
+<td><p>bitwise OR</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">^</span></code></p></td>
+<td><p>bitwise XOR</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+<td><p>bitwise NOT</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;&gt;</span></code></p></td>
+<td><p>shift right</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;&lt;</span></code></p></td>
+<td><p>shift left</p></td>
+</tr>
+</tbody>
+</table>
+<section id="example-of-the-bitwise-and-operator">
+<h6>Example of the bitwise and operator<a class="headerlink" href="#example-of-the-bitwise-and-operator" title="Permalink to this heading">#</a></h6>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xA3</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xD5</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; b = 0x81</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+   &amp; 1010 &amp; 0111 \\
+\&amp; &amp; 1101 &amp; 0101 \\\hline
+   &amp; 1000 &amp; 0001
+\end{array}\end{split}\]</div>
+</section>
+<section id="example-of-the-bitwise-or-operator">
+<h6>Example of the bitwise or operator<a class="headerlink" href="#example-of-the-bitwise-or-operator" title="Permalink to this heading">#</a></h6>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xA3</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0xD5</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; b = 0xF7</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+   &amp; 1010 &amp; 0111 \\
+|  &amp; 1101 &amp; 0101 \\\hline
+   &amp; 1111 &amp; 0111
+\end{array}\end{split}\]</div>
+</section>
+<section id="example-of-the-bitwise-not-operator">
+<h6>Example of the bitwise not operator<a class="headerlink" href="#example-of-the-bitwise-not-operator" title="Permalink to this heading">#</a></h6>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="mh">0xA3</span><span class="p">;</span><span class="w"> </span><span class="c1">// -&gt; c = 0x5C</span>
+</pre></div>
+</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{lrr}
+\sim &amp; 1010 &amp; 0111 \\\hline
+     &amp; 0101 &amp; 1100
+\end{array}\end{split}\]</div>
+</section>
+<section id="bitwise-operators-used-for-i-o-ports">
+<h6>Bitwise operators used for I/O ports<a class="headerlink" href="#bitwise-operators-used-for-i-o-ports" title="Permalink to this heading">#</a></h6>
+<p>The use of these operators are important when working with microcontrollers, in particular in the case of I/O, as they can be used to mask bits of a port. This is useful in C as we have limited data transfer options, i.e. we have to read/write to an entire port (memory location) rather than an individual bit.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">PTAPE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x0F</span><span class="p">;</span><span class="w">       </span><span class="c1">// bit pattern: 0000 1111</span>
+<span class="n">PTAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0xF0</span><span class="p">;</span><span class="w">        </span><span class="c1">// bit pattern: 1111 0000</span>
+<span class="n">PTAD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PTAD</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="mh">0x0C</span><span class="p">;</span><span class="w">	</span><span class="c1">// bit pattern: 1111 1100</span>
+</pre></div>
+</div>
+<p>Since XORing any bit with a 1 forces it to return the opposite value, it can be used to toggle the state of a port:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">portA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">portA</span><span class="w"> </span><span class="o">^</span><span class="w"> </span><span class="mh">0xFF</span><span class="p">;</span><span class="w"> </span><span class="c1">// e.g. 0101 0110 -&gt; 1010 1001</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="relational-operators-in-c">
+<span id="wk4-relational-ops"></span><h5><strong>Relational</strong> operators in C<a class="headerlink" href="#relational-operators-in-c" title="Permalink to this heading">#</a></h5>
+<p>The final group of operators are the <strong>relational operators</strong> which are used to test a relationship between two variables or a variable and data.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Relational operator</strong></p></th>
+<th class="head"><p><strong>Meaning</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">==</span></code></p></td>
+<td><p>is equal to</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code></p></td>
+<td><p>is <em>not</em> equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
+<td><p>is less than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code></p></td>
+<td><p>is less than or equal to</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
+<td><p>is greater than</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code></p></td>
+<td><p>is greater than or equal to</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example: “is x equal to 2?” would be written as <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">2</span></code><a class="footnote-reference brackets" href="#equality" id="id8" role="doc-noteref"><span class="fn-bracket">[</span>8<span class="fn-bracket">]</span></a>.</p>
+<p>Relational operators are most often used in the <em>expressions</em> used in the <em>conditions</em> of the flow control structures discussed in <a class="reference internal" href="#wk4-flow-control"><span class="std std-ref">Flow control</span></a>.</p>
+</section>
+</section>
+<section id="program-control-operators-in-c">
+<span id="wk4-program-ctrl-ops"></span><h4><strong>Program control</strong> operators in C<a class="headerlink" href="#program-control-operators-in-c" title="Permalink to this heading">#</a></h4>
+<p>These are discussed in the next section <a class="reference internal" href="#wk4-flow-control"><span class="std std-ref">Flow control</span></a>.</p>
+</section>
+</section>
+</section>
+<section id="flow-control">
+<span id="wk4-flow-control"></span><h2>Flow control<a class="headerlink" href="#flow-control" title="Permalink to this heading">#</a></h2>
+<img alt="Decorative section background - showing code" src="../../_images/prog_lang_wallpaper.jpg" />
+<p>Flow control statements <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, and <code class="docutils literal notranslate"><span class="pre">switch</span></code></p>
+<section id="flow-control-structures-in-c">
+<h3>Flow control structures in C<a class="headerlink" href="#flow-control-structures-in-c" title="Permalink to this heading">#</a></h3>
+<p><a class="reference internal" href="#wk4-fig-flow-control-structures"><span class="std std-numref">Fig. 53</span></a> illustrates the flow control structures that are provided in the C language. We will illustrate the most commonly used<a class="footnote-reference brackets" href="#rarely-used" id="id9" role="doc-noteref"><span class="fn-bracket">[</span>9<span class="fn-bracket">]</span></a> in the following sections.</p>
+<figure class="align-default" id="wk4-fig-flow-control-structures">
+<a class="reference internal image-reference" href="../../_images/stuctures.png"><img alt="An organogram showing a classification of the flow control strucures provided by the C language." src="../../_images/stuctures.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text">Classification of the flow control strucures provided by the C language.</span><a class="headerlink" href="#wk4-fig-flow-control-structures" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="flow-control-structures-to-be-considered">
+<h3>Flow control structures to be considered<a class="headerlink" href="#flow-control-structures-to-be-considered" title="Permalink to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><a class="reference internal" href="#wk4-if"><span class="std std-ref">The if statement in C</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk4-if-else"><span class="std std-ref">The if-else statement</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-if-elseif-else"><span class="std std-ref">The if-elseif-else statement</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#wk4-switch"><span class="std std-ref">The switch statement in C</span></a></p></li>
+<li><p><a class="reference internal" href="#wk4-while"><span class="std std-ref">The while statement in C</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk4-do-while"><span class="std std-ref">The do-while statement</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#wk4-for"><span class="std std-ref">The for statement in C</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk4-nested-for"><span class="std std-ref">Nested for statements</span></a></p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="the-if-statement-in-c">
+<span id="wk4-if"></span><h3>The <em>if</em> statement in C<a class="headerlink" href="#the-if-statement-in-c" title="Permalink to this heading">#</a></h3>
+<p>The <strong><em>if</em> statement</strong> allows branching within code and can be used to check if a particular condition has been met.</p>
+<p>If the condition has been met, the set of statement in the following blocks is executed, if the condition is not met then the statement is not executed, and the program will branch over to the next statement outside of the flow control statement</p>
+<p>The equivalent of the <em>if</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-if-statement"><span class="std std-numref">Fig. 54</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Statement_1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">expression</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// in C anything that is not 0 is true</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Statement_3</span><span class="p">;</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-if-statement">
+<a class="reference internal image-reference" href="../../_images/if.png"><img alt="A flow chart illustrating the structure of the if-statement" src="../../_images/if.png" style="width: 20%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text">A flow chart illustrating the structure of the <em>if</em> statement</span><a class="headerlink" href="#wk4-fig-if-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="the-if-else-statement">
+<span id="wk4-if-else"></span><h4>The <em>if-else</em> statement<a class="headerlink" href="#the-if-else-statement" title="Permalink to this heading">#</a></h4>
+<p>The <strong><em>if</em>-else statement</strong> allows one set of statements to be executed if the condition is met and another set of statements if the condition hasn’t been met.</p>
+<p>The equivalent of the <em>if-else</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-if-else-statement"><span class="std std-numref">Fig. 55</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Statement_1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">expression</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="c1">// in C anything that is not 0 is true</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="c1">// expression is false == 0</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Statement_4</span><span class="p">;</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-if-else-statement">
+<a class="reference internal image-reference" href="../../_images/if-else.png"><img alt="A flow chart illustrating the structure of the if-else statement" src="../../_images/if-else.png" style="width: 25%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text">A flow chart illustrating the structure of the <em>if-else</em> statement</span><a class="headerlink" href="#wk4-fig-if-else-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="the-if-elseif-else-statement">
+<span id="wk4-if-elseif-else"></span><h4>The <em>if-elseif-else</em> statement<a class="headerlink" href="#the-if-elseif-else-statement" title="Permalink to this heading">#</a></h4>
+<p>The third example of the if statement is the <strong><em>if-elseif-else</em> statement</strong> which allows multiple conditions to be tested and blocks of statements to be executed for each decision.</p>
+<p>The equivalent of the <em>if-elseif-else</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-if-elseif-else-statement"><span class="std std-numref">Fig. 56</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Statement_1</span><span class="p">;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">expression1</span><span class="p">)</span><span class="w"> </span><span class="c1">// expression1 is true</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_2</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">elseif</span><span class="w"> </span><span class="p">(</span><span class="n">expression2</span><span class="p">)</span><span class="w">  </span><span class="c1">// expression2 is true</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_3</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">else</span><span class="w"> </span><span class="c1">// neither expression1 nor expression2 is true</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">Statement_4</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Statement_5</span><span class="p">;</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-if-elseif-else-statement">
+<a class="reference internal image-reference" href="../../_images/if-elseif-else.png"><img alt="A flow chart illustrating the structure of the if-elseif-else statement" src="../../_images/if-elseif-else.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text">A flow chart illustrating the structure of the <em>if-elseif-else</em> statement</span><a class="headerlink" href="#wk4-fig-if-elseif-else-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="the-switch-statement-in-c">
+<span id="wk4-switch"></span><h3>The <em>switch</em> statement in C<a class="headerlink" href="#the-switch-statement-in-c" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <em>switch</em> statement allows selection between several possible defined options.</p></li>
+<li><p>The <strong>test condition</strong> is referred to as the <em>expression</em> and the choices are referred to as the <em>cases</em><a class="footnote-reference brackets" href="#cases" id="id10" role="doc-noteref"><span class="fn-bracket">[</span>10<span class="fn-bracket">]</span></a>.</p></li>
+<li><p>Each switch expression will have a <strong>default choice</strong> for when no choices match the expression.</p></li>
+<li><p>The switch statement represents an easier and more readable way of managing multiple if statements<a class="footnote-reference brackets" href="#switch" id="id11" role="doc-noteref"><span class="fn-bracket">[</span>11<span class="fn-bracket">]</span></a></p></li>
+</ul>
+<p>The equivalent of the <em>switch</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-switch-statement"><span class="std std-numref">Fig. 57</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">Statement</span><span class="p">;</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">expression1</span><span class="p">)</span><span class="w"> </span><span class="c1">// branch according to the value of the expression</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">case_1</span><span class="w"> </span><span class="p">:</span>
+<span class="w">        </span><span class="n">code_block_1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">case_2</span><span class="w"> </span><span class="p">:</span>
+<span class="w">        </span><span class="n">code_block_2</span><span class="p">;</span>
+<span class="w">        </span>
+<span class="w">    </span><span class="k">case</span><span class="w"> </span><span class="no">case_3</span><span class="w"> </span><span class="p">:</span>
+<span class="w">        </span><span class="n">code_block_3</span><span class="p">;</span>
+
+<span class="w">    </span><span class="c1">// you can have any number of case statements</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="c1">// optional</span>
+<span class="w">        </span><span class="n">default_code_block</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">Statement_2</span><span class="p">;</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-switch-statement">
+<a class="reference internal image-reference" href="../../_images/switch1.png"><img alt="A flow chart illustrating the structure of the switch statement" src="../../_images/switch1.png" style="width: 50%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text">A flow chart illustrating the structure of the <em>switch</em> statement</span><a class="headerlink" href="#wk4-fig-switch-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="example-switch-statement">
+<h4>Example switch statement<a class="headerlink" href="#example-switch-statement" title="Permalink to this heading">#</a></h4>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">char</span><span class="w"> </span><span class="n">student_grade</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="p">;</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Your grade was %c: &quot;</span><span class="p">,</span><span class="n">student_grade</span><span class="p">);</span>
+<span class="k">switch</span><span class="w"> </span><span class="p">(</span><span class="n">student_grade</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;A&#39;</span><span class="p">:</span>
+<span class="w">     </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;excellent!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="c1">// prevents fall-through to default</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;B&#39;</span><span class="w"> </span><span class="p">:</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;very good!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;C&#39;</span><span class="w"> </span><span class="p">:</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;good!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;D&#39;</span><span class="w"> </span><span class="p">:</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;satisfactory!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;E&#39;</span><span class="w"> </span><span class="p">:</span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;needs work!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;F&#39;</span><span class="w"> </span><span class="p">:</span><span class="w"> </span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;sorry you failed!</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">     </span><span class="k">break</span><span class="p">;</span>
+<span class="w">   </span><span class="k">default</span><span class="o">:</span><span class="w"> </span>
+<span class="w">     </span><span class="n">printf</span><span class="p">(</span><span class="s">&quot;Error! The grade %c is invalid</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="n">student_grade</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If the <code class="docutils literal notranslate"><span class="pre">break</span></code> was not present, the program would drop down to the next case which is not usually what you want. Instead, you usually break out to the case statement as soon as a valid match is made.</p>
+<p>You can play with this program here: <a class="reference external" href="https://onlinegdb.com/16BcOgMJD">grader</a>. See what happens when you remove <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
+</section>
+</section>
+<section id="the-while-statement-in-c">
+<span id="wk4-while"></span><h3>The <em>while</em> statement in C<a class="headerlink" href="#the-while-statement-in-c" title="Permalink to this heading">#</a></h3>
+<p>In order to write a function that loops, i.e. execution of a sequence of statements until a particular condition is met, a <em>while</em> statement can be used.</p>
+<p>The while statement allows for a block of statements to be repeatedly executed as long as a <em>condition</em> is true.</p>
+<p>The equivalent of the <em>while</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-while-statement"><span class="std std-numref">Fig. 58</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-while-statement">
+<a class="reference internal image-reference" href="../../_images/while.png"><img alt="A flow chart illustrating the structure of the while statement" src="../../_images/while.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text">A flow chart illustrating the structure of the <em>while</em> statement</span><a class="headerlink" href="#wk4-fig-while-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="the-do-while-statement">
+<span id="wk4-do-while"></span><h4>The <em>do-while</em> statement<a class="headerlink" href="#the-do-while-statement" title="Permalink to this heading">#</a></h4>
+<p>The <em>do-while</em> statement is almost identical to the while statement however the condition is checked after the statements have run.</p>
+<p>The equivalent of the <em>do-while</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-do-while-statement"><span class="std std-numref">Fig. 59</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">do</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">condition</span><span class="p">);</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-do-while-statement">
+<a class="reference internal image-reference" href="../../_images/do-while.png"><img alt="A flow chart illustrating the structure of the do-while statement" src="../../_images/do-while.png" style="width: 25%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 59 </span><span class="caption-text">A flow chart illustrating the structure of the <em>do-while</em> statement</span><a class="headerlink" href="#wk4-fig-do-while-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Be careful: it is very easy to get stuck in an infinite <em>while</em> loop if your test condition is always true.</p>
+</section>
+</section>
+<section id="the-for-statement-in-c">
+<span id="wk4-for"></span><h3>The <em>for</em> statement in C<a class="headerlink" href="#the-for-statement-in-c" title="Permalink to this heading">#</a></h3>
+<p>Another way of writing a while statement is to use a <strong><em>for</em> loop</strong>.</p>
+<p>The term <em>loop</em> is used for the execution of a sequence of statements until a particular condition is met.</p>
+<p>The equivalent of the <em>for</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-for-statement"><span class="std std-numref">Fig. 60</span></a> is:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">initialize</span><span class="w"> </span><span class="n">counter</span><span class="p">;</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">final</span><span class="w"> </span><span class="n">value</span><span class="p">;</span><span class="w"> </span><span class="n">increment</span><span class="w"> </span><span class="n">counter</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">statements</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">statement</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-for-statement">
+<a class="reference internal image-reference" href="../../_images/for.png"><img alt="A flow chart illustrating the structure of the for statement" src="../../_images/for.png" style="width: 30%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 60 </span><span class="caption-text">A flow chart illustrating the structure of the <em>for</em> statement</span><a class="headerlink" href="#wk4-fig-for-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="example-for-loop">
+<h4>Example for loop<a class="headerlink" href="#example-for-loop" title="Permalink to this heading">#</a></h4>
+<p>Here is an actual <em>for</em> loop which solves the problem given in <a class="reference internal" href="../week03/index.html#wk4-sum-example"><span class="std std-ref">Example 2: Decision and a Loop</span></a> it better illustrates how it might be written in a real program:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="cm">/* Add the numbers from 1 to 10 and print the sum */</span>
+<span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;sum = %d&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">sum</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The sequence performed by the for loop is:</p>
+<ol class="arabic simple">
+<li><p>The variable <code class="docutils literal notranslate"><span class="pre">x</span></code> is <em>initialized</em> to 0;</p></li>
+</ol>
+<ol class="arabic simple" start="2">
+<li><p>The statements in the <em>block</em><a class="footnote-reference brackets" href="#block" id="id12" role="doc-noteref"><span class="fn-bracket">[</span>12<span class="fn-bracket">]</span></a> are executed in sequence;</p></li>
+</ol>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code> is incremented by 1 (<code class="docutils literal notranslate"><span class="pre">x++</span></code> <span class="math notranslate nohighlight">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">1</span></code>);</p></li>
+</ol>
+<ol class="arabic simple" start="4">
+<li><p>The value of the <em>logical expression</em> <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">11</span></code> is evaluated: if it is <em>true</em> we return to step 2.</p></li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">11</span></code> is false (i.e. <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">10</span></code>) the loop ends the result is printed to the screen.</p></li>
+</ol>
+<p>To execute this program see <a class="reference external" href="https://onlinegdb.com/w3YDJCZcm">sum.c</a>.</p>
+</section>
+<section id="equivalence-of-for-and-while">
+<h4>Equivalence of <em>for</em> and <em>while</em><a class="headerlink" href="#equivalence-of-for-and-while" title="Permalink to this heading">#</a></h4>
+<p>You can <em>always</em> write a <em>for</em> loop using <em>while</em>[^for-while]. The previous example could be written:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span><span class="w"> </span><span class="n">sum</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="c1">// initialize x</span>
+<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span>
+<span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">11</span><span class="p">)</span><span class="w"> </span>
+<span class="p">{</span>
+<span class="w">    </span><span class="n">sum</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<span class="w">    </span><span class="n">x</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">// increment x</span>
+<span class="p">}</span>
+<span class="n">printf</span><span class="p">(</span><span class="s">&quot;Sum = %d&quot;</span><span class="p">,</span><span class="n">sum</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://onlinegdb.com/ME6B9jbo8">sum with while</a>.</p>
+<p>It is arguable that the <em>for</em> loop is easier to read and understand.</p>
+<p>[for-while]: Indeed most c-compilers produce equivalent code for <em>for</em> and <em>while</em>.</p>
+</section>
+<section id="nested-for-statements">
+<span id="wk4-nested-for"></span><h4>Nested <em>for</em> statements<a class="headerlink" href="#nested-for-statements" title="Permalink to this heading">#</a></h4>
+<p>The equivalent of the nested <em>for</em> statement illustrated in the <a class="reference internal" href="#wk4-fig-nested-for-statement"><span class="std std-numref">Fig. 61</span></a> is:_</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">counter1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">counter1</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"> </span><span class="n">counter1</span><span class="o">++</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">counter2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">counter2</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">;</span><span class="w"> </span><span class="n">counter2</span><span class="o">++</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">statements</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<figure class="align-default" id="wk4-fig-nested-for-statement">
+<a class="reference internal image-reference" href="../../_images/nested-for.png"><img alt="A flow chart illustrating the structure of the nested-for statement" src="../../_images/nested-for.png" style="width: 35%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 61 </span><span class="caption-text">A flow chart illustrating the structure of the nested <em>for</em> statement</span><a class="headerlink" href="#wk4-fig-nested-for-statement" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>See <a class="reference external" href="https://onlinegdb.com/Dhku-m1As">nested-counter</a> for an executable example of this program.</p>
+<p>What could you use it for?</p>
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this section we have:</p>
+<ul class="simple">
+<li><p>Covered basic concepts in coding to create clear and concise code as well as how to add comments to key lines of a program.</p></li>
+<li><p>Introduced and discussed the different operators available to the C language programmer including how they are categorized.</p></li>
+<li><p>Looked at the flow control statements available in the C language as well as how they are represented using flowchart diagrams and examples of the required syntax.</p></li>
+</ul>
+</section>
+<section id="on-canvas">
+<h2>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h2>
+<p>On the canvas course page, there is a series of short videos providing a history of the C language and a brief overview of programming paradigms as well as videos on functions and data type with a quiz to test your knowledge</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="semicolon" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Missing the semicolon is one of the most common causes of compilation errors in C programming.</p>
+</aside>
+<aside class="footnote brackets" id="variable-names" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Similarly to a function these variable names need to be declared before their use indicating their data type. More on this can be found in the self-directed study material for on <a class="reference external" href="https://canvas.swansea.ac.uk/courses/44971/pages/week-4-history-of-the-c-language-functions-and-data-types">Canvas for this week</a>.</p>
+</aside>
+<aside class="footnote brackets" id="assignment" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>Please do not confuse <code class="docutils literal notranslate"><span class="pre">=</span></code> in C with equality in mathematics. After assignment, the value in the variable can change. In mathematics <span class="math notranslate nohighlight">\(a = b\)</span> means that <span class="math notranslate nohighlight">\(a\)</span> is always equal to <span class="math notranslate nohighlight">\(b\)</span>. If we change the value of <span class="math notranslate nohighlight">\(b\)</span>,
+the value of <span class="math notranslate nohighlight">\(a\)</span> changes too. In C, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">b</span></code> <em>copies</em> the current value of <code class="docutils literal notranslate"><span class="pre">b</span></code> into the storage assigned to <code class="docutils literal notranslate"><span class="pre">a</span></code>. If we change the value of <code class="docutils literal notranslate"><span class="pre">b</span></code> later, <code class="docutils literal notranslate"><span class="pre">a</span></code> will not change.  To confuse matters still further, there is another use
+of the equals symbol: <code class="docutils literal notranslate"><span class="pre">==</span></code> means <em>is equal to</em> and is used in decision statements such as <em>is <code class="docutils literal notranslate"><span class="pre">num1</span></code> equal to <code class="docutils literal notranslate"><span class="pre">num2</span></code></em>?</p>
+</aside>
+<aside class="footnote brackets" id="similar-in-assembler" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">4</a><span class="fn-bracket">]</span></span>
+<p>We will see similar categories of operators when we come to look at assembly language. For example, for <em>data transfer</em> we have the register instructions <code class="docutils literal notranslate"><span class="pre">LDI</span></code> (load register immediate), <code class="docutils literal notranslate"><span class="pre">LDS</span></code> (load register from store), and <code class="docutils literal notranslate"><span class="pre">STS</span></code> (store register to store).e)</p>
+</aside>
+<aside class="footnote brackets" id="bodmas-rules" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">5</a><span class="fn-bracket">]</span></span>
+<p>BODMAS is a <em>mnemonic</em> which stands for <strong>B</strong>ackets, <strong>O</strong>perations, <strong>D</strong>ivision/<strong>M</strong>ultiplication, <strong>A</strong>ddition/<strong>S</strong>ubtraction. It describes the order of calculation in an expression that involves operators. Brackets, which are considered first, are used to disambiguate expressions that would otherwise produce wrong results. For example <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">+</span> <span class="pre">b/c</span></code> is intrepreted as <span class="math notranslate nohighlight">\(a + (b/c)\)</span> not <span class="math notranslate nohighlight">\((a + b)/c\)</span>.</p>
+</aside>
+<aside class="footnote brackets" id="integer-type" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">6</a><span class="fn-bracket">]</span></span>
+<p>An integer type means the value is a whole number (not a fractional number) that can be positive, negative, or zero.</p>
+</aside>
+<aside class="footnote brackets" id="rounding" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">7</a><span class="fn-bracket">]</span></span>
+<p>The execution of expression <code class="docutils literal notranslate"><span class="pre">3.14</span> <span class="pre">*</span> <span class="pre">r</span> <span class="pre">*</span> <span class="pre">r</span></code> would most likely result in a decimal (<em>floating point</em>) number. This would be truncated to an integer before it is assigned to <code class="docutils literal notranslate"><span class="pre">b</span></code>. This is a common cause of mathematical error in programming.</p>
+</aside>
+<aside class="footnote brackets" id="equality" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">8</a><span class="fn-bracket">]</span></span>
+<p><strong>Important</strong>: don’t confuse the double equals sign (<code class="docutils literal notranslate"><span class="pre">==</span></code>) with <code class="docutils literal notranslate"><span class="pre">=</span></code>. The latter used for assignment operations. <strong>That is <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">=</span> <span class="pre">2)</span></code> is different from <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">==</span> <span class="pre">2)</span></code></strong>.</p>
+</aside>
+<aside class="footnote brackets" id="rarely-used" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">9</a><span class="fn-bracket">]</span></span>
+<p>Most of the unconditional branching statements such as <code class="docutils literal notranslate"><span class="pre">goto</span></code> (for an unconditional branch to a label) and <code class="docutils literal notranslate"><span class="pre">continue</span></code> (to ignore a condition without breaking out of a loop) are rarely used in modern programs. The <code class="docutils literal notranslate"><span class="pre">break</span></code> statement is often used in <em>switch statements</em> and occasionally for breaking out of a loop when some exit condition is met.</p>
+</aside>
+<aside class="footnote brackets" id="cases" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">10</a><span class="fn-bracket">]</span></span>
+<p>Each case must be a <em>constant expression</em>: i.e. a number or a character.</p>
+</aside>
+<aside class="footnote brackets" id="switch" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">11</a><span class="fn-bracket">]</span></span>
+<p>i.e. avoids <code class="docutils literal notranslate"><span class="pre">if</span></code> – <code class="docutils literal notranslate"><span class="pre">elseif</span></code> – <code class="docutils literal notranslate"><span class="pre">elseif</span></code> – <code class="docutils literal notranslate"><span class="pre">elseif</span></code> – <code class="docutils literal notranslate"><span class="pre">elseif</span></code> – … – <code class="docutils literal notranslate"><span class="pre">else</span></code></p>
+</aside>
+<aside class="footnote brackets" id="block" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id12">12</a><span class="fn-bracket">]</span></span>
+<p>in the C language a <em>block</em> is any sequence of statements surrounded by curly brackets <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">...</span> <span class="pre">}</span></code></p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week04"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week03/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Programming and Program Development</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../week05/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Interfacing to digital I/O with C</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lecture-topics">Lecture Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language">C-language</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#code-formatting">Code formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#c-language-comments">C language comments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-comments">Examples of comments</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pre-processor-directives">Pre-processor directives</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#some-pre-processor-directives">Some pre-processor directives</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-include-directive">The <code class="docutils literal notranslate"><span class="pre">#include</span></code> directive</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-define-directive">The <code class="docutils literal notranslate"><span class="pre">#define</span></code> directive</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-define-a-value-for-a-symbol">Example: define a value for a symbol</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-define-a-block-of-reusable-code">Example: define a block of reusable code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#statements-in-c">Statements in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-functions">C functions</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#c-code-for-a-function">C code for a function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variables-in-c">Variables in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#operators-in-c">Operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-transfer-operators-in-c"><strong>Data transfer</strong> operators in C</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#arithmetic-operators-in-c"><strong>Arithmetic</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#logical-operators-in-c"><strong>Logical</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-and-operator">Example of the <em>and</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-or-operator">Example of the <em>or</em> operator (<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-not-operator">Example of the <em>not</em> operator (<code class="docutils literal notranslate"><span class="pre">!</span></code>)</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-logical-operators-in-c"><strong>Bitwise logical</strong> operators in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-and-operator">Example of the bitwise and operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-or-operator">Example of the bitwise or operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-the-bitwise-not-operator">Example of the bitwise not operator</a></li>
+<li class="toc-h6 nav-item toc-entry"><a class="reference internal nav-link" href="#bitwise-operators-used-for-i-o-ports">Bitwise operators used for I/O ports</a></li>
+</ul>
+</li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#relational-operators-in-c"><strong>Relational</strong> operators in C</a></li>
+</ul>
+</li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#program-control-operators-in-c"><strong>Program control</strong> operators in C</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control">Flow control</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-structures-in-c">Flow control structures in C</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#flow-control-structures-to-be-considered">Flow control structures to be considered</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-statement-in-c">The <em>if</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-else-statement">The <em>if-else</em> statement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-if-elseif-else-statement">The <em>if-elseif-else</em> statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-switch-statement-in-c">The <em>switch</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-switch-statement">Example switch statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-while-statement-in-c">The <em>while</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-do-while-statement">The <em>do-while</em> statement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-for-statement-in-c">The <em>for</em> statement in C</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-for-loop">Example for loop</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalence-of-for-and-while">Equivalence of <em>for</em> and <em>while</em></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-for-statements">Nested <em>for</em> statements</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

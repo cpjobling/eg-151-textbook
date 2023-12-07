@@ -1,0 +1,981 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Addressing Modes &#8212; EG-151 Microcontrollers</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'lectures/week09/index';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="References" href="../../references.html" />
+    <link rel="prev" title="Microcontroller Architecture – Program Operation" href="../week08/index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="EG-151 Microcontrollers - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="EG-151 Microcontrollers - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../intro.html">
+                    EG-151 Microcontrollers 2023-2024
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_aims.html">Course Aims</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../intro/course_delivery.html">Course Delivery Method</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Introduction to Microcontrollers</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Microcontrollers Course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Croeso i Brifysgol Abertawe | Welcome to Swansea University</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week01/index.html">Introduction to Microcontrollers and Microcontroller Architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../data_representation/index.html">Introduction to Data Representation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week02/index.html">Architecture of the Atmel ATmega 328 Microcontroller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week03/index.html">Introduction to Programming and Program Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week04/index.html">Introduction to Programming with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week05/index.html">Interfacing to digital I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week06/index.html">Interfacing to Analogue I/O with C</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week07/index.html">Introduction to Assembly Language</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../week08/index.html">Microcontroller Architecture – Program Operation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Addressing Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Programming in C</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/index.html">Programming in C – from nothing to software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/the_task.html">The Task</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/understanding_the_task.html">Understanding the task and first thoughts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/wiring_the_circuit.html">Wiring up the Circuit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/using_the_ide.html">Using the Arduino Integrated Development Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/setting_up_the_io.html">Setting up I/O connections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../programming_in_c/detecting_and_reacting_to_a_button_press.html">Detecting and reacting to a button press</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Introduction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/intro.html">EG-151: Microcontrollers Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/assessment.html">Assessment of the Laboratory Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_work.html">Laboratory Work in the Department of Electronic and Electrical Engineering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_instruments.html">Laboratory Instruments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/lab_safety.html">Laboratory Safety</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/experiment0.html">Experiment: to construct an oscillator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/simulation.html">Simulation Exercise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/questions.html">Questions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/construction.html">Construction Exercise - Continuity Tester</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lab_intro/soldering.html">Safe Soldering</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Laboratory Experiments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../labs/index.html">Microcontroller Programming Laboratory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/get_started/index.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab01/index.html">Experiment 1: Binary Counter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab02/index.html">Experiment 2: Digital Input</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab03/index.html">Experiment 3: Analogue to Digital Conversion</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab04/index.html">Experiment 4: Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../labs/lab05/index.html">Experiment 5: LCD Display Panel</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Mini Projects</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../projects/index.html">Mini Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/voltmeter.html">Voltmeter</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/range_finder.html">Ultrasonic Range Finder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/clock_timer.html">Clock Time</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../projects/weather_station.html">Weather Station</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/appendix_a.html">Appendix A: Other Data Representations</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/2scomp.html">Appendix A.1: Twos Compliment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/bcd.html">Appendix A.2: Binary Coded Decimal (BCD)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/binary_fractions.html">Appendix A.3: Binary Fractions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/ascii.html">Appendix A.3: ASCII</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/cpjobling/eg-151-textbook/issues/new?title=Issue%20on%20page%20%2Flectures/week09/index.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/lectures/week09/index.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Addressing Modes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-discussed">Topics discussed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-addressing-mode">What is an addressing mode?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addressing-modes-on-the-atmel-atmega328">Addressing modes on the Atmel ATmega328</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inherent-addressing-mode">Inherent Addressing Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-direct-addressing">Register Direct Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-register-rd">Single Register (Rd)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#two-register-rd-rr">Two Register (Rd, Rr)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-direct-addressing">I/O Direct Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-direct-addressing">Data Direct Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#immediate-addressing">Immediate Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#immediate-vs-data-direct-addressing">Immediate vs Data Direct Addressing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing">Indirect Data Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing-with-displacement">Indirect Data Addressing with Displacement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing-with-increment-decrement">Indirect Data Addressing with Increment/Decrement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-addressing">Relative Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-addressing-example">Relative Addressing Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="addressing-modes">
+<span id="week09"></span><h1>Addressing Modes<a class="headerlink" href="#addressing-modes" title="Permalink to this heading">#</a></h1>
+<a class="reference internal image-reference" href="../../_images/chapter_heading.png"><img alt="Decorative image for slide show" src="../../_images/chapter_heading.png" style="width: 50%;" /></a>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>In this week’s lecture, you will learn more about assembly language and the diverse ways to access data dependent on what it is and where it is stored. This is based around what is known as addressing modes. There are different ways in which an operand may be specified in an instruction depending on what it is and where it is located. Some operations require no operands and the data to be operated on is implied, in other cases operands can be constants, variables, arrays and memory locations all of which are accessed differently.</p>
+<a class="reference internal image-reference" href="../../_images/contents_image.png"><img alt="Decorative image used as a slide background" src="../../_images/contents_image.png" style="width: 50%;" /></a>
+<section id="topics-discussed">
+<h3>Topics discussed<a class="headerlink" href="#topics-discussed" title="Permalink to this heading">#</a></h3>
+<p>In this section we will review a number of different addressing modes relevant to the Atmel ATMega328 Microcontroller including, inherent, immediate, direct, indirect and relative.</p>
+</section>
+<section id="contents">
+<h3>Contents<a class="headerlink" href="#contents" title="Permalink to this heading">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk9-sect1"><span class="std std-ref">What is an addressing mode?</span></a></p></li>
+</ul>
+<ul class="simple">
+<li><p><a class="reference internal" href="#wk9-sect2"><span class="std std-ref">Addressing modes on the Atmel ATmega328</span></a></p></li>
+</ul>
+</section>
+</section>
+<section id="what-is-an-addressing-mode">
+<span id="wk9-sect1"></span><h2>What is an addressing mode?<a class="headerlink" href="#what-is-an-addressing-mode" title="Permalink to this heading">#</a></h2>
+<p>An addressing mode is a way in which an operand is specified in an instruction and defines how the CPU finds it.</p>
+<p>There are different ways in which an operand may be specified in an instruction depending on what it is and where it is located.</p>
+<p>Some operations require no operands and the data to be operated on is <em>implied</em>, in other cases operands can be constants, variables, arrays and memory locations – this is where addressing modes are used.</p>
+<p>The six addressing modes found in the AVR architecture used by the Atmel ATmega328 family of processors are summarised in <a class="reference internal" href="#wk9-fig-addressing-modes"><span class="std std-numref">Fig. 103</span></a>.</p>
+<figure class="align-center" id="wk9-fig-addressing-modes">
+<a class="reference internal image-reference" href="../../_images/addressing_modes.png"><img alt="The six addressing modes of an AVR processor - inherent, immediate, extended, direct, relative and indexed." src="../../_images/addressing_modes.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 103 </span><span class="caption-text">The six addressing modes of an AVR processor.</span><a class="headerlink" href="#wk9-fig-addressing-modes" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The memory address where data is stored is called the  <em>effective address</em> of the operand and the addressing mode refers to the way in which the operand is specified and how the CPU accesses it.</p>
+<p><strong>Addressing modes</strong> are an aspect of the <em>instruction set architecture</em> in most <em>central processing unit</em> (CPU) designs. The various addressing modes that are defined in a given instruction set architecture define how the <em>machine language instructions</em> in that architecture identify the <em>operand</em>(s) of each instruction. An addressing mode specifies how to calculate the effective <em>memory address</em> of an operand by using information held in <em>registers</em> and/or constants contained within a machine instruction or elsewhere.</p>
+</section>
+<section id="addressing-modes-on-the-atmel-atmega328">
+<span id="wk9-sect2"></span><h2>Addressing modes on the Atmel ATmega328<a class="headerlink" href="#addressing-modes-on-the-atmel-atmega328" title="Permalink to this heading">#</a></h2>
+<p>The AVR<sup>®</sup> Enhanced RISC microcontroller supports powerful and efficient addressing modes for access to the program memory (Flash) and Data memory (SRAM, Register file, I/O Memory, and Extended I/O Memory).</p>
+<p>The Atmel ATmega328 microcontroller makes use of the following addressing modes:</p>
+<ul class="simple">
+<li><p>Inherent/Implied Addressing</p></li>
+<li><p>Register Direct (single and two-register) Addressing</p></li>
+<li><p>I/O Direct Addressing</p></li>
+<li><p>Data Direct Addressing</p></li>
+<li><p>Immediate Addressing</p></li>
+<li><p>Data Indirect Addressing</p></li>
+<li><p>Relative Addressing</p></li>
+<li><p>Program Addressing (Not covered)</p></li>
+</ul>
+<p>Apart from program addressing, we will discuss each of these addressing modes in the followin.g</p>
+<section id="inherent-addressing-mode">
+<h3>Inherent Addressing Mode<a class="headerlink" href="#inherent-addressing-mode" title="Permalink to this heading">#</a></h3>
+<p>For instructions that use <strong>inherent addressing</strong>, sometimes called <em>implicit</em> or <em>implied</em> addressing,  the operands are not explicitly specified but are implied by the instruction<a class="footnote-reference brackets" href="#inherent-addressing" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SEN</span>    <span class="p">;</span> <span class="n">Set</span> <span class="n">Negative</span> <span class="n">Flag</span> <span class="ow">in</span> <span class="n">Status</span> <span class="n">Register</span> <span class="p">(</span><span class="n">SREG</span><span class="p">)</span>
+<span class="n">CLN</span>    <span class="p">;</span> <span class="n">Clear</span> <span class="n">Nagative</span> <span class="n">Flag</span> <span class="ow">in</span> <span class="n">Status</span> <span class="n">Register</span> <span class="p">(</span><span class="n">SREG</span><span class="p">)</span>
+<span class="n">NOP</span>    <span class="p">;</span> <span class="n">No</span> <span class="n">Operation</span> <span class="p">(</span><span class="n">do</span> <span class="n">nothing</span> <span class="k">for</span> <span class="n">one</span> <span class="n">clock</span> <span class="n">cycle</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since no additional clock cycles are required to fetch and move data around, this is the <strong>simplest and fastest addressing mode</strong>.</p>
+<p>Some of the AVR instructions that use inherent addressing are listed in <a class="reference internal" href="#wk9-table1"><span class="std std-numref">Table 15</span></a>.</p>
+<table class="table" id="wk9-table1">
+<caption><span class="caption-number">Table 15 </span><span class="caption-text">AVR instructions that use inherent addressing</span><a class="headerlink" href="#wk9-table1" title="Permalink to this table">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Mnemonic</p></th>
+<th class="head"><p>Operands</p></th>
+<th class="head"><p>Decription</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLZ</span></code></p></td>
+<td></td>
+<td><p>Clear Zero Flag</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SEI</span></code></p></td>
+<td></td>
+<td><p>Global Interrupt Enable</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLI</span></code></p></td>
+<td></td>
+<td><p>Global Interrupy Disable</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SES</span></code></p></td>
+<td></td>
+<td><p>Set Sign Bit</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLS</span></code></p></td>
+<td></td>
+<td><p>Clear Sign Biy</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SEV</span></code></p></td>
+<td></td>
+<td><p>Set Two’s Complement Overflow</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLV</span></code></p></td>
+<td></td>
+<td><p>Clear Two’s Complement Overflow</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SET</span></code></p></td>
+<td></td>
+<td><p>SET T in SREG</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLT</span></code></p></td>
+<td></td>
+<td><p>Clear T in SREG</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">SEH</span></code></p></td>
+<td></td>
+<td><p>Set Half Carry Flag in SREG</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">CLH</span></code></p></td>
+<td></td>
+<td><p>Clear Half Carry Flag in SREG</p></td>
+</tr>
+</tbody>
+</table>
+<p>Microcontrollers that have single accumulators in place of a bank of general-purpose registers often have more instructions that use inherent addressing such as <code class="docutils literal notranslate"><span class="pre">CLRA</span></code>, <code class="docutils literal notranslate"><span class="pre">DECA</span></code>, <code class="docutils literal notranslate"><span class="pre">INCA</span></code>.</p>
+</section>
+<section id="register-direct-addressing">
+<h3>Register Direct Addressing<a class="headerlink" href="#register-direct-addressing" title="Permalink to this heading">#</a></h3>
+<p>For these operators, the operands are contained in registers in the <em>register file</em>. There are single register operators which operates on and returns the result to the destination register, known as Rd[^rd].</p>
+<p>Because the microcontroller can access the register file faster than memory, they are also fast instructions.</p>
+<section id="single-register-rd">
+<h4>Single Register (Rd)<a class="headerlink" href="#single-register-rd" title="Permalink to this heading">#</a></h4>
+<p>For instructions that use <strong>single direct register addressing</strong>, the operand is contained in the destination register Rd as illustrated in <a class="reference internal" href="#wk9-fig-srda"><span class="std std-numref">Fig. 104</span></a>.</p>
+<figure class="align-center" id="wk9-fig-srda">
+<a class="reference internal image-reference" href="../../_images/srda.png"><img alt="Illustrating single register direct addressing." src="../../_images/srda.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 104 </span><span class="caption-text">Illustrating single register direct addressing: d is the register number and register d is source of the operand and the destination of the result.</span><a class="headerlink" href="#wk9-fig-srda" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DEC</span> <span class="n">R16</span>		<span class="p">;</span><span class="n">Decrement</span> <span class="n">R16</span>
+<span class="n">INC</span> <span class="n">R17</span>		<span class="p">;</span><span class="n">Increment</span> <span class="n">R17</span>
+<span class="n">CLR</span> <span class="n">R16</span>		<span class="p">;</span><span class="n">Clear</span> <span class="n">R16</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Remember the operand represents the data so this addressing mode is accessing or acting on the data using only one of the general purpose registers but does not include any write back to SRAM/EEPROM.</p>
+</div>
+</section>
+<section id="two-register-rd-rr">
+<h4>Two Register (Rd, Rr)<a class="headerlink" href="#two-register-rd-rr" title="Permalink to this heading">#</a></h4>
+<p>For instructions that use <strong>direct register addressing with two registers</strong>, the operand is **contained in the source and destination registers Rr and Rd respectively. The result of this that the data in Rd is overwritten . This is illustrated in <a class="reference internal" href="#wk9-fig-rda-with-2-regs"><span class="std std-numref">Fig. 105</span></a>.</p>
+<figure class="align-center" id="wk9-fig-rda-with-2-regs">
+<a class="reference internal image-reference" href="../../_images/srda2.png"><img alt="Illustrating direct register addressing with two registers." src="../../_images/srda2.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 105 </span><span class="caption-text">Illustrating register direct addressing with two registers: d is the source of the first operand, r is the source of the second operand. The result overwrites the data in register d.</span><a class="headerlink" href="#wk9-fig-rda-with-2-regs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ADD</span> <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>  <span class="p">;</span><span class="n">Add</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">R16</span> <span class="ow">and</span> <span class="n">R17</span><span class="o">.</span> <span class="n">Return</span> <span class="nb">sum</span> <span class="n">to</span> <span class="n">R16</span><span class="o">.</span>
+<span class="n">CP</span> <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>   <span class="p">;</span><span class="n">Compare</span> <span class="n">the</span> <span class="n">values</span> <span class="n">of</span> <span class="n">R16</span> <span class="ow">and</span> <span class="n">R17</span>
+<span class="n">MOV</span> <span class="n">R16</span><span class="p">,</span> <span class="n">R17</span>  <span class="p">;</span><span class="n">Copy</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">R17</span> <span class="n">into</span> <span class="n">R16</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As with the previous addressing mode, this one is accessing or acting on the data in two of the general purpose registers and although it overwrites the data in Rd is also does not include any write back to SRAM/EEPROM.</p>
+</div>
+</section>
+</section>
+<section id="i-o-direct-addressing">
+<h3>I/O Direct Addressing<a class="headerlink" href="#i-o-direct-addressing" title="Permalink to this heading">#</a></h3>
+<p>Within the user data space there are 64 I/O registers as well as 160 Extended I/O registers. The <strong>first 64</strong> of these can be accessed using instructions <strong>such as <code class="docutils literal notranslate"><span class="pre">IN</span></code> and <code class="docutils literal notranslate"><span class="pre">OUT</span></code> using I/O direct addressing mode</strong>.  In I/O direct addressing mode the operands contain the <strong>address A of one of the lower 64 I/O locations</strong> and a source (Rr) or destination register (Rd). This is illustrated in <a class="reference internal" href="#wk9-fig-io-addr"><span class="std std-numref">Fig. 106</span></a>.</p>
+<figure class="align-center" id="wk9-fig-io-addr">
+<a class="reference internal image-reference" href="../../_images/io_addr.png"><img alt="Illustrating I/O direct register addressing - one of the operands comes from one of the I/O registers." src="../../_images/io_addr.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 106 </span><span class="caption-text">Illustrating I/O direct addressing: the source (or destination) will be from an I/O register. The destination (or source) will be one of the general purpose registers.</span><a class="headerlink" href="#wk9-fig-io-addr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples<a class="footnote-reference brackets" href="#wk9-note1" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a></strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">IN</span> <span class="n">R16</span><span class="p">,</span> <span class="n">PIND</span>	 <span class="p">;</span><span class="n">Load</span> <span class="p">(</span><span class="nb">input</span><span class="p">)</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">PIND</span> <span class="n">into</span> <span class="n">R16</span>
+<span class="n">OUT</span> <span class="n">PORTC</span><span class="p">,</span> <span class="n">R17</span>	 <span class="p">;</span><span class="n">Store</span> <span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">R17</span> <span class="n">to</span> <span class="n">PORTC</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Be aware that loading and storing data to these registers using instructions such as LD and ST must address these registers differently and does not use I/O direct addressing mode.</p>
+</div>
+</section>
+<section id="data-direct-addressing">
+<h3>Data Direct Addressing<a class="headerlink" href="#data-direct-addressing" title="Permalink to this heading">#</a></h3>
+<p>Instructions that use <strong>direct data addressing</strong> are <strong>two words</strong> (32-bits) in length, the first operand, Rr/Rd is one of the general-purpose registers and the second is 16-bit Data Address contained in the 16 LSBs of the two-word instruction.
+This is illustrated in <a class="reference internal" href="#wk9-fig-dd-addr"><span class="std std-numref">Fig. 107</span></a>.</p>
+<figure class="align-center" id="wk9-fig-dd-addr">
+<a class="reference internal image-reference" href="../../_images/dd_addr.png"><img alt="Illustrating data direct addressing with a general purpose register and data stored in memory." src="../../_images/dd_addr.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 107 </span><span class="caption-text">Illustrating data direct addressing: the source (or destination) will be in memory. The destination (or source) will be one of the general purpose registers.</span><a class="headerlink" href="#wk9-fig-dd-addr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDS</span> <span class="n">R16</span><span class="p">,</span> <span class="mh">0x0100</span>   <span class="p">;</span><span class="n">Load</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">data</span> <span class="n">space</span> <span class="n">address</span> <span class="nb">hex</span> <span class="mi">0100</span> <span class="n">into</span> <span class="n">R16</span>
+<span class="n">STS</span> <span class="mh">0x0101</span><span class="p">,</span> <span class="n">R17</span>   <span class="p">;</span><span class="n">Store</span> <span class="n">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">R17</span> <span class="n">to</span> <span class="n">data</span> <span class="n">space</span> <span class="n">address</span> <span class="nb">hex</span> <span class="mi">0101</span>
+</pre></div>
+</div>
+</section>
+<section id="immediate-addressing">
+<h3>Immediate Addressing<a class="headerlink" href="#immediate-addressing" title="Permalink to this heading">#</a></h3>
+<p>With instructions that use <strong>immediate addressing</strong> the actual data to be used is included within the instruction itself as a constant value<a class="footnote-reference brackets" href="#wk9-note2" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a>. This is illustrated in <a class="reference internal" href="#wk9-fig-imm-addr"><span class="std std-numref">Fig. 108</span></a>.</p>
+<figure class="align-center" id="wk9-fig-imm-addr">
+<a class="reference internal image-reference" href="../../_images/imm_addr.png"><img alt="Illustrating immediate addressing in which the operand is a number in the instruction." src="../../_images/imm_addr.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 108 </span><span class="caption-text">Illustrating immediate addressing: the destination will be an one of the general purpose registers. The source will be a data value given in the instruction.</span><a class="headerlink" href="#wk9-fig-imm-addr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDI</span> <span class="n">R16</span><span class="p">,</span> <span class="mh">0x5B</span>   <span class="p">;</span><span class="n">Load</span> <span class="n">the</span> <span class="nb">hex</span> <span class="n">value</span> <span class="mi">5</span><span class="n">B</span> <span class="n">into</span> <span class="n">R16</span>
+<span class="n">SUBI</span> <span class="n">R17</span><span class="p">,</span> <span class="mi">24</span>    <span class="p">;</span><span class="n">Subtract</span> <span class="n">the</span> <span class="n">decimal</span> <span class="n">value</span> <span class="mi">24</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">contents</span> <span class="n">of</span> <span class="n">R17</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since the instruction already contains the data, this is a fast addressing mode and only takes one clock cycle to complete.</p>
+</div>
+<section id="immediate-vs-data-direct-addressing">
+<h4>Immediate vs Data Direct Addressing<a class="headerlink" href="#immediate-vs-data-direct-addressing" title="Permalink to this heading">#</a></h4>
+<p>Instructions that use immediate addressing, take one clock-cycle to complete. For example <code class="docutils literal notranslate"><span class="pre">LDI</span></code> - load immediate:</p>
+<img alt="Manual page for the LDI command" src="../../_images/wk9_ldi.png" />
+<p>Instructions that use register or data direct addressing, take two clock-cycles to complete. For example <code class="docutils literal notranslate"><span class="pre">LDS</span></code> - load from store
+needs to load the operator and decode the register address, then load data from the data space into the register.</p>
+<img alt="Manual page for the LDS command" src="../../_images/wk9_lds.png" />
+</section>
+</section>
+<section id="indirect-data-addressing">
+<h3>Indirect Data Addressing<a class="headerlink" href="#indirect-data-addressing" title="Permalink to this heading">#</a></h3>
+<p>With instructions that use <strong>indirect data addressing</strong> the operand address is the contents of one of the X- Y- Z-pointer registers. This is illustrated in <a class="reference internal" href="#wk9-fig-id-addr"><span class="std std-numref">Fig. 109</span></a>.</p>
+<figure class="align-center" id="wk9-fig-id-addr">
+<a class="reference internal image-reference" href="../../_images/id_addr.png"><img alt="Illustrating indirect direct addressing in which the registers provide the address of the operand." src="../../_images/id_addr.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 109 </span><span class="caption-text">Illustrating indirect direct addressing in which two registers provide the address in memory of the operand.</span><a class="headerlink" href="#wk9-fig-id-addr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDS</span> <span class="n">R26</span><span class="p">,</span> <span class="mh">0x00</span>
+<span class="n">LDS</span> <span class="n">R27</span><span class="p">,</span> <span class="mh">0x10</span> 
+
+<span class="n">LD</span> <span class="n">R18</span><span class="p">,</span> <span class="n">X</span>	   <span class="p">;</span><span class="n">Load</span> <span class="n">R18</span> <span class="k">with</span> <span class="n">data</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">the</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">X</span><span class="o">-</span> <span class="n">pointer</span> <span class="n">register</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This mode allows the address to be a run time computed value, whereas the direct address must be computed at compile time/assembly time/load time.</p>
+<p>This has several important use cases including setting up storage for arrays or other structures in memory.</p>
+</div>
+<section id="indirect-data-addressing-with-displacement">
+<h4>Indirect Data Addressing with Displacement<a class="headerlink" href="#indirect-data-addressing-with-displacement" title="Permalink to this heading">#</a></h4>
+<p>As with indirect data addressing, the microcontroller makes use of the Y and/or Z pointers with an additional displacement to access data stored in the data space.</p>
+<p>This is the best way to access an array of data and is illustrated in <a class="reference internal" href="#wk9-fig-id-addr-2"><span class="std std-numref">Fig. 110</span></a>.</p>
+<figure class="align-center" id="wk9-fig-id-addr-2">
+<a class="reference internal image-reference" href="../../_images/id_addr_2.png"><img alt="Illustrating indirect direct addressing with displacement." src="../../_images/id_addr_2.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 110 </span><span class="caption-text">Illustrating indirect direct addressing with displacement.</span><a class="headerlink" href="#wk9-fig-id-addr-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LDS</span> <span class="n">R28</span><span class="p">,</span> <span class="mh">0x00</span>
+<span class="n">LDS</span> <span class="n">R29</span><span class="p">,</span> <span class="mh">0x10</span> 
+
+<span class="n">LD</span> <span class="n">R18</span><span class="p">,</span> <span class="n">Y</span> <span class="o">+</span> <span class="mi">1</span>	   <span class="p">;</span><span class="n">Load</span> <span class="n">R18</span> <span class="k">with</span> <span class="n">data</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">the</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Y</span><span class="o">-</span> <span class="n">pointer</span> <span class="n">register</span> <span class="k">with</span> <span class="n">a</span> <span class="n">displacement</span> <span class="n">of</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This mode allows the address to be a run time computed value, whereas the direct address must be computed at compile time/assembly time/load time.</p>
+</div>
+</section>
+<section id="indirect-data-addressing-with-increment-decrement">
+<h4>Indirect Data Addressing with Increment/Decrement<a class="headerlink" href="#indirect-data-addressing-with-increment-decrement" title="Permalink to this heading">#</a></h4>
+<p>Indirect Data Addressing mode also supports Post-increment and Pre-decrement addressing.
+W
+ith Data Indirect Addressing with Post-increment, the X-, Y-, or the Z-pointer is incremented after the operation. The operand address is the content of the X-, Y-, or the Z-pointer before incrementing.</p>
+<p>With Data Indirect Addressing with Pre-decrement, the X,- Y-, or the Z-pointer is decremented before the operation. The operand address is the decremented contents of the X-, Y-, or the Z-pointer.</p>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LD</span> <span class="n">R16</span><span class="p">,</span> <span class="n">Z</span><span class="o">+</span> <span class="p">;</span><span class="n">Load</span> <span class="n">R16</span> <span class="k">with</span> <span class="n">data</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">the</span> <span class="n">current</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Z</span> <span class="n">pointer</span> <span class="n">register</span> <span class="n">then</span> <span class="n">increment</span> <span class="n">the</span> <span class="n">Z</span> <span class="n">register</span>
+<span class="n">LD</span> <span class="n">R16</span><span class="p">,</span> <span class="o">-</span><span class="n">Z</span> <span class="p">;</span><span class="n">Load</span> <span class="n">R16</span> <span class="k">with</span> <span class="n">data</span> <span class="n">stored</span> <span class="n">at</span> <span class="n">the</span> <span class="n">current</span> <span class="n">address</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">Z</span> <span class="n">pointer</span> <span class="n">register</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This mode is useful for iterating through arrays of or sequentially stored linked data.</p>
+</div>
+</section>
+</section>
+<section id="relative-addressing">
+<h3>Relative Addressing<a class="headerlink" href="#relative-addressing" title="Permalink to this heading">#</a></h3>
+<p>With relative program memory addressing the operand contains a signed 12-bit offset value which during execution is added to the program counter to change the flow of the program.</p>
+<p>The destination of the branch (effective address) instruction is calculated by adding the signed byte following the opcode (-2048 to +2047) to the PC content. This is illustrated in <a class="reference internal" href="#wk9-fig-rel-addr"><span class="std std-numref">Fig. 111</span></a>.</p>
+<figure class="align-center" id="wk9-fig-rel-addr">
+<a class="reference internal image-reference" href="../../_images/rel_addr.png"><img alt="Illustrating relative addressing which adjusts the program counter and is typically used for branching." src="../../_images/rel_addr.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 111 </span><span class="caption-text">Illustrating relative addressing which adjusts the program counter and is typically used for branching.</span><a class="headerlink" href="#wk9-fig-rel-addr" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>Examples</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RJMP</span> <span class="n">Label</span>	<span class="p">;</span><span class="n">Jump</span> <span class="n">to</span> <span class="n">the</span> <span class="n">address</span> <span class="n">specified</span> <span class="n">by</span> <span class="n">label</span>
+<span class="n">RCALL</span> <span class="n">Label</span>	<span class="p">;</span><span class="n">relative</span> <span class="n">call</span> <span class="n">to</span> <span class="n">an</span> <span class="n">address</span> <span class="p">(</span><span class="n">subroutine</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This addressing mode is used by instructions such as RJMP to modify the flow of a program, this typically is used in conjunction with test conditions or at the end of the code to make it loop back to the start.</p>
+</div>
+<section id="relative-addressing-example">
+<h4>Relative Addressing Example<a class="headerlink" href="#relative-addressing-example" title="Permalink to this heading">#</a></h4>
+<figure class="align-center" id="wk9-fig-rel-addr-2">
+<a class="reference internal image-reference" href="../../_images/rad_example.png"><img alt="Example of relative addressing" src="../../_images/rad_example.png" style="width: 100%;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 112 </span><span class="caption-text">An example to illustrate relative addressing</span><a class="headerlink" href="#wk9-fig-rel-addr-2" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<a class="reference internal image-reference" href="../../_images/rel_addr_2.png"><img alt="RJMP LED1" src="../../_images/rel_addr_2.png" style="width: 50%;" /></a>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">RJMP</span> <span class="n">LED1</span>
+<span class="mi">1100</span> <span class="n">kkkk</span> <span class="n">kkkk</span> <span class="n">kkkk</span>
+</pre></div>
+</div>
+<p>is</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">C006</span> <span class="o">=</span> <span class="mi">1100</span> <span class="mi">0000</span> <span class="mi">0000</span> <span class="mi">0110</span>
+<span class="n">RJMP</span> <span class="o">+</span><span class="mi">6</span>
+</pre></div>
+</div>
+<img alt="The program counter jumps 6 memory locations forward." src="../../_images/rel_addr_3.png" />
+</section>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this section have reviewed different addressing modes supported by the AVR instruction set commenting on use cases and speed (in clock cycles) of their operation.</p>
+</section>
+<section id="on-canvas">
+<h2>On Canvas<a class="headerlink" href="#on-canvas" title="Permalink to this heading">#</a></h2>
+<p>You should review Section 3 of the AVR instructions set manual (<span id="id4">[<a class="reference internal" href="../../references.html#id9" title="Atmel. AVR(R) Instruction Set Manual. Microchip. URL: https://ww1.microchip.com/downloads/en/DeviceDoc/AVR-Instruction-Set-Manual-DS40002198A.pdf.">1</a>]</span>) on program and data addressing modes. There is a short quiz covering the content of this chapter.</p>
+<p>In preparation for the class test next week, you should review all the content covered in these lecture notes, self-directed study material and the lab classes.</p>
+<p>Note that the class test is closed-book but you have will access to the reference manuals mentioned in these notes.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="inherent-addressing" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>In inherent addressing the effective address that the operation acts on is the register itself.</p>
+</aside>
+<aside class="footnote brackets" id="wk9-note1" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
+<p>Note: in these examples, the labels  <code class="docutils literal notranslate"><span class="pre">PIND</span></code> and <code class="docutils literal notranslate"><span class="pre">PORTC</span></code> must have already been defined.</p>
+</aside>
+<aside class="footnote brackets" id="wk9-note2" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">3</a><span class="fn-bracket">]</span></span>
+<p>the value of the second operand of an operator with immediate addressing will be hard coded into the code and cannot be changed during the running of a program.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./lectures/week09"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../week08/index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Microcontroller Architecture – Program Operation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../../references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topics-discussed">Topics discussed</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-an-addressing-mode">What is an addressing mode?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#addressing-modes-on-the-atmel-atmega328">Addressing modes on the Atmel ATmega328</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inherent-addressing-mode">Inherent Addressing Mode</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-direct-addressing">Register Direct Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#single-register-rd">Single Register (Rd)</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#two-register-rd-rr">Two Register (Rd, Rr)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-o-direct-addressing">I/O Direct Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-direct-addressing">Data Direct Addressing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#immediate-addressing">Immediate Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#immediate-vs-data-direct-addressing">Immediate vs Data Direct Addressing</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing">Indirect Data Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing-with-displacement">Indirect Data Addressing with Displacement</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#indirect-data-addressing-with-increment-decrement">Indirect Data Addressing with Increment/Decrement</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-addressing">Relative Addressing</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-addressing-example">Relative Addressing Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#on-canvas">On Canvas</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Dr Chris P. Jobling
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023 Swansea University.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
