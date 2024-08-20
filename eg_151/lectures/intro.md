@@ -38,29 +38,29 @@ kernelspec:
 
 **Module Coordinator**
 
-[c.p.jobling@swansea.ac.uk](mailto:c.p.jobling@swansea.ac.uk)
+**Email**: [c.p.jobling@swansea.ac.uk](mailto:c.p.jobling@swansea.ac.uk)
 
-Office Hour: Tuesdays 13:00 on Zoom. (From Monday 8th October)
+**Office Hour**: Tuesdays 13:00 on Zoom. (From Monday 8th October)
 
-Office: Engineering East, B206
+**Office Location**: Engineering East, B206
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(welcome:staff:chris)=
+(welcome:staff:hayder)=
 ###  Dr Hayder Jahanger
 
-```pictures/hayder.jpg
+```{image} pictures/jahanger.png
 :alt: A photograph of Dr Hayder Jahanger
 :width: 25%
 ```
 
 **Module Lecturer**
 
-[hayder.jahanger@swansea.ac.uk](mailto:hayder.jahanger@swansea.ac.uk)
+**Email**: [hayder.jahanger@swansea.ac.uk](mailto:hayder.jahanger@swansea.ac.uk)
 
-Office Hour: 
+**Office Hour**: TBC
 
-Office: Engineering East, B206
+**Office Location**: Engineering Central, C217
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
