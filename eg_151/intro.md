@@ -4,9 +4,15 @@
 
 **Publisher**: Department of ELectronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University, Swansea UK.
 
-**Publication Date**: September 2023.
+**Publication Date**: August 2024.
 
 **Citing this Document**: When referencing this document please use the following format based on the library supported [Swansea Vancouver Style](https://libguides.swansea.ac.uk/Vancouver):
+
+> Jobling, C.P., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.
+
+To cite a chapter, e.g. for a lab exercise, use the more precise citation, such as:
+
+> Jobling, C.P., Davies, T, Clifford, B. Experiment 1: Binary Counter [Intenet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.
 
 
 ## Welcome to EG-151 Microcontrollers
@@ -30,7 +36,3 @@ During the first class meeting we will introduce this online textbook and how th
 There is a version of this site that is published as a textbook in PDF form. It can be downloaded from [cpjobling.github.io/eg-151-textbook/eg-151-microcontrollers.pdf](https://cpjobling.github.io/eg-151-textbook/eg-151-microcontrollers.pdf). 
 
 The PDF file linked to this page is updated automatically when the website is updated. It is also linked to the Canvas site. Please be aware that once downloaded, the PDF will no longer tack the website so you should always download the latest version before using it.
-
-```python
-x
-```

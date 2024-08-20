@@ -40,7 +40,25 @@ kernelspec:
 
 [c.p.jobling@swansea.ac.uk](mailto:c.p.jobling@swansea.ac.uk)
 
-Office Hour: Mondays 11:30 on Zoom. (From Monday 9th October)
+Office Hour: Tuesdays 13:00 on Zoom. (From Monday 8th October)
+
+Office: Engineering East, B206
+
++++ {"slideshow": {"slide_type": "slide"}}
+
+(welcome:staff:chris)=
+###  Dr Hayder Jahanger
+
+```{image} pictures/hayder.jpg
+:alt: A photograph of Dr Hayder Jahanger
+:width: 25%
+```
+
+**Module Lecturer**
+
+[hayder.jahanger@swansea.ac.uk](mailto:hayder.jahanger@swansea.ac.uk)
+
+Office Hour: 
 
 Office: Engineering East, B206
 
@@ -54,7 +72,7 @@ Office: Engineering East, B206
 :width: 35%
 ```
 
-**Guest Lecturer**
+**Guest Lecturer** Ben wrote the original lecture notes.
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -66,7 +84,7 @@ Office: Engineering East, B206
 :width: "35%"
 ```
 
-**Guest Lecturer**
+**Guest Lecturer** Timothy developed the laboratory exercises and the mini project.
 
 [t.davies@swansea.ac.uk](mailto:t.davies@swansea.ac.uk)
 
@@ -75,7 +93,7 @@ Office: Engineering East, B206
 (welcome:course_site)=
 ## Course Site
 
-The home page for this course is "2324_EG-151_Microcontrollers" on your Canvas dashboard
+The home page for this course is "2425_EG-151_Microcontrollers" on your Canvas dashboard
 
 ```{image} pictures/image8.png
 :alt: The course entry page on Canvas dashboard
@@ -93,13 +111,13 @@ The home page for this course is "2324_EG-151_Microcontrollers" on your Canvas d
 
     -   Tuesday 11:00 &ndash; 11:50
 
-    -   School of Management, Room 011
+    -   Y Twyni, Room 105
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
 -   Laboratory class
 
-    -   Thursday 9:00 &ndash; 11:00, Friday 10:00  &ndash; 12:00
+    -   10:00 &ndash; 12:00 Thursday and Friday
 
     -   Engineering East, Room B107 Electronics Lab
 
@@ -147,7 +165,7 @@ There are four formal assessment components to this course:
 
 1.  **Lab introduction exercise** &ndash; 15%
 
-    -   During the first two weeks of term, the laboratory will be used
+    -   During the first four weeks of term, the laboratory will be used
         for a laboratory introduction exercise covering health and
         safety, a breadboard construction exercise, a simulation
         exercise and a soldering exercise.The laboratory introduction is
@@ -159,12 +177,12 @@ There are four formal assessment components to this course:
 2.  **Five short 'C' language programming exercises** &ndash; 20% (4% each)
 
     -   An example program will be provided which students are expected
-        to modify so as it performs the required functions. The 4
+        to modify so as it performs the required functions. The 5
         exercises involve creating a binary counter, reading a digital
-        input, reading an analogue input and working with arrays.
+        input, reading an analogue input and working with arrays, and writing information to an LCD display device.
         Assessment will be through submission of a lab diary containing
         the modified and commented code, a flow chart and a description
-        of the changes made. Submission will be through the Turnitin
+        of the changes made. Submission will be through the Canvas
         platform.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
@@ -185,12 +203,12 @@ There are four formal assessment components to this course:
     -   The class test will be online and based on content covered in the
         lectures and laboratory sessions.These questions will be similar
         to those presented in each weekly quiz. For the practical
-        assessment marks to count, you must achieve at least 30% in the
+        assessment marks to count, you must achieve at least 40% in the
         Formal Test.You will have one attempt to redeem a failure before
-        the end of semester 1. If you achieve less than 30% after this,
+        the end of semester 1. If you achieve less than 40% after this,
         then the course mark will be just the Class Test mark and you
         will be required to sit a supplementary exam in August.
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-**Additionally, to pass this course you must achieve at least 40% in each component and have an 80% attendance rate at both lectures and laboratory classes**.
+**Additionally, to be allowed a supplementary examination for this course you must have an 80% attendance rate in laboratory classes**.
