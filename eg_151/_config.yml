@@ -19,6 +19,7 @@ execute:
 latex:
   latex_documents:
     targetname: eg-151-microcontrollers.tex
+  latex_engine: lualatex
 
 # Add a bibtex file so that we can create citations
 bibtex_bibfiles:

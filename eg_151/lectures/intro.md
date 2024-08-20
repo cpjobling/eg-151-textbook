@@ -49,7 +49,7 @@ Office: Engineering East, B206
 (welcome:staff:chris)=
 ###  Dr Hayder Jahanger
 
-```{image} pictures/hayder.jpg
+```pictures/hayder.jpg
 :alt: A photograph of Dr Hayder Jahanger
 :width: 25%
 ```
