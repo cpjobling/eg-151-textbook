@@ -1,0 +1,112 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "",
+    "text": "Croeso/Welcome\nEG-151 Microcontrollers is a first year engineering course for those studying Electrical and Electronic Engineering and General Engineering which introduces basic microcontroller structure and operation designed to teach you both theoretical and practical skills in microcontrollers. It consists of an introduction to the Electronic and Electrical Engineering laboratory, a lecture course on the architecture and operation of the Atmel ATmega328 microcontroller (from Microchip Technology), and a series of Arduino programming laboratories culminating in a mini-project in which you will apply their experience to a simple practical problem.\nIn the website version of this textbook, the table of contents is in the left sidebar and the page contents is in the right sidebar.",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "2  Introduction",
+    "section": "",
+    "text": "This is a book created from markdown and executable code.\nSee Knuth (1984) for additional discussion of literate programming.\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.",
+    "crumbs": [
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome-to-eg-151-microcontrollers",
+    "href": "index.html#welcome-to-eg-151-microcontrollers",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "1.1 Welcome to EG-151 Microcontrollers",
+    "text": "1.1 Welcome to EG-151 Microcontrollers\nEG-151 Microcontrollers is a first year engineering course for those studying Electrical and Electronic Engineering and General Engineering which introduces basic microcontroller structure and operation designed to teach you both theoretical and practical skills in microcontrollers. It consists of an introduction to the Electronic and Electrical Engineering laboratory, a lecture course on the architecture and operation of the Atmel ATmega328 microcontroller (from Microchip Technology), and a series of Arduino programming laboratories culminating in a mini-project in which you will apply their experience to a simple practical problem.\nThe full table of contents for this course is given below.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>EG-151 Microcontrollers 2023-2024</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#table-of-contents",
+    "href": "index.html#table-of-contents",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "Table of Contents",
+    "text": "Table of Contents",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#tour-of-the-canvas-site",
+    "href": "index.html#tour-of-the-canvas-site",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "Tour of the Canvas site",
+    "text": "Tour of the Canvas site\nDuring the first class meeting we will introduce this online textbook and how the course materials are presented to you via Canvas.",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#pdf-version-of-this-web-site",
+    "href": "index.html#pdf-version-of-this-web-site",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "PDF Version of this Web Site",
+    "text": "PDF Version of this Web Site\nThere is a version of this site that is published as a textbook in PDF form. It can be downloaded from cpjobling.github.io/eg-151-textbook/eg-151-microcontrollers.pdf.\nThe PDF file linked to this page is updated automatically when the website is updated. It is also linked to the Canvas site. Please be aware that once downloaded, the PDF will no longer tack the website so you should always download the latest version before using it.",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#colophon",
+    "href": "index.html#colophon",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "Colophon",
+    "text": "Colophon\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#citing-this-document-when-referencing-this-document-please-use-the-following-format-based-on-the-library-supported-swansea-vancouver-style",
+    "href": "index.html#citing-this-document-when-referencing-this-document-please-use-the-following-format-based-on-the-library-supported-swansea-vancouver-style",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "0.5 Citing this Document**: When referencing this document please use the following format based on the library supported Swansea Vancouver Style:",
+    "text": "0.5 Citing this Document**: When referencing this document please use the following format based on the library supported Swansea Vancouver Style:\n\nJobling, C.P., Jahanger, H., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.\n\nTo cite a chapter, e.g. for a lab exercise, use the more precise citation, such as:\n\nJobling, C.P., Jahanger, H., Davies, T, Clifford, B. Experiment 1: Binary Counter [Internet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.\n\nThis is a Quarto book.\nTo learn more about Quarto books visit https://quarto.org/docs/books.",
+    "crumbs": [
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Welcome to EG-151 Microcontrollers</span>"
+    ]
+  },
+  {
+    "objectID": "index.html#citing-this-document",
+    "href": "index.html#citing-this-document",
+    "title": "EG-151 Microcontrollers 2024-2025",
+    "section": "Citing this Document",
+    "text": "Citing this Document\nWhen referencing this document please use the following format based on the library supported Swansea Vancouver Style:\n\nJobling, C.P., Jahanger, H., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.\n\nTo cite a chapter, e.g. for a lab exercise, use the more precise citation, such as:\n\nJobling, C.P., Jahanger, H., Davies, T, Clifford, B. Experiment 1: Binary Counter [Internet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.",
+    "crumbs": [
+      "Croeso/Welcome"
+    ]
+  }
+]
