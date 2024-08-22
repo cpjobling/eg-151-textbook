@@ -15,6 +15,7 @@ kernelspec:
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
 (welcome)=
+
 # Croeso i Brifysgol Abertawe | Welcome to Swansea University
 
 ## EG-151 Microcontrollers
@@ -24,12 +25,14 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:module_staff)=
+
 ## Module Staff
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:staff:chris)=
-###  Dr Chris Jobling
+
+### Dr Chris Jobling
 
 ```{image} pictures/chris.jpg
 :alt: A photograph of Dr Chris Jobling
@@ -47,7 +50,8 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:staff:hayder)=
-###  Dr Hayder Jahanger
+
+### Dr Hayder Jahanger
 
 ```{image} pictures/jahanger.png
 :alt: A photograph of Dr Hayder Jahanger
@@ -65,6 +69,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:staff:ben)=
+
 ### Dr Ben Clifford
 
 ```{image} pictures/ben.png
@@ -77,7 +82,8 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:staff:timothy)=
-###  Dr Timothy Davies
+
+### Dr Timothy Davies
 
 ```{image} pictures/tim.jpg
 :alt: A photograph of Dr Timothy Davies
@@ -91,6 +97,7 @@ kernelspec:
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:course_site)=
+
 ## Course Site
 
 The home page for this course is "2425_EG-151_Microcontrollers" on your Canvas dashboard
@@ -105,29 +112,30 @@ The home page for this course is "2425_EG-151_Microcontrollers" on your Canvas d
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:course_delivery)=
+
 ## Course Delivery
 
--   Lecture Class
+- Lecture Class
 
-    -   Tuesday 11:00 &ndash; 11:50
+  - Tuesday 11:00 &ndash; 11:50
 
-    -   Y Twyni, Room 105
-
-+++ {"slideshow": {"slide_type": "fragment"}}
-
--   Laboratory class
-
-    -   10:00 &ndash; 12:00 Thursday and Friday
-
-    -   Engineering East, Room B107 Electronics Lab
+  - Y Twyni, Room 105
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
--   Self Directed Learning (50 Hours over 10 Weeks)
+- Laboratory class
 
-    -   Review lecture material and supporting content
+  - 10:00 &ndash; 12:00 Thursday and Friday
 
-    -   Online activities including quizzes and discussion forums
+  - Engineering East, Room B107 Electronics Lab
+
++++ {"slideshow": {"slide_type": "fragment"}}
+
+- Self Directed Learning (50 Hours over 10 Weeks)
+
+  - Review lecture material and supporting content
+
+  - Online activities including quizzes and discussion forums
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -146,26 +154,27 @@ Applications of microcontrollers, and programming in both assembly and 'C' langu
 
 ### Key Topics
 
--   Microcontroller fundamentals and architecture.
+- Microcontroller fundamentals and architecture.
 
--   Microcontroller programming: instruction execution; basic instructions.
+- Microcontroller programming: instruction execution; basic instructions.
 
--   Software design and development tools.
+- Software design and development tools.
 
--   Assembly and C programming languages,
+- Assembly and C programming languages,
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
 (welcome:course_assessment)=
+
 ### Course Assessment
 
 There are four formal assessment components to this course:
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-1.  **Lab introduction exercise** &ndash; 15%
+1. **Lab introduction exercise** &ndash; 15%
 
-    -   During the first four weeks of term, the laboratory will be used
+    - During the first four weeks of term, the laboratory will be used
         for a laboratory introduction exercise covering health and
         safety, a breadboard construction exercise, a simulation
         exercise and a soldering exercise.The laboratory introduction is
@@ -174,9 +183,9 @@ There are four formal assessment components to this course:
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-2.  **Five short 'C' language programming exercises** &ndash; 20% (4% each)
+2. **Five short 'C' language programming exercises** &ndash; 20% (4% each)
 
-    -   An example program will be provided which students are expected
+    - An example program will be provided which students are expected
         to modify so as it performs the required functions. The 5
         exercises involve creating a binary counter, reading a digital
         input, reading an analogue input and working with arrays, and writing information to an LCD display device.
@@ -187,9 +196,9 @@ There are four formal assessment components to this course:
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-3.  **A mini project** &ndash; 30%
+3. **A mini project** &ndash; 30%
 
-    -   The mini project will require each student to create a program
+    - The mini project will require each student to create a program
         to achieve a certain task making use of the knowledge gained
         during the lectures and four lab exercises. Assessment will be
         through submission of a lab diary containing the modified and
@@ -198,9 +207,9 @@ There are four formal assessment components to this course:
 
 +++ {"slideshow": {"slide_type": "fragment"}}
 
-4.  **Formal Class Test**  &ndash; 35%
+4. **Formal Class Test**  &ndash; 35%
 
-    -   The class test will be online and based on content covered in the
+    - The class test will be online and based on content covered in the
         lectures and laboratory sessions.These questions will be similar
         to those presented in each weekly quiz. For the practical
         assessment marks to count, you must achieve at least 40% in the
