@@ -42,7 +42,7 @@ kernelspec:
 
 **Office Hour**: Tuesdays 13:00 on Zoom. (From Monday 8th October)
 
-**Office Location**: Engineering East, B206
+**Office Location**: Room B206, Engineering East
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
@@ -60,7 +60,7 @@ kernelspec:
 
 **Office Hour**: TBC
 
-**Office Location**: Engineering Central, C217
+**Office Location**: Room 202, Engineering North
 
 +++ {"slideshow": {"slide_type": "slide"}}
 

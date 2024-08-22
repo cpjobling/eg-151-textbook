@@ -1,6 +1,6 @@
 # EG-151 Microcontrollers 2023-2024
 
-**Authors** Dr Chris Jobling, Dr Timothy Davies, Dr Ben Clifford
+**Authors** Dr Chris Jobling, Dr Hayder Jahanger, Dr Timothy Davies, Dr Ben Clifford
 
 **Publisher**: Department of ELectronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University, Swansea UK.
 
@@ -8,11 +8,11 @@
 
 **Citing this Document**: When referencing this document please use the following format based on the library supported [Swansea Vancouver Style](https://libguides.swansea.ac.uk/Vancouver):
 
-> Jobling, C.P., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.
+> Jobling, C.P., Jahanger, H., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.
 
 To cite a chapter, e.g. for a lab exercise, use the more precise citation, such as:
 
-> Jobling, C.P., Davies, T, Clifford, B. Experiment 1: Binary Counter [Intenet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.
+> Jobling, C.P., Jahanger, H., Davies, T, Clifford, B. Experiment 1: Binary Counter [Intenet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.
 
 
 ## Welcome to EG-151 Microcontrollers
