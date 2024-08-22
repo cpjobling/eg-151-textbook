@@ -4,7 +4,7 @@
 format: jb-book
 root: intro
 parts:
-  - caption: Introduction
+  - caption: Course Introduction
     chapters:
      - file: intro/course_aims
      - file: intro/course_delivery
