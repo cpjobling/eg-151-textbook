@@ -15,7 +15,6 @@ The full table of contents for this course is given below.
 ## Table of Contents
 
 ```{tableofcontents}
-
 ```
 
 ## Tour of the Canvas site
@@ -38,6 +37,6 @@ To cite a chapter, e.g. for a lab exercise, use the more precise citation, such 
 
 > Jobling, C.P., Jahanger, H., Davies, T, Clifford, B. Experiment 1: Binary Counter [Intenet]. Swansea: Swansea University; 2024 August. EG-151 Microcontrollers [Internet]; 2024 August [cited 2024 Mmm dd]; [1 screen]. Available from; https://cpjobling.github.io/eg-151-textbook/labs/lab01/index.html.
 
-## Colophon 
+## Colophon
 
 This online textbook was build using [Jupyter Book](https://jupyterbook.org/en/stable/intro.html) which is part of the [Executable Documents](https://executablebooks.org/en/latest/) project.
