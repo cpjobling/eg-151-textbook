@@ -2,7 +2,7 @@
 
 **Authors** Dr Chris Jobling, Dr Hayder Jahanger, Dr Timothy Davies, Dr Ben Clifford
 
-**Publisher**: Department of ELectronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University, Swansea UK.
+**Publisher**: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University, Swansea UK.
 
 **Publication Date**: August 2024.
 

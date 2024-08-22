@@ -131,7 +131,7 @@ The home page for this course is "2425_EG-151_Microcontrollers" on your Canvas d
 
 +++ {"slideshow": {"slide_type": "slide"}}
 
-(wlecome:course_overview)=
+(welcome:course_overview)=
 ## Course Overview
 
 This course is made up of lectures which introduce the basics of microcontroller architecture and operation,and how they are programmed
