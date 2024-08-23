@@ -1,4 +1,5 @@
-## Croeso/Welcome {.unnumbered}
+# EG-151 Microcontrollers {.unnumbered}
+## Croeso/Welcome
 
 EG-151 Microcontrollers is a first year engineering course for those studying Electrical and Electronic Engineering and General Engineering which introduces basic microcontroller structure and operation designed to teach you both theoretical and practical skills in microcontrollers. It consists of an introduction to the Electronic and Electrical Engineering laboratory, a lecture course on the architecture and operation of the Atmel ATmega328 microcontroller (from Microchip Technology), and a series of Arduino programming laboratories culminating in a mini-project in which you will apply their experience to a simple practical problem.
 
