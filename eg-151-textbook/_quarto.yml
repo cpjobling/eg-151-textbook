@@ -19,7 +19,8 @@ book:
     - "Ben Clifford"
   publisher: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University
   publisher-place: Swansea, UK
-  date: 08/23/2024
+  date: 08/26/2024
+  body-footer: Copyright &copy; 2024 Swansea University. All rights reserved.
   comments: 
     hypothesis:
       theme: clean
@@ -47,8 +48,11 @@ format:
     theme: cosmo
     toc: true
     code-copy: true
+    
   pdf:
-    documentclass: scrreprt
+    documentclass: scrbook
+    output-file: eg-151-textbook.pdf
+    papersize: a4
 
 # root: intro
 # parts:
