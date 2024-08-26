@@ -28,8 +28,14 @@ book:
     - index.qmd
     - part: "Course Introduction"
       chapters:
-       - intro/course_aims.qmd
-       - intro/course_delivery.qmd
+       - intro_course_aims.qmd
+       - intro_course_delivery.qmd
+    - part: lectures.qmd
+      chapters: 
+        - lectures_intro.qmd
+        - week01.qmd
+        - data_representation.qmd
+        - week02.qmd
     - references.qmd
 
 bibliography: references.bib
