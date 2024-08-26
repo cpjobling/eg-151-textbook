@@ -8,5 +8,6 @@ _slides
 *.aux
 index.pdf
 *.toc
+*_files
 
 
