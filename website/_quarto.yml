@@ -33,10 +33,10 @@ book:
         - intro/course_delivery.qmd
     - part: lectures/index.qmd
       chapters:
-        - lectures/intro.qmd
-        - lectures/week01/index.qmd
-        - lectures/data_representation/index.qmd
-        - lectures/week02/index.qmd
+        - lectures/lecture00.qmd
+        - lectures/lecture01/index.qmd
+        - lectures/lecture02/index.qmd
+        - lectures/lecture03/index.qmd
     - references.qmd
 
 bibliography: references.bib
