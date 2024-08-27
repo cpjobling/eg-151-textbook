@@ -33,10 +33,10 @@ book:
         - intro/course_delivery.qmd
     - part: lectures/index.qmd
       chapters:
-        - lectures/lecture00.qmd
-        - lectures/lecture01/index.qmd
-        - lectures/lecture02/index.qmd
-        - lectures/lecture03/index.qmd
+        - lectures/intro.qmd
+        - lectures/week01/index.qmd
+        - lectures/data_representation/index.qmd
+        - lectures/week02/index.qmd
     - references.qmd
 
 bibliography: references.bib
@@ -54,6 +54,8 @@ format:
     documentclass: scrbook
     output-file: eg-151-textbook.pdf
     papersize: a4
+    highlight-style: github
+    keep-tex: true
 # root: intro
 # parts:
 #   - caption: Course Introduction

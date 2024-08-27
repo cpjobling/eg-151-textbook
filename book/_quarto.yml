@@ -52,7 +52,7 @@ format:
   pdf:
     documentclass: scrbook
     papersize: a4
-    latex-outut-dir: ../website/_build/latex
     pdf-engine: lualatex
-    output-dir: ../website/_build/html
     number-depth: 4
+    keep-tex: true
+    highlight-style: github

@@ -1,10 +1,10 @@
 project:
   output-dir: _slides
   render:
-    - lectures_intro.qmd
-    - week01.qmd
-    - data_representation.qmd
-    - week02.qmd
+    - lecture00.qmd
+    - lecture01.qmd
+    - lecture02.qmd
+    - lecture03.qmd
 
 title: "EG-151 Microcontrollers"
 author: "Chris Jobling"
