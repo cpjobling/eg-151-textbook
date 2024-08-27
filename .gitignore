@@ -1,7 +1,9 @@
 _build
+*.fdb_latexmk
 .ipynb_checkpoints
 .DS_Store
 _book
 _slides
 _html
+*.tex
 
