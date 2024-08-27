@@ -1,0 +1,58 @@
+project:
+  type: book
+
+book:
+  cover-image: cover.jpg
+  cover-image-alt: An Intel 8742 Microprocessor
+  repo-url: https://github.com/cpjobling/eg-151-textbook
+  repo-actions: [edit, issue]
+  repo-branch: quarto-version
+  repo-subdir: eg-151-textbook
+  site-url: https://cpjobling.github.io/eg-151-textbook
+  favicon: logo.png
+  title: "EG-151 Microcontrollers 2024-2025"
+  author:
+    - "Chris Jobling"
+    - "Hayder Jahanger"
+    - "Timothy Davies"
+    - "Ben Clifford"
+  publisher: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University
+  publisher-place: Swansea, UK
+  date: 08/27/2024
+  body-footer: Copyright &copy; 2024 Swansea University. All rights reserved.
+  comments:
+    hypothesis:
+      theme: clean
+      openSidebar: false
+  chapters:
+    - index.qmd
+    - part: "Course Introduction"
+      chapters:
+        - intro_course_aims.qmd
+        - intro_course_delivery.qmd
+    - part: lectures_index.qmd
+      chapters:
+        - lectures_intro.qmd
+        - week01.qmd
+        - data_representation.qmd
+        - week02.qmd
+    - references.qmd
+
+bibliography: references.bib
+
+highlight-style: pygments
+
+format:
+  html:
+    theme: cosmo
+    number-depth: 4
+    toc: true
+    code-copy: true
+
+  pdf:
+    documentclass: scrbook
+    papersize: a4
+    latex-outut-dir: ../website/_build/latex
+    pdf-engine: lualatex
+    output-dir: ../website/_build/html
+    number-depth: 4

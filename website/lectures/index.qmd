@@ -3,7 +3,7 @@
 ## List of Lectures
 
 - [Croeso i Brifysgol Abertawe | Welcome to Swansea University](intro.html)
-- [Week 1: Introduction to Microcontrollers and Microcontroller Architecture](week01/index.html)
+- [Week 1: Introduction to Microcontrollers and Microcontroller Architecture(week01/index.html)
 - [Introduction to Data Representation](data_representation/index.html)
 - [ref](week02)
 - [ref](week03)

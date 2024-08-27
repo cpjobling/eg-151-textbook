@@ -17,7 +17,7 @@ The PDF file linked to this page is updated automatically when the website is up
 
 
 ## Citing this Document {.unnumbered}
-When referencing this document please use the following format based on the library supported [Swansea Vancouver Style](https://libguides.swansea.ac.uk/Vancouver):
+When referencing this document please use the following format based on the library supported Swansea Vancouver Style [@lib_vancouver]:
 
 > Jobling, C.P., Jahanger, H., Davies, T, Clifford, B. EG-151 Microcontrollers [Internet]. Swansea: Swansea University; 2024 August. [cited 2024 Mmm dd]; Available from; https://cpjobling.github.io/eg-151-textbook.
 

@@ -1,0 +1,1 @@
+../website/intro/course_aims.qmd
