@@ -8,7 +8,7 @@ book:
   repo-url: https://github.com/cpjobling/eg-151-textbook
   repo-actions: [edit, issue]
   repo-branch: quarto-version
-  repo-subdir: eg-151-textbook
+  repo-subdir: website
   site-url: https://cpjobling.github.io/eg-151-textbook
   favicon: logo.png
   title: "EG-151 Microcontrollers 2024-2025"
