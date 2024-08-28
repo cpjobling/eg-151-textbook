@@ -12,21 +12,28 @@ date: "10/01/2024"
 [Presentation version](/_slides/lecture00.html) of these [notes](#week1:introduction).
 :::
 
-## 50 years of teaching microprocessors at Swansea![^acknowledgements] {.unnumbered .unlisted #week1:introduction}
+## 50 years of teaching microprocessors at Swansea!{.unnumbered .unlisted #week1:introduction}
 
 ![Dr Davies in the Electronics lab](pictures/dr_tim_davies.png){fig-align=left fig-alt="A photograph of Dr Davies lecturing in the Electronics Lab" #dr_timothy_davies}
 
-[^acknowledgements]: The history presented here was written by Dr Davies.
+---
 
+### A brief history by our former colleague, Honoury Lecturer Dr Timothy Davies.
+
+::: {.incremental}
 * Started in 1972/1973 by Prof. David Aspinall and Dr. Erik Dagless, using bespoke equipment based on the Intel 8008.
 * Always using 8-bit micros such as Intel 8008, Intel 8085, Motorola 68HC11, Motorola 68HCS08...
 * Take-home lab, developed by Dr Davies, in 2020, used the Arduino Nano which is based on the Atmel (now MicroChip) ATmega328
-* One of our former students, Prof Sir Andy Hopper, asked why we are not teaching using the ARM processor which he helped develop.
-* And so the quest for a new microcontroller laboratory began.
-* Spring 2021 - the launch of a new microcontroller, the RP2040 which is packaged into a small module, costing only three pounds.
-* This is the microcontroller for our new EG-252 lab and will also be used in the new module EG-3082 Embedded Systems launching this year,
-* You will therefore be using microcontrollers throughout this program
+:::
 
+---
+
+::: {.incremental}
+* One of our former students, Prof Sir Andy Hopper, asked why we are not teaching using the ARM processor which he helped develop.
+* Spring 2021 - the launch of a new microcontroller, the RP2040 which is packaged into a small module, costing only three pounds.
+* This is the microcontroller for our second-year EG-252 lab and is also used in the third-year module EG-3082 Embedded Systems launching this year,
+* You will therefore be using microcontrollers throughout this program
+:::
 
 ## Introduction {.unnumbered #week1:intro}
 
@@ -67,12 +74,16 @@ At a high level of abstraction, a microntroller includes three core components w
 
 ::: {#fig-uses_of_micros}
 
-![](pictures/uses_of_micros.png){fig-alt="An image illustrating that microcontrollers are used in the automotive industry, cosnumer electronics, industrial and control sytems, and environmental monitoring"}
+![](pictures/uses_of_micros.png){fig-alt="An image illustrating that microcontrollers are used in the automotive industry, consumer electronics, industrial and control sytems, and environmental monitoring"}
 
 Some industrial uses of microcontrollers
 :::
 
+::: {.notes}
 Microcontrollers are used in the automotive industry, consumer electronics, industrial and control systems, and environmental monitoring and many other areas of engineering.
+:::
+
+---
 
 ### Automotive applications
 
@@ -85,6 +96,9 @@ Automotive applications of microcontrollers[^l1:note1]
 
 [^l1:note1]: Source of original image used in @fig-automotive-apps: [www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina](https://www.linkedin.com/pulse/microcontrollers-used-automotive-applications-field-amin-agina). The original image is no longer accessible.
 
+#### *Applications of microcontrollers in the automotive industry* {.unnumbered}
+
+::: {.center}
 <table>
 <tr>
 <td>
@@ -113,6 +127,9 @@ Automotive applications of microcontrollers[^l1:note1]
 </td>
 </tr>
 </table>
+:::
+
+---
 
 ### Consumer electronics
 
@@ -124,6 +141,8 @@ Photograph showing the microcontroller inside a smart watch[^note2]
 :::
 
 [^note2]: Source of image used in @fig-smart-watch: [www.electronicsweekly.com/blogs/distribution-world/communities/innovative-smartwatch-challenges-apples-watch-design-2015-10](https://www.electronicsweekly.com/blogs/distribution-world/communities/innovative-smartwatch-challenges-apples-watch-design-2015-10)
+
+#### *Applications of microcontrollers in consumer electronics* {.unnumbered}
 
 <table>
 <tr>
@@ -150,6 +169,8 @@ Photograph showing the microcontroller inside a smart watch[^note2]
 </tr>
 </table>
 
+---
+
 ### Industrial applications
 
 ::: {#fig-robots}
@@ -160,6 +181,8 @@ Photograph showing robots working on an automated assembly line[^robot_src]
 :::
 
 [^robot_src]: Original source of image used in @fig-robots: [investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/](https://investinfrance.fr/high-technology-industry/robotic-arm-catch-for-electronic-assembly-line-the-robot-for-sm/). This original image is no longer available online.
+
+#### *Applications of microcontrollers in manufacturing systems* {.unnumbered}
 
 <table>
 <tr>
@@ -180,11 +203,13 @@ Photograph showing robots working on an automated assembly line[^robot_src]
 	<li>Machine-to-machine communications</li>
 	<li>Networking</li>
 	<li>Smart buildings / BMS</li>
-	<li>Environmental control/li>
+	<li>Environmental control</li>
 </ul>
 </td>
 </tr>
 </table>
+
+---
 
 ### Environmental monitoring
 
@@ -197,7 +222,7 @@ Environmental monitoring in Germany[^env_mon]
 
 [^env_mon]: Source of image used in @fig-env-mon: [www.openpr.com/news/1799966/hawa-dawa-installs-the-largest-air-quality-measurement-network](http://www.openpr.com/news/1799966/hawa-dawa-installs-the-largest-air-quality-measurement-network)
 
-
+#### *Applications of microcontrollers in environmental monitoring* {.unnumbered}
 <table>
 <tr>
 <td>
@@ -220,6 +245,8 @@ Environmental monitoring in Germany[^env_mon]
 </tr>
 </table>
 
+---
+
 ### Microcontroller Market Forecast
 
 ::: {#fig-market-forecast}
@@ -231,9 +258,9 @@ Microntroller (MCU) market size, 2021 to 2030 (Billion USD)[^note-market-forecas
 
 [^note-market-forecast]: Source of imaged used in @fig-market-forecast: [www.precedenceresearch.com/microcontroller-mcu-market](http://www.precedenceresearch.com/microcontroller-mcu-market)
 
-## How do we Describe Microcontrollers?{#sec-week1-architecture}
+## How do we Describe Microcontrollers?{#sec-week1-architecture .r-fit-text .center}
 
-----
+---
 
 ### Architecture
 
@@ -244,7 +271,7 @@ Definition from the Oxford English Dictionary [architecture](https://www.oed.com
 [^defn]: “architecture, n., sense 6”. Oxford English Dictionary, Oxford University Press, July 2023, <https://doi.org/10.1093/OED/5575991854>
 
 
-----
+---
 
 #### Number of Bits
 
@@ -255,6 +282,7 @@ Definition from the Oxford English Dictionary [architecture](https://www.oed.com
 Architecture diagram showing number of bits used in a microcontroller
 :::
 
+::: {.notes}
 Categorizing Microcontroller Units (MCUs) as 8-, 16-, or 32-bit designs is one way of classifying their performance capabilities.
 
 The number of bits identifies the size of the registers, the number of available memory addresses and the largest number that can be processed/represented.
@@ -268,15 +296,20 @@ As an example, in an 8-bit MCU
 Microcontrollers with more bits, for example 16- and 32-bit MCUs have correspondingly more bits per register, more available memory addresses, and can handle larger numbers compared with their 8-bit counterparts.
 
 An introduction to data representation follows in [Introduction to Data Representation](../data_representation).
+:::
+
+---
 
 @fig-memmap shows the data memory map of the Atmel Atmega328 which is an 8- bit MCU.
 
+::: {.notes}
 It has $2^8$ or 256 available memory addresses
 from 0x0000 – 0x00FF which covers:
 
 - 32 general purpose registers,
 - 64 I/O registers, and
 - 160 Extended I/O registers
+:::
 
 ::: {#fig-memmap}
 
@@ -285,17 +318,23 @@ from 0x0000 – 0x00FF which covers:
 Memory map for the Atmel Atmega328 MCU
 :::
 
-##### Applications of 8-bit and 32-bit MCUs {.unnumbered}
+---
+
+##### Applications of 8-bit and 32-bit MCUs
 
 ::: {#fig-apps}
+![](http://lreese.dotsenkoweb.com/wp-content/uploads/2019/04/Fig-1-VennDiagraml-1024x713.jpg){fig-alt="Venn diagram of the applications of the 8-bit MCU vs. the 32-bit MC" width="75%"}
 
-![](http://lreese.dotsenkoweb.com/wp-content/uploads/2019/04/Fig-1-VennDiagraml-1024x713.jpg)
+Venn diagram of the applications of the 8-bit MCU vs. the 32-bit MCU[^note_venn] 
+:::
 
-
-Venn diagram of the 8-bit MCU vs. 32-bit MCU[^note_venn] benefits from a general perspective, as direct comparisons of all features combined are relative to tradeoffs. In general, the 8-bit MCU has been lower cost and smaller in size than the 32-bit MCU, but 32-bit MCUs are close to competing on cost and both have at least one “specimen” of a similarly minute physical size. In overall power consumption, the slower 8-bit MCUs will always trump the faster 32-bit MCUs as long as manufacturers stay on their game.
+::: {.notes} 
+The plotting of the application benefits of the 8-bit MCU vs. the 32-bit MCU is best plotted on a Venn diagram as direct comparisons of all features combined are relative to tradeoffs. In general, the 8-bit MCU has been lower cost and smaller in size than the 32-bit MCU, but 32-bit MCUs are close to competing on cost and both have at least one “specimen” of a similarly minute physical size. In overall power consumption, the slower 8-bit MCUs will always trump the faster 32-bit MCUs as long as manufacturers stay on their game.
 :::
 
 [^note_venn]: The source of the Venn diagram used in @fig-apps: [http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus](http://lreese.dotsenkoweb.com/2017/07/31/iot-choosing-8-bit-vs-32-bit-mcus)
+
+---
 
 ##### Market share of 8-bit, 16-bit and 32-bit MCUs in 2021{.unnumbered}
 
@@ -307,6 +346,8 @@ Market share of 8-bit, 16-bit and 32-bit MCUs in 2021[^note-market-share]
 
 [^note-market-share]: Source of image used in @fig-market-share: [www.precedenceresearch.com/microcontroller-mcu-market](http://www.precedenceresearch.com/microcontroller-mcu-market)
 
+---
+
 #### Memory
 
 ::: {#fig-memory}
@@ -315,14 +356,17 @@ Market share of 8-bit, 16-bit and 32-bit MCUs in 2021[^note-market-share]
 Architecture diagram showing memory types used in microcontrollers
 :::
 
+---
+
 ##### Embedded vs external memory{.unnumbered}
 
 Memory in modern microcontrollers can be classified as *embedded* or *external* dependent on whether this is physically located within the MCU itself or is connected separately.
 
+::: {.notes}
 For most microcontroller-based applications, the internal memory is enough. However, applications which gather or buffer large amounts of data may also need external memory in the form of SD cards, M.2 drives and similar.
 
 A Raspberry Pi 4 Model B is illustrated in @fig-raspberrypi4b. It has both internal and external memory.
-
+:::
 
 ::: {#fig-raspberrypi4b}
 ![](https://www.hackatronic.com/wp-content/uploads/2021/11/raspberry-pi-4-specifications-.jpg){fig-alt=" Raspberry Pi 4 Model B"
@@ -332,12 +376,16 @@ Raspberry Pi 4 Model B[^note_raspberrypi4b]
 
 [^note_raspberrypi4b]: Source of image used in @fig-raspberrypi4b: [www.hackatronic.com/raspberry-pi-4-specifications-pin-diagram-and-description](http://www.hackatronic.com/raspberry-pi-4-specifications-pin-diagram-and-description/).
 
+---
+
 ##### Volatile vs non-volatile embedded memory
 
 Broadly speaking embedded memory that is found in a microcontroller can be classified into two categories: 
 
 - *Volatile*: data is lost when power is removed &ndash; this is *temporary storage*.
 - *Non-volatile*: data is retained when power is removed &ndash; this is *permanent storage*.
+
+---
 
 Volatile and non-volatile memory can be further classified as illustrated in @fig-vol-non-vol-memory.
 
@@ -346,6 +394,8 @@ Volatile and non-volatile memory can be further classified as illustrated in @fi
 
 Classification of volatile and non-volatile memory.
 :::
+
+---
 
 #### Instruction Set Architectures
 
@@ -530,7 +580,7 @@ A register is a group of memory bits with special addressing characteristics whi
 Use of registers in ATMega328 programms
 :::
 
-----
+---
 
 #### Registers in the ATMega328 MCU
 
@@ -564,7 +614,7 @@ The *register file* (see @fig-reg-file) contains 32 x 8-bit wide registers that 
 The register file for the Atmel ATMega328/P MCU
 :::
 
-----
+---
 
 Each register is also assigned a data memory address, mapping them directly into the first 32 locations of the **user data space**.
 
@@ -574,7 +624,7 @@ Most of the instructions operating on the Register File have direct access to al
 
 - `R26` &ndash; `R31` have some added functions as pointer registers.
 
-----
+---
 
 #### Using the Register File
 
@@ -590,7 +640,7 @@ Most of the instructions operating on the Register File have direct access to al
 Using the registers for an ADD without carry operation
 :::
 
----- 
+--- 
 
 ::: {#fig-reg-for-ldi}
 ![](pictures/reg_file2.png){fig-alt="Using the registers for an Load immediate (LDI) operation."}
@@ -598,7 +648,7 @@ Using the registers for an ADD without carry operation
 Using the registers for an Load immediate (LDI) operation
 :::
 
-----
+---
 
 #### X- Y- Z-Pointer Registers
 
@@ -637,13 +687,13 @@ In this lecture we have:
 -   Begun to look at the Atmel ATmega328 microcontroller focusing on
 	its register file and the general-purpose registers.
 
-----
+---
 
 ### On Canvas{.unnumbered}
 
 There is a [Canvas quiz](https://canvas.swansea.ac.uk/courses/52902/assignments/407474) which tests your recall of the topics covered in this lecture.
 
----- 
+--- 
 
 ### Next week{.unnumbered}
 
