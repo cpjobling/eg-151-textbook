@@ -1,6 +1,8 @@
 ---
 title: "Introduction to Microcontrollers and Microcontroller Architecture"
-author: "Ben Clifford"
+author: 
+  name: "Ben Clifford"
+  affiliation: Welsh Centre for Printing and Coatings
 ---
 
 ![](pictures/cover.png)
@@ -586,7 +588,7 @@ The start address of SRAM is 0x0100, this cannot be accessed with 8-bits (maximu
 We will look at this in more detail at the end of the module but this approach can be useful to access sets of data where we don't necessarily know the address.
 :::
 
-## Summary
+## Summary {.unnumbered}
 
 In this lecture we have:
 
@@ -595,7 +597,7 @@ In this lecture we have:
 -   Introduced describing a microcontroller by considering parts of its
 	architecture and
 
--   Began to look at the Atmel ATmega328 microcontroller focusing on
+-   Begun to look at the Atmel ATmega328 microcontroller focusing on
 	its register file and the general-purpose registers.
 
 ### On Canvas{.unnumbered}
@@ -606,5 +608,5 @@ There is a [Canvas quiz](https://canvas.swansea.ac.uk/courses/52902/assignments/
 
 Next week we will look at [Data Representation](../data_representation/).
 
-## Foototes{.unnumbered}
+### Foototes{.unnumbered}
 

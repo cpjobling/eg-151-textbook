@@ -39,6 +39,8 @@ book:
         - lectures/week02/index.qmd
     - references.qmd
 
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+
 bibliography: references.bib
 
 highlight-style: pygments

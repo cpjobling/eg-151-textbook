@@ -3,9 +3,9 @@
 ## List of Lectures
 
 - [Croeso i Brifysgol Abertawe | Welcome to Swansea University](intro.html)
-- [Lecture 1: Introduction to Microcontrollers and Microcontroller Architecture](lecture01/index.html)
-- [Lecture 2: Introduction to Data Representation](lecture02/index.html)
-- [ref](week02)
+- [Lecture 1: Introduction to Microcontrollers and Microcontroller Architecture](week01)
+- [Self-study: Introduction to Data Representation](data_representation)
+- [Lecture 2: Architecture of the Atmel ATmega 328 Microcontroller](week02)
 - [ref](week03)
 - [ref](week04)
 - [ref](week05)
