@@ -6,7 +6,11 @@ author:
 date: "10/01/2024"
 ---
 
-![](pictures/cover.png)
+![](pictures/cover.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
+
+::: {.notes}
+[Presentation version](/_slides/lecture00.html) of these [notes](#week1:introduction).
+:::
 
 ## 50 years of teaching microprocessors at Swansea![^acknowledgements] {.unnumbered .unlisted #week1:introduction}
 
@@ -31,19 +35,25 @@ In this week's lecture, you will be given an introduction to microcontrollers fo
 
 ## Topics Covered in this Lecture {.unnumbered #week1:toc}
 
-![](pictures/slide2.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=50%}
+::: {.columns}
 
-- @sec-week1-what-is-a-uc [What is a Microcontroller?](#sec-week1-what-is-a-uc)
-- @sec-week1-where-are-uc-used [Where are Microcontrollers Used?](#sec-week1-where-are-uc-used)
-- @sec-week1-architecture [How do we Describe Microcontrollers?](#sec-week1-architecture)
-- @sec-atmel-atmega328 [The Atmel ATmega 328 Microcontroller](#sec-atmel-atmega328)
+::: {.column width="25%"}
+![](pictures/slide2.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
 
+::: {.column width="75%"}
+- @sec-week1-what-is-a-uc: [What is a Microcontroller?](#sec-week1-what-is-a-uc)
+- @sec-week1-where-are-uc-used: [Where are Microcontrollers Used?](#sec-week1-where-are-uc-used)
+- @sec-week1-architecture: [How do we Describe Microcontrollers?](#sec-week1-architecture)
+- @sec-atmel-atmega328: [The Atmel ATmega 328 Microcontroller](#sec-atmel-atmega328)
+:::
+:::
 
-## What is a Microcontroller? {#sec-week1-what-is-a-uc}
+## What is a Microcontroller? {background-image="pictures/micro_chip.jpg" #sec-week1-what-is-a-uc} 
 
+::: {.notes}
 ![](pictures/micro_chip.jpg){ fig-alt="A decorative image showing a microcontroller chip." width=25%}
-
-
+:::
 
 A microntroller is a compact integrated circuit designed to govern a specific operation or set of operations within an embedded system.
 
@@ -223,6 +233,8 @@ Microntroller (MCU) market size, 2021 to 2030 (Billion USD)[^note-market-forecas
 
 ## How do we Describe Microcontrollers?{#sec-week1-architecture}
 
+----
+
 ### Architecture
 
 Definition from the Oxford English Dictionary [architecture](https://www.oed.com/dictionary/architecture_n?tab=meaning_and_use&tl=true#40006241)
@@ -231,6 +243,8 @@ Definition from the Oxford English Dictionary [architecture](https://www.oed.com
 
 [^defn]: “architecture, n., sense 6”. Oxford English Dictionary, Oxford University Press, July 2023, <https://doi.org/10.1093/OED/5575991854>
 
+
+----
 
 #### Number of Bits
 
@@ -516,15 +530,19 @@ A register is a group of memory bits with special addressing characteristics whi
 Use of registers in ATMega328 programms
 :::
 
+----
+
 #### Registers in the ATMega328 MCU
 
+::: {.notes}
 The Atmel ATmega328 is an 8-bit microcontroller and has 256
-addressable registers within the user data space.The first 32
+addressable registers within the user data space. The first 32
 locations address the Register File, the next 64 location the standard
 I/O memory and then the remaining 160 locations for Extended I/O
 memory.
 
 @fig-memmap summarizes the memory map of the ATMega328 MCU. @fig-mem-map2 shows part of the full memory map that is given in the Atmel ATMega280/P data sheet [@atmel_data, pp. 275-280].
+:::
 
 ::: {#fig-mem-map2}
 ![](pictures/mem_map_atmel.png){fig-alt="Part of the memory map of the Atmel ATMega328/P MCU."}
@@ -532,15 +550,21 @@ memory.
 Part of the memory map of the Atmel ATMega328/P MCU
 :::
 
+--- 
+
 #### The Register File
 
+::: {.notes}
 The *register file* (see @fig-reg-file) contains 32 x 8-bit wide registers that are often referred to as general purpose or working registers in the CPU.
+:::
 
 ::: {#fig-reg-file} 
 ![](pictures/reg_file.jpg){fig-alt="The register file for the Atmel ATMega328/P MCU."}
 
 The register file for the Atmel ATMega328/P MCU
 :::
+
+----
 
 Each register is also assigned a data memory address, mapping them directly into the first 32 locations of the **user data space**.
 
@@ -550,10 +574,14 @@ Most of the instructions operating on the Register File have direct access to al
 
 - `R26` &ndash; `R31` have some added functions as pointer registers.
 
+----
+
 #### Using the Register File
 
+::: {.notes}
 @fig-reg-for-add-no-carry shows an extract from the documentation for the use of registers in the add without carry (`ADD`) operation.
 @fig-reg-for-ldi shows an extract from the documentation for the use of registers for a load immediate (`LDI`) operation.
+:::
 
 ::: {#fig-reg-for-add-no-carry}
 
@@ -562,18 +590,24 @@ Most of the instructions operating on the Register File have direct access to al
 Using the registers for an ADD without carry operation
 :::
 
+---- 
+
 ::: {#fig-reg-for-ldi}
 ![](pictures/reg_file2.png){fig-alt="Using the registers for an Load immediate (LDI) operation."}
 
 Using the registers for an Load immediate (LDI) operation
 :::
 
+----
+
 #### X- Y- Z-Pointer Registers
 
+::: {.notes}
 In addition to acting as general purpose
 registers, `R27` - `R31` can be used as 16-bit address pointers and
 referred to as the X-,Y-, Z-registers as illustrated in @fig-x-y-z-registers. These pointers can be used to
 indirectly address the SRAM portion of the data space.
+:::
 
 ::: {#fig-x-y-z-registers}
 ![](pictures/x-y-z-reg.png){fig-alt="The x-, y- and z- registers."}
@@ -581,12 +615,14 @@ indirectly address the SRAM portion of the data space.
 The x-, y- and z- registers
 :::
 
-
-
-The start address of SRAM is 0x0100, this cannot be accessed with 8-bits (maximum is 0x00FF).
+::: {.notes}
 
 ::: {.callout-note}
+::: {.callout-important}
+The start address of SRAM is 0x0100, this cannot be accessed with 8-bits (maximum is 0x00FF).
+:::
 We will look at this in more detail at the end of the module but this approach can be useful to access sets of data where we don't necessarily know the address.
+:::
 :::
 
 ## Summary {.unnumbered}
@@ -601,13 +637,14 @@ In this lecture we have:
 -   Begun to look at the Atmel ATmega328 microcontroller focusing on
 	its register file and the general-purpose registers.
 
+----
+
 ### On Canvas{.unnumbered}
 
 There is a [Canvas quiz](https://canvas.swansea.ac.uk/courses/52902/assignments/407474) which tests your recall of the topics covered in this lecture.
 
+---- 
+
 ### Next week{.unnumbered}
 
-Next week we will look at [Data Representation](../data_representation/).
-
-### Foototes{.unnumbered}
-
+Next week we will look at [Data Representation](https://cpjobling.github.io/eg-151-textbook/lectures/data_representation/).
