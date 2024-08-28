@@ -6,10 +6,28 @@ project:
     - lecture02.qmd
     - lecture03.qmd
 
-title: "EG-151 Microcontrollers"
+title: "EG-151 Microcontrollers 2024-2025"
 author: "Chris Jobling"
-date: "27/08/2024"
+affiliation: Depertment of Electronic and Electrical Engineering
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reservered.
+date: 08/28/2024
+date-format: "dddd MMMM D, YYYY"
 bibliography: references.bib
 
-format: revealjs
-
+format:
+  revealjs:
+    template-partials:
+      - title-slide.html
+    scrollable: true
+    theme: dark
+    title-slide-attributes:
+      data-background-image: pictures/image1.png
+      data-background-size: contain
+      data-background-opacity: "0.9"
+    transition: slide
+    background-transition: fade
+    chalkboard: true
+    menu: true
+    pdfexport: true
+    slide-number: true
+    show-slide-number: all
