@@ -21,22 +21,22 @@ author: "Ben Clifford"
 * You will therefore be using microcontrollers throughout this program
 
 
-## Introduction {#week1:intro}
+## Introduction {.unnumbered #week1:intro}
 
 In this week's lecture, you will be given an introduction to microcontrollers focusing on what a microcontroller is, where they can be found and how they can be described using the their *architecture*. The lecture then moves on to introduce the Atmel ATmega328 microcontroller, which will be used in the practical sessions in this course, looking at its core architecture including the function of the arithmetic logic unit and registers.
 
 
-## Topics Covered in this Lecture {#week1:toc}
+## Topics Covered in this Lecture {.unnumbered #week1:toc}
 
 ![](pictures/slide2.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=50%}
 
-- [What is a Microcontroller?](#week1:what_is_a_uc)
-- [Where are Microcontrollers Used?](#where_are_uc_used)
-- [ref](#week1:architecture)
-- [ref](#atmel_atmega328)
+- @sec-week1-what-is-a-uc [What is a Microcontroller?](#sec-week1-what-is-a-uc)
+- @sec-week1-where-are-uc-used [Where are Microcontrollers Used?](#sec-week1-where-are-uc-used)
+- @sec-week1-architecture [How do we Describe Microcontrollers?](#sec-week1-architecture)
+- @sec-atmel-atmega328 [The Atmel ATmega 328 Microcontroller](#sec-atmel-atmega328)
 
 
-## What is a Microcontroller? {#week1:what_is_a_uc}
+## What is a Microcontroller? {#sec-week1-what-is-a-uc}
 
 ![](pictures/micro_chip.jpg){ fig-alt="A decorative image showing a microcontroller chip." width=25%}
 
@@ -50,7 +50,7 @@ At a high level of abstraction, a microntroller includes three core components w
 - Memory, and
 - Input/output (I/0) peripherals
 
-## Where are Microcontrollers Used? {#week1:where_are_uc_used}
+## Where are Microcontrollers Used? {#sec-week1-where-are-uc-used}
 
 ::: {#fig-uses_of_micros}
 
@@ -218,7 +218,7 @@ Microntroller (MCU) market size, 2021 to 2030 (Billion USD)[^note-market-forecas
 
 [^note-market-forecast]: Source of imaged used in @fig-market-forecast: [www.precedenceresearch.com/microcontroller-mcu-market](http://www.precedenceresearch.com/microcontroller-mcu-market)
 
-## How do we Describe Microcontrollers?{#week1:architecture}
+## How do we Describe Microcontrollers?{#sec-week1-architecture}
 
 ### Architecture
 
@@ -442,7 +442,7 @@ This MCU, which was used on this module before the Arduino was adopted, does not
 Block Diagram of the NXP HCS08 Architecture
 :::
 
-## The Atmel ATmega 328 Microcontroller {#atmel_atmega328}
+## The Atmel ATmega 328 Microcontroller {#sec-atmel-atmega328}
 
 <a title="BregesT65421354, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:ATMEL_MEGA328P_AU_1328.jpg"><img width="512" alt="ATMEL MEGA328P AU 1328" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ATMEL_MEGA328P_AU_1328.jpg/512px-ATMEL_MEGA328P_AU_1328.jpg"></a>
 
