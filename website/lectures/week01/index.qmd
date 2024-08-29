@@ -368,6 +368,8 @@ For most microcontroller-based applications, the internal memory is enough. Howe
 A Raspberry Pi 4 Model B is illustrated in @fig-raspberrypi4b. It has both internal and external memory.
 :::
 
+---
+
 ::: {#fig-raspberrypi4b}
 ![](https://www.hackatronic.com/wp-content/uploads/2021/11/raspberry-pi-4-specifications-.jpg){fig-alt=" Raspberry Pi 4 Model B"
 
@@ -382,8 +384,10 @@ Raspberry Pi 4 Model B[^note_raspberrypi4b]
 
 Broadly speaking embedded memory that is found in a microcontroller can be classified into two categories: 
 
+::: {.incremental}
 - *Volatile*: data is lost when power is removed &ndash; this is *temporary storage*.
 - *Non-volatile*: data is retained when power is removed &ndash; this is *permanent storage*.
+:::
 
 ---
 
@@ -405,20 +409,39 @@ Classification of volatile and non-volatile memory.
 Architecture diagram showing instruction sets used in microcontrollers
 :::
 
+::: {.notes}
 The instruction set architecture (ISA) describes the format and operation of instructions the microcontroller can perform and a microcontroller will often be categorized as having a RISC based or CISC based architecture.
+:::
 
+---
+
+::: {.fragment}
 ##### Reduced instruction Set Computer (RISC){.unnumbered}
 
-A RISC is a device with a small, highly optimized set of instructions which utilizes registers and a highly regular instruction pipeline, allowing instructions to be completed in a low number of clock cycles. In short, several instructions may need to be run to perform a task and this may complicate the coding.
+A RISC is a device with a small, highly optimized set of instructions which utilizes registers and a highly regular instruction pipeline, allowing instructions to be completed in a low number of clock cycles. 
 
+::: {.notes}
+In short, several instructions may need to be run to perform a task and this may complicate the coding.
+:::
+:::
+
+::: {.fragment}
 ##### Complex Instruction Computer (CISC){.unnumbered}
 
-A CISC is a device in which single instructions can execute several low-level operations or are capable of multi-step operations or addressing modes within single instructions. In this instance a program may be easier to read by a human, but the timing will be irregular and difficult to debug or be monitored by a machine.
+A CISC is a device in which single instructions can execute several low-level operations or are capable of multi-step operations or addressing modes within single instructions. 
 
-##### Example{.unnumbered}
+::: {.notes} 
+In CISC machines, a program may be easier to read by a human, but the timing will be irregular and difficult to debug or be monitored by a machine.
+:::
+:::
+
+---- 
+
+##### Example{.unnumbered .smaller}
 
 As an example, consider the case where you want to multiply two numbers stored at addresses 0x0010 and 0x0011 respectively.
 
+::: {.fragment}
 On a RISC based architecture microcontroller the code would look something like:
 
 ```asm
@@ -426,12 +449,17 @@ LDS r18, 0x0010
 LDS r19, 0x0011
 MUL r18, r19
 ```
+:::
 
+::: {.fragment}
 However, on a CISC based architecture machine the multiply instruction may be able to perform the memory access instructions within its execution, meaning the code would look like this:
 
 ```asm
 MUL 0x0010, 0x0011
 ```
+:::
+
+---
 
 #### Memory Architectures
 
@@ -441,55 +469,85 @@ MUL 0x0010, 0x0011
 Architecture diagram showing the memory architectures used in microcontrollers
 :::
 
+::: {.notes}
 Memory architecture is a different concept from embedded and external and volatile and non-volatile memory. Memory architecture classifications describe where program instructions and data are stored and how they are accessed. 
 
 There are two categories, *Von-Neumann* and *Harvard*.
+:::
+
+---
 
 ##### Von-Neumann (Princeton) architecture
 
+:::{.notes}
 In a Von-Neumann architecture, the same memory and bus are used for both data and instructions used by the CPU and peripherals as illustrated in @fig-week1-vonneuman.
+:::
 
 ::: {#fig-week1-vonneuman}
 ![](pictures/von_neuman_arch.png){fig-alt="The Von Neumann architecture - data memory and programme code use the same memory storage area and data busses."}
 
-The Von Neumann architecture
+The Von Neumann architecture&mdash;data memory and programme code use the same memory storage area and data busses
 :::
+
+---
 
 ##### Harvard architecture
 
+:::{.notes}
 The Harvard architecture stores machine instructions and data in separate memory units that are connected to the CPU and peripherals by different busses as illustrated in @fig-week1-harvard.
+:::
 
 ::: {#fig-week1-harvard}
-![](pictures/harvard_arch.jpg){fig-alt="The Harvard architecture - data memory and programme code use different memory storage areas and busses."}
+![](pictures/harvard_arch.png){fig-alt="The Harvard architecture - data memory and programme code use different memory storage areas and busses."}
 
-The Harvard architecture
+The Harvard architecture&mdash;data memory and programme code use different memory storage areas and busses.
 :::
+
+---
 
 ##### Modified Harvard architecture
 
-Most modern microcontrollers don't have a physical separation between the memory spaces used by data and instructions, and therefore could be described as Von Neumann for this reason. However, since these microcontrollers often use separate busses for data and instructions, a better way to represent these is as a *modified* Harvard architecture[^l1:note3].
+::: {.notes}
+Most modern microcontrollers don't have a physical separation between the memory spaces used by data and instructions, and therefore could be described as Von Neumann for this reason. However, since these microcontrollers often use separate busses for data and instructions as illustrated in @fig-week1-modified-harvard, a better way to represent these is as a *modified* Harvard architecture[^l1:note3].
+:::
+
+::: {#fig-week1-modified-harvard}
+![](pictures/modified_harvard.png){fig-alt="The modified Harvard architecture - data memory and programme code use the same memory storage area, but data and program addresses use separate busses to access the memory."}
+
+The Harvard architecture&mdash;data memory and programme code use the same memory storage area, but data and program addresses use separate busses to access the memory.
+:::
 
 [^l1:note3]: This gets around the bottleneck that can occur using a Von-Neumann memory architecture with lower costs than having two separate memories.
 
+---
+
 ### How is a Microcontroller Described?
 
-In summary, the final MCU classification shown in {numref}`mcu_architecture` represents some of categories under microcontroller architecture which are focused around the system itself.
+In summary, the final MCU classification shown in @fig-mcu-architecture represents some of categories under microcontroller architecture which are focused around the system itself.
 
+::: {.notes}
 There are further classifications as you move towards either the circuit design or the embedded system application.
+:::
 
 ::: {#fig-mcu-architecture}
-![](pictures/mem_arch.png){fig-alt="Classification of microcontrollers systems."}
+![](pictures/mem_arch.png){fig-alt="Classification of microcontroller systems."}
 
 Classification of microcontroller systems
 :::
+
+---
 
 #### System or Core Architecure
 
 In general, most microcontroller manufacturers will present a system wide, or *core architecture* in the form of a diagram which will appear early on in the data sheet for the device.
 
+---
+
 ##### Atmel ATMega328P AVR
 
+::: {.notes}
 For example, @fig-week1-avr is taken from Atmel ATMega328 data sheet [@atmel_data] and shows a block diagram of the Advanced Virtual RISC (AVR) architecture.
+:::
 
 ::: {#fig-week1-avr}
 ![](pictures/avr_architecture.png){fig-alt="Block Diagram of the AVR Architecture"}
@@ -497,11 +555,15 @@ For example, @fig-week1-avr is taken from Atmel ATMega328 data sheet [@atmel_dat
 Block Diagram of the AVR Architecture (Source: Figure 6.1, Page 9 of the Atmel ATMega328P data sheet [@atmel_data])
 :::
 
+---
+
 ##### NXP HCS08 MCU
 
+::: {.notes}
 As another example, the block diagram shown in @fig-week1-hcs08 represents the architecture of the NXP (formally Motorola) HCS08 MCU.
 
 This MCU, which was used on this module before the Arduino was adopted, does not have a bank of general purpose registers. Instead it has a single working register, known as the *accumulator*, which is involved in most computations that the MCU performs.
+:::
 
 ::: {#fig-week1-hcs08} 
 ![](pictures/hcs08.png){fig-alt="Block Diagram of the HCS08 MCU."}
@@ -511,12 +573,19 @@ Block Diagram of the NXP HCS08 Architecture
 
 ## The Atmel ATmega 328 Microcontroller {#sec-atmel-atmega328}
 
+::: {#fig-atmel-atmega-328}
 <a title="BregesT65421354, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons" href="https://commons.wikimedia.org/wiki/File:ATMEL_MEGA328P_AU_1328.jpg"><img width="512" alt="ATMEL MEGA328P AU 1328" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/ATMEL_MEGA328P_AU_1328.jpg/512px-ATMEL_MEGA328P_AU_1328.jpg"></a>
 
-The Atmel&reg; ATMega328/P is a low-power CMOS 8-bit microcontroller based on the AVR&reg; enhanced RISC architecture.
+The Atmel&reg; ATMega328/P is a low-power CMOS 8-bit microcontroller based on the AVR&reg; enhanced RISC architecture.[^l1:atmen-atmega-328]
+:::
 
-### Introducing the Atmel ATMega328 MCU
+[^l1:atmen-atmega-328]: Source of @fig-atmel-atmega-328 is BregesT65421354, CC BY-SA 4.0 &lt;https://creativecommons.org/licenses/by-sa/4.0&gt;, via Wikimedia Commons.
 
+---
+
+### Introducing the Atmel ATMega328 MCU{.smaller}
+
+::: {.incremental}
 - This is an 8-bit CMOS microcontroller based on the AVR&reg; enhanced **RISC architecture** with 131 instructions.
 
 - It has 2KB of Internal SRAM, 32 KB of Flash Memory and 1 KB of EEPROM.
@@ -530,10 +599,15 @@ The Atmel&reg; ATMega328/P is a low-power CMOS 8-bit microcontroller based on th
 - There are **22 Digital I/O pins** (6 capable of *pulse-width modulation* (PWM)).
 
 - The AVR core uses a **Harvard memory architecture** &ndash; with separate memories and busses for program and data.
+:::
+
+---
 
 #### Arithmetic Logic Unit
 
+::: {.notes}
 The **Arithmetic Logic Unit** (ALU) (@fig-week1-alu), is the part of the processor that performs arithmetic and logic operations on numbers from the storage area &ndash; it is essentially the &ldquo;brain&rdquo; of the microcontroller.
+:::
 
 ::: {#fig-week1-alu} 
 ![](pictures/alu.png){fig-alt="General purpose arithmetic logic unit (ALU)"} 
@@ -541,11 +615,21 @@ The **Arithmetic Logic Unit** (ALU) (@fig-week1-alu), is the part of the process
 General purpose arithmetic logic unit (ALU)
 :::
 
+---
+
+##### Operation of the ALU
+
+::: {.incremental}
 - First, numbers are read from storage into the ALU's data input ports.
 
-- Once inside the ALU, they're modified by means of an arithmetic or logic operation (`ADD`, `SUB`, `AND`, `OR`...), and
+- Once inside the ALU, they're modified by means of an arithmetic or logic operation (`ADD`, `SUB`, `AND`, `OR`...)
+
+- Flags are set in the *Status Register* according to the result of the operation.
 
 - Finally, the data is written back to storage via the ALU's output port.
+:::
+
+---
 
 ##### Example instruction
 
@@ -555,11 +639,15 @@ General purpose arithmetic logic unit (ALU)
 Add without carry instruction for the ATMega328
 :::
 
+---
+
 ##### Example of the ALU from the 74LS181
 
 The 74LS181 is a 4-bit microcontroller that supports 16 logical and 16 arithmetic operations.
 
+::: {.notes}
 You do not need to understand @fig-74LS181, it is just and example to show that an ALU isn't just a black box. Rather it contains complex logic circuitry by means of which it performs its operations.
+:::
 
 ::: {#fig-74LS181} 
 ![](pictures/74LS181_ALU.png){fig-alt="The ALU for the 74LS181 MCU."}
@@ -567,12 +655,16 @@ You do not need to understand @fig-74LS181, it is just and example to show that 
 The ALU for the 74LS181 MCU
 :::
 
+---
+
 ### Registers
 
 A register is a group of memory bits with special addressing characteristics which is often used for a particular purpose.
 
+::: {.notes}
 - In most modern processors, regardless of architecture, data is loaded from a larger memory space into special registers where it is used for arithmetic operations, manipulation or testing by various machine instructions.
 - Data is then temporarily held in a register until it is overwritten, or the immediate instruction stores it back to main memory.
+:::
 
 ::: {#fig-use-of-registers}
 ![](pictures/registers.png){fig-alt="Use of registers in ATMega328 programms."}
