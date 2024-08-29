@@ -8,7 +8,7 @@ project:
 
 title: "EG-151 Microcontrollers 2024-2025"
 author: "Chris Jobling"
-affiliation: Depertment of Electronic and Electrical Engineering
+affiliation: Department of Electronic and Electrical Engineering
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reservered.
 date: 08/28/2024
 date-format: "dddd MMMM D, YYYY"
@@ -29,6 +29,7 @@ format:
     chalkboard: true
     menu: true
     pdfexport: true
+    notes: true
     slide-number: true
     show-slide-number: all
     # reference-location: document

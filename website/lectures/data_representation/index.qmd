@@ -6,6 +6,10 @@ author:
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
 ---
 
+::: {.notes}
+[Presentation version](/slides/lecture02.html) of these [notes](#week2:introduction).
+:::
+
 ## Introduction{.unnumbered #week2:introduction}
 
 This chapter provides a background to data representation introducing some of the different terminologies used such as 'bit', 'byte', and 'word' before looking at different numbering systems, including binary and hexadecimal, that are used in computing and microcontrollers. The presentation covers a number of methods such as exponentiation and divide-by-n which can be used to convert between number bases and finishes with looking at how microcontrollers perform addition and subtraction. 

@@ -12,15 +12,17 @@ kernelspec:
   name: python3
 ---
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+::: {.notes}
+[Presentation version](/slides/lecture03.html) of these [notes](#week2).
+:::
 
-(week02)=
-# Architecture of the Atmel ATmega 328 Microcontroller
+# Architecture of the Atmel ATmega 328 Microcontroller{#week2}
 
 ```{image} pictures/chapter_heading.png
 :alt: Decorative image for slide show
 :width: 50%
 ```
+
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
