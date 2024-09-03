@@ -42,7 +42,7 @@ In this week's lecture, you will be given an introduction to microcontrollers fo
 
 ## Topics Covered in this Lecture {.unnumbered #week1:toc}
 
-::: {.columns}
+:::: {.columns}
 
 ::: {.column width="25%"}
 ![](pictures/slide2.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
@@ -54,7 +54,7 @@ In this week's lecture, you will be given an introduction to microcontrollers fo
 - @sec-week1-architecture: [How do we Describe Microcontrollers?](#sec-week1-architecture)
 - @sec-atmel-atmega328: [The Atmel ATmega 328 Microcontroller](#sec-atmel-atmega328)
 :::
-:::
+::::
 
 ## What is a Microcontroller? {background-image="pictures/micro_chip.jpg" #sec-week1-what-is-a-uc} 
 

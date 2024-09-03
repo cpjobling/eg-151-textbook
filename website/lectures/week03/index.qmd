@@ -1,44 +1,56 @@
 ---
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+title: Introduction to Programming and Program Development
+author: 
+  name: Ben Clifford
+  affiliation: Welsh Centre for Printing and Coatings
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+date: 10/15/2024
 ---
+::: {.notes}
+[Presentation version](/slides/lecture04.html) of these [notes](#sec-week03-intro).
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+![](pictures/chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
 
-(week03)=
-# Introduction to Programming and Program Development
+## Lecture Topics{.unnumbered}
 
-```{image} ../week02/pictures/chapter_heading.png
-:alt: Decorative image for slide show
-:width: 50%
-```
+:::: {.columns}
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+::: {.column width="25%"}
+![](pictures/contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
 
-## Introduction
+::: {.column width="75%"}
+- {ref}`week03:useful_terminology`
+- {ref}`week03:programming_languages`
+- {ref}`week03:flowcharts`
+- {ref}`week03:modular_programming`
+
+- @sec-week02-intro: [Introducing the Atmel ATmega 328 MCU](#sec-week02-intro)
+- @sec-week02-status-register: [The Status Register](#sec-week02-status-register)
+- @sec-week02-program-counter: [The Program Counter](#sec-week02-program-counter)
+- @sec-week02-stack-pointer: [The Stack Pointer](#sec-week02-stack-pointer)
+- @sec-week02-io: [Introduction to Microcontroller I/O](#sec-week02-io)
+:::
+
+::::
+
+## Introduction{.unnumbered #sec-week03-intro}
 
 When developing an application to run on a microcontroller or other embedded system, there are five key steps which should be followed:
 
+::: {.incremental}
 1. Clearly define the requirements of the system, planning the number of inputs and outputs required, speed, storage etc. to identify suitable hardware candidates.
 2. Plan/design the software using flowcharts and pseudocode to describe the program and identify functions, or blocks of code, and how they link to other blocks.
 3. Translate the flowchart into the required programming language.
 4. Once the program is at a level where its functionality can start to be tested, testing and debugging is performed to look for errors or unexpected behaviour in software called bugs.
 5. When the final software is commissioned, it is important to document the code so as a developer can come back to it at later date or pass the task to another team member.
-
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+:::
 
 ## Lecture Topics
 
-```{image} ../week02/pictures/contents_image.png
+```{image} 
+![](pictures/prog_wallpaper.png){fig-alt="Decorative image used as a slide background"}
 :alt: Decorative image used as a slide background
 :width: 50%
 ```
@@ -53,7 +65,7 @@ When developing an application to run on a microcontroller or other embedded sys
 (week03:useful_terminology)=
 ## Useful Terminology
 
-![](../week03/pictures/prog_wallpaper.png)
+![](pictures/prog_wallpaper.png)
 
 +++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 

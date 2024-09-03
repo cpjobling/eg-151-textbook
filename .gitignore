@@ -6,4 +6,8 @@ _book
 _slides
 _html
 *.tex
+.Rhistory
+*.aux
+*.log
+*.toc
 

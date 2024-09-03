@@ -6,7 +6,7 @@
 - [Lecture 1: Introduction to Microcontrollers and Microcontroller Architecture](week01)
 - [Self-study: Introduction to Data Representation](data_representation)
 - [Lecture 2: Architecture of the Atmel ATmega 328 Microcontroller](week02)
-- [ref](week03)
+- [Lecture 3: Introduction to Programming and Program Development](week03)
 - [ref](week04)
 - [ref](week05)
 - [ref](week06)
