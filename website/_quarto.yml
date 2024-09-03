@@ -52,6 +52,7 @@ format:
     number-depth: 4
     toc: true
     code-copy: true
+    code-line-numbers: true
 
   pdf:
     documentclass: scrbook
