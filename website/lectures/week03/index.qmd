@@ -25,6 +25,7 @@ date: 10/15/2024
 - @sec-week03-useful-terminology: [Useful Terminology](#sec-week03-useful-terminology)
 - @sec-week03-programming-languages: [Programming Languages](programming-languages)
 - @sec-week03-flowcharts: [Flowcharts](#sec-week03-flowcharts)
+- @sec-example-programs: [Example Programs](#sec-example-programs)
 - @sec-week03-modular-programming:  [Modular Programming](#sec-week03-modular-programming)
 :::
 
@@ -264,7 +265,7 @@ Consider the simple flowchart shown in @fig-week03-flowchart-hello-world represe
 
 
 ::: {#fig-week03-flowchart-hello-world} 
-![](pictures/flowchart_hello_world.png){width="30%" fig-alt="A flowchart representing the hellow world program."}
+![](pictures/flowchart_hello_world.png){width="50%" fig-alt="A flowchart representing the hellow world program."}
 
 A flowchart representing the "Hello, World!" program.
 :::
@@ -592,9 +593,18 @@ END;
 ```
 :::
 
+::: {.center}
+## Example Programs{background-image="pictures/laptop-technology-text-multimedia-screenshot-computer-hardware-125852-pxhere.com.jpg" #sec-example-programs}
+:::
+
+::: {.notes}
+<img src="pictures/laptop-technology-text-multimedia-screenshot-computer-hardware-125852-pxhere.com.jpg" alt="laptop, technology, text, multimedia, screenshot, computer hardware, computer program, Free Images In PxHere" width="100%"><br />
+[Image Source: Free Images In PxHere](https://c.pxhere.com/photos/b5/18/photo-125852.jpg!d)]
+:::
+
 ---
 
-### Example 1: A sequence{.unnumbered}
+### Example 1: A sequence
 
 ::: {.fragment}
 
@@ -644,7 +654,7 @@ END
 
 ---
 
-### Example 2: Decision and a Loop{.unnumbered #sec-week03:sum-example}
+### Example 2: Decision and a Loop{#sec-week03-sum-example}
 
 Task: *Find the sum of numbers 1 to 10*
 
@@ -686,7 +696,7 @@ END
 
 ---
 
-### Another Example Program{.unnumbered}
+### Another Example Program
 
 Consider a program that asks a user for a 'limit' value and sums the numbers up to that limit before outputting the sum?
 
@@ -755,7 +765,7 @@ Three implementations three are illustrated in  @fig-week03-sic (variation 6), @
 ---
 
 ::: {#fig-week03-sic} 
-![](pictures/sic.png){fig-alt="Variation 6 - Sum - Increment - Check" width="30%"}
+![](pictures/sic.png){fig-alt="Variation 6 - Sum - Increment - Check" width="50%"}
 
 Variation 6: Sum - Increment - Check
 :::
@@ -763,7 +773,7 @@ Variation 6: Sum - Increment - Check
 ---
 
 ::: {#fig-week03-isc} 
-![](pictures/isc.png){fig-alt="Variation 4 - Increment - Sum - Check" width="30%"}
+![](pictures/isc.png){fig-alt="Variation 4 - Increment - Sum - Check" width="50%"}
 
 Variation 4: Increment - Sum - Check
 :::
@@ -771,7 +781,7 @@ Variation 4: Increment - Sum - Check
 ---
 
 ::: {#fig-week03-cis} 
-![](pictures/cis.png){fig-alt="Variation 2 - Check - Increment - Sum" width="30%"}
+![](pictures/cis.png){fig-alt="Variation 2 - Check - Increment - Sum" width="50%"}
 
 
 Variation 2: Check - Increment - Sum
@@ -779,25 +789,33 @@ Variation 2: Check - Increment - Sum
 
 ---
 
-#### Any more?
+### Any more?
 
-+++ {"slideshow": {"slide_type": "fragment"}}
+::: {.fragment}
+
+What if we counted backawards from $n$?
 
 $$\mathrm{sum} = 1 + 2 + 3 + \cdots + \left(n - 1\right) + n$$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
+:::
+
+::: {.fragment}
 
 $$\equiv$$
 
-+++ {"slideshow": {"slide_type": "fragment"}}
+:::
+
+::: {.fragment}
 
 $$\mathrm{sum} = n + \left(n-1\right) + \cdots 3 + 2 + 1$$
+
+:::
 
 ---
 
 Let us tabulate the results of this program assuming that $n=4$.
 
-+++ {"slideshow": {"slide_type": "fragment"}}
+::: {.fragment}
 
 | **`sum`** | **`counter`** | **`counter > limit`** |
 |----------:|--------------:|:----------------------|
@@ -807,32 +825,33 @@ Let us tabulate the results of this program assuming that $n=4$.
 |           | $1$           |                       |
 |           | $0$           |                       |
 
-+++ {"slideshow": {"slide_type": "fragment"}}
+:::
 
-A flow chart that implements this variation is given in {numref}`week03:fig:var4`.
+::: {.fragment}
 
-+++ {"slideshow": {"slide_type": "slide"}}
+A flow chart that implements this variation is given in @fig-week03-var4.
 
-```{figure} pictures/var4.png
-:name: week03:fig:var4
-:align: center
-:width: 30%
-:alt: Another variation - Check - Decrement - Sum
-
-Another variation: Check - Decrement - Sum
-```
+:::
 
 ---
 
-#### Self-directed learning{#sec-flow-chart-task}
+::: {#fig-week03-var4} 
+![](pictures/var4.png){fig-var="Another variation - Check - Decrement - Sum" width="50%"}
 
+Another variation: Check - Decrement - Sum
+:::
+
+---
+
+### Self-directed learning{#sec-flow-chart-task}
+
+
+::: {.incremental}
 
 1. See if you can write the other eight flowcharts for a program that sums the numbers 1 to n.
-
 2. To get you thinking from a programmer's point of view, consider the steps required to perform a task we usually take for granted, such as making a cup of tea, and what a flowchart for this might look like.
-
-3. After you’ve had a go at these, drop a message on the [discussion forum for this week](https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078) to let us know how you got on and which drawing package you found the best. Feel free to include any tips you find useful.
-
+3. After you’ve had a go at these, drop a message on the [discussion forum for this week](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/468327) to let us know how you got on and which drawing package you found the best. Feel free to include any tips you find useful.
+:::
 
 ::: {.center}
 ## Modular Programming{#sec-week03-modular-programming background-image="pictures/modular_prog_wallpaper.png"}
@@ -849,35 +868,36 @@ This [Image](https://commons.wikimedia.org/wiki/File:Flowchart_structured_progra
 
 ### What is a module?
 
-The basic approach to modularization is to consider a top-down design where the top level defines the main function, and a separate module represents each smaller function in the program (see {numref}`week03:fig:a_modular_program`.
+The basic approach to modularization is to consider a top-down design where the top level defines the main function, and a separate module represents each smaller function in the program (see @fig-week03-a-modular-program).
 
-+++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
+::: {.fragment}
 
-```{figure} pictures/modules.png
-:name: week03:fig:a_modular_program
-:alt: A program built from modules
-:width: 50%
+::: {#fig-week03-a-modular-program} 
+![](pictures/modules.png){fig-at="A program built from modules."}
 
 A program built from modules
-```
+:::
 
-+++ {"slideshow": {"slide_type": "notes"}, "editable": true}
+:::
 
-Each module is treated as a box which can have an input and output.
+::: {.notes}
+
+Each module is treated as a *black box*[^week03:black-box] which operates on its *input* and produces an *output*.
 
 As long as the input and output requirements remain the same, the module code can be changed without affecting the rest of the program.
 
-+++
+[^week03:black-box]: In science, computing, and engineering, a *black box* is a system which can be viewed in terms of its inputs and outputs (or transfer characteristics), without any knowledge of its internal workings. Its implementation is "opaque" (black). The term can be used to refer to many inner workings, such as those of a transistor, an engine, an algorithm, the human brain, or an institution or government.&mdash;[Blackbox (Wikipedia)](https://en.wikipedia.org/wiki/Black_box)
+:::
+
+---
 
 #### Example Task
 
 Write a program to perform n different tasks with a ten second delay between each task.
 
-+++
-
 The program we have been discussing that sums the numbers 1-10 can be used to simulate a delay.
 
-+++ {"slideshow": {"slide_type": "slide"}}
+---
 
 ##### Example program - Non-Modular Approach
 
@@ -917,12 +937,13 @@ END
 :
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
+---
 
 ##### Change the specification
 
 Now suppose that we want to change the delay between tasks to 20 seconds.
 
+::: {.fragment}
 Using a non-modular approach the developer/programmer now needs to change the line
 
 ```
@@ -936,8 +957,9 @@ WHILE number < 21
 ```
 
 For each of the n-1 times it is used.
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}}
+---
 
 ##### Example program - Modular Approach
 
@@ -956,7 +978,7 @@ MODULE delay
 END_MODULE
 ```
 
-+++ {"slideshow": {"slide_type": "slide"}}
+---
 
 The modular program becomes:
 
@@ -986,11 +1008,13 @@ END
 :
 ```
 
-+++ {"slideshow": {"slide_type": "notes"}}
+::: {.notes}
 
 By using a modular approach to program this task, the developer/programmer need only change one value to adjust the delay, independent of how many times the delay is called between tasks in the program.
 
-+++ {"slideshow": {"slide_type": "notes"}}
+:::
+
+::: {.notes}
 
 We can take this idea further by parameterising the delay value itself. To code might now look like:
 
@@ -1037,52 +1061,63 @@ END
 
 We will return to this idea when we look at functions in C.
 
-+++ {"slideshow": {"slide_type": "slide"}}
+:::
+
+---
 
 #### Activity
 
 With the time remaining can you represent this program as a flow chart?
 
-Feel free to work individually or in small groups
+Feel free to work individually or in small groups.
 
-+++ {"slideshow": {"slide_type": "slide"}}
+---
 
 ##### Solution
 
-See {numref}`week03:fig:exercise_solution` in the notes online.
+See @fig-week03-exercise-solution in the notes online.
 
-+++ {"slideshow": {"slide_type": "notes"}}
+::: {.notes}
 
-```{figure} pictures/exercise_soln.png
-:name: week03:fig:exercise_solution
-:alt: Implementing a delay sub-program 
-:width: 50%
+::: {#fig-week03-exercise-solution} 
+![](pictures/exercise_soln.png){fig-alt="Implementing a delay sub-program."}
 
 Implementing a delay sub-program using a modular approach
-```
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}}
+:::
+
+---
 
 ## Summary{.unnumbered}
-- second
-- third
-)
 
 In this chapter we have:
+
+::: {.incremental}
 - Defined terminology relating to programming and looked at how languages can be classified as high or low based on the level of abstraction from the architecture it is to be run on. 
 - Looked at flowcharts defining the standard symbols and looking at how they are used to represent a program.
+- Looked at some example programs presented as flow charts and in pseudo code.
+- Noted that there may be more than one way to present a program to achieve the same results.
 - Introduced the use of sub-processes to allow modular programming for splitting up a program or repeating common elements.
+:::
 
 ---
 
 ### On Canvas
 
+::: {.fragment} 
 This week on the canvas course page, there is:
-::: {.incremental}
-- a [short video by Ben Clifford providing more of an introduction to programming languages and the compilation process](https://canvas.swansea.ac.uk/courses/44971/pages/introduction-to-programming-languages?module_item_id=2258077);
-- a [discussion forum](https://canvas.swansea.ac.uk/courses/44971/discussion_topics/366215?module_item_id=2258078) to talk about the {ref}`flow_chart_task`;
-- some [supplementary resources](https://canvas.swansea.ac.uk/courses/44971/pages/week-4-supplementary-resources?module_item_id=2258079); and
-- a [quiz to test your knowledge](https://canvas.swansea.ac.uk/courses/44971/assignments/321260/edit?module_item_id=2415567&quiz_lti=true).
 :::
 
+::: {.incremental}
+- a [short video by Ben Clifford providing more of an introduction to programming languages and the compilation process](https://canvas.swansea.ac.uk/courses/52902/pages/introduction-to-programming-languages?module_item_id=2882148);
+- a [discussion forum](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/468327) to talk about the @sec-flow-chart-task;
+- some [supplementary resources](https://canvas.swansea.ac.uk/courses/52902/pages/week-3-supplementary-resources?module_item_id=2882150); and
+- a [quiz to test your knowledge](https://canvas.swansea.ac.uk/courses/52902/assignments/407478?display=full_width).
+:::
+
+--- 
+
 ### Next time
+
+* [Introduction to Programming with C](/lectures/week04)
