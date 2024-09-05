@@ -1,65 +1,63 @@
 ---
-jupytext:
-  formats: md:myst,ipynb
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+title: Interfacing to digital I/O with C
+author: 
+  name: Ben Clifford
+  affiliation: Welsh Centre for Printing and Coatings
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+date: 10/29/2024
 ---
+::: {.notes}
+[Presentation version](/slides/lecture06.html) of these [notes](#sec-week05-intro).
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+![](pictures/week05_chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
 
-(week05)=
-# Interfacing to digital I/O with C
+## Introduction{#sec-week05-intro}
 
-```{image} ../week02/pictures/chapter_heading.png
-:alt: Decorative image for slide show
-:width: 50%
-```
+In this lecture we will be looking at two different approaches to reading and writing to ports on a microcontroller. 
 
-## Introduction
+::: {.incremental}
+- The first approach discussed is using library files and predefined functions to control I/O ports as is conventionally done with the Arduino IDE.
+- The second approach will look at accessing I/O bits directly using bit masks to select the desired pins. 
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
 
- 
-```{image} ../week02/pictures/contents_image.png
-:alt: Decorative image used as a slide background
-:width: 50%
-```
 
-### Topics Covered
 
-In this section we will be looking at two different approaches to reading and writing to ports on a microcontroller. The first approach discussed is using library files and predefined functions to control I/O ports as is conventionally done with the Arduino IDE, the second approach will look at accessing I/O bits directly using bit masks to select the desired pins. The section begins by looking at digital inputs and outputs before moving onto to show a detailed example program implemented on the Atmel ATmega328 microcontroller.
+## Lecture topics{.unnumbered}
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+We begin by looking at digital inputs and outputs before moving onto to show a detailed example program implemented on the Atmel ATmega328 microcontroller.
 
-### Contents
+:::: {.columns}
 
-- {ref}`wk5:arduino_ide`
+::: {.column width="25%"}
+![](pictures/week05_contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
 
-+++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
+::: {.column width="75%"}
 
-- Bit masking
+- @sec-wk5-arduino-ide: [How does I/O work using the Arduino IDE](#sec-wk5-arduino-ide:)
 
-+++ {"slideshow": {"slide_type": "fragment"}, "editable": true}
+- @sec-wk5-bit-masking: [Bit masking](#sec-wk5-bit-masking)
 
-- Digital I/O example using LEDs and push buttons.
+- @sec-wk5-digital-io-example: [Digital I/O example using LEDs and push buttons](sec-wk5-digital-io-example)
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+:::
 
-(wk5:arduino_ide)=
-## How does I/O work using the Arduino IDE
-```{image} pictures/arduino_nano_wallpaper.jpg
-:alt: Decorative section background - showing an Arduino nano microcontroller and an LED light strip
-```
+::::
+
+::: {.center}
+## How does I/O work using the Arduino IDE {#sec-wk5-arduino_ide background-image="pictures/arduino_nano_wallpaper.jpg"}
+:::
+
+::: {.notes}
+
+![](pictures/arduino_nano_wallpaper.jpg){fig-alt="Decorative section background - showing an Arduino nano microcontroller and an LED light stripi."}
+
 Image source: [This Photo](https://www.flickr.com/photos/netlcom/36486445205/) by Unknown Author is licensed under [CC BY-NC](https://creativecommons.org/licenses/by-nc/3.0/)
+:::
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+---
 
 ### Digital Control
 Imagine a circuit with LEDs connected to `D8` and `D9` of the Atmel ATmega328 microcontroller.
