@@ -34,5 +34,5 @@ format:
     notes: true
     slide-number: true
     show-slide-number: all
-    # reference-location: document
+    reference-location: document
     suppress-bibliography: true
