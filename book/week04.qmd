@@ -1,0 +1,1 @@
+../website/lectures/week04/index.qmd

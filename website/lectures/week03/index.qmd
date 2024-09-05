@@ -10,28 +10,9 @@ date: 10/15/2024
 [Presentation version](/slides/lecture04.html) of these [notes](#sec-week03-intro).
 :::
 
-![](pictures/chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
+![](pictures/week03_chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
 
-## Lecture Topics{.unnumbered}
-
-:::: {.columns}
-
-::: {.column width="25%"}
-![](pictures/contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
-:::
-
-::: {.column width="75%"}
-- @sec-week03-intro: [Application Development](#sec-week03-intro)
-- @sec-week03-useful-terminology: [Useful Terminology](#sec-week03-useful-terminology)
-- @sec-week03-programming-languages: [Programming Languages](programming-languages)
-- @sec-week03-flowcharts: [Flowcharts](#sec-week03-flowcharts)
-- @sec-example-programs: [Example Programs](#sec-example-programs)
-- @sec-week03-modular-programming:  [Modular Programming](#sec-week03-modular-programming)
-:::
-
-::::
-
-## Application Development{#sec-week03-intro}
+## Introduction {#sec-week03-intro .unnumbered}
 
 When developing an application to run on a microcontroller or other embedded system, there are five key steps which should be followed:
 
@@ -42,6 +23,24 @@ When developing an application to run on a microcontroller or other embedded sys
 4. Once the program is at a level where its functionality can start to be tested, testing and debugging is performed to look for errors or unexpected behaviour in software called bugs.
 5. When the final software is commissioned, it is important to document the code so as a developer can come back to it at later date or pass the task to another team member.
 :::
+
+## Lecture Topics{.unnumbered}
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![](pictures/week03_contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
+
+::: {.column width="75%"}
+- @sec-week03-useful-terminology: [Useful Terminology](#sec-week03-useful-terminology)
+- @sec-week03-programming-languages: [Programming Languages](programming-languages)
+- @sec-week03-flowcharts: [Flowcharts](#sec-week03-flowcharts)
+- @sec-example-programs: [Example Programs](#sec-example-programs)
+- @sec-week03-modular-programming:  [Modular Programming](#sec-week03-modular-programming)
+:::
+
+::::
 
 ::: {.center}
 ## Useful Terminology{background-image="pictures/prog_wallpaper.png" fig-alt="decorative image used for slide background" #sec-week03-useful-terminology}
@@ -223,11 +222,11 @@ Word cloud of common programming languages
 :::
 
 ::: {.center}
-## Flowcharts{#sec-week03-flowcharts fig-alt="A flowchart" background-image="https://upload.wikimedia.org/wikipedia/commons/a/a6/Flowchart_structured_programming.svg" background-color="white"}
+## Flowcharts{#sec-week03-flowcharts fig-alt="A flowchart" background-image="pictures/Flowchart_structured_programming.svg" background-color="white"}
 :::
 
 ::: {.notes}
-![](https://upload.wikimedia.org/wikipedia/commons/a/a6/Flowchart_structured_programming.svg){fig-alt="A flowchart"} 
+![](pictures/Flowchart_structured_programming.svg){fig-alt="A flowchart"} https://upload.wikimedia.org/wikipedia/commons/a/a6/
 
 A flowchart &ndash; This [Image](https://commons.wikimedia.org/wiki/File:Flowchart_structured_programming.svg) by Unknown Author is licensed under [CC BY-SA](https://creativecommons.org/licenses/by-sa/3.0/)
 :::

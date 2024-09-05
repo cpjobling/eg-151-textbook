@@ -18,7 +18,7 @@ date: "10/01/2024"
 
 ---
 
-### A brief history by our former colleague, Honoury Lecturer Dr Timothy Davies.
+### A brief history by our former colleague, Honoury Lecturer Dr Timothy Davies.{.unnumbered}
 
 ::: {.incremental}
 * Started in 1972/1973 by Prof. David Aspinall and Dr. Erik Dagless, using bespoke equipment based on the Intel 8008.

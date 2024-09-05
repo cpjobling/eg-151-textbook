@@ -7,17 +7,21 @@ copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
 date: 10/08/2024
 ---
 ::: {.notes}
-[Presentation version](/slides/lecture03.html) of these [notes](#sec-week02-intro).
+[Presentation version](/slides/lecture03.html) of these [notes](#sec-week02).
 :::
 
-![](pictures/chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
+![](pictures/week02_chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
+
+## Introduction{#sec-week02 .unnumbered} 
+
+In [Introduction to Microcontrollers and Microcontroller Architecture](/lectures/week1) we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at [The Atmel ATmega 328 Microcontroller](/lectures/week01/#sec-atmel-atmega328) which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
 
 ## Lecture Topics{.unnumbered}
 
 :::: {.columns}
 
 ::: {.column width="25%"}
-![](pictures/contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+![](pictures/week02_contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
 :::
 
 ::: {.column width="75%"}
@@ -32,11 +36,7 @@ date: 10/08/2024
 
 ## Introducing the Atmel ATmega 328 MCU{#sec-week02-intro}
 
-In [Introduction to Microcontrollers and Microcontroller Architecture](/lectures/week1) we described what a microcontroller is and looked at how one can be described by considering its architecture. We finished the lecture looking at [The Atmel ATmega 328 Microcontroller](/lectures/week01/#sec-atmel-atmega328) which provides an overview of the AVR core architecture and we introduced the general purpose registers and the ALU.
-
----
-
-### Architecture of the Atmel ATmega 328 MCU
+### Architecture of the Atmel ATmega 328 MCU{.unnumbered}
 
 ::: {#fig-week02-atmel-arch} 
 ![](pictures/atmel_arch.png){fig-alt="The architecture of the Atmel ATMega328 Microcontroller"}

@@ -1,41 +1,32 @@
 ---
-jupytext:
-  formats: md:myst,ipynb
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+title: Introduction to Programming with C
+author: 
+  name: Ben Clifford
+  affiliation: Welsh Centre for Printing and Coatings
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+date: 10/22/2024
 ---
+::: {.notes}
+[Presentation version](/slides/lecture05.html) of these [notes](#sec-week04-intro).
+:::
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+![](pictures/week04_chapter_heading.png){width="100%" fig-alt="lecture cover image showing architecture, some gates and an Arduino nano board"}
 
-(week04)=
-# Introduction to Programming with C
-
-```{image} ../week02/pictures/chapter_heading.png
-:alt: Decorative image for slide show
-:width: 50%
-```
-
-+++ {"slideshow": {"slide_type": "fragment"}, "editable": true, "jp-MarkdownHeadingCollapsed": true}
-
+## Introduction{.unnumbered #sec-week04-intro}
 C is a high-level structured programming language which is often used for writing microcontroller applications. This weeks lecture will cover good coding practices, C language operators and how they can be grouped as well as flow control structures.
 
-+++ {"slideshow": {"slide_type": "slide"}, "editable": true}
+## Lecture Topics{.unnumbered}
 
- 
-```{image} ../week02/pictures/contents_image.png
-:alt: Decorative image used as a slide background
-:width: 50%
-```
-
-## Lecture Topics
 In this chapter we will be looking at how to produce clear well commented programs; data transfer, arithmetic, logic and relational operators; and flow control structures including `if`, `switch-case`, `for` and `while`.
+
+:::: {.columns}
+
+::: {.column width="25%"}
+![](pictures/week04_contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
+
+::: {.column width="75%"}
+
 
 - {ref}`wk4:c-language`
   - {ref}`wk4:code_formattting`
@@ -49,6 +40,10 @@ In this chapter we will be looking at how to produce clear well commented progra
   - {ref}`wk4:switch`
   - {ref}`wk4:while`
   - {ref}`wk4:for`
+
+:::
+
+::::
 
 +++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 

@@ -7,6 +7,8 @@ copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
 date: 10/01/2024
 ---
 
+## Introduction{.unnumbered #week2:introduction}
+
 ::: {.notes}
 [Presentation version](/slides/lecture02.html) of these [notes](#week2:introduction).
 :::
@@ -29,10 +31,19 @@ You should therefore read these notes for revision for the class test, try the e
 
 ## Topics Covered in this Lecture{.unnumbered #week2:toc}
 
+:::: {.columns}
+::: {.column width="25%"}
+![](pictures/dr_contents_image.png){img-alt="A decorative image showing code, a microntroller chip and the Arduino nano microcontroller board used in the lab component of this module." width=100%}
+:::
+
+::: {.column width="75%"}
 - @sec-week2:intro2dr [Data Representations](#sec-week2:intro2dr)
 - @sec-week2:numbering [Numbering Systems and Base Conversion](#sec-week2:numbering)
 - @sec-week2:addition_and_subtraction [Binary Addition and Subtraction](#sec-week2:addition_and_subtraction)
 - @sec-week2:sr [Introduction to the Status Register](#sec-week2:sr)
+:::
+
+::::
 
 ::: {.center}
 ## Data Representations{#sec-week2:intro2dr}
