@@ -584,7 +584,7 @@ In addition to the logical operators designed to evaluate multiple conditions th
 | **Operator** | **Used for** |
 |--------------|--------------|
 | `&`          | bitwise AND  |
-| `\|`         | bitwise OR   |
+| `|`          | bitwise OR   |
 | `^`          | bitwise XOR  |
 | `~`          | bitwise NOT  |
 | `>>`         | shift right  |
@@ -595,57 +595,66 @@ In addition to the logical operators designed to evaluate multiple conditions th
 
 ###### Example of the bitwise and operator
 
+::: {.fragment}
 ```c
 b = 0xA3 & 0xD5; // -> b = 0x81
 ```
+:::
 
-```{math}
+::: {.fragment}
 \begin{array}{lrr}
    & 1010 & 0111 \\
 \& & 1101 & 0101 \\\hline
    & 1000 & 0001
 \end{array}
-```
+:::
 
 ---
 
 ###### Example of the bitwise or operator
 
+::: {.fragment}
 ```c
 c = 0xA3 | 0xD5; // -> b = 0xF7
 ```
+:::
 
-```{math}
+::: {.fragment}
 \begin{array}{lrr}
    & 1010 & 0111 \\
 |  & 1101 & 0101 \\\hline
    & 1111 & 0111
 \end{array}
-```
+:::
 
 ---
 
 ###### Example of the bitwise not operator
 
+::: {.fragment}
 ```c
 c = ~0xA3; // -> c = 0x5C
 ```
+:::
 
 
-```{math}
+::: {.fragment}
 \begin{array}{lrr}
 \sim & 1010 & 0111 \\\hline
      & 0101 & 1100
 \end{array}
-```
+:::
 
 ---
 
 ###### Bitwise operators used for I/O ports
 
+::: {.notes}
 The use of these operators are important when working with microcontrollers, in particular in the case of I/O, as they can be used to mask bits of a port. This is useful in C as we have limited data transfer options, i.e. we have to read/write to an entire port (memory location) rather than an individual bit.
+:::
 
-```c
+
+```{.c code-line-numbers="|1|2|3"}
 PTAPE = 0x0F;       // bit pattern: 0000 1111
 PTAD = 0xF0;        // bit pattern: 1111 0000
 PTAD = PTAD | 0x0C;	// bit pattern: 1111 1100
@@ -654,10 +663,13 @@ PTAD = PTAD | 0x0C;	// bit pattern: 1111 1100
 ::: {.fragment}
 
 Since XORing any bit with a 1 forces it to return the opposite value, it can be used to toggle the state of a port:
+:::
 
-```c
+::: {.fragment}
+```{.c code-line-numbers="|"}
 portA = portA ^ 0xFF; // e.g. 0101 0110 -> 1010 1001
 ```
+:::
 
 ---
 
@@ -665,6 +677,7 @@ portA = portA ^ 0xFF; // e.g. 0101 0110 -> 1010 1001
 
 The final group of operators are the **relational operators** which are used to test a relationship between two variables or a variable and data. 
 
+::: {.fragment}
 | **Relational operator** | **Meaning**                 |
 |-------------------------|-----------------------------|
 | `==`                    | is equal to                 |
@@ -674,27 +687,30 @@ The final group of operators are the **relational operators** which are used to 
 | `>`                     | is greater than |
 | `>=`                    | is greater than or equal to |
 
-Example: "is x equal to 2?" would be written as `x == 2`[^equality].
-
-[^equality]: **Important**: don’t confuse the double equals sign (`==`) with `=`. The latter used for assignment operations. **That is `(x = 2)` is different from `(x == 2)`**.
+:::
 
 ::: {.notes}
+Example: "is x equal to 2?" would be written as `x == 2`[^equality].
+
+[^equality]: **Important**: don’t confuse the double equals sign (`==`) with `=`. The latter is used for assignment operations. **That is `(x = 2)` is different from `(x == 2)`**.
 
 Relational operators are most often used in the *expressions* used in the *conditions* of the flow control structures discussed in @sec-wk4-flow-control.
+:::
 
 ---
 
 #### **Program control** operators in C{#sec-wk4-program-ctrl-ops}
 
-These are discussed in the next section @sec-wk4-flow-control.
+These are discussed in @sec-wk4-flow-control.
 
----
-
-## Flow control {#sec-wk4-flow-control}
-```{image} ../week03/pictures/prog_lang_wallpaper.jpg
-:alt: Decorative section background - showing code
-```
+::: {.center}
+## Flow control {background-image="pictures/week04_prog_lang_wallpaper.jpg" #sec-wk4-flow-control}
 Flow control statements `if`, `for`, `while`, and `switch`
+:::
+
+::: {.notes}
+![](pictures/week04_prog_lang_wallpaper.jpg){fig-alt="Decorative section background - showing code."}
+:::
 
 ---
 
@@ -702,13 +718,11 @@ Flow control statements `if`, `for`, `while`, and `switch`
 
 @fig-wk4-flow-control-structures illustrates the flow control structures that are provided in the C language. We will illustrate the most commonly used[^rarely_used] in the following sections.
 
-```{figure} pictures/stuctures.png
-:name: wk4:fig:flow_control_structures
-:alt: An organogram showing a classification of the flow control strucures provided by the C language.
-:width: 100%
+::: {#fig-wk4-flow-control-structures}
+![](pictures/stuctures.png){fig-alt="An organogram showing a classification of the flow control strucures provided by the C language."}
 
 Classification of the flow control strucures provided by the C language.
-```
+:::
 
 [^rarely_used]: Most of the unconditional branching statements such as `goto` (for an unconditional branch to a label) and `continue` (to ignore a condition without breaking out of a loop) are rarely used in modern programs. The `break` statement is often used in *switch statements* and occasionally for breaking out of a loop when some exit condition is met.
 
@@ -716,136 +730,155 @@ Classification of the flow control strucures provided by the C language.
 
 ### Flow control structures to be considered
 
-1. @sec-wk4-if
-   - @sec-wk4-if-else
-   - @sec-wk4-if-elseif-else
-3. @sec-wk4-switch
-4. @sec-wk4-while
-   - @sec-wk4-do-while
-5. @sec-wk4-for
-   - @sec-wk4-nested-for
+1. [The *if* statement](#sec-wk4-if)
+   - [The *if-else* statement](#sec-wk4-if-else)
+   - [The *if-elseif-else* statement ](#sec-wk4-if-elseif-else)
+3. [The *switch* statement](#sec-wk4-switch)
+4. [The *while* statement](#sec-wk4-while)
+   - [The *do-while* statement](#sec-wk4-do-while)
+5. [The *for* statement](#sec-wk4-for)
+   - [Nested *for* statements](#sec-wk4-nested-for)
+
+:::
 
 ---
 
 ### The *if* statement in C{#sec-wk4-if}
 
+::: {.fragment}
 The ***if* statement** allows branching within code and can be used to check if a particular condition has been met.
-
-If the condition has been met, the set of statement in the following blocks is executed, if the condition is not met then the statement is not executed, and the program will branch over to the next statement outside of the flow control statement
-
-The equivalent of the *if* statement illustrated in the @fig-wk4-if-statement is:
+:::
 
 ---
 
-```c
+#### Flow chart of the if statement{.unnumbered}
+::: {#fig-wk4-if-statement}
+![](pictures/if.png){fig-alt="A flow chart illustrating the structure of the if-statement." width="50%"}
+
+A flow chart illustrating the structure of the *if* statement
+:::
+
+---
+
+The equivalent of the *if* statement illustrated in the @fig-wk4-if-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2-4|3|5"}
 Statement_1;
-if (expression != 0) // in C anything that is not 0 is true
-{
+if (expression != 0) { // in C anything that is not 0 is true
     Statement_2;
 }
 Statement_3;
 ```
+:::
 
----
-
-```{figure} pictures/if.png
-:alt: A flow chart illustrating the structure of the if-statement
-:width: 20%
-:name: wk4:fig:if-statement
-
-A flow chart illustrating the structure of the *if* statement
-````
+::: {.notes}
+- At line 3, if the condition has been met, the sequence of statements in the following block (here just line 4) is executed.
+- If the condition is not met at line 3, then `Statement_2` (line 4) is not executed, and the program will branch over to the next statement outside of the flow control statement: here `Statement_3` (line 5).
+:::
 
 ---
 
 #### The *if-else* statement {#sec-wk4-if-else}
 
-The ***if*-else statement** allows one set of statements to be executed if the condition is met and another set of statements if the condition hasn’t been met.
-
-The equivalent of the *if-else* statement illustrated in the {numref}`wk4:fig:if-else-statement` is:
+The ***if*-else statement** allows one set of statements to be executed if the condition 
+is met and an alternative set of statements ito be executed if the condition hasn’t been met.
 
 ---
 
-```c
+#### Flow chart of the if-else statement{.unnumbered} 
+::: {#fig-wk4-if-else-statement}
+![](pictures/if-else.png){fig-alt="A flow chart illustrating the structure of the if-else statement." width="75%"}
+
+A flow chart illustrating the structure of the *if-else* statement
+:::
+
+---
+
+The equivalent of the *if-else* statement illustrated in the @fig-wk4-if-else-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2-4|3|5-7|6|8"}
 Statement_1;
-if (expression != 0) // in C anything that is not 0 is true
-{
+if (expression != 0) { // in C anything that is not 0 is true
     Statement_2;
 }
-else // expression is false == 0
-{
+else {                 // expression is false == 0
     Statement_3;
 }
 Statement_4;
 ```
-
----
-
-```{figure} pictures/if-else.png
-:alt: A flow chart illustrating the structure of the if-else statement
-:width: 25%
-:name: wk4:fig:if-else-statement
-
-A flow chart illustrating the structure of the *if-else* statement
-````
+:::
 
 ---
 
 #### The *if-elseif-else* statement {#sec-wk4-if-elseif-else}
 
-The third example of the if statement is the ***if-elseif-else* statement** which allows multiple conditions to be tested and blocks of statements to be executed for each decision.
-
-The equivalent of the *if-elseif-else* statement illustrated in the {numref}`wk4:fig:if-elseif-else-statement` is:
+The third example of the *if* statement is the ***if-elseif-else* statement** which 
+allows multiple conditions to be tested and blocks of statements to be executed for each decision.
 
 ---
 
-```c
+#### Flow chart of the if-elseif-else statement{.unnumbered} 
+
+::: {#fig-wk4-if-elseif-else-statement}
+![](pictures/if-elseif-else.png){fig-alt="A flow chart illustrating the structure of the if-elseif-else statement." width="75%"}
+
+A flow chart illustrating the structure of the *if-elseif-else* statement
+:::
+
+---
+
+The equivalent of the *if-elseif-else* statement illustrated in the @fig-wk4-if-elseif-else-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2-4|3|5-7|6|8-10|9|11"}
 Statement_1;
-if (expression1) // expression1 is true
-{
+if (expression1) {      // expression1 is true
     Statement_2;
 }
-elseif (expression2)  // expression2 is true
-{
+elseif (expression2) {  // expression2 is true
     Statement_3;
 }
-else // neither expression1 nor expression2 is true
-{
+else {                  // neither expression1 nor expression2 is true
     Statement_4;
 }
 Statement_5;
 ```
-
----
-
-```{figure} pictures/if-elseif-else.png
-:alt: A flow chart illustrating the structure of the if-elseif-else statement
-:width: 50%
-:name: wk4:fig:if-elseif-else-statement
-
-A flow chart illustrating the structure of the *if-elseif-else* statement
-````
+:::
 
 ---
 
 ### The *switch* statement in C {#sec-wk4-switch}
 
+::: {.incremental}
 - The *switch* statement allows selection between several possible defined options. 
 - The **test condition** is referred to as the *expression* and the choices are referred to as the *cases*[^cases].
 - Each switch expression will have a **default choice** for when no choices match the expression.
 - The switch statement represents an easier and more readable way of managing multiple if statements[^switch]
+:::
 
 [^cases]: Each case must be a *constant expression*: i.e. a number or a character.
 [^switch]: i.e. avoids `if` – `elseif` – `elseif` – `elseif` – `elseif` – … – `else`
 
-The equivalent of the *switch* statement illustrated in the {numref}`wk4:fig:switch-statement` is:
+---
+
+#### Flow chart of the switch statement{.unnumbered}
+
+::: {#fig-wk4-switch-statement}
+![](pictures/switch.png){fig-alt="A flow chart illustrating the structure of the switch statement." width="75%"}
+
+A flow chart illustrating the structure of the *switch* statement
+:::
 
 ---
 
-```c
+The equivalent of the *switch* statement illustrated in the @fig-wk4-switch-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2-16|2|3-4|6-7|9-10|14-15|17"}
 Statement;
-switch (expression1) // branch according to the value of the expression
-{
+switch (expression1) { // branch according to the value of the expression
     case case_1 :
         code_block_1;
 
@@ -862,22 +895,13 @@ switch (expression1) // branch according to the value of the expression
 }
 Statement_2;
 ```
+:::
 
 ---
 
-```{figure} pictures/switch.png
-:alt: A flow chart illustrating the structure of the switch statement
-:width: 50%
-:name: wk4:fig:switch-statement
+#### Example program with a switch statement{.unnumbered}
 
-A flow chart illustrating the structure of the *switch* statement
-````
-
----
-
-#### Example switch statement
-
-```c
+```{.c code-line-numbers="|1|2|3-24|8|9|10"}
 char student_grade = 'B';
 printf("Your grade was %c: ",student_grade);
 switch (student_grade)
@@ -910,145 +934,179 @@ switch (student_grade)
 If the `break` was not present, the program would drop down to the next case which is not usually what you want. Instead, you usually break out to the case statement as soon as a valid match is made.
 
 You can play with this program here: [grader](https://onlinegdb.com/16BcOgMJD). See what happens when you remove `break`.
+:::
 
 ---
 
 ### The *while* statement in C {#sec-wk4-while}
 
-In order to write a function that loops, i.e. execution of a sequence of statements until a particular condition is met, a *while* statement can be used.
+::: {.fragment}
+In order to write a function that loops, i.e. execution of a sequence of statements until 
+a particular condition is met, a *while* statement can be used.
+:::
 
-The while statement allows for a block of statements to be repeatedly executed as long as a *condition* is true. 
-
-
-The equivalent of the *while* statement illustrated in the {numref}`wk4:fig:while-statement` is:
-
----
-
-```c
-while (condition)
-{
-    statements;
-}
-```
+::: {.fragment}
+The while statement allows for a block of statements to be repeatedly executed as long as 
+a *condition* is true. 
+:::
 
 ---
 
-```{figure} pictures/while.png
+#### Flow chart of the while statement
+
+::: {#fig-wk4-while-statement}
+![](pictures/while.png){fig-alt="A flow chart illustrating the structure of the while statement." width="50%"}
 :alt: A flow chart illustrating the structure of the while statement
-:width: 30%
-:name: wk4:fig:while-statement
 
 A flow chart illustrating the structure of the *while* statement
-````
+:::
 
 ---
+
+The equivalent of the *while* statement illustrated in the @fig-wk4-while-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2|1|2|1|4"}
+while (condition) {
+    statements;
+}
+// end of while-loop
+```
+:::
+
+::: {.notes}
+The `statements` at line 2 are executed again and again until `condition` is false. Clearly, if the loop
+is to end, one of the `statements` needs to change the condition from `true` to `false`.
+:::
+
+---
+
+
 
 #### The *do-while* statement {#sec-wk4-do-while}
 
-The *do-while* statement is almost identical to the while statement however the condition is checked after the statements have run.
-
-The equivalent of the *do-while* statement illustrated in the {numref}`wk4:fig:do-while-statement` is:
+The *do-while* statement is almost identical to the while statement however the condition is 
+checked after the statements have run.
 
 ---
 
-```c
-do
-{
+#### Flow chart of the do-while statement{.unnumbered}
+
+::: {#fig-wk4-do-while-statement}
+![](pictures/do-while.png){fig-alt="A flow chart illustrating the structure of the do-while statement." width="50%"}
+
+A flow chart illustrating the structure of the *do-while* statement
+:::
+
+---
+
+The equivalent of the *do-while* statement illustrated in the @fig-wk4-do-while-statement is:
+
+::: {.fragment}
+```{.c code-line-numbers="|1|2|4|2|4|2|4|5"}
+do {
     statements;
 }
 while (condition);
+// end of do-while loop
 ```
+:::
 
----
+::: {.notes}
+The `statements` at line 2 are executed and then if `condition` is true, they are executed again.
 
-```{figure} pictures/do-while.png
-:alt: A flow chart illustrating the structure of the do-while statement
-:width: 25%
-:name: wk4:fig:do-while-statement
+This means that even if `condition` is `false`, the `statements`
+are executed one time. 
 
-A flow chart illustrating the structure of the *do-while* statement
-````
+When `condition` is false, the loop ends. 
+:::
 
 ::: {.notes}
 
-Be careful: it is very easy to get stuck in an infinite *while* loop if your test condition is always true.
+::: {.callout-warning}
+Be careful: it is very easy to get stuck in an infinite *while* loop if your test `condition` is always `true`.
+
+For either loop to terminate, one of the `statements` 
+needs to change the `condition` from `true` to `false`.
+:::
+
+:::
 
 ---
 
-### The *for* statement in C {#sec-wk4-arithmetic-ops}
+### The *for* statement in C {#sec-wk4-for}
 
 Another way of writing a while statement is to use a ***for* loop**.
 
 The term *loop* is used for the execution of a sequence of statements until a particular condition is met.
 
-The equivalent of the *for* statement illustrated in the {numref}`wk4:fig:for-statement` is:
-
 ---
 
-```c
-for (initialize counter; counter < final value; increment counter)
-{
-    statements;
-}
-statement
-```
+#### Flow chart of the for statement
 
----
-
-```{figure} pictures/for.png
-:alt: A flow chart illustrating the structure of the for statement
-:width: 30%
-:name: wk4:fig:for-statement
+::: {#fig-wk4-for-statement}
+![](pictures/for.png){fig-alt="A flow chart illustrating the structure of the for statement." width="50%"}
 
 A flow chart illustrating the structure of the *for* statement
-````
+:::
 
 ---
 
-#### Example for loop
+The equivalent of the *for* statement illustrated in @fig-wk4-for-statement is:
 
-Here is an actual *for* loop which solves the problem given in @sec-wk4-sum_example` it better illustrates how it might be written in a real program:
+::: {.fragment}
+```{.c code-line-numbers="|1|2|1|2|1|2|1|4"}
+for (initialize counter; counter < final value; increment counter) {
+    statements;
+}
+statement;
+```
+:::
 
-```c
+---
+
+#### Example for loop{.unnumbered}
+
+Here is an actual *for* loop which solves the problem given in 
+[Lecture 3: Example 2](https://cpjobling.github.io/eg-151-textbook/lectures/week03/#sec-week03-sum-example). 
+
+::: {.fragment}
+It better 
+illustrates how it might be written in a real program:
+
+```{.c code-line-numbers="|1|3-5|3|4|3|4|3|4|3|6"}
 int sum, x;
 /* Add the numbers from 1 to 10 and print the sum */
-for (x = 0; x < 11; x++)
-{
+for (x = 0; x < 11; x++) {
     sum = sum + x;
 }
 printf("sum = %d", sum);
 ```
-
----
-
-The sequence performed by the for loop is:
-1. The variable `x` is *initialized* to 0;
-
-::: {.fragment}
-
-2. The statements in the *block*[^block] are executed in sequence;
-
-::: {.fragment}
-
-3. `x` is incremented by 1 (`x++` $\rightarrow$ `x = x + 1`);
-
-::: {.fragment}
-
-4. The value of the *logical expression* `x < 11` is evaluated: if it is *true* we return to step 2.
-
-::: {.fragment}
-
-5. If `x < 11` is false (i.e. `x == 10`) the loop ends the result is printed to the screen.
-
-::: {.fragment}
-
-To execute this program see [sum.c](https://onlinegdb.com/w3YDJCZcm).
+:::
 
 ::: {.notes}
+The sequence performed by the for loop is:
+
+1. Line 3:&mdash;the variable `x` is *initialized* to 0;
+2. Line 4:&mdash;the statements in the *block*[^block] (line 4) are executed in sequence;
+3. Line 3:&mdash;`x` is incremented by 1 (`x++` $\rightarrow$ `x = x + 1`);
+4. Line 3:&mdash;the value of the *logical expression* `x < 11` is evaluated: if it is *true* we return to step 2.
+5. Line 3:&mdash;if `x < 11` is false (i.e. when `x == 11`) the loop ends the result is printed to the screen (line 5).
+
+:::
+
+::: {.fragment}
+To execute this program see [sum.c](https://onlinegdb.com/w3YDJCZcm).
+:::
+
+----
 
 #### Equivalence of *for* and *while*
 
-You can *always* write a *for* loop using *while*[^for-while]. The previous example could be written:
+You can *always* write a *for* loop using *while*[^for-while]. 
+
+::: {.fragment}
+The previous example could be written:
 ```c
 int sum, x;
 // initialize x
@@ -1060,59 +1118,74 @@ while (x < 11)
 }
 printf("Sum = %d",sum);
 ```
-
-See [sum with while](https://onlinegdb.com/ME6B9jbo8).
-
-It is arguable that the *for* loop is easier to read and understand.
-
-[for-while]: Indeed most c-compilers produce equivalent code for *for* and *while*.
+:::
 
 ::: {.fragment}
+See [sum with while](https://onlinegdb.com/ME6B9jbo8).
+:::
+
+::: {.notes}
+It is arguable that the *for* loop is easier to read and understand.
+
+[^for-while]: Indeed most c-compilers produce equivalent code for *for* and *while*.
 
 [^block]: in the C language a *block* is any sequence of statements surrounded by curly brackets `{ ... }`
+:::
 
 ---
 
 #### Nested *for* statements {#sec-wk4-nested-for}
 
-The equivalent of the nested *for* statement illustrated in the {numref}`wk4:fig:nested-for-statement` is:_
+::: {#fig-wk4-nested-for-statement}
+![](pictures/nested-for.png){fig-alt="A flow chart illustrating the structure of the nested-for statement." width="50%"}
+
+A flow chart illustrating the structure of the nested *for* statement
+:::
 
 ---
 
+The equivalent of the nested *for* statement illustrated in @fig-wk4-nested-for-statement is: 
+
+::: {.fragment}
 ```c
-for (counter1 = 0; counter1 < 60; counter1++)
-{
-    for (counter2 = 0; counter2 < 60; counter2++)
-    {
+for (counter1 = 0; counter1 < 60; counter1++) {
+    for (counter2 = 0; counter2 < 60; counter2++) {
         statements;
     }
 }
 ```
+:::
 
----
-
-```{figure} pictures/nested-for.png
-:alt: A flow chart illustrating the structure of the nested-for statement
-:width: 35%
-:name: wk4:fig:nested-for-statement
-
-A flow chart illustrating the structure of the nested *for* statement
-````
+::: {.fragment}
+See [nested-counter](https://onlinegdb.com/Dhku-m1As) for an executable example of this program. 
+:::
 
 ::: {.notes}
+What could you use this nested for-loop for?
+:::
 
-See [nested-counter](https://onlinegdb.com/Dhku-m1As) for an executable example of this program. 
+## Summary{.unnumbered}
 
-What could you use it for?
-
-+++ {"editable": true, "slideshow": {"slide_type": ""}}
-
-## Summary
 In this section we have:
+
+::: {.incremental}
 - Covered basic concepts in coding to create clear and concise code as well as how to add comments to key lines of a program.
 - Introduced and discussed the different operators available to the C language programmer including how they are categorized.
 - Looked at the flow control statements available in the C language as well as how they are represented using flowchart diagrams and examples of the required syntax.
+:::
 
-## On Canvas
+--- 
 
-On the canvas course page, there is a series of short videos providing a history of the C language and a brief overview of programming paradigms as well as videos on functions and data type with a quiz to test your knowledge
+### On Canvas{.unnumbered}
+
+On the canvas course page, there is a series of short videos providing a history of the C 
+language and a brief overview of programming paradigms as well as videos on functions and 
+data type with a quiz to test your knowledge.
+
+--- 
+
+### Next time{.unnumbered}
+
+* [Interfacing to digital I/O with C](/lectures/week05)
+
+--- 

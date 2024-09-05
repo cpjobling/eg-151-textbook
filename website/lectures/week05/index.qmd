@@ -773,9 +773,8 @@ Similar code is used to test the left button on `PORTD` pin 3 to illuminate the 
 
 The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883). You will need a fully featured IDE, such as [Atmel (now Microchip) Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio), to compile and upload the code to the Ardino nano board.
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
 
-## Summary
+## Summary{.unnumbered}
 
 In this section we have:
 
@@ -789,8 +788,10 @@ In this section we have:
 
 * Looked at a detailed example program which uses the state of two pushbuttons to set whether an LED is illuminated or not.
 
-+++ {"editable": true, "slideshow": {"slide_type": "slide"}}
+---
 
 ### On Canvas
 
 This week on the [canvas course page](https://canvas.swansea.ac.uk/courses/44971/pages/direct-port-manipulation-in-c), you will find the sample programs from today's lecture, look through these and ensure you are confident in how they work and how the masks are defined. There is also a short quiz to test your knowledge on these topics.
+
+---

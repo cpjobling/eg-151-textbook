@@ -9,3 +9,4 @@ ln -f ../website/lectures/data_representation/pictures/* pictures
 ln -f ../website/lectures/week02/pictures/* pictures
 ln -f ../website/lectures/week03/pictures/* pictures
 ln -f ../website/lectures/week04/pictures/* pictures
+ln -f ../website/lectures/week05/pictures/* pictures
