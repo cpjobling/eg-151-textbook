@@ -59,13 +59,6 @@ format:
     highlight-style: github
     code-annotations: below
 
-  pdf:
-    documentclass: scrbook
-    output-file: eg-151-textbook.pdf
-    papersize: a4
-    highlight-style: github
-    keep-tex: true
-# root: intro
 # parts:
 #   - caption: Course Introduction
 #     chapters:
