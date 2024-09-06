@@ -552,6 +552,8 @@ There is also a quiz on Microcontroller Architecture.
 
 ### Any Questions?{.unnumbered}
 
+Please use the [Course Question Board](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/435656) on Canvas or take advantage of the lecturers' office hours. 
+
 ---
 
 ### Next time{.unnumbered}

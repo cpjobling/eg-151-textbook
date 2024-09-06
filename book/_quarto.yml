@@ -39,6 +39,7 @@ book:
         - week03.qmd
         - week04.qmd
         - week05.qmd
+        - week06.qmd
 
     - references.qmd
 
@@ -47,12 +48,6 @@ bibliography: references.bib
 highlight-style: pygments
 
 format:
-  html:
-    theme: cosmo
-    number-depth: 4
-    toc: true
-    code-copy: true
-
   pdf:
     documentclass: scrbook
     papersize: a4

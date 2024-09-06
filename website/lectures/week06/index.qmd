@@ -965,3 +965,15 @@ In this section we have:
 +++ {"editable": true, "slideshow": {"slide_type": ""}}
 
 This week on the [canvas course pages](https://canvas.swansea.ac.uk/courses/44971/modules/305541), you will find the sample program from today's lecture, look through this and ensure you are confident in how they work and how the masks are defined and registers set. There is also a short quiz to test your knowledge on these topics.
+
+---
+
+### Any Questions?{.unnumbered}
+
+Please use the [Course Question Board](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/435656) on Canvas or take advantage of the lecturers' office hours. 
+
+---
+
+### Next time{.unnumbered}
+
+* [Next lecture](/lectures/week07)

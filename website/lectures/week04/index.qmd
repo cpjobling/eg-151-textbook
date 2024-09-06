@@ -648,7 +648,7 @@ $$
 \sim & 1010 & 0111 \\\hline
      & 0101 & 1100
 \end{array}
-$$
+
 :::
 
 ---
@@ -1188,7 +1188,13 @@ On the canvas course page, there is a series of short videos providing a history
 language and a brief overview of programming paradigms as well as videos on functions and 
 data type with a quiz to test your knowledge.
 
---- 
+---
+
+### Any Questions?{.unnumbered}
+
+Please use the [Course Question Board](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/435656) on Canvas or take advantage of the lecturers' office hours. 
+
+---
 
 ### Next time{.unnumbered}
 

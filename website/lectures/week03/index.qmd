@@ -1115,7 +1115,13 @@ This week on the canvas course page, there is:
 - a [quiz to test your knowledge](https://canvas.swansea.ac.uk/courses/52902/assignments/407478?display=full_width).
 :::
 
---- 
+---
+
+### Any Questions?{.unnumbered}
+
+Please use the [Course Question Board](https://canvas.swansea.ac.uk/courses/52902/discussion_topics/435656) on Canvas or take advantage of the lecturers' office hours. 
+
+------ 
 
 ### Next time
 
