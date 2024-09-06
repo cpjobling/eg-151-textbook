@@ -2,7 +2,7 @@
 
 # Relink images
 echo "Relinking images from lecture files"
-rm pictures/*.{svg,png,jpg}
+rm pictures/*.{gif,svg,png,jpg}
 ln -f ../website/lectures/pictures/* pictures
 ln -f ../website/lectures/week01/pictures/* pictures
 ln -f ../website/lectures/data_representation/pictures/* pictures

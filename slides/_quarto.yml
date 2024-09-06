@@ -38,4 +38,4 @@ format:
     reference-location: document
     suppress-bibliography: true
     highlight-style: github
-    code-annotation: below
+    code-annotations: hover

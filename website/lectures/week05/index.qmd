@@ -111,14 +111,14 @@ Amongst a number of other definitions[^arduino_h], the `Arduino.h` file contains
 :::
 
 ```{.c #lst-arduino-h-digital lst-cap="Declaration of the digital I/O functions for Ardunio hardware (lines 134&ndash;136 of Ardunio.h)"}
-void pinMode(uint8_t pin, uint8_t mode);     // <1>
-void digitalWrite(uint8_t pin, uint8_t val); // <2>
-int digitalRead(uint8_t pin);                // <3>
+void pinMode(uint8_t pin, uint8_t mode);     /* 1 */
+void digitalWrite(uint8_t pin, uint8_t val); /* 2 */
+int digitalRead(uint8_t pin);                /* 3 */
 ```
-::: {.incremental}
+:::{.incremental}
 1. `pinMode` takes two *unsigned* 8-bit integers as arguments and has return type of void (returns nothing).
-2. `digitalWrite` takes two unsigned 8-bit integers as arguments and has return type of void (returns nothing).
-3. `digitalRead` takes one unsigned 8-bit integer as an argument and returns a *signed* integer value.
+2. `digitalWrite` takes two *unsigned* 8-bit integers as arguments and has return type of void (returns nothing).
+3. `digitalRead` takes one *unsigned* 8-bit integer as an argument and returns a *signed* integer value.
 :::
 
 ::: {.fragment}
@@ -366,23 +366,27 @@ if (input & 0b10000001 == 0b10000001 )
 
 If bits 0 and 7 are `HIGH`
 
+$$
 \begin{array}{lcrr}
 \mathrm{Bit\ No.}  & & 7654 & 3210 \\\hline
 \mathrm{Input}  &    & \mathbf{1}010 & 001\mathbf{1} \\
 \mathrm{Mask}   & \& & 1000 & 0001 \\\hline
 \mathrm{Result} &    & 1000 & 0001
 \end{array}
+$$
 
 ---
 
 If bits 0 and 7 are `LOW`
 
+$$
 \begin{array}{lcrr}
 \mathrm{Bit\ No.} & & 7654 & 3210 \\\hline
 \mathrm{Input}  &    & \mathbf{0}010 & 001\mathbf{0} \\
 \mathrm{Mask}   & \& & 1000 & 0001 \\\hline
 \mathrm{Result} &    & 0000 & 0000
 \end{array}
+$$
 
 ::: {.notes}
 
@@ -451,11 +455,13 @@ PORTB = PORTB | 0b00000010;
 
 [^shortcut]: Idiomatic C often uses the shortcut `PORTB |= 0x00000010;` There are many such *assignment operators* in C. For example: `+=`, `-=`, `&=` etc. They all mean the same thing: `var = var op argument`. Internally, the C compiler treats both forms the same so their use is a matter of style. The full version is easier to read and understand. The shortcut is quicker to type, but arguably less easy to read and understand. 
 
+$$
 \begin{array}{lrrl}
   & 1010 & 0001 & \mathrm{Port\ B}\\
 | & 0000 & 0010 & \mathrm{Bitmask\ for\ D9} \\ \hline
   & 1010 & 00\mathbf{1}1 & \mathrm{D9\ is\ on}
 \end{array}
+$$
 
 ---
 
@@ -465,11 +471,13 @@ To turn the LED on `D9` off, we use the logical AND.
 PORTB = PORTB & 0xb11111101;
 ```
 
+$$
 \begin{array}{lrrl}
   & 1010 & 0001 & \mathrm{Port\ B}\\
 \& & 1111 & 1101 & \mathrm{Bitmask\ for\ D9} \\ \hline
   & 1010 & 00\mathbf{0}1 & \mathrm{D9\ is\ off}
 \end{array}
+$$
 
 ---
 
@@ -626,7 +634,7 @@ The return type is declared as integer meaning the function returns some integer
 ### Example Code - Set data direction registers
 
 ::: {#fig-wk5-set-dd-registers}
-![](pictures/dd.gif){fig-alt="Video illustrating the setting up of the data direction registers."}
+![](pictures/dd.png){fig-alt="Video illustrating the setting up of the data direction registers."}
 
 Video illustrating the setting up of the data direction registers.
 :::
@@ -636,7 +644,7 @@ Video illustrating the setting up of the data direction registers.
 ### Example Code - Set pull-ups for inputs and initialize outputs
 
 ::: {#fig-wk5-set-pull-ups}
-![](pictures/pullup.gif){fig-alt="Video illustrating the setting of the port D for input and resetting port B."}
+![](pictures/pullup.png){fig-alt="Video illustrating the setting of the port D for input and resetting port B."}
 
 Video illustrating the setting of the port D for input and resetting port B
 :::
@@ -696,7 +704,7 @@ if ((PIND & 0b00000100) == 0)
 ---
 
 ::: {#fig-wk5-interogating-the-buttons} 
-![](pictures/buttons.gif){fig-alt="Video showing how the state of the buttons is interogated using bit masks."}
+![](pictures/buttons.png){fig-alt="Video showing how the state of the buttons is interogated using bit masks."}
 
 Video showing how the state of the buttons is interogated using bit masks.
 :::

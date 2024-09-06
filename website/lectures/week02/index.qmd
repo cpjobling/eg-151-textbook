@@ -153,30 +153,36 @@ Record status of SREG at line 3.
 
 ---
 
-$$\begin{array}{lrr}
+$$
+\begin{array}{lrr}
 \mathrm{Addend} & 0\,1\,1\,0\,1\,1\,1\,0 & 110_{10}\\
 \mathrm{Augend} & 1\,1\,1\,0\,0\,0\,1\,1 & 227_{10}\\
 \hline
 \mathrm{Sum} & &
-\end{array}$$
+\end{array}
+$$
 
 ---
 
-$$\begin{array}{lrr}
+$$
+\begin{array}{lrr}
 \mathrm{Addend} & 0\,0\,1\,1\,0\,1\,1\,1 & 55_{10}\\
 \mathrm{Augend} & 0\,1\,0\,1\,0\,0\,0\,0 & 80_{10}\\
 \hline
 \mathrm{Sum} & &
-\end{array}$$
+\end{array}
+$$
 
 ---
 
-$$\begin{array}{lrr}
+$$
+\begin{array}{lrr}
 \mathrm{Addend} & 1\,0\,0\,0\,0\,0\,0\,0 & 128_{10}\\
 \mathrm{Augend} & 1\,0\,0\,0\,0\,0\,0\,0 & 128_{10}\\
 \hline
 \mathrm{Sum} & &
-\end{array}$$
+\end{array}
+$$
 
 ::: {.center}
 ## The Program Counter{background-image="pictures/wallpaper.png" fig-alt="decorative image used for slide background" #sec-week02-program-counter}

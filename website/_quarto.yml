@@ -57,7 +57,7 @@ format:
     code-copy: true
     code-line-numbers: true
     highlight-style: github
-    code-annotation: below
+    code-annotations: below
 
   pdf:
     documentclass: scrbook
