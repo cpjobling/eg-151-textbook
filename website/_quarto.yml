@@ -40,6 +40,7 @@ book:
         - lectures/week03/index.qmd
         - lectures/week04/index.qmd
         - lectures/week05/index.qmd
+        - lectures/week06/index.qmd
     - references.qmd
 
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
@@ -55,6 +56,8 @@ format:
     toc: true
     code-copy: true
     code-line-numbers: true
+    highlight-style: github
+    code-annotation: below
 
   pdf:
     documentclass: scrbook
