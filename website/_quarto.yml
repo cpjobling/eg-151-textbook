@@ -41,6 +41,7 @@ book:
         - lectures/week04/index.qmd
         - lectures/week05/index.qmd
         - lectures/week06/index.qmd
+        - lectures/week07/index.qmd
     - references.qmd
 
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.

@@ -629,6 +629,7 @@ $$
    & 1111 & 0111
 \end{array}
 $$
+
 :::
 
 ---
@@ -643,11 +644,13 @@ c = ~0xA3; // -> c = 0x5C
 
 
 ::: {.fragment}
+
 $$
 \begin{array}{lrr}
 \sim & 1010 & 0111 \\\hline
      & 0101 & 1100
 \end{array}
+$$
 
 :::
 
