@@ -10,6 +10,7 @@ project:
     - lecture06.qmd
     - lecture07.qmd
     - lecture08.qmd
+    - lecture09.qmd
 
 title: "EG-151 Microcontrollers 2024-2025"
 author: "Chris Jobling"

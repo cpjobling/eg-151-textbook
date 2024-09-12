@@ -12,3 +12,4 @@ ln -f ../website/lectures/week04/pictures/* pictures
 ln -f ../website/lectures/week05/pictures/* pictures
 ln -f ../website/lectures/week06/pictures/* pictures
 ln -f ../website/lectures/week07/pictures/* pictures
+ln -f ../website/lectures/week08/pictures/* pictures
