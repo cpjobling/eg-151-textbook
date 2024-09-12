@@ -10,6 +10,7 @@
 - [Lecture 4: Introduction to Programming with C](week04)
 - [Lecture 5: Interfacing to digital I/O with C](week05)
 - [Lecture 6: Interfacing to analogue I/O with C](week06)
+- [Lecture 7: Introduction to Assembly Language](week07)
 - [ref](week06)
 - [ref](week07)
 - [ref](week08)

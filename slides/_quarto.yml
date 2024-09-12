@@ -9,6 +9,7 @@ project:
     - lecture05.qmd
     - lecture06.qmd
     - lecture07.qmd
+    - lecture08.qmd
 
 title: "EG-151 Microcontrollers 2024-2025"
 author: "Chris Jobling"
@@ -40,3 +41,4 @@ format:
     suppress-bibliography: true
     highlight-style: github
     code-annotations: hover
+    code-line-numbers: true
