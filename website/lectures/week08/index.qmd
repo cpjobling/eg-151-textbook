@@ -422,7 +422,7 @@ Each instruction is carried out by a sequence of operations, known as the **fetc
 
 #### Flowchart of fetch-decode-execute cycle
 ::: {#fig-wk8-fetch-decode-execute-cycle}
-![](pictures/fetch_decode_execute_cycle.png){fig-alt="A flow chart illustrating the fetch-decode-execute cycle."}
+![](pictures/fetch_decode_execute_cycle.png){width="50%" fig-alt="A flow chart illustrating the fetch-decode-execute cycle."}
 
 A flow chart illustrating the fetch-decode-execute cycle
 :::

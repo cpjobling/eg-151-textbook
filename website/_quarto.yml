@@ -20,7 +20,7 @@ book:
   publisher: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University
   publisher-place: Swansea, UK
   date: 08/27/2024
-  body-footer: Copyright &copy; 2024 Swansea University. All rights reserved.
+  body-footer: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
   comments:
     hypothesis:
       theme: clean
@@ -43,6 +43,7 @@ book:
         - lectures/week06/index.qmd
         - lectures/week07/index.qmd
         - lectures/week08/index.qmd
+        - lectures/week09/index.qmd
     - references.qmd
 
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
