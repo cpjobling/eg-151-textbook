@@ -1,8 +1,6 @@
-(appendixa:BCD)=
-# Appendix A.2: Binary Coded Decimal (BCD)
+## Appendix A.2: Binary Coded Decimal (BCD){#sec-appendixa-bcd}
 
-
-Binary Coded Decimal, also known as BCD or 8421 format is another widely used numbering system whereby each decimal digit from 0-9 is individually represented as a 4-bit binary number between ``0000` and `1001`. 
+Binary Coded Decimal, also known as BCD or 8421 format is another widely used numbering system whereby each decimal digit from 0-9 is individually represented as a 4-bit binary number between `0000` and `1001`. 
 
 The main advantage of binary coded decimal is that it allows easy conversion between decimal and binary form.
 
@@ -10,39 +8,26 @@ Where is BCD used
 
 - Calculators
 - Decimal display drivers
-- Digital Clock
+- Digital Clocks
 - PC BIOS to store date and time
 
-{ref}`table:appxa:1` shows the codes for the 10 values that are used in BCD coded representations.
+@tbl-appxa-1 shows the codes for the 10 values that are used in BCD coded representations.
 
-```{list-table} Binary Coded Decimal
-:header-rows: 1
-:name: table:appxa:1
-* - Decimal
-  - BCD Coding
-* - 0
-  - `0000`
-* - 1
-  - `0001`
-* - 2
-  - `0010`
-* - 3
-  - `0011`
-* - 4
-  - `0100`
-* - 5
-  - `0101`
-* - 6
-  - `0110`
-* - 7
-  - `0111`
-* - 8
-  - `1000`
-* - 9
-  - `1001`
-```
+| Decimal | BCD Coding |
+|---------|------------|
+| 0 | `0000` |
+| 1 | `0001` |
+| 2 | `0010` |
+| 3 | `0011` |
+| 4 | `0100` |
+| 5 | `0101` |
+| 6 | `0110` |
+| 7 | `0111` |
+| 8 | `1000` |
+| 9 | `1001` |
+: Binary Coded Decimal {#tbl-appxa-1}
 
-## Examples
+### Examples
 
 $5_{10} ≡ 0101_\textrm{BCD}$
 
@@ -52,14 +37,14 @@ $86_{10} ≡ 1000\, 0110_\textrm{BCD}$
 
 $2020_{10} ≡ 0010\, 0000\, 0010\, 0000_\textrm{BCD}$
 
-## Pros and Cons of Binary Coded Decimal 
+### Pros and Cons of Binary Coded Decimal 
 
-### Pros
+#### Pros
 
 - Simple to convert between BCD and decimal values.
 - SLess data loss in floating point calculations.
 
-### Cons
+#### Cons
 
 - Requires more complex circuitry.
 - Wasteful as only uses 10 out of 16 possible 8-bit representations.
@@ -68,7 +53,3 @@ $2020_{10} ≡ 0010\, 0000\, 0010\, 0000_\textrm{BCD}$
   - $15_{10} = 1111_2 = 0001\, 0101_\textrm{BCD}$
   - $255_{10} = 1111\, 1111_2 = 0010\, 0101\, 0101_\textrm{BCD}$
   - $8579_{10} = 0010\, 0001\, 1000\, 0011_2 = 1000\, 0101\, 0111\, 1001_\textrm{BCD}$
-
-```python
-
-```

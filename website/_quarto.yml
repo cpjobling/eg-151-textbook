@@ -44,7 +44,45 @@ book:
         - lectures/week07/index.qmd
         - lectures/week08/index.qmd
         - lectures/week09/index.qmd
+    - part: programming_in_c/index.qmd
+      chapters:
+        - programming_in_c/the_task.qmd
+        - programming_in_c/understanding_the_task.qmd
+        - programming_in_c/wiring_the_circuit.qmd
+        - programming_in_c/using_the_ide.qmd
+        - programming_in_c/setting_up_the_io.qmd
+        - programming_in_c/detecting_and_reacting_to_a_button_press.qmd
+    - part: lab_intro/intro.qmd 
+      chapters: 
+        - lab_intro/assessment.qmd
+        - lab_intro/lab_work.qmd
+        - lab_intro/lab_instruments.qmd
+        - lab_intro/lab_safety.qmd
+        - lab_intro/experiment0.qmd
+        - lab_intro/simulation.qmd
+        - lab_intro/questions.qmd
+        - lab_intro/construction.qmd
+        - lab_intro/soldering.qmd
+    - part: labs/index
+      chapters: 
+        - labs/get_started/index.qmd
+        - labs/lab01/index.qmd
+        - labs/lab02/index.qmd
+        - labs/lab03/index.qmd
+        - labs/lab04/index.qmd
+        - labs/lab05/index.qmd
+    - part: projects/index.qmd
+      chapters: 
+        - file: projects/voltmeter.qmd
+        - file: projects/bipolar_voltage_measurement.qmd
+        - file: projects/range_finder.qmd
+        - file: projects/clock_timer.qmd
+        - file: projects/weather_station.qmd
     - references.qmd
+  appendices: 
+    - appendix/appendix_a.qmd
+    - appendix/binary_fractions.qmd
+    - appendix/ascii.qmd
 
 copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
 
@@ -63,48 +101,8 @@ format:
     code-annotations: below
 
 # parts:
-#   - caption: Course Introduction
-#     chapters:
-#      - file: intro/course_aims
-#      - file: intro/course_delivery
-#   - caption: Introduction to Microcontrollers
-#     chapters:
-#     - file: lectures/index
-#     - file: lectures/intro
-#     - file: lectures/week01/index
-#     - file: lectures/data_representation/index
-#     - file: lectures/week02/index
-#     - file: lectures/week03/index
-#     - file: lectures/week04/index
-#     - file: lectures/week05/index
-#     - file: lectures/week06/index
-#     - file: lectures/week07/index
-#     - file: lectures/week08/index
-#     - file: lectures/week09/index
-#     - file: references
-#   - caption: Programming in C
-#     numbered: false
-#     chapters:
-#     - file: programming_in_c/index
-#     - file: programming_in_c/the_task
-#     - file: programming_in_c/understanding_the_task
-#     - file: programming_in_c/wiring_the_circuit
-#     - file: programming_in_c/using_the_ide
-#     - file: programming_in_c/setting_up_the_io
-#     - file: programming_in_c/detecting_and_reacting_to_a_button_press
 #   - caption: Laboratory Introduction
 #     numbered: false
-#     chapters:
-#     - file: lab_intro/intro
-#     - file: lab_intro/assessment
-#     - file: lab_intro/lab_work
-#     - file: lab_intro/lab_instruments
-#     - file: lab_intro/lab_safety
-#     - file: lab_intro/experiment0
-#     - file: lab_intro/simulation
-#     - file: lab_intro/questions
-#     - file: lab_intro/construction
-#     - file: lab_intro/soldering
 #   - caption: Laboratory Experiments
 #     chapters:
 #     - file: labs/index
