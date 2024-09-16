@@ -42,8 +42,11 @@ book:
         - week06.qmd
         - week07.qmd
         - week08.qmd
-
     - references.qmd
+  appendices: 
+    - appendix_a.qmd
+    - programming_in_c.qmd
+
 
 bibliography: references.bib
 
