@@ -42,6 +42,18 @@ book:
         - week06.qmd
         - week07.qmd
         - week08.qmd
+    - part: lab_intro/intro.qmd 
+      chapters: 
+        - assessment.qmd
+        - lab_work.qmd
+        - lab_instruments.qmd
+        - lab_safety.qmd
+        - experiment0.qmd
+        - simulation.qmd
+        - questions.qmd
+        - construction.qmd
+        - soldering.qmd
+   
     - references.qmd
   appendices: 
     - appendix_a.qmd
