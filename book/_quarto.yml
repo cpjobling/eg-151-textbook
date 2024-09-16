@@ -53,7 +53,9 @@ book:
         - questions.qmd
         - construction.qmd
         - soldering.qmd
-   
+    - part: labs_intro.qdm
+      chapters:
+        - labs_get_started.qmd   
     - references.qmd
   appendices: 
     - appendix_a.qmd

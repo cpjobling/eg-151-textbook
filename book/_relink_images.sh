@@ -16,4 +16,8 @@ ln -f ../website/lectures/week08/pictures/* pictures
 ln -f ../website/lectures/week09/pictures/* pictures
 ln -f ../website/appendix/pictures/* pictures
 ln -f ../website/lab_intro/pictures/* pictures
-
+ln -f ../website/labs/get_started/pictures/* pictures
+ln -f ../website/labs/lab01/pictures/* pictures
+ln -f ../website/labs/lab02/pictures/* pictures
+ln -f ../website/labs/lab03/pictures/* pictures
+ln -f ../website/labs/lab05/pictures/* pictures

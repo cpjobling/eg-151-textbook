@@ -56,7 +56,7 @@ book:
         - lab_intro/questions.qmd
         - lab_intro/construction.qmd
         - lab_intro/soldering.qmd
-    - part: labs/index
+    - part: labs/index.qmd
       chapters: 
         - labs/get_started/index.qmd
         - labs/lab01/index.qmd
