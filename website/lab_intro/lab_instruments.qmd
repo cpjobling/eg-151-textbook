@@ -1,20 +1,12 @@
 ---
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.0
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
 ---
 
-(lab_instruments)=
-# Laboratory Instruments
+# Laboratory Instruments {#sec-lab-intro-instruments}
 
 The instruments at each workstation are as follows:
 
@@ -28,15 +20,13 @@ All the above are connected to a high specification PC and can be remotely contr
 
 We have prepared some video briefings on how to use these instruments that supplement the written instructions which follow.
 
-(instrumentation)=
-## The Lab Instrumentation
+## The Lab Instrumentation {#sec-lab-intro-instrumentation}
 
 You may find these video guides to the instruments used in the Electronics lab useful.
 
 For more videos, see the [SwanseaEEE YouTube channel](https://www.youtube.com/channel/UCTCjvrS9lQqnedibQHwL0bQ/videos).
 
-(oscilloscope)=
-### Instrumentation Tutorial - Oscilloscope
+### Instrumentation Tutorial - Oscilloscope {#sec-lab-instruments-oscilloscope}
 
 A video of how to use the oscilloscope. You can watch a shorter version on the YouTube channel.
 <div><iframe title="embedded content" src="https://www.youtube.com/embed/hXYRL3RGL0w" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
@@ -45,8 +35,7 @@ Instrumentation Tutorial - Oscilloscope
 
 **Duration**: 5:44
  
-(power_supply)=
-### Instrumentation Tutorial - Power Supply
+### Instrumentation Tutorial - Power Supply {#sec-lab-instruments-power-supply}
 
 A video of how to use the Power Supply in the lab. You can watch a shorter version in the YouTube channel.
 
@@ -57,8 +46,7 @@ Instrumentation Tutorial - Power Supply
 **Duration**: 3:17
 
 
-(multimeter)=
-### Instrumentation Tutorial - Multimeter
+### Instrumentation Tutorial - Multimeter {#sec-lab-instrument-smultimeter}
 
 A video of how to use the multimeter in the lab. You can watch a shorter version in the YouTube channel.
 
@@ -67,13 +55,12 @@ A video of how to use the multimeter in the lab. You can watch a shorter version
 Instrumentation Tutorial - Multimeter
 
 **Duration**: 1:55
- 
-(signal_generator)=
-### Instrumentation Tutorial - Signal Generator
+
+### Instrumentation Tutorial - Signal Generator {#sec-lab-instruments-signal-generator}
 
 A video of how to use the signal generator in the lab. You can watch a shorter version on the YouTube channel.
 
- <div><iframe title="embedded content" src="https://www.youtube.com/embed/_DaNmDGA1Fg" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+<div><iframe title="embedded content" src="https://www.youtube.com/embed/_DaNmDGA1Fg" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
 
 Instrumentation Tutorial - Signal Generator
 

@@ -93,8 +93,6 @@ format:
     code-annotations: below
 
 # parts:
-#   - caption: Laboratory Introduction
-#     numbered: false
 #   - caption: Laboratory Experiments
 #     chapters:
 #     - file: labs/index
@@ -112,11 +110,3 @@ format:
 #     - file: projects/range_finder
 #     - file: projects/clock_timer
 #     - file: projects/weather_station
-#   - caption: Appendices
-#     chapters:
-#     - file: appendix/appendix_a
-#       sections:
-#       - file: appendix/2scomp
-#       - file: appendix/bcd
-#       - file: appendix/binary_fractions
-#       - file: appendix/ascii

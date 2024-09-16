@@ -1,20 +1,12 @@
 ---
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.1
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
 ---
 
-(soldering)=
-# Safe Soldering
+# Safe Soldering {#sec-soldering}
 
 ## About soldering 
 The electronics industry relies on soldered joints, from the finest track on a microchip all the way up to massive conductors in the power distribution network. Soldering is so important to the electronics industry; it is specified as an essential skill in the IET requirements for professional engineers! You may not be called upon to use this skill very often in your career, but you must learn how to make reliable soldered joints without damage to the components and to be aware of the hazards.
@@ -35,16 +27,13 @@ The soldering iron must be at the correct temperature (typically 300 Celsius for
 ## Making a soldered joint
 Let us consider a component lead threaded through a circuit board. The lead and the copper tracks must be all at a high enough temperature to melt the solder BEFORE the solder is applied. If this is the case, the solder will flow like water over the joint and form a smooth curved surface when it solidifies. If the solder alone is heated, the joint will be "dry" - the solder will sit sullenly on the surface without forming a eutectic bond or forming a blob in mid-air on the component lead. The remedy in such cases is to apply more heat to the joint until the solder runs. If necessary, use a little more solder to provide new flux. In extreme cases, the solder will have to be removed (using braid or a solder pump), and the task starts again.
 
-```{figure} pictures/soldering.png
-:name: fig9.1
-:alt: An illustration of soldering a component onto strip board.
-:align: center
-:width: 100%
+::: {#fig-lab-intro-9.1} 
+![](pictures/soldering.png){fig-alt="An illustration of soldering a component onto strip board."}
 
 Soldering a component onto a stripboard.
-```
+:::
 
-Referring to the illustration shown in {numref}`fig9.1`:
+Referring to the illustration shown in @fig-lab-intro-9.1:
 
 1. Place the tip of soldering iron at the base of the joint to heat both the lead and the track.
 2. Touch solder to the base of the joint, preferably not on the iron The heat of the wire and track should melt the solder.
@@ -55,7 +44,7 @@ Referring to the illustration shown in {numref}`fig9.1`:
 
 ## Hazards when soldering
 
-greatest danger is of burning oneself, either directly or as a result of touching heated metal which has not yet cooled down. A less obvious danger is from spots of molten solder, which might fall on skin or clothing. It is essential to use the safety equipment provided in the laboratory.
+The greatest danger is of burning oneself, either directly or as a result of touching heated metal which has not yet cooled down. A less obvious danger is from spots of molten solder, which might fall on skin or clothing. It is essential to use the safety equipment provided in the laboratory.
 
 * Always return the soldering iron to the safety stand when not in use. NEVER place a soldering iron on the workbench where it will be a danger to yourself and others.
 * Always place the workpiece on one of the heatproof mats, and ensure the extraction nozzle is positioned close by. This will ensure that the fumes are taken away from the workbench.
@@ -65,10 +54,6 @@ greatest danger is of burning oneself, either directly or as a result of touchin
 * Report any accident to laboratory staff as soon as possible.
 
 ## Demonstrations
-Dr Davies has made three videos, accessible on Canvas ([Video demonstration: Let's build a Circuit Continuity Tester from a Tic Tac Box](https://canvas.swansea.ac.uk)), in which he demonstrates the correct way of preparation and soldering the continuity tester. 
+Dr Davies has made three videos, accessible on Canvas ([Video demonstration: Let's build a Circuit Continuity Tester from a Tic Tac Box](https://canvas.swansea.ac.uk/courses/52902/pages/video-demonstration-lets-build-a-circuit-continuity-tester-from-a-tic-tac-box?module_item_id=2882113)), in which he demonstrates the correct way of preparation and soldering the continuity tester. 
 
 You may wish to review these videos before performing the construction exercise. There is also a photograph through which Dr Davies has shown the stages in the assembly of his continuity tester. You are invited to check your work against these images.
-
-```{code-cell} ipython3
-
-```

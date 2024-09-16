@@ -1,19 +1,12 @@
 ---
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.1
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
 ---
 
-# EG-151: Microcontrollers Laboratory Introduction
+# Laboratory Introduction {#sec-lab-intro-intro}
 
 In this laboratory introduction, you will do the following:                                                                                 
 
@@ -21,13 +14,11 @@ In this laboratory introduction, you will do the following:
 - *Simulation exercise*: to investigate the operation of the oscillator circuit using National Instruments Multisim, a circuit simulation package
 - *Construction exercise*: to build a continuity tester in a Tic-Tac® box
 
-```{figure} pictures/lab-workbench.jpg
-:name: fig:workbench
-:alt: A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board.
-:width: 100%
+::: {#fig-workbench} 
+![](pictures/lab-workbench.jpg){fig-alt="A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board."}
 
 A photograph of one of the workstations located in Engineering East B107 Electronics Teaching Laboratory showing PC, the laboratory instruments and connections to a prototype circuit board.
-```
+:::
 
 We expect that you will work through the exercises contained in this practical introduction in less than two weeks (four lab sessions), but a month has been allowed.
 
@@ -39,20 +30,17 @@ After each significant section, there is an assignment point which you should us
 
 You should work through each of these activities in order. 
 
-* {ref}`depteee_labwork`
-* {ref}`lab_instruments`
-* {ref}`lab_safety`
-* [Obtain and Keep a Lab Diary](https://canvas.swansea.ac.uk/courses/44971/pages/to-do-obtain-and-keep-a-lab-diary?module_item_id=2258048) - External Link to Canvas
-* {ref}`experiment0`
-* {ref}`simulation_exercise`
-* {ref}`questions`
-* {ref}`construction`
-* {ref}`soldering`
+* @sec-labintro-assessment
+* @sec-depteee-labwork
+* @sec-lab-intro-instruments
+* @sec-lab-intro-lab-safety
+* [Obtain and Keep a Lab Diary](hhttps://canvas.swansea.ac.uk/courses/52902/pages/to-do-obtain-and-keep-a-lab-diary?module_item_id=2882101) - External Link to Canvas
+* @sec-experiment-0
+* @sec-simulation-exercise
+* @sec-lab-intro-questions
+* @sec-construction
+* @sec-soldering
 
 If you would prefer a document version of the lab introduction, it is available as a PDF which you are welcome to download and use. 
 
 However, so your progress in the lab can be monitored, you are expected to work through the sections on Canvas.
-
-```{code-cell} ipython3
-
-```
