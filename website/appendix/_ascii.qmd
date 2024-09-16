@@ -17,13 +17,13 @@ return (`\r` in C), line feed (`\n` in C), tab (`\t` in C).
 
 As microprocessors evolved to 8-bit and higher the ASCII standard has
 also evolved to use the eighth bit allowing a further 127 characters
-(extended ASCII).[^note2]
+(extended ASCII).[^note-ascii-note2]
 
 The ANSI ASCII table for ... is reproduced in @tbl-ascii-table.
 
 | Dec | Hex    | Symbol                    | Dec | Hex    | Symbol | Dec | Hex    | Symbol | Dec | Hex    | Symbol |
 |-----|:-------|:--------------------------|:---:|:-------|:-------|:---:|:-------|:-------|:---:|:-------|:-------|
-| 0   | `0x00`   | Null character          | 32  | `0x20` | `SP`   | 64  | `0x40`    | `@`    | 96  | `0x61` | <code>\`</code>    |
+| 0   | `0x00`   | Null character[^note-ascii-note3]          | 32  | `0x20` | `SP`   | 64  | `0x40`    | `@`    | 96  | `0x61` | <code>\`</code>    |
 | 1   | `0x01`   | Start of heading        | 32  | `0x21` | `!`    | 65  | `0x41` | `A`    | 96  | `0x61` | `a`    |
 | 2   | `0x02` | Start of text             | 34  | `0x22` | `"`    | 66 | `0x42` | `B` | 98 | `0x62` | `b` |
 | 3   | `0x03` | End of text               | 35  | `0x23` | `#`    | 67 | `0x43` | `C` | 99 | `0x63` | `c` |
@@ -55,7 +55,7 @@ The ANSI ASCII table for ... is reproduced in @tbl-ascii-table.
 | 29  | `0x1D` | Group separator           | 61  | `0x3D` | `=`    | 93 | `0x4D` | `]` | 125 | `0x7D` | `}` |
 | 30  | `0x1E` | Record separator          | 62  | `0x3E` | `>`    | 94 | `0x5E` | `^` | 126 | `0x7E` | `~` |
 | 31  | `0x1F` | Unit separator            | 63  | `0x3F` | `?`    | 95 | `0x5F` | `_` | 127 | `0x7F` | Delete |
-: ANSI ASCII Table {@tbl-ascii-table}
+: ANSI ASCII Table {#tbl-ascii-table}
 
 A very useful and useful reference is available as [ascii-code.com](https://ascii-code.com). See also [ASCII Code Chart](https://www.ascii-code.com/ASCII/codechart).
 
@@ -131,6 +131,6 @@ The final result (in hexadecimal) is
 00
 ```
 
-[^note2]: As ASCII was only designed to represent English, extended ASCII was developed been used to extend the coding so that displays could print accented European characters, some Greek symbols used in mathematics, and some symbols that could be used to draw boxes on a simple display screen. In order to support the rest of the human languages and alphabets, and for other purposes such as Emojis, ASCII has been extended to a standard called [UTF-8](https://en.wikipedia.org/wiki/UTF-8). This uses more bytes to represent each character and therefore greatly extends the types of texts that can be stored and manipulated inside a computer.
+[^note-ascii-note2]: As ASCII was only designed to represent English, extended ASCII was developed been used to extend the coding so that displays could print accented European characters, some Greek symbols used in mathematics, and some symbols that could be used to draw boxes on a simple display screen. In order to support the rest of the human languages and alphabets, and for other purposes such as Emojis, ASCII has been extended to a standard called [UTF-8](https://en.wikipedia.org/wiki/UTF-8). This uses more bytes to represent each character and therefore greatly extends the types of texts that can be stored and manipulated inside a computer.
 
-[^note3]: the null character (`\0` in C) is used in C to mark the end of a string.
+[^note-ascii-note3]: the null character (`\0` in C) is used in C to mark the end of a string.

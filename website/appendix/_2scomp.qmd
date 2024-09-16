@@ -1,6 +1,6 @@
 ## Twos Compliment{#sec-appendixa-2scomp}
 
-### Negative Numbers!
+### Negative Numbers
 
 Up until now, we have only considered positive or unsigned values, how can we handle negative numbers?
 

@@ -5,7 +5,7 @@ Initially this guide will look at programming this task using the Arduino Integr
 
 ### Step 1 {#sec-step1}
 
-Open the Arduino software and set up the IDE by selecting which device is being used and which communication interface it is connected to. Within the "Tools" menu option, locate the menu item “Board” and select Arduino Nano, also in the “Tools” menu select the port that the Arduino Nano is connected to (COMx) under the “Port” menu item (note the Arduino must be connected to do this)[^note1]. After setting these parameters , under the “Tools” menu the “Get Board Info” menu item can be pressed which will attempt to communicate with the Arduino board and get the board name and serial number of the USB communication chip if successful.
+Open the Arduino software and set up the IDE by selecting which device is being used and which communication interface it is connected to. Within the "Tools" menu option, locate the menu item “Board” and select Arduino Nano, also in the “Tools” menu select the port that the Arduino Nano is connected to (COMx) under the “Port” menu item (note the Arduino must be connected to do this)[^note-ide-note1]. After setting these parameters , under the “Tools” menu the “Get Board Info” menu item can be pressed which will attempt to communicate with the Arduino board and get the board name and serial number of the USB communication chip if successful.
 
 ### Step 2 {#sec-step2}
 
@@ -40,5 +40,5 @@ The first of these functions is called “`setup`” and takes no input argument
 The second function is called “`loop`” and takes no input arguments and has no return type as above. This function is where the bulk of the code is written and as its name suggests will repeatedly execute the code inside the function block.
 
 
-[^note1]: The IDE set-up instructions given here are for windows. Additional hardware specific intructions are given in {ref}`set_up_arduino` and in the [Platform specific guides](https://www.arduino.cc/en/Guidehttps://www.arduino.cc/en/Guide).
+[^note-ide-note1]: The IDE set-up instructions given here are for windows. Additional hardware specific intructions are given in {ref}`set_up_arduino` and in the [Platform specific guides](https://www.arduino.cc/en/Guidehttps://www.arduino.cc/en/Guide).
 :w
