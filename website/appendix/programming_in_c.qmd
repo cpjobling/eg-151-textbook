@@ -1,0 +1,30 @@
+---
+title: "Programming in C &ndash; from nothing to software"
+author: 
+  name: "Ben Clifford"
+  affiliation: "Welsh Centre for Printing and Coatings"
+---
+
+## Introduction {#programming-in-c-0}
+
+This part provides a detailed worked example of writing code in C language to run on the Atmel ATmega328 microcontroller, including why each line of code is written and where any additional information comes from and how it can be found. 
+
+These pages start with a description of some desired functionality written in the form of a task to be completed. 
+
+The sections go through the thought process a programmer should follow to plan and ultimately write the software to achieve this task. The first version is focussed on using the Arduino IDE with the predefined functions such as `pinMode()` and `digitalWrite()` before looking at writing the same program in pure C.
+
+## Contents{.unnumbered}
+
+- @sec-programming-in-c-1: [The Task](#sec-programming-in-c-1)
+- @sec-programming-in-c-2: [Understanding the task and first thoughts](#sec-programming-in-c-2)
+- @sec-programming-in-c-3: [Wiring up the Circuit](#sec-programming-in-c-3)
+- @sec-programming-in-c-4: [Using the Arduino Integrated Development Environment](#sec-programming-in-c-4)
+- @sec-programming-in-c-5: [Setting up I/O connections](#sec-programming-in-c-5)
+- @sec-programming-in-c-6: [Detecting and reacting to a button press](#sec-programming-in-c-6)
+
+{{< include _the_task.qmd >}}
+{{< include _understanding_the_task.qmd >}}
+{{< include _wiring_the_circuit.qmd >}}
+{{< include _using_the_ide.qmd >}}
+{{< include _setting_up_the_io.qmd >}}
+{{< include _detecting_and_reacting_to_a_button_press.qmd >}}

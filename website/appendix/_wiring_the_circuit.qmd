@@ -1,37 +1,28 @@
-(programming_in_c_3)=
-# Wiring up the Circuit
+## Wiring up the Circuit {#sec-programming-in-c-3}
 
 
-Referencing the pinout of the Arduino nano in {numref}`
-
-` below, the programmer must first identify where each of the three hardware elements will be connected, ensuring that the pins/ports meet the requirements.
+Referencing the pinout of the Arduino nano in @fig-ccode-1 below, the programmer must first identify where each of the three hardware elements will be connected, ensuring that the pins/ports meet the requirements.
 
 - For the push button switch, this will be a digital signal (on/off) so can be connected to any GPIO pin.
   - Looking at the other hardware requirements, this should avoid the pins connected to the ADC and leave a full port of input pins for the LEDs. For this example, connection `D8` of the nano board is a convenient pin to use, this is connected to `PB0`, i.e. Port B bit 0[^note].
 - For the analogue input, this can be connected to any of the GPIO pins which is also connected to the ADC.
-  - Looking at {numref}`fig:ccode:1`, these connections are labelled `A0` &ndash; `A7` on the nano board. Connection `A0` is connected to `PC0`, i.e. Port C bit 0 which is also connected to ADC[0] &ndash; ADC channel 0.
+  - Looking at @fig-ccode-1, these connections are labelled `A0` &ndash; `A7` on the nano board. Connection `A0` is connected to `PC0`, i.e. Port C bit 0 which is also connected to ADC[0] &ndash; ADC channel 0.
 - The LEDs can be connected to any digital GPIO pin, but ideally will be 8 pins on the same port.
-  - Looking at {numref}`fig:ccode:1` and the two pins we have used above, connections `D0` &ndash; `D7` can be used which corresponds to Port D bits 0-7[^note3].
+  - Looking at @fig-ccode-1 and the two pins we have used above, connections `D0` &ndash; `D7` can be used which corresponds to Port D bits 0-7[^note3].
  
-A possible assembly is illustrated in {numref}`fig:ccode:2`[^note4]
+A possible assembly is illustrated in @fig-ccode-2[^note4]
 
-```{figure} pictures/ArduinoNanoPinout.png
-:name: fig:ccode:1
-:align: center
-:width: 100%
-:alt: Arduino Nano Pinout.
+::: {#fig-ccode-1} 
+![](pictures/ArduinoNanoPinout.png){fig-alt="Arduino Nano Pinout."}
 
 Arduino Nano Pinout - [Arduino Nano links](https://docs.arduino.cc/hardware/nanoLinks).
-```
+:::
 
-```{figure} pictures/AssembledCircuit.png
-:name: fig:ccode:2
-:align: center
-:width: 100%
-:alt: A photograph of circuit assembled on breadboard.
+::: {#fig-ccode-2} 
+![](pictures/AssembledCircuit.png){fig-alt="A photograph of circuit assembled on breadboard."}
 
 The circuit assembled on breadboard
-```
+:::
 
 
 [^note1]: the programmer could also use `D9`, `D10`, `D11`, `D12` etc.

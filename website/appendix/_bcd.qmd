@@ -1,4 +1,4 @@
-## Appendix A.2: Binary Coded Decimal (BCD){#sec-appendixa-bcd}
+## Binary Coded Decimal (BCD){#sec-appendixa-bcd}
 
 Binary Coded Decimal, also known as BCD or 8421 format is another widely used numbering system whereby each decimal digit from 0-9 is individually represented as a 4-bit binary number between `0000` and `1001`. 
 

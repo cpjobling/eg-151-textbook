@@ -1,4 +1,9 @@
-# Other Data Representations
+---
+title: Other Data Representations
+author: 
+  name: "Ben Clifford"
+  affiliation: "Welsh Centre for Printing and Coatings"
+---
 
 The content of this appendix is intended to expand on what was covered in [Introduction to Data Representation](/lectures/data_representation/). 
 
@@ -11,9 +16,13 @@ You will find the videos on Canvas on page [Two's complement, BCD, Binary Fracti
 
 - @sec-appendixa-2scomp: [Twos Complement](#sec-appendixa-2scomp)
 - @sec-appendixa-bcd: [Binary Coded Decimal](#sec-appendixa-bcd)
-- @sec-appendixa-binary-fractions
-- @sec-appendixa-ascii
+- @sec-appendixa-binary-fractions: [Binary Fractions](#sec-appendixa-binary-fractions)
+- @sec-appendixa-ascii: [ASCII](#sec-appendixa-ascii)
 
 {{< include _2scomp.qmd >}}
 
 {{< include _bcd.qmd >}}
+
+{{< include _binary_fractions.qmd >}}
+
+{{< include _ascii.qmd >}}
