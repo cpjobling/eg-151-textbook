@@ -64,7 +64,7 @@ There will follow quite a lengthy installation procedure, involving unpacking th
 
 Once again, go to [arduino.cc](https://arduino.cc) and select the tab "Software". This will bring up the Arduiono IDE 2 page (@fig-gs-2). Move past the instructions for "Arduino Web Editor" and look at the section titled "Downloads". In the section marked "Arduino IDE 2.1.1" you will see the words "For more details, please refer to the Arduino IDE 2.0 documentation." . Click on the link labelled **Arduino IDE 2.0 documentation** to open the **Arduino IDE 2** documentation page (highlighted in @fig-gs-3`) and then select **Downloading and installing the Arduino IDE 2** from the table of contents to open the **Downloading and installing the Arduino IDE 2** page (@fig-gs-4). Follow the detailed instructions for MacOS to start the installer. 
 
-## Initial set up {#set_up_arduino}
+## Initial set up {#sec-set-up-arduino}
 
 
 When you are satisfied that the Arduino IDE has been successfully installed, run the application. Assuming that the installation procedure described above has gone to plan, and after the splash screen, the Arduino IDE main screen (@fig-gs-5) appears. 
@@ -105,7 +105,7 @@ Once you have set up your board, the board idenitfier changes to **Arduino Nano*
 Arduino IDE 2 set up and ready to go.
 :::
 
-## On the blink
+## On the blink {#sec-on-the-blink}
 
 The first program we shall run rejoices in the unlikely name of Blink. Click on `File` and select `Examples` from the drop-down menu. A further menu appears, with all the example programs. Select `01.Basics`, followed by `Blink` (@fig-gs-10). 
 

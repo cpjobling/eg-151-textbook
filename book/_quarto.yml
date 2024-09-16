@@ -42,8 +42,8 @@ book:
         - week06.qmd
         - week07.qmd
         - week08.qmd
-    - part: lab_intro/intro.qmd 
-      chapters: 
+    - part: lab_intro/intro.qmd
+      chapters:
         - assessment.qmd
         - lab_work.qmd
         - lab_instruments.qmd
@@ -55,12 +55,13 @@ book:
         - soldering.qmd
     - part: labs_intro.qdm
       chapters:
-        - labs_get_started.qmd   
+        - labs_get_started.qmd
+        - labs_lab01.qmd
+        - labs_lab02.qmd
     - references.qmd
-  appendices: 
+  appendices:
     - appendix_a.qmd
     - programming_in_c.qmd
-
 
 bibliography: references.bib
 
