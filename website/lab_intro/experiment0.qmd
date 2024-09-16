@@ -76,7 +76,7 @@ Next the power supply must be set up. As mentioned in @sec-5.3, each workstation
 
 Connect the power supply to the breadboard using flexible leads with 4mm plugs at each end, observing the colour convention **red = +3V**, **black = 0V**.
 
-## Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope {#sec-lab-intro-r&s-socilloscope}
+## Introducing the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope {#sec-lab-intro-rns-socilloscope}
 
 ::: {#fig-lab-intro-5.5} 
 ![](pictures/r&s-digital-oscilloscope.jpg){fig-alt="A photograph of the Rohde &amp; Schwarz RTM2024 Real-Time Digital Oscilloscope."}

@@ -1,22 +1,12 @@
 ---
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.0
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
 ---
 
-(lab_3)=
-# Experiment 3: Analogue to Digital Conversion
-
-+++
+# Experiment 3: Analogue to Digital Conversion {#sec-lab-3}
 
 ## Analogue to Digital Conversion
 
@@ -29,16 +19,13 @@ necessarily compatible with the analogue world. In order to access
 analogue information in a digital system, an Analogue to Digital
 Converter (ADC) is needed.
 
-```{figure} pictures/analogue_to_digital_conversion.png
-:name: fig:ex3:1
-:alt: Analogue to Digital Conversion
-:align: center
-:width: 100%
+::: {#fig-ex3-1} 
+![](pictures/analogue_to_digital_conversion.png){fig-alt="Analogue to Digital Conversion."}
 
 Analogue to Digital Conversion
-```
+:::
 
-The transfer characteristic of a 10-bit ADC is shown in the {numref}`fig:ex3:1`
+The transfer characteristic of a 10-bit ADC is shown in the @fig-ex3-1
 above. Let us suppose that the analogue input voltage, Vin, can be
 anywhere between zero Volts and Vref. As $V_\mathrm{in}$ increases, the binary
 output varies from all zeros when $V_\mathrm{in} = 0$, and all ones when $V_\mathrm{in} = V_\mathrm{ref}$.
@@ -79,8 +66,6 @@ sampled at a maximum of about 10 kHz, so they easily meet the
 specification for telephone lines on speed and resolution but are a bit
 short of the resolution and speed for high quality audio.
 
-+++
-
 ## Reading an Analogue Input
 
 The Analogue to Digital Converter on the Arduino Nano has six inputs
@@ -93,7 +78,7 @@ inputs this will require eight separate `analogRead()` instructions.
 This can be an issue if we need to read several voltages simultaneously,
 which requires additional hardware external to the Arduino Nano.
 
-If you look in {ref}`listing6`, you will find a simple programme which
+If you look in @lst-listing6, you will find a simple programme which
 repeatedly reads from analogue input 6 (`A6`) and displays the value on
 the LEDs. The source of the voltage to be measured is from a
 potentiometer, which is a resistor with a moving contact which can be
@@ -108,30 +93,25 @@ as a "cheat", the value of `analogRead()` is divided by 16 so that it
 fits!
 
 Modify the plug-in breadboard by adding the supplied potentiometer and
-connecting it as shown in {numref}`fig:ex3:2`, using wire links cut from the
+connecting it as shown in @fig-ex3-2, using wire links cut from the
 supplied single-core cable using the wire cutter and stripper. Don't
 forget to wear eye protection when cutting the wires!
 
 
-```{figure} pictures/readboard.png
-:name: fig:ex3:2
-:alt: Circuit layout for Experiment 3.
-:align: center
-:width: 100%
+::: {#fig-ex3-2} 
+![](pictures/readboard.png){fig-alt="Circuit layout for Experiment 3."}
 
 Circuit layout for Experiment 3.
-```
+:::
 
 Create an Arduino sketch in the usual way and copy the code from
-{ref}`listing6` into it. Compile and download the code. When the programme
+@lst-listing6 into it. Compile and download the code. When the programme
 is running, turn the potentiometer slowly. You will see the LEDs light
 up in a binary sequence, so that no LEDs are illuminated when the wheel
 is fully anticlockwise, and all the LEDs are illuminated when the wheel
 is fully clockwise. Try and find a position where the LEDs change over
-from 011111 (31 decimal) to 100000 (32 decimal). This should be exactly
+from `011111` (31 decimal) to `100000` (32 decimal). This should be exactly
 half-way between the extreme positions.
-
-+++
 
 ## Bar Graph Display
 
@@ -160,7 +140,7 @@ How are we to make this set of decisions? One solution would be to use a
 series of `if()` statements, however some slight additions are needed.
 We actually need an` if() … else` statement, so that only one of the
 conditions causes a write to the LEDs. If you look at the programme in
-{ref}`listing7`, you will see that it begins its tests with the highest
+@lst-listing7, you will see that it begins its tests with the highest
 threshold and progresses down in steps of 170 until zero.
 
 Copy/paste the programme into an Arduino sketch, compile and test. As
@@ -169,14 +149,11 @@ LEDs will light. If you balance the setting so that it is just changing
 over from three LEDs to four, this is exactly halfway on the
 potentiometer (arrow pointing upwards).
 
-+++
-
-(ex3:exercise)=
-## An Exercise for the Reader
+## An Exercise for the Reader {#sec-ex3-exercise}
 
 Now that we are familiar with the concept, let us write a programme to
 illuminate all twelve LEDs as a bar graph. The following changes will
-need to be made to the programme in {ref}`listing7`:
+need to be made to the programme in @lst-listing7:
 
 Both Port B and Port C will need to be updated after each
 `if() `statement, e.g.
@@ -191,12 +168,10 @@ will result in the top two LEDs off, all other LEDs on.
 The threshold numbers will go up in steps of $(1024 / 12)$ which is
 approximately 85.
 
-Create a new Arduino sketch and modify the programme from {ref}`listing7`.
+Create a new Arduino sketch and modify the programme from @lst-listing7.
 When you test it, the LEDs should light progressively as the
 potentiometer is rotated clockwise. When the potentiometer is at the
 extreme anticlockwise position, all LEDs will be out.
-
-+++
 
 ## Assessment of Experiment 3
 
@@ -205,43 +180,96 @@ following:
 
 -   A photo of the modified breadboard, with the potentiometer added.
     Don't forget to include identification.
--   A listing of your programme for {ref}`ex3:exercise` above, with comments as
+-   A listing of your programme for @sec-ex3-exercise above, with comments as
     appropriate.
 
-+++
+## Code listings
 
-(appendix3A)=
-## Appendix A: Code listings
-
-+++
-
-(listing6)=
 ### Listing 6: Simple application of `analogRead()`.
+```{.c #lst-listing6 lst-cap="Simple application of analogRead()"}
+// the setup function runs once when you press reset or power the board
 
+word ADCval = 0;
+
+void setup() {
+
+    // initialize Ports B and C pins 0-5 as outputs.
+
+    DDRB = 0b00111111;
+    DDRC = 0b00111111;
+
+    PORTB = 0; // both ports start from zero
+    PORTC = 0;
+}
+
+// the loop function runs over and over again forever
+
+void loop() {
+
+    PORTC = (analogRead(A6)) / 16; // and that’s the active bit of the programme!
+}
+```
 View or download code from GitHub Gist
 [analog.ino](https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a)
-<script src="https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a.js"></script>
 
-+++
-
-(listing7)=
 ### Listing 7: Bar Graph display with six LEDs
+
+```{.c #lst-listing7 lst-cap="Bar Graph display with six LEDs"}
+// the setup function runs once when you press reset or power the board
+
+word ADCval = 0;
+
+void setup() {
+
+    // initialize Ports B and C pins 0-5 as outputs and set them to zero initially
+
+    DDRB = 0b00111111;
+    DDRC = 0b00111111; // may as well put them on the same line
+
+    PORTB = 0;
+    PORTC = 0; // and these statements too
+}
+
+// the loop function runs over and over again forever
+
+void loop() {
+
+    ADCval = analogRead(A6);
+
+    if (ADCval >= 854) {
+        PORTC = 0b00111111;
+    } // all six LEDs on
+    else if (ADCval >= 684) {
+        PORTC = 0b00011111;
+    } // five LEDs on
+    else if (ADCval >= 513) {
+        PORTC = 0b00001111;
+    } // four LEDs on
+    else if (ADCval >= 342) {
+        PORTC = 0b00000111;
+    } // three LEDs on
+    else if (ADCval >= 171) {
+        PORTC = 0b00000011;
+    } // two LEDs on
+    else if (ADCval >= 1) {
+        PORTC = 0b00000001;
+    } // one LED on
+    else {
+        PORTC = 0; // all LEDs off
+    }
+}
+```
+
 View
 or download code from GitHub Gist
 [bar_graph.ino](https://gist.github.com/cpjobling/1d3ccff3cfb8080bbda618712cf3786b)
-<script src="https://gist.github.com/cpjobling/1d3ccff3cfb8080bbda618712cf3786b.js"></script>
 
-+++
+## Photographs
 
-## Appendix B: Photographs
+The following photograph (@fig-photo-ex3-1) has been provided by Dr Davies who created this experiment.
 
-The following photograph ({numref}`photo:ex3:1`) has been provided by Dr Davies who created this experiment.
-
-```{figure} pictures/Expt4A1-1.jpg
-:name: photo:ex3:1
-:align: center
-:width: 60%
-:alt: Photograph of the plug-in breadboard after completing Experiment 3.
+::: {#fig-photo-ex3-1} 
+![](pictures/Expt4A1-1.jpg){fig-alt="Photograph of the plug-in breadboard after completing Experiment 3."}
 
 Photograph of the plug-in breadboard after completing Experiment 3.
-```
+:::

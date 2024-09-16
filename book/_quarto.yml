@@ -42,7 +42,7 @@ book:
         - week06.qmd
         - week07.qmd
         - week08.qmd
-    - part: lab_intro/intro.qmd
+    - part: lab_intro_intro.qmd
       chapters:
         - assessment.qmd
         - lab_work.qmd
@@ -53,11 +53,12 @@ book:
         - questions.qmd
         - construction.qmd
         - soldering.qmd
-    - part: labs_intro.qdm
+    - part: labs_index.qmd
       chapters:
         - labs_get_started.qmd
         - labs_lab01.qmd
         - labs_lab02.qmd
+        - labs_lab03.qmd
     - references.qmd
   appendices:
     - appendix_a.qmd
