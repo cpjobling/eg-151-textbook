@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Building website"
+echo "Building website using Quarto book format"
 quarto render website --to html
 
 echo "Building slides"
@@ -9,8 +9,12 @@ quarto render slides
 echo "Copying slides to website"
 rsync -avzd slides/_slides/ website/_build/html/slides
 
-echo "Building PDF"
+echo "Building PDF version of the book"
 rm -rf book/_book/*
 quarto render book --to pdf
+
+echo "Copying PDF to website"
 cp book/_book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
 
+echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"
+ghp-import --no-jekyll --push --no-history website/_build/html 
