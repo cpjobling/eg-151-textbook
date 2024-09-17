@@ -36,7 +36,7 @@ We shall now use Multisim to create a simulated circuit and
 oscilloscope, that is identical in function to the oscillator built on
 breadboard in section 4.
 
-The toolbar of the Multisim programme looks like @fig-lab-intro-6.2:
+The toolbar of the Multisim program looks like @fig-lab-intro-6.2:
 
 ::: {#fig-lab-intro-6.2} 
 ![](pictures/ms-toolbar.png){fig-alt="The Multisim toolbar with the key controls."}

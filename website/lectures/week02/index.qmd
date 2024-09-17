@@ -210,9 +210,9 @@ $$
 @fig-week02-a-program illustrates a simple program to add two numbers. 
 
 ::: {#fig-week02-a-program} 
-![](pictures/pc_example.png){fig-alt="An example programme showing three instructions located at memory locations 0 through 2."}
+![](pictures/pc_example.png){fig-alt="An example program showing three instructions located at memory locations 0 through 2."}
 
-An example programme showing three instructions located at memory locations 0 through 2.
+An example program showing three instructions located at memory locations 0 through 2.
 :::
 
 ::: {.notes}
@@ -260,7 +260,7 @@ How the program counter is used to access instructions within the available page
 ::: {.notes}
 The Least significant six bits address the instruction words within a given page. Note: $2^6 = 64$ words which is $128$ bytes.
 
-The 8 most significant bits address the *page* in programme memory in which the instruction word is to be found. Note: $2^8 = 256$ and that $256 \times 64 \times 2 = 32,768$ bytes.
+The 8 most significant bits address the *page* in program memory in which the instruction word is to be found. Note: $2^8 = 256$ and that $256 \times 64 \times 2 = 32,768$ bytes.
 
 ### The Bootloader
 In short, microcontrollers are usually programmed through a programmer (specialist piece of hardware) unless you have a piece of firmware in your microcontroller that allows installing new firmware without the need of an external programmer. This small piece of firmware is called a bootloader and can allow the program to be rewritten by the microcontroller itself e.g. via an over-the-air (OTA) updates.

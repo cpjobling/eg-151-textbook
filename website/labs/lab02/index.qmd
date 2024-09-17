@@ -8,7 +8,7 @@ number-sections: false
 
 # Experiment 2: Digital Input {#sec-lab-2}
 
-All the programme examples in [Experiment 1](../lab01) dealt with digital output,
+All the program examples in [Experiment 1](../lab01) dealt with digital output,
 and we learned how to set the bits in the Data Direction Register (DDR) to
 make designated ports work as outputs. In Experiment 2 we shall look at
 digital inputs.
@@ -97,7 +97,7 @@ Active low switching for a microcontroller.
 Each port has an associated pull-up register, which allows individual
 bits of the port to be "tied" to logic "1" through a high-value
 resistor. Different families of microcontrollers have different
-mechanisms for achieving this. In the demonstration programme that
+mechanisms for achieving this. In the demonstration programthat
 follows, the input pull-up resistors are enabled by a Arduino specific
 instruction, `pinmode().` Another microcontroller used in our
 undergraduate labs, the "AW60", has special registers called "pull-up
@@ -105,12 +105,12 @@ enable" registers to perform the same task.
 
 ## Using a switch in a programme
 
-The demonstration programme in @lst-ex2-1 is, in fact, the very first
-programme we tried in Experiment 1. There is one refinement; a switch is
+The demonstration programin @lst-ex2-1 is, in fact, the very first
+programwe tried in Experiment 1. There is one refinement; a switch is
 tested and if the logic input is "0", the counter does not advance.
 Notice the `pinmode()` instruction in setup, which turns on the internal
 pull-up resistor. This is a one-off instruction at the start of
-programme execution.
+programexecution.
 
 Create an Arduino sketch, and copy/paste the code from @lst-ex2-1 into
 it.
@@ -148,7 +148,7 @@ pin-to-pin leads ans shown in @fig-ex2-3. Take great care when mounting the swit
 breadboard, to orient them correctly, and to avoid bending the little
 tabs!
 
-When the programme runs, the LEDs on Port C will count up as before.
+When the program runs, the LEDs on Port C will count up as before.
 When the left-hand button is pressed, the counter stops and resumes when
 the button is released. We are "in control" of the counter!
 
@@ -160,11 +160,11 @@ Wiring diagram for Experiment
 
 ## Let's go faster
 
-The next programme, in @lst-ex2-2, uses both buttons. The left-hand
+The next program, in @lst-ex2-2, uses both buttons. The left-hand
 button, as before, stops the counter. The right-hand button is a "turbo"
 button, and makes the counter speed up by a factor of 10! 
 
-A new programme structure, `if...else` has been introduced @lst-ex2-2 (lines 28&mdash;33) is used to decide on a delay of 1000 ms
+A new program structure, `if...else` has been introduced @lst-ex2-2 (lines 28&mdash;33) is used to decide on a delay of 1000 ms
 or a delay of 100 ms, depending on the condition of the button.
 
 The general `if…else` structure is as follows:
@@ -177,16 +177,16 @@ if (condition 1) {
 }
 ```
 
-An additional programme structure, `else if`, can replace `else` if there
+An additional program structure, `else if`, can replace `else` if there
 are multiple decisions.
 
 ## An exercise for the reader... {#sec-section-5}
 
 The last part of Experiment 2 is an exercise for the reader. Do not
-despair, all the programme elements needed have been covered in this
+despair, all the program elements needed have been covered in this
 Experiment and Experiment 1.
 
-Modify the programme in @lst-ex2-2 so that the buttons have this
+Modify the program in @lst-ex2-2 so that the buttons have this
 effect:
 
 1.  If no buttons are pressed, a counter on Port C and a counter on Port
@@ -210,7 +210,7 @@ This follows the pattern set in Experiment 1.
 
 -   A photograph of the modified breadboard, with some form of
     identification.
--   A listing of your final programme (as specified in @sec-section-5 above)
+-   A listing of your final program (as specified in @sec-section-5 above)
     with suitable comments.
 
 ## Code Listings

@@ -80,7 +80,7 @@ digitalWrite(ledPin7, LOW);
 ```
 
 
-[^const]: If a value will not change, it can be stored as part of the programme in read-only-memory. This will release a small amount of space in working memory which is often limited in a microcontroller.
+[^const]: If a value will not change, it can be stored as part of the program in read-only-memory. This will release a small amount of space in working memory which is often limited in a microcontroller.
 
 
 

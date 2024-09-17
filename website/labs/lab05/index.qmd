@@ -1,30 +1,18 @@
 ---
-jupytext:
-  cell_metadata_filter: -all
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
 ---
 
-(lab_5)=
-# Experiment 5: LCD Display Panel
-
-+++
+# Experiment 5: LCD Display Panel {#sec-lab-5}
 
 ## Introduction
 
 Experiment 5 introduces two new concepts. A new piece of hardware, the
 alphanumeric liquid crystal display, and a new software structure, the
 library.
-
-+++
 
 ## Alphanumeric Display module
 
@@ -45,7 +33,7 @@ HD 44780.
 One complication of using the alphanumeric display module is the small
 number of input-output pins on the Arduino Nano. A special mode of
 operation is employed, in which eight-bit data bytes are transferred as
-two, four-bit "nibbles". A demonstration programme that is available to
+two, four-bit "nibbles". A demonstration program that is available to
 you shows you how numeric values and character strings can be
 displayed.
 
@@ -53,18 +41,13 @@ A copy of the data sheet for the
 display and a list of ASCII characters]
 can be found on [Canvas](https://canvas.swansea.ac.uk/courses/44971/files/4630684?module_item_id=2258159).
 
-+++
-
 ## Pinout of the Alphanumeric Display module
 
-```{figure} pictures/lcd_panel.png
-:name: Fig:ex5:1
-:align: center
-:width: 587px
-:alt: LCD Display Panel and its pinout.
+::: {#fig-ex5-1} 
+![](pictures/lcd_panel.png){fig-alt="LCD Display Panel and its pinout."}
 
 LCD Display Panel and its pinout.
-```
+:::
 
 There are 18 pins arranged in a straight line, which allows the module
 to be plugged into a standard breadboard. The pins are grouped as eight
@@ -92,13 +75,13 @@ data.
 
 **Pins 16 to 18**: zero volts for backlights red, green, blue respectively.
 
-+++
+
 
 ## Library for LCD
 
 Many devices such as the LCD require some complex software. A library,
 in this context, refers to additional code which is linked into the main
-programme using "#include" and is accessed using specific commands. In
+program using "#include" and is accessed using specific commands. In
 this case, the LCD library is included as follows:
 
 ```c
@@ -128,19 +111,15 @@ cursor position.
 
 The best way to understand how the LCD hardware and software work, is to
 build the circuit that follows on plug-in breadboard and to try the
-example programme in {ref}`listing9`.
+example programin @lst-listing9.
 
-```{figure} pictures/Expt5PBB-1.jpg
-:name: fig:ex5:2
-:width: 100%
-:alt: Diagram of breadboard with LCD display panel fitted.
+::: {#fig-ex5-2} 
+![](pictures/Expt5PBB-1.jpg){fig-alt="Diagram of breadboard with LCD display panel fitted."}
 
 Demonstration Circuit on Plug-in Breadboard.
-```
+:::
 
-+++
-
-## Functions of the Demonstration Programme
+## Functions of the Demonstration Program
 
 As explained previously, the LCD module is connected in "4-bit mode", to
 minimise the number of connections to the Arduino Nano processor. In
@@ -158,8 +137,8 @@ Two push buttons are provided, connected to digital inputs `D10` and
 `D11`. Note the use of `pinmode` in `setup()`, which turns on the
 pull-up resistors associated with inputs `D10` and `D11`.
 
-Copy the text of the demonstration programme into a new Arduino sketch,
-and compile and upload in the usual way. When the programme is running,
+Copy the text of the demonstration program into a new Arduino sketch,
+and compile and upload in the usual way. When the program is running,
 it should display the message "hello world!" on the first line. On the
 second line, the first few characters are a count in seconds since the
 board was reset. The remainder of the second line shows the message "ADC
@@ -172,8 +151,6 @@ The example code provides examples of how to set the display and write
 messages and variables. The example code can form the basis of the
 exercise that follows.
 
-+++
-
 ## Task for Experiment 5
 
 The exercise for this experiment is to configure the demonstration board
@@ -185,19 +162,25 @@ bits, so there are 1024 possible values).
 
 Here is the required display. Retain the line "ADC = " followed by the
 ADC value displayed on the second line, this will be useful when testing
-your programme.
+your program.
 
-ADC value = 0;        Display = "`                 `" (all spaces)
+```c
+ADC value = 0;        Display = "                 "; // all spaces
+```
 
-ADC value = 1-63;     Display = "`#                ` " (only first block)
+```c
+ADC value = 1-63;     Display = "#                "; // only first block)
+```
 
-ADC value = 64-127;   Display = "`##               ` " (first two blocks)
+```c
+ADC value = 64-127;   Display = "##               "; // first two blocks)
+```
 
 and so on until:
 
-ADC value = 1018-1023 Display = "`#################`" (all 16 blocks)
-
- 
+```c
+ADC value = 1018-1023; Display = "#################"; // all 16 blocks
+```
 
 The "`#`" character is only here as an example. A more suitable character
 is available on the LCD, which corresponds to ASCII code 255 and appears
@@ -213,43 +196,138 @@ There are a number of ways to achieve this programme. One would be to
 divide the ADC value by 64 and use this as an index in a character
 array.
 
-An alternative would be to write a programme loop which decrements the
+An alternative would be to write a program loop which decrements the
 scaled ADC value and printing "#" until the result is
 zero.
 
-+++
+
 
 ## Assessment of Experiment 5
 
 As with previous exercises, the plug-in breadboard should be
 photographed with your student card and added to your laboratory diary.
-A listing of your programme should be included, with plenty of comments.
-A programme without comments is of only limited value, as nobody else
+A listing of your program should be included, with plenty of comments.
+A program without comments is of only limited value, as nobody else
 can follow it!
 
-+++
+## Code Listing
 
-## Appendix A: Code Listing
+### LCD Panel Demonstration Program.
 
-+++
+```{.c #lst-listing9 lst-cap="LCD Panel Demonstration Program"}
+/*
+  LiquidCrystal Library - Hello World
 
-(listing9)=
-### Listing 9: LCD Panel Demonstration Programme.
-View and download the code from GitHub gist
-[lcd_panel.ino](https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462)
-<script src="https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462.js"></script>
+  Demonstrates the use a 16x2 LCD display.  The LiquidCrystal
+  library works with all LCD displays that are compatible with the
+  Hitachi HD44780 driver. There are many of them out there, and you
+  can usually tell them by the 16-pin interface.
 
-+++
+  This sketch prints "Hello World!" to the LCD
+  and shows the time and the value of analogue input A7
 
-## Appendix B Photograph of Prototype Board with LCD Panel Display
+  The circuit:
+   LCD RS pin to digital pin 8
+   LCD Enable pin to digital pin 9
+   LCD D4 pin to digital pin 4
+   LCD D5 pin to digital pin 5
+   LCD D6 pin to digital pin 6
+   LCD D7 pin to digital pin 7
+   LCD R/W pin to ground
+   LCD VSS pin to ground
+   LCD VCC pin to 5V
+   10K resistor:
+   ends to +5V and ground
+   wiper to LCD VO pin (pin 3)
+   analogue input to Nano A7
 
-The following photograph ({numref}`photo:ex5:1`) has been provided by Dr Davies who created this experiment.
+  Library originally added 18 Apr 2008
+  by David A. Mellis
+  library modified 5 Jul 2009
+  by Limor Fried (http://www.ladyada.net)
+  example added 9 Jul 2009
+  by Tom Igoe
+  modified 22 Nov 2010
+  by Tom Igoe
+  modified 7 Nov 2016
+  by Arturo Guadalupi
+  this sketch modified 24th Nov 2021
+  by Timothy Davies
 
-```{figure} pictures/NewExpt5.jpg
-:name: photo:ex5:1
-:align: center
-:width: 70%
-:alt: Photograph of breadboard with LCD panel fitted
 
-Photograph of the Arduino Nano and LCD Display Panel with example programme running.
+*/
+
+// include the library code:
+#include <LiquidCrystal.h>
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+// define the left and right push buttons
+const int left = 11, right = 10;
+
+void setup() {
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+
+// Print a message to the LCD.
+  lcd.print("hello, world!");
+
+  pinMode(left, INPUT_PULLUP);
+  pinMode(right, INPUT_PULLUP);
+}
+
+void loop() {
+  // set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+
+// print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+
+  //move the cursor to the middle of the second line
+  lcd.setCursor(6, 1);
+  
+  //print the message with extra spaces to blank previous analogue data
+  lcd.print("ADC =     ");
+  
+  //move the cursor to the printing position for the analogue data
+  lcd.setCursor(12, 1);
+  
+  //print the value of analogue input A7 as 0 to 1023
+  lcd.print(analogRead(7));
+
+  if (digitalRead(left) == 0)
+  { 
+    lcd.setCursor(14, 0);
+    lcd.print("L");
+  }
+  else if (digitalRead(right) == 0)
+  { 
+    lcd.setCursor(14, 0);
+    lcd.print(" R");
+  }
+  else {
+    lcd.setCursor(14, 0);
+    lcd.print("  ");
+  }
+  delay(100);
+}
 ```
+
+View and download the code from GitHub gist
+[lcd_panel.ino](https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462).
+
+
+
+## Photograph of Prototype Board with LCD Panel Display
+
+The following photograph (@fig-photo-ex5-1) has been provided by Dr Davies who created this experiment.
+
+::: {#fig-photo-ex5-1} 
+![](pictures/NewExpt5.jpg){fig-alt="Photograph of breadboard with LCD panel fitted."}
+
+Photograph of the Arduino Nano and LCD Display Panel with example program running.
+:::

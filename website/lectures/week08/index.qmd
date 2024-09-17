@@ -99,9 +99,9 @@ The CPU core of the Atmel ATmega328 microcontroller is illustrated in @fig-wk8-c
 :::
 
 ::: {#fig-wk8-cpu_core} 
-![](pictures/cpu_core.png){fig-alt="The CPU core with programme counter, status and control register, general registers, and ALU highlighted."}
+![](pictures/cpu_core.png){fig-alt="The CPU core with program counter, status and control register, general registers, and ALU highlighted."}
 
-The CPU core with programme counter, status and control register, general registers, and ALU highlighted.
+The CPU core with program counter, status and control register, general registers, and ALU highlighted.
 :::
 
 ::: {.notes}

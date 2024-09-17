@@ -484,9 +484,9 @@ In a Von-Neumann architecture, the same memory and bus are used for both data an
 :::
 
 ::: {#fig-week1-vonneuman}
-![](pictures/von_neuman_arch.png){fig-alt="The Von Neumann architecture - data memory and programme code use the same memory storage area and data busses."}
+![](pictures/von_neuman_arch.png){fig-alt="The Von Neumann architecture - data memory and program code use the same memory storage area and data busses."}
 
-The Von Neumann architecture&mdash;data memory and programme code use the same memory storage area and data busses
+The Von Neumann architecture&mdash;data memory and program code use the same memory storage area and data busses
 :::
 
 ---
@@ -498,9 +498,9 @@ The Harvard architecture stores machine instructions and data in separate memory
 :::
 
 ::: {#fig-week1-harvard}
-![](pictures/harvard_arch.png){fig-alt="The Harvard architecture - data memory and programme code use different memory storage areas and busses."}
+![](pictures/harvard_arch.png){fig-alt="The Harvard architecture - data memory and program code use different memory storage areas and busses."}
 
-The Harvard architecture&mdash;data memory and programme code use different memory storage areas and busses.
+The Harvard architecture&mdash;data memory and program code use different memory storage areas and busses.
 :::
 
 ---
@@ -512,9 +512,9 @@ Most modern microcontrollers don't have a physical separation between the memory
 :::
 
 ::: {#fig-week1-modified-harvard}
-![](pictures/modified_harvard.png){fig-alt="The modified Harvard architecture - data memory and programme code use the same memory storage area, but data and program addresses use separate busses to access the memory."}
+![](pictures/modified_harvard.png){fig-alt="The modified Harvard architecture - data memory and program code use the same memory storage area, but data and program addresses use separate busses to access the memory."}
 
-The Harvard architecture&mdash;data memory and programme code use the same memory storage area, but data and program addresses use separate busses to access the memory.
+The Harvard architecture&mdash;data memory and programcode use the same memory storage area, but data and program addresses use separate busses to access the memory.
 :::
 
 [^l1:note3]: This gets around the bottleneck that can occur using a Von-Neumann memory architecture with lower costs than having two separate memories.

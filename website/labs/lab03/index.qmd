@@ -78,7 +78,7 @@ inputs this will require eight separate `analogRead()` instructions.
 This can be an issue if we need to read several voltages simultaneously,
 which requires additional hardware external to the Arduino Nano.
 
-If you look in @lst-listing6, you will find a simple programme which
+If you look in @lst-listing6, you will find a simple program which
 repeatedly reads from analogue input 6 (`A6`) and displays the value on
 the LEDs. The source of the voltage to be measured is from a
 potentiometer, which is a resistor with a moving contact which can be
@@ -115,7 +115,7 @@ half-way between the extreme positions.
 
 ## Bar Graph Display
 
-The next demonstration programme is of a bar graph display. Instead of
+The next demonstration program is of a bar graph display. Instead of
 illuminating in a binary sequence, the LEDs light progressively from one
 end to the other in the same way as the volume indicator on digital
 record and playback equipment. The number from the ADC has a maximum
@@ -139,11 +139,11 @@ ADC = 854 to 1023: six LEDs lit.
 How are we to make this set of decisions? One solution would be to use a
 series of `if()` statements, however some slight additions are needed.
 We actually need an` if() … else` statement, so that only one of the
-conditions causes a write to the LEDs. If you look at the programme in
+conditions causes a write to the LEDs. If you look at the program in
 @lst-listing7, you will see that it begins its tests with the highest
 threshold and progresses down in steps of 170 until zero.
 
-Copy/paste the programme into an Arduino sketch, compile and test. As
+Copy/paste the program into an Arduino sketch, compile and test. As
 you rotate the wheel on the potentiometer clockwise, progressively more
 LEDs will light. If you balance the setting so that it is just changing
 over from three LEDs to four, this is exactly halfway on the
@@ -151,9 +151,9 @@ potentiometer (arrow pointing upwards).
 
 ## An Exercise for the Reader {#sec-ex3-exercise}
 
-Now that we are familiar with the concept, let us write a programme to
+Now that we are familiar with the concept, let us write a program to
 illuminate all twelve LEDs as a bar graph. The following changes will
-need to be made to the programme in @lst-listing7:
+need to be made to the program in @lst-listing7:
 
 Both Port B and Port C will need to be updated after each
 `if() `statement, e.g.
@@ -168,7 +168,7 @@ will result in the top two LEDs off, all other LEDs on.
 The threshold numbers will go up in steps of $(1024 / 12)$ which is
 approximately 85.
 
-Create a new Arduino sketch and modify the programme from @lst-listing7.
+Create a new Arduino sketch and modify the program from @lst-listing7.
 When you test it, the LEDs should light progressively as the
 potentiometer is rotated clockwise. When the potentiometer is at the
 extreme anticlockwise position, all LEDs will be out.
@@ -180,7 +180,7 @@ following:
 
 -   A photo of the modified breadboard, with the potentiometer added.
     Don't forget to include identification.
--   A listing of your programme for @sec-ex3-exercise above, with comments as
+-   A listing of your program for @sec-ex3-exercise above, with comments as
     appropriate.
 
 ## Code listings
@@ -210,9 +210,9 @@ void loop() {
 }
 ```
 View or download code from GitHub Gist
-[analog.ino](https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a)
+[analog.ino](https://gist.github.com/cpjobling/222597cccb0a98347184409b7034ac6a).
 
-### Listing 7: Bar Graph display with six LEDs
+### Bar Graph display with six LEDs
 
 ```{.c #lst-listing7 lst-cap="Bar Graph display with six LEDs"}
 // the setup function runs once when you press reset or power the board
@@ -262,7 +262,7 @@ void loop() {
 
 View
 or download code from GitHub Gist
-[bar_graph.ino](https://gist.github.com/cpjobling/1d3ccff3cfb8080bbda618712cf3786b)
+[bar_graph.ino](https://gist.github.com/cpjobling/1d3ccff3cfb8080bbda618712cf3786b).
 
 ## Photographs
 

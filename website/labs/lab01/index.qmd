@@ -42,7 +42,7 @@ Counter circuit.
 
 Now you are familiar with the Arduino IDE from running "Blink" in section [on the blink](../get_started/#sec-on-the-blink), the next step is to write a new programme. 
 
-@lst-listing1 shows the text of a programme which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a "time wasting" delay, using the Arduino specific command `delay()`.
+@lst-listing1 shows the text of a program which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a "time wasting" delay, using the Arduino specific command `delay()`.
 
 First connect your Arduino Nano board to your PC with the cable provided. Next open Arduino IDE 2 and select the connection and board as described in section [initial set up](../get_started/#sec-set-up-arduino). From the file menu select "New Sketch". Press the `view raw` button to view the code without line numbers, copy the whole of the code given in Listing 1 and paste it into the code window of the new sketch. Save the  sketch file as `counter1`.
 
@@ -56,9 +56,9 @@ Our first program ready for testing.
 
 Now that the file has been entered into the computer and an Arduino sketch project it must be converted into a form the Arduino board can accept. This operation is called compilation. 
 
-Click on the icon which starts the compilation. This is the blue tick near the top of the window, also called Verify. After a few seconds, the display area at the bottom of the window should say "compilation complete". If it does not, and some error message appears, check carefully that the programme has been entered correctly and try again.
+Click on the icon which starts the compilation. This is the blue tick near the top of the window, also called Verify. After a few seconds, the display area at the bottom of the window should say "compilation complete". If it does not, and some error message appears, check carefully that the program has been entered correctly and try again.
 
-When the programme has been compiled successfully, it must be uploaded to the Arduino. Click on the blue arrow near the top of the window, called Upload. This operation should only take a few seconds. The message "Done uploading" tells us that the upload operation has been successful, and the LEDs should start counting.
+When the program has been compiled successfully, it must be uploaded to the Arduino. Click on the blue arrow near the top of the window, called Upload. This operation should only take a few seconds. The message "Done uploading" tells us that the upload operation has been successful, and the LEDs should start counting.
 
 If the upload fails, there are a number of things to check. Under "tools", there are a number of settings, e.g.
 
@@ -70,7 +70,7 @@ If the above are wrong, then the upload will fail. Ask a demonstrator for help!
 
 ## Lets make a decision
 
-The example programme counts from zero to 255 and then back to zero, though we see the LEDs being illuminated from zero to 63 as there are only six LEDs. The counts from 64 to 127 look just the same as zero to 63! Supposing we need a counter that counts from zero to 59, and then back to zero. This is often required, for example in time-keeping programmes (60 seconds in a minute, 60 seconds in an hour). The number of count values (60 in this case) is called a Modulus.
+The example program counts from zero to 255 and then back to zero, though we see the LEDs being illuminated from zero to 63 as there are only six LEDs. The counts from 64 to 127 look just the same as zero to 63! Supposing we need a counter that counts from zero to 59, and then back to zero. This is often required, for example in time-keeping programmes (60 seconds in a minute, 60 seconds in an hour). The number of count values (60 in this case) is called a Modulus.
 
 There are several ways we can add a modulus to our counter programme. One way would be to use a "for" loop. Another way would be to make a decision. For example, if we add the following lines to the existing programme:
 
@@ -83,7 +83,7 @@ if (counter1 >= 60) {
 
 In this code, we have made a decision! If the value of the variable `counter1` is increased beyond 59, then it will be set back to zero, so the LEDs never advance beyond 59. 
 
-Why bother with counts greater than 60? Well, if the programme is not properly initialised then there will be a number of false counts. 
+Why bother with counts greater than 60? Well, if the program is not properly initialised then there will be a number of false counts. 
 
 If you are not familiar with "C" programming, then you will notice that there are two kinds of "equals" in the extra line. The "greater than or equals" (`>=`) is a comparison and does not change any values. In other words the value of the variable `counter1` is compared with the fixed value of 60. If the condition is true, then the contents of the "braces" (squiggly brackets) are executed. The single equals (`=`) is an *assignment* and forces the value of the variable to the fixed value zero.
 
@@ -109,7 +109,7 @@ does.
 
 ## Lets do it again!
 
-Now that we are masters of the modulus counter, lets repeat the operation by connecting another set of LEDs to port B, and adding extra lines to the programme as shown in @lst-listing2.
+Now that we are masters of the modulus counter, lets repeat the operation by connecting another set of LEDs to port B, and adding extra lines to the program as shown in @lst-listing2.
 
 This will require another variable, for example "counter2".
 
@@ -123,7 +123,7 @@ Add another set of six LEDs and resistors to the Breadboard as shown in @fig-ex1
 Circuit board for a cascaded counter.
 :::
 
-Modify the programme to include the extra lines and compile then upload. If this is successful, then the LEDs on port B will count as far as 59 (`0b0111011`) and then all go out and start counting again. At the instant the LEDs on port B go out, the LEDs on port C will advance by one. So, if we have the patience, after an hour the LEDs will reach their maximum value of 59 minutes, 59 seconds (`0b0111011` `0b0111011`) and all go out. Then the counter starts counting again from all zeros.
+Modify the program to include the extra lines and compile then upload. If this is successful, then the LEDs on port B will count as far as 59 (`0b0111011`) and then all go out and start counting again. At the instant the LEDs on port B go out, the LEDs on port C will advance by one. So, if we have the patience, after an hour the LEDs will reach their maximum value of 59 minutes, 59 seconds (`0b0111011` `0b0111011`) and all go out. Then the counter starts counting again from all zeros.
 
 ## Let's do it differently
 
@@ -148,7 +148,7 @@ for (counter2 = 0; counter2 < 60; counter2++) {
 
 In just three lines of code, the start and end values of the loop are set up, and the increment defined, followed by the code to be executed each time around the loop. This illustrates the compact nature of the "C" language.
 
-This `for(;;)` loop only executes once, so we still need to make it repeat, which is made possible by the `loop` function in the Arduino programme. Suppose we embed this `for(;;)` loop in an outer `for(;;)` loop, which increments a different variable and writes to a different port? Then we will have achieved the same result as the programme in @lst-listing2, but in a more elegant fashion:
+This `for(;;)` loop only executes once, so we still need to make it repeat, which is made possible by the `loop` function in the Arduino program. Suppose we embed this `for(;;)` loop in an outer `for(;;)` loop, which increments a different variable and writes to a different port? Then we will have achieved the same result as the program in @lst-listing2, but in a more elegant fashion:
 
 ```c
 for (counter1 = 0; counter1 < 60; counter1++) {
@@ -160,9 +160,9 @@ for (counter1 = 0; counter1 < 60; counter1++) {
 }
 ```
 
-The "heart" of the programme is just a few lines of code!
+The "heart" of the program is just a few lines of code!
 
-Modify the programme as shown in @lst-listing3, compile and upload, and check that it really does what we expect. You may find it convenient to reduce the delay from 1000 to speed up the operation of the counters.
+Modify the program as shown in @lst-listing3, compile and upload, and check that it really does what we expect. You may find it convenient to reduce the delay from 1000 to speed up the operation of the counters.
 
 ## Assessment of Experiment 1
 
@@ -170,9 +170,9 @@ Open the document you are using as a laboratory diary and add a new section "Exp
 
 Take a photograph of the completed breadboard, with the twelve LEDs and resistors fitted. Include in your photo some means of identification, such as your student card.
 
-When you have finished modifying the programme to correspond with @lst-listing3, add some comments (preceded by the double oblique stroke "//") and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
+When you have finished modifying the program to correspond with @lst-listing3, add some comments (preceded by the double oblique stroke "//") and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
 
-We shall be looking for comments which show your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the programme, the comments aid understanding. Also, if you return to working on a programme after a couple of weeks, it is much easier to pick up where you left off. A programme without comments is incomplete!
+We shall be looking for comments which show your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the program, the comments aid understanding. Also, if you return to working on a program after a couple of weeks, it is much easier to pick up where you left off. A program without comments is incomplete!
 
 ## Code Listings
 

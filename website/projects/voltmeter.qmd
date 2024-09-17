@@ -37,7 +37,7 @@ $$\frac{V_\mathrm{in}}{1024}\times 20$$
 This resulted in reading of $7.388$ for an input of $7.06$ which was about 6% in error.
 
 The value of $V_\mathrm{ref}$ was measured using a voltmeter, and found to be $4.73$V, not 5V.
-So the programme was modified to multiply by $18.92$ and divide by $1023$.
+So the program was modified to multiply by $18.92$ and divide by $1023$.
 This resulted in an error of about 1%, which is much better!
 
 The demo code which accounts for these adjustments follows:

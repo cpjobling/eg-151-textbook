@@ -59,6 +59,8 @@ book:
         - labs_lab01.qmd
         - labs_lab02.qmd
         - labs_lab03.qmd
+        - labs_lab04.qmd
+        - labs_lab05.qmd
     - references.qmd
   appendices:
     - appendix_a.qmd

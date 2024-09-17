@@ -43,7 +43,7 @@ And here are details of the LM324 op-amp and LM35 temperature sensor.
 ```
 
 
-Here are some photos of the advanced demonstration programme running.
+Here are some photos of the advanced demonstration program running.
 
 ```{image} pictures/wprototype1.jpg
 :alt: Prototype weather station showing wind speed and wind direction
