@@ -1,0 +1,15 @@
+# Microcontrollers Lectures {.unnumbered #eg-151-toc}
+
+## List of Lectures
+
+- [Croeso i Brifysgol Abertawe | Welcome to Swansea University](intro.html)
+- [Lecture 1: Introduction to Microcontrollers and Microcontroller Architecture](week01)
+- [Self-study: Introduction to Data Representation](data_representation)
+- [Lecture 2: Architecture of the Atmel ATmega 328 Microcontroller](week02)
+- [Lecture 3: Introduction to Programming and Program Development](week03)
+- [Lecture 4: Introduction to Programming with C](week04)
+- [Lecture 5: Interfacing to digital I/O with C](week05)
+- [Lecture 6: Interfacing to analogue I/O with C](week06)
+- [Lecture 7: Introduction to Assembly Language](week07)
+- [Lecture 8: Microcontroller Architecture – Program Operation](week08)
+- [Lecture 9: Addressing Modes](week08)

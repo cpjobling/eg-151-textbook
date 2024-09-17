@@ -1,0 +1,39 @@
+---
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
+---
+
+# Questions {#sec-lab-intro-questions}
+Having completed {ref}`experiment0` and  {ref}`simulation_exercise`, use the information captured in your lab diary to answer the following questions.
+
+Reproduce and answer the following questions in your lab diary. Note frequency (in Hz) is the reciprocal of the period in seconds and you should be careful with units.
+
+## Question 1
+For the prototype circuit that you build on the breadboard what is the frequency of oscillation of the breadboard circuit:</li>
+1. with the power supply set to 3V;
+2. with the power supply set to 1.5V?
+
+## Question 2
+For the simulated circuit what is the frequency of oscillation of the simulation circuit:
+1. with the power supply set to 3V;
+2. with the power supply set to 1.5V? (*hint*: frequency is the reciprocal of period).
+
+## Question 3
+An earlier version of the simulation software had a problem when power was switched on.
+
+The circuit would not start oscillating, because in the simulated circuit both base resistors were identical, the capacitors were identical and so were the transistors. An “extra capacitor” of 10 pF was added to introduce a slight imbalance in the circuit which is otherwise perfectly symmetrical.
+
+1. What fraction of the 10 nF capacitor is the "extra capacitor"?
+2. Do you think it has a significant effect on the frequency of oscillation?
+3. Why is the "extra capacitor" not needed for the practical circuit? (*Hint*: think about the difference between practical components and simulated components).
+
+## Question 4
+
+Any simulation software must be verified by comparison with the equivalent practical circuit. Are you confident that Multisim 14.2 produces results consistent with “the real thing”? Justify your answer.
+
+Now transfer your answers into the quiz that you will find on Canvas. 
+
+Each lab partner should make their own submission.

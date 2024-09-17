@@ -1,0 +1,158 @@
+---
+author: 
+  name: "Dr Chris Jobling"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "11/01/2023"
+number-sections: false
+---
+
+# Clock Time {#sec-clock-timer}
+
+**Brief**: to produce a clock display with hours, minutes, seconds display plus day of week.
+
+The minimum requirement will be to have a digital clock display which advances at the correct rate.
+
+Additional marks for the degree of sophistication of the timer functions, for example multiple events; one-off and regular events; and GMT/BST switching. Additional hardware will be provided in the form of relays to drive the load.
+
+The starting point for this project is @sec-getting-started-with-the-time-clock-project. It shows you how to set the *epoch time* for a clock, adjust it to clock time and then display the time in hours minutes and seconds. The display code is similar to the code used in @sec-lab-1.
+
+After that is done, you need to add inputs and outputs and additional functionality to allow for setting the time, setting alarms, creating timers and stop watches, etc.
+
+Marks will be awarded as follows:
+
+- 0 to 40%: If some kind of activity is seen on the LCD.
+
+- 40 to 50%: If the display is formatted into hours, minutes etc. and advances correctly.
+
+- 50 to 60%: If there is at least one relay driven on and off at specified time.
+
+- 60 to 70%: For more advanced timer functions.
+
+- 70% plus: For additional functionality such as daily, weekly events.
+
+## Getting Started with the Time Clock Project {#sec-getting-started-with-the-time-clock-project}
+
+
+### Starter code
+The starter code starts the clock at an arbitrary time and then uses the `millis()` function to keep the clock time synchronised to the *initial epoch time*. I have used the Serial monitor for the output and you will need to change the code to use the LCD panel.  
+
+The Serial monitor is still useful during development and for debugging though!
+
+Your first task will be to set the initial time in the `setup()` function before you press the button on pin 2 or Port D to set the clock time. After that, the clock time should keep reasonable time based on the epoch time stored in `epoch_time`.
+
+```c
+// Define times in millis as useful constants
+#define MILLIS_PER_SECOND 1000
+#define MILLIS_PER_MINUTE 60 * MILLIS_PER_SECOND
+#define MILLIS_PER_HOUR 60 * MILLIS_PER_MINUTE
+#define MILLIS_PER_DAY 24 * MILLIS_PER_HOUR
+
+unsigned long epoch_time, initial_time, clock_time;
+unsigned int days, hours, minutes, seconds, milli_seconds;
+
+// The setup function runs once when you press reset or power the board
+// Use it to set the time and record the realtime offset
+void setup() {
+
+  Serial.begin(9600);
+  Serial.println("Set time then press button when ready");
+
+  pinMode(2, INPUT_PULLUP);  // Make bit 2 of Port D an input
+
+  // Initial time is arbitrarily set to 12:15:35:101
+  hours = 12;
+  minutes = 15;
+  seconds = 35;
+  milli_seconds = 101;
+  initial_time = hours * MILLIS_PER_HOUR + minutes * MILLIS_PER_MINUTE + seconds * MILLIS_PER_SECOND + milli_seconds;
+  Serial.print("Epoch offset: ");
+  Serial.println(initial_time);
+  
+  /* Write code to accept values entered from clock diaplay 
+     and use button press as a go signal */
+  while ((PIND & 0b00000100) != 0) {
+    Serial.println("Waiting ...");
+    break;
+  }
+  Serial.println("Go ...");
+  epoch_time = millis();
+  Serial.print("Epoch time: ");
+  Serial.println(epoch_time);
+}
+
+// the loop function runs over and over again forever
+
+void loop() {
+
+  clock_time = millis() + initial_time;
+  Serial.print("Clock time: ");
+  Serial.println(clock_time);
+
+  // Because of the delay, the clock display will update each second approximately.
+  // There could be some drift here - so it's best to compute the time rather
+  // than relying on the instructions given to update hh:mm:ss.
+  // As supplied, the clock will go to 00:00:00 at midnight and the epoch will reset.
+  // You can include days but note that millis() resets every 79 days or so.
+  delay(1000);  // reduce this delay for faster counting
+  seconds++;
+  if (seconds > 59) {
+    seconds = 0;
+    minutes++;
+    if (minutes > 59) {
+      minutes = 0;
+      hours++;
+      if (hours > 23) {
+        hours = 0;
+        // days++;
+        // reset epoch offset at midnight unless you want to track days too
+        initial_time = millis();
+      }
+    }
+  }
+  Serial.print(hours);
+  Serial.print(":");
+  Serial.print(minutes);
+  Serial.print(":");
+  Serial.print(seconds);
+  Serial.println(" ");
+}
+```
+
+View and download the code from GitHub gist
+[clock.ino](https://gist.github.com/cpjobling/35399e801a4031f184f9830f992978f2).
+
+### Tips
+
+Your program will benefit from the use of functions, e.g. to display current time you could write a function:
+
+```c
+void display_time(int hours, int minutes, int hours) {
+  Serial.print(hours);
+  Serial.print(":");
+  Serial.print(minutes);
+  Serial.print(":");
+  Serial.print(seconds);
+  Serial.println(" ");
+}
+```
+
+When you want to display the time you will just call
+
+```c
+display_time(hours, minutes, seconds);
+```
+
+As you extend the clock, you will occasionally need to leave the main loop, e.g. to set an alarm. This means that the loop will not be updating the time while you are doing something else.
+
+You will therefore need a function to compute the current clock time in elapsed hours, minutes and seconds from `clock_time`. How to do this is left as an exercise, but the MATLAB code *clocks.mlx* which you will find in my the shared MATLAB drive folder [eg-151](https://drive.matlab.com/sharing/8c2dab30-101e-4072-a96c-2fb9d6e6d114) may help help you to understand how you might do the computations needed.
+
+Note that in MATLAB `mod(11,2)` is equivalent to the C code:
+```c
+11 % 2; // = 1: remainder of 11/2
+```
+and `floor(11,2)` is equivalent to to the C code:
+```c
+11 / 2; // = 5: integer division gives 5.5 rounded down to nearest integer
+```
+
+You will need both integer division and modulo division to convert a time defined in milliseconds elapsed into actual clock time in hours:minutes:seconds.

@@ -1,0 +1,67 @@
+---
+author: 
+  name: "Dr Timothy Davies"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/03/2024"
+number-sections: false
+---
+
+# Laboratory Instruments {#sec-lab-intro-instruments}
+
+The instruments at each workstation are as follows:
+
+* Rohde & Schwarz RTM 2024 digital oscilloscope.
+* Rohde & Schwarz HMF 2525 Arbitrary Function Generator.
+* Rohde & Schwarz HMC 8012 Multimeter.
+* Rohde & Schwarz HMC 8043 triple output power supply.
+* Rohde & Schwarz HMC 8042 dual output power supply.
+
+All the above are connected to a high specification PC and can be remotely controlled using the installed Windows software. In addition, information can be sent from the instruments back to the PC; for example, screen images from the oscilloscope can be copied into Word documents.
+
+We have prepared some video briefings on how to use these instruments that supplement the written instructions which follow.
+
+## The Lab Instrumentation {#sec-lab-intro-instrumentation}
+
+You may find these video guides to the instruments used in the Electronics lab useful.
+
+For more videos, see the [SwanseaEEE YouTube channel](https://www.youtube.com/channel/UCTCjvrS9lQqnedibQHwL0bQ/videos).
+
+### Instrumentation Tutorial - Oscilloscope {#sec-lab-instruments-oscilloscope}
+
+A video of how to use the oscilloscope. You can watch a shorter version on the YouTube channel.
+<div><iframe title="embedded content" src="https://www.youtube.com/embed/hXYRL3RGL0w" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+Instrumentation Tutorial - Oscilloscope
+
+**Duration**: 5:44
+ 
+### Instrumentation Tutorial - Power Supply {#sec-lab-instruments-power-supply}
+
+A video of how to use the Power Supply in the lab. You can watch a shorter version in the YouTube channel.
+
+<div><iframe title="embedded content" src="https://www.youtube.com/embed/VTZG61Ylqxc" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+Instrumentation Tutorial - Power Supply
+
+**Duration**: 3:17
+
+
+### Instrumentation Tutorial - Multimeter {#sec-lab-instrument-smultimeter}
+
+A video of how to use the multimeter in the lab. You can watch a shorter version in the YouTube channel.
+
+ <div><iframe title="embedded content" src="https://www.youtube.com/embed/opHvi2fagy8" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+Instrumentation Tutorial - Multimeter
+
+**Duration**: 1:55
+
+### Instrumentation Tutorial - Signal Generator {#sec-lab-instruments-signal-generator}
+
+A video of how to use the signal generator in the lab. You can watch a shorter version on the YouTube channel.
+
+<div><iframe title="embedded content" src="https://www.youtube.com/embed/_DaNmDGA1Fg" width="560" height="315" allowfullscreen="allowfullscreen" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe></div>
+
+Instrumentation Tutorial - Signal Generator
+
+**Duration**: 2:25

@@ -1,0 +1,111 @@
+project:
+  type: book
+  output-dir: _build/html
+
+book:
+  cover-image: cover.jpg
+  cover-image-alt: An Intel 8742 Microprocessor
+  repo-url: https://github.com/cpjobling/eg-151-textbook
+  repo-actions: [edit, issue]
+  repo-branch: quarto-version
+  repo-subdir: website
+  site-url: https://cpjobling.github.io/eg-151-textbook
+  favicon: logo.png
+  title: "EG-151 Microcontrollers 2024-2025"
+  author:
+    - "Chris Jobling"
+    - "Hayder Jahanger"
+    - "Timothy Davies"
+    - "Ben Clifford"
+  publisher: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University
+  publisher-place: Swansea, UK
+  date: 08/27/2024
+  body-footer: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+  comments:
+    hypothesis:
+      theme: clean
+      openSidebar: false
+  chapters:
+    - index.qmd
+    - part: "Course Introduction"
+      chapters:
+        - intro/course_aims.qmd
+        - intro/course_delivery.qmd
+    - part: lectures/index.qmd
+      chapters:
+        - lectures/intro.qmd
+        - lectures/week01/index.qmd
+        - lectures/data_representation/index.qmd
+        - lectures/week02/index.qmd
+        - lectures/week03/index.qmd
+        - lectures/week04/index.qmd
+        - lectures/week05/index.qmd
+        - lectures/week06/index.qmd
+        - lectures/week07/index.qmd
+        - lectures/week08/index.qmd
+        - lectures/week09/index.qmd
+
+    - part: lab_intro/intro.qmd 
+      chapters: 
+        - lab_intro/assessment.qmd
+        - lab_intro/lab_work.qmd
+        - lab_intro/lab_instruments.qmd
+        - lab_intro/lab_safety.qmd
+        - lab_intro/experiment0.qmd
+        - lab_intro/simulation.qmd
+        - lab_intro/questions.qmd
+        - lab_intro/construction.qmd
+        - lab_intro/soldering.qmd
+    - part: labs/index.qmd
+      chapters: 
+        - labs/get_started/index.qmd
+        - labs/lab01/index.qmd
+        - labs/lab02/index.qmd
+        - labs/lab03/index.qmd
+        - labs/lab04/index.qmd
+        - labs/lab05/index.qmd
+    - part: projects/index.qmd
+      chapters: 
+        - projects/voltmeter.qmd
+        - projects/range_finder.qmd
+        - projects/clock_timer.qmd
+        - projects/weather_station.qmd
+    - references.qmd
+  appendices: 
+    - appendix/appendix_a.qmd
+    - appendix/programming_in_c.qmd
+
+copyright: Copyright &copy; 2021-2024 Swansea University. All rights reserved.
+
+bibliography: references.bib
+
+highlight-style: pygments
+
+format:
+  html:
+    theme: cosmo
+    number-depth: 4
+    toc: true
+    code-copy: true
+    code-line-numbers: true
+    highlight-style: github
+    code-annotations: below
+
+# parts:
+#   - caption: Laboratory Experiments
+#     chapters:
+#     - file: labs/index
+#     - file: labs/get_started/index
+#     - file: labs/lab01/index
+#     - file: labs/lab02/index
+#     - file: labs/lab03/index
+#     - file: labs/lab04/index
+#     - file: labs/lab05/index
+#   - caption: Mini Projects
+#     chapters:
+#     - file: projects/index
+#     - file: projects/voltmeter
+#     - file: projects/bipolar_voltage_measurement
+#     - file: projects/range_finder
+#     - file: projects/clock_timer
+#     - file: projects/weather_station

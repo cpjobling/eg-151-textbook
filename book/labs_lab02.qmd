@@ -1,0 +1,1 @@
+../website/labs/lab02/index.qmd

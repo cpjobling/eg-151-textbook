@@ -1,0 +1,19 @@
+# Microcontrollers Lectures {#eg-151-toc}
+
+## Croeso i Brifysgol Abertawe | Welcome to Swansea University {#welcome}
+
+![Photograph of the Engineering Central in the Bay Campus](pictures/image1.png)
+
+## List of Lectures
+
+- [Croeso i Brifysgol Abertawe | Welcome to Swansea University](lectures_intro.html)
+- [Week 1: Introduction to Microcontrollers and Microcontroller Architecture](week01.html)
+- [Introduction to Data Representation](data_representation.html)
+- [ref](week02)
+- [ref](week03)
+- [ref](week04)
+- [ref](week05)
+- [ref](week06)
+- [ref](week07)
+- [ref](week08)
+- [ref](week09)

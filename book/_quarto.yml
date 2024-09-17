@@ -1,0 +1,86 @@
+project:
+  type: book
+
+book:
+  cover-image: cover.jpg
+  cover-image-alt: An Intel 8742 Microprocessor
+  repo-url: https://github.com/cpjobling/eg-151-textbook
+  repo-actions: [edit, issue]
+  repo-branch: quarto-version
+  repo-subdir: book
+  site-url: https://cpjobling.github.io/eg-151-textbook
+  favicon: logo.png
+  title: "EG-151 Microcontrollers 2024-2025"
+  author:
+    - "Chris Jobling"
+    - "Hayder Jahanger"
+    - "Timothy Davies"
+    - "Ben Clifford"
+  publisher: Department of Electronic and Electrical Engineering, School of Aerospace, Civil, Electrical, General and Mechanical Engineering (SACEGME), Faculty of Science and Engineering, Swansea University
+  publisher-place: Swansea, UK
+  date: 08/27/2024
+  body-footer: Copyright &copy; 2024 Swansea University. All rights reserved.
+  comments:
+    hypothesis:
+      theme: clean
+      openSidebar: false
+  chapters:
+    - index.qmd
+    - part: "Course Introduction"
+      chapters:
+        - intro_course_aims.qmd
+        - intro_course_delivery.qmd
+    - part: lectures_index.qmd
+      chapters:
+        - lectures_intro.qmd
+        - week01.qmd
+        - data_representation.qmd
+        - week02.qmd
+        - week03.qmd
+        - week04.qmd
+        - week05.qmd
+        - week06.qmd
+        - week07.qmd
+        - week08.qmd
+    - part: lab_intro_intro.qmd
+      chapters:
+        - assessment.qmd
+        - lab_work.qmd
+        - lab_instruments.qmd
+        - lab_safety.qmd
+        - experiment0.qmd
+        - simulation.qmd
+        - questions.qmd
+        - construction.qmd
+        - soldering.qmd
+    - part: labs_index.qmd
+      chapters:
+        - labs_get_started.qmd
+        - labs_lab01.qmd
+        - labs_lab02.qmd
+        - labs_lab03.qmd
+        - labs_lab04.qmd
+        - labs_lab05.qmd
+    - part: projects_index.qmd
+      chapters:
+        - projects_voltmeter.qmd
+        - projects_clock_time.qmd
+        - projects_range_finder.qmd
+        - projects_weather_station.qmd
+    - references.qmd
+  appendices:
+    - appendix_a.qmd
+    - programming_in_c.qmd
+
+bibliography: references.bib
+
+highlight-style: pygments
+
+format:
+  pdf:
+    documentclass: scrbook
+    papersize: a4
+    pdf-engine: lualatex
+    number-depth: 4
+    keep-tex: true
+    highlight-style: github

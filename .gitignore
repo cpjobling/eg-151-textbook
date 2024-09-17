@@ -1,5 +1,14 @@
 _build
+*.fdb_latexmk
 .ipynb_checkpoints
 .DS_Store
-eg-151-textbook
+_book
+_slides
+_html
+*.tex
+.Rhistory
+*.aux
+*.log
+*.toc
+site_libs
 

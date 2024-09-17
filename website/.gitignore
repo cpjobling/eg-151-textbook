@@ -1,0 +1,13 @@
+/.quarto/
+_build
+*.swp
+_slides
+*.log
+*.tex
+*.log
+*.aux
+index.pdf
+*.toc
+*_files
+
+
