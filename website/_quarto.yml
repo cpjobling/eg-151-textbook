@@ -1,6 +1,6 @@
 project:
   type: book
-  output-dir: _build/html
+  output-dir: ../docs
 
 book:
   cover-image: cover.jpg

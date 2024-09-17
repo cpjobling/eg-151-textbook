@@ -7,7 +7,7 @@ echo "Building slides"
 rm -rf slides/_slides
 quarto render slides 
 echo "Copying slides to website"
-rsync -avzd slides/_slides/ website/_build/html/slides
+rsync -avzd slides/_slides/ docs/slides
 
 echo "Building PDF version of the book"
 rm -rf book/_book/*
@@ -18,6 +18,6 @@ cp book/_book/EG-151-Microcontrollers-2024-2025.pdf $HOME/'OneDrive - Swansea Un
 # cp book/_book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
 
 echo
-echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"
-ghp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --push --no-history website/_build/html 
+echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"i
+#ighp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --push --no-history website/_build/html 
 
