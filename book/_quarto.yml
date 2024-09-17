@@ -61,6 +61,12 @@ book:
         - labs_lab03.qmd
         - labs_lab04.qmd
         - labs_lab05.qmd
+    - part: projects_index.qmd
+      chapters:
+        - projects_voltmeter.qmd
+        - projects_clock_time.qmd
+        - projects_range_finder.qmd
+        - projects_weather_station.qmd
     - references.qmd
   appendices:
     - appendix_a.qmd

@@ -66,11 +66,10 @@ book:
         - labs/lab05/index.qmd
     - part: projects/index.qmd
       chapters: 
-        - file: projects/voltmeter.qmd
-        - file: projects/bipolar_voltage_measurement.qmd
-        - file: projects/range_finder.qmd
-        - file: projects/clock_timer.qmd
-        - file: projects/weather_station.qmd
+        - projects/voltmeter.qmd
+        - projects/range_finder.qmd
+        - projects/clock_timer.qmd
+        - projects/weather_station.qmd
     - references.qmd
   appendices: 
     - appendix/appendix_a.qmd

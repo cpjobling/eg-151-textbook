@@ -1,21 +1,7 @@
----
-jupytext:
-  formats: ipynb,md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-    format_version: 0.13
-    jupytext_version: 1.15.2
-kernelspec:
-  display_name: Python 3 (ipykernel)
-  language: python
-  name: python3
----
 
-(bipolar_voltage_measurement)=
-## Bipolar Voltage Measurement
+## Bipolar Voltage Measurement {#sec-bipolar-voltage-measurement}
 
-Here is some additional information for students who have chosen the {ref}`voltmeter` mini-project.
+Here is some additional information for students who have chosen this mini-project.
 
 What follows is a short video on how to measure and display bipolar (plus and minus) voltages.
 
@@ -23,28 +9,23 @@ What follows is a short video on how to measure and display bipolar (plus and mi
 
 Some stills from the video:
 
-```{figure} pictures/2023-12-03-140308.jpg
-:alt: EG-151 Volmeter Demo Voltage
-:name: fig:bipolar_voltage_measurement
+::: {#fig-bipolar-voltage-measurement} 
+![](pictures/2023-12-03-140308.jpg){fig-alt="EG-151 Volmeter Demo Voltage."}
 
 Measuring a bipolar voltage source with an ADC
-```
+:::
 
-```{figure} pictures/2023-12-03-140347.jpg
-:alt: 
-:name: fig:range_switching
+::: {@fig-range-switching}
+![](pictures/2023-12-03-140347.jpg){fig-alt="Range switching."}
 
 Range switching
-```
+:::
 
-```{figure} pictures/Voltmeter_demo.jpg
-:alt: Prototype voltmeter
-:name: fig:prototype_vm
+::: {@fig-prototype-vm}
+![](pictures/Voltmeter_demo.jpg){fig-alt="Prototype bipolar voltage management."}
 
 Prototype bipolar voltage management
-```
-
-+++
+:::
 
 Code used in this demonstration:
 

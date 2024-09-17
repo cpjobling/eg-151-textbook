@@ -1,5 +1,12 @@
-(ultrasound_range_finder)=
-# Ultrasonic Range Finder
+---
+author: 
+  name: "Dr Chris Jobling"
+  affiliation: "Department of Electronic and Electrical Engineering"
+date: "11/01/2023"
+number-sections: false
+---
+
+# Ultrasonic Range Finder {#sec-ultrasound-range-finder}
 
 **Brief**: to connect an SR04 ultrasonic module to the Arduino Nano and the 16 by 2 LCD.
 
@@ -25,15 +32,11 @@ Here are some thoughts about the ultrasonic range finder, and a brief piece of c
 
 Here is a picture of the Experiment 5 breadboard with the ultrasonic module connected, and showing a time interval of about 500&mu;s for the echo. That corresponds to about 160 mm, divided by two for out and back, which is 80 mm. Look at the ruler; the distance from the cardboard box and the back of the sensor is about 80 mm, so we are not far off the correct measurement.
 
-```{image} pictures/ultra_son_prototype.jpg
-:alt: A prototype of an ultrasonic range finder built with an Arduino nano and ultrasonic module.
-```
+![](pictures/ultra_son_prototype.jpg){fig-alt="A prototype of an ultrasonic range finder built with an Arduino nano and ultrasonic module."}
 
 Now look at the waveforms on the oscilloscope.
 
-```{image} pictures/SCR19.png
-:alt: Oscilloscope trace showing the triggering pulse and the return echo.
-```
+![](pictures/SCR19.png){fig-alt="Oscilloscope trace showing the triggering pulse and the return echo."}
 
 You will see that the "trig" pulse is very narrow, about 5 &mu;s, which is plenty. The echo pulse is about 500 &mu;s, corresponding to the number on the LCD. 
 
@@ -41,8 +44,103 @@ The code to produce the above waveform follows. It is for GUIDANCE ONLY, as it h
 
 Trig is on A0/digital pin 14, and Echo is on A1/digital pin 15.
 
-<script src="https://gist.github.com/cpjobling/7639b8e8e2cafdd653d25f720a93d20b.js"></script>
+```c
+/*
+  LiquidCrystal Library - Hello World
 
-```python
+ Demonstrates the use a 16x2 LCD display.  The LiquidCrystal
+ library works with all LCD displays that are compatible with the
+ Hitachi HD44780 driver. There are many of them out there, and you
+ can usually tell them by the 16-pin interface.
 
+ This sketch prints "Hello World!" to the LCD
+ and shows the time and the value of analogue input A7
+
+  The circuit:
+ * LCD RS pin to digital pin 8
+ * LCD Enable pin to digital pin 9
+ * LCD D4 pin to digital pin 4
+ * LCD D5 pin to digital pin 5
+ * LCD D6 pin to digital pin 6
+ * LCD D7 pin to digital pin 7
+ * LCD R/W pin to ground
+ * LCD VSS pin to ground
+ * LCD VCC pin to 5V
+ * 10K resistor:
+ * ends to +5V and ground
+ * wiper to LCD VO pin (pin 3)
+ * analogue input to Nano A7
+
+ Library originally added 18 Apr 2008
+ by David A. Mellis
+ library modified 5 Jul 2009
+ by Limor Fried (http://www.ladyada.net)
+ example added 9 Jul 2009
+ by Tom Igoe
+ modified 22 Nov 2010
+ by Tom Igoe
+ modified 7 Nov 2016
+ by Arturo Guadalupi
+ this sketch modified 24th Nov 2021
+ by Timothy Davies
+
+ 
+*/
+
+// include the library code:
+#include <LiquidCrystal.h>
+
+#define trig 14
+#define echo 15
+
+// initialize the library by associating any needed LCD interface pin
+// with the arduino pin number it is connected to
+const int rs = 8, en = 9, d4 = 4, d5 = 5, d6 = 6, d7 = 7;
+LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
+
+// define the left and right push buttons
+const int left = 11, right = 10;
+
+
+unsigned int starttime=0; // 0 - 65,355
+unsigned int stoptime=0;
+unsigned int distance=0;
+
+
+void setup() 
+{
+  // set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+
+  pinMode (trig,OUTPUT);
+     
+}
+
+void loop() 
+{
+  // set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+  
+  digitalWrite(trig,1); //send out the trig pulse
+  digitalWrite(trig,0);
+
+  while (digitalRead(echo)==0) {}  //wait for echo to go high
+ 
+  starttime = micros();
+
+  while (digitalRead(echo)!=0) {} wait for echo to go low again
+  
+  stoptime = micros();
+
+  distance = stoptime-starttime;
+  lcd.print("         "); //blank previous result
+  lcd.setCursor(0, 1);
+  lcd.print(distance);
+  
+  delay (100);
+}
 ```
+
+View and download the code from GitHub gist
+[range_finder.ino](https://gist.github.com/cpjobling/7639b8e8e2cafdd653d25f720a93d20b).

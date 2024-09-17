@@ -21,3 +21,4 @@ ln -f ../website/labs/lab01/pictures/* pictures
 ln -f ../website/labs/lab02/pictures/* pictures
 ln -f ../website/labs/lab03/pictures/* pictures
 ln -f ../website/labs/lab05/pictures/* pictures
+ln -f ../website/projects/pictures/* pictures
