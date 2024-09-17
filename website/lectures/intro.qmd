@@ -5,13 +5,12 @@ author:
   affiliation: Department of Electronic and Electrical Engineering
 date: 10/01/2024
 ---
-# Croeso i Brifysgol Abertawe | Welcome to Swansea University {.unnumbered background-image="pictures/image1.png" #welcome}
 
 ::: {.notes}
 [Presentation version](/slides/lecture00.html) of these [notes](#welcome).
 :::
 
-## EG-151 Microcontrollers&mdash;Module Staff{.unnumbered #welcome:module_staff }
+## EG-151 Microcontrollers&mdash;Module Staff {.unnumbered #welcome:module_staff }
 
 ---
 

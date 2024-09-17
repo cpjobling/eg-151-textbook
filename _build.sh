@@ -13,8 +13,11 @@ echo "Building PDF version of the book"
 rm -rf book/_book/*
 quarto render book --to pdf
 
-echo "Copying PDF to website"
-cp book/_book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
+echo "Copying PDF to OneDrive"
+cp book/_book/EG-151-Microcontrollers-2024-2025.pdf $HOME/'OneDrive - Swansea University/1 Projects/EG-151 Microcontrollers 2024-2025'
+# cp book/_book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
 
+echo
 echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"
 ghp-import --no-jekyll --push --no-history website/_build/html 
+
