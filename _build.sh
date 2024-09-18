@@ -18,5 +18,6 @@ cp _build/book/EG-151-Microcontrollers-2024-2025.pdf $HOME/'OneDrive - Swansea U
 
 echo
 echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"
-ghp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --no-history _build/html 
+cp .gitignore .gitattributes _build/html # Allow large files
+ghp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --no-history --push --force _build/html 
 
