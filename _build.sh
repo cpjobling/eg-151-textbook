@@ -1,23 +1,22 @@
 #!/bin/bash
 
+echo "Clearing build directory _build"
+rm -rf _build
+
 echo "Building website using Quarto book format"
 quarto render website --to html
 
 echo "Building slides"
-rm -rf slides/_slides
-quarto render slides 
-echo "Copying slides to website"
-rsync -avzd slides/_slides/ docs/slides
+quarto render slides --to revealjs
 
 echo "Building PDF version of the book"
-rm -rf book/_book/*
 quarto render book --to pdf
 
 echo "Copying PDF to OneDrive"
-cp book/_book/EG-151-Microcontrollers-2024-2025.pdf $HOME/'OneDrive - Swansea University/1 Projects/EG-151 Microcontrollers 2024-2025'
-# cp book/_book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
+cp _build/book/EG-151-Microcontrollers-2024-2025.pdf $HOME/'OneDrive - Swansea University/1 Projects/EG-151 Microcontrollers 2024-2025'
+# cp _build/book/EG-151-Microcontrollers-2024-2025.pdf website/_build/html
 
 echo
 echo "Updating GitHub pages https://cpjobling.github.io/eg-151-textbook"
-#ghp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --push --no-history website/_build/html 
+ghp-import --message="Quarto version of GitHub pages website rebuilt" --no-jekyll --no-history _build/html 
 

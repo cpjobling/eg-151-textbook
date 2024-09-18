@@ -1,5 +1,5 @@
 project:
-  output-dir: _slides
+  output-dir: ../_build/html/slides
   render:
     - lecture00.qmd
     - lecture01.qmd
