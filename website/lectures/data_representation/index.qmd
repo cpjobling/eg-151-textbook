@@ -19,7 +19,7 @@ date: 10/01/2024
 This chapter is designed to reinforce the material
 to be introduced in Week 2 of **EG-143 Digital Systems** and so it will not be delivered as part of a formal lecture in **EG-151 Microcontrollers**.
 
-Instead, we have provided some self-study materials in the Canvas Pages [Introduction to Data Representation](https://canvas.swansea.ac.uk/courses/52902/pages/introduction-to-data-representation?module_item_id=2882134) and [Two's complement, BCD, Binary Fractions and A.S.C.I.I](https://canvas.swansea.ac.uk/courses/52902/pages/twos-complement-bcd-binary-fractions-and-a-dot-s-c-dot-i-i?module_item_id=2882135) as well as in [Appendix A: Other Data Representations](appendix/appendix_a.html).
+Instead, we have provided some self-study materials in the Canvas Pages [Introduction to Data Representation](https://canvas.swansea.ac.uk/courses/52902/pages/introduction-to-data-representation?module_item_id=2882134) and [Two's complement, BCD, Binary Fractions and A.S.C.I.I](https://canvas.swansea.ac.uk/courses/52902/pages/twos-complement-bcd-binary-fractions-and-a-dot-s-c-dot-i-i?module_item_id=2882135) as well as in [Appendix A: Other Data Representations](/appendix/appendix_a.html).
 
 ::: {.callout-important} 
 This material is examinable in EG-151 but there will not be a formal lecture.
@@ -719,9 +719,9 @@ The condition of the status register after completing the sum $110_{10} + 227_{1
 
 ## Other Data Representations
 
-We have provided notes and videos that introduce other commonly used data representations in [Appendix A: Other Data Representations](appendix/appendix_a.html). 
+We have provided notes and videos that introduce other commonly used data representations in [Appendix A: Other Data Representations](/appendix/appendix_a.html). 
 
 ::: {.callout-important} 
-This chapter and [Appendix A](appendix/appendix_a.html) are examinable and you should study both as part of your preparation for the class test.
+This chapter and [Appendix A](/appendix/appendix_a.html) are examinable and you should study both as part of your preparation for the class test.
 :::
 
