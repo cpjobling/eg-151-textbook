@@ -61,3 +61,13 @@ Knowledge and understanding will be increased via retrieval practice based on we
 ## Class test
 
 The lecture course and the laboratory work will be assessed by an online class test worth 35%. We anticipate that the class test will be held between  **11 am -- 1 pm Tuesday 3rd December in Y Twyni PC Lab 104** in Week 10 with a resit being held in week commencing 20th January 2025.
+
+## Laboratory training requirements
+
+It is an accreditation requirement that you have demonstrated competence in **C12 Workshop and practical skills** [#ahep 4, p. 36].
+To demonstrate this, you are required to keep a full record of attendance and the completion of all lab exercises in your lab diary. 
+These will be regularly evaluated and signed off by the laboratory support staff during the lab sessions. In addition, 
+laboratory attendance is compulsory, and the department requires that each student has achieved at least 80% attendance 
+(18 of 22 available sessions) in the lab. Catch-up sessions are provided for labs missed for valid reasons.
+
+To pass the module you must pass laboratory training requirements.
