@@ -16,13 +16,20 @@ The resources for the lecture course are arranged by week in [modules](https://c
 
 ### Laboratory activities
 
-There will be two two-hour lab sessions per week on **Thursday** **10-12** and **Friday** **10-12**. Lab sessions are compulsory, and should you need a Supplementary (resit) assessment in August you must have achieved 80% attendance to qualify for a resit attempt.
+#### Laboratory training requirements
+
+It is an accreditation requirement that you have demonstrated competence in **C12 Workshop and practical skills** [@ahep4 p. 36]. 
+To pass the module you **must** pass the laboratory training requirements.
+
+In order to pass the laboratory training requirements, you are required to keep a full record of lab attendance and record the completion date of each lab exercise in your lab diary. This record will be regularly evaluated and signed off by the laboratory support staff during the lab sessions.
+
+There will be two COMPULSORY two-hour lab sessions per week on Thursdays and Friday 10:00-12:00. The department requires that each student has achieved at least 80% attendance (18 of 22 available sessions) in the lab. Catch-up sessions are provided for labs missed for valid reasons.
 
 #### Laboratory introduction
 
 Laboratory sessions during the first four weeks of term will be used for a laboratory introduction exercise.
 
-The laboratory introduction is COMPULSORY and must be passed before you can continue to work in the laboratory.
+The laboratory introduction **must** be passed before you can continue to work in the laboratory.
 
 Components of the laboratory introduction are as follows:
 
@@ -42,7 +49,8 @@ The course materials and guidance for the lab introduction module start at modul
 
 #### Microcontroller programming laboratories
 
-There will be two two-hour microntroller programming lab sessions per week, and these will begin once the lab introduction has been completed which will be the end of week 4 at the latest.
+There will be two two-hour microntroller programming lab sessions per week, and these will begin once 
+the lab introduction has been completed which will be the end of week 4 at the latest.
 
 The laboratory work will be assessed by means of a lab diary worth 20% of the module marks. The lab diary is to be updated during the lab sessions and will be submitted via a Canvas submission point in November. 
 
@@ -61,13 +69,3 @@ Knowledge and understanding will be increased via retrieval practice based on we
 ## Class test
 
 The lecture course and the laboratory work will be assessed by an online class test worth 35%. We anticipate that the class test will be held between  **11 am -- 1 pm Tuesday 3rd December in Y Twyni PC Lab 104** in Week 10 with a resit being held in week commencing 20th January 2025.
-
-## Laboratory training requirements
-
-It is an accreditation requirement that you have demonstrated competence in **C12 Workshop and practical skills** [#ahep 4, p. 36].
-To demonstrate this, you are required to keep a full record of attendance and the completion of all lab exercises in your lab diary. 
-These will be regularly evaluated and signed off by the laboratory support staff during the lab sessions. In addition, 
-laboratory attendance is compulsory, and the department requires that each student has achieved at least 80% attendance 
-(18 of 22 available sessions) in the lab. Catch-up sessions are provided for labs missed for valid reasons.
-
-To pass the module you must pass laboratory training requirements.

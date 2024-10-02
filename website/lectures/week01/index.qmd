@@ -323,7 +323,7 @@ Memory map for the Atmel Atmega328 MCU
 ##### Applications of 8-bit and 32-bit MCUs
 
 ::: {#fig-apps}
-![](http://lreese.dotsenkoweb.com/wp-content/uploads/2019/04/Fig-1-VennDiagraml-1024x713.jpg){fig-alt="Venn diagram of the applications of the 8-bit MCU vs. the 32-bit MC" width="75%"}
+![](pictures/Fig-1-VennDiagraml-1024x713.jpg){fig-alt="Venn diagram of the applications of the 8-bit MCU vs. the 32-bit MC" width="75%"}
 
 Venn diagram of the applications of the 8-bit MCU vs. the 32-bit MCU[^note_venn] 
 :::

@@ -94,7 +94,7 @@ The course entry page on Canvas dashboard
 
   - Tuesday 11:00 &ndash; 11:50
 
-  - Y Twyni, Room 105
+  - Great Hall, Room 029
 
 - Laboratory class
 
@@ -137,10 +137,25 @@ Applications of microcontrollers, and programming in both assembly and 'C' langu
 
 ### Course Assessment {#welcome:course_assessment}
 
-There are four formal assessment components to this course:
+There are five formal assessment components to this course:
 
 ::: {.fragment}
-#### 1. Lab introduction exercise &ndash; 15%
+#### 1. Laboratory Training Requirements (Pass/Fail)
+
+::: {.notes}
+It is an accreditation requirement that you have demonstrated competence in **C12 Workshop and
+practical skills**. To pass the module you **must** pass the laboratory training requirements.
+In order to pass the laboratory training requirements, you are required to keep a full record of lab
+attendance and record the completion date of each lab exercise in your lab diary. This record will
+be regularly evaluated and signed oﬀ by the laboratory support staﬀ during the lab sessions.
+
+There will be two COMPULSORY two-hour lab sessions per week on Thursdays and Friday 10:00-12:00. The department requires that each student has achieved at least 80% attendance (18 of 22
+available sessions) in the lab. Catch-up sessions are provided for labs missed for valid reasons.
+:::
+:::
+
+::: {.fragment}
+#### 2. Lab introduction exercise &ndash; 15%
 
 ::: {.notes}
 During the first four weeks of term, the laboratory will be used
@@ -153,7 +168,7 @@ laboratory.
 :::
 
 ::: {.fragment}
-#### 2. Five short 'C' language programming exercises &ndash; 20% (4% each)
+#### 3. Five short 'C' language programming exercises &ndash; 20% (4% each)
 
 ::: {.notes}
 An example program will be provided which students are expected
@@ -170,7 +185,7 @@ platform.
 :::
 
 :::{.fragment}
-#### 3. A mini project &ndash; 30%
+#### 4. A mini project &ndash; 30%
 
 ::: {.notes}
 The mini project will require each student to create a program
@@ -183,7 +198,7 @@ made. Submission will be through the Canvas platform.
 :::
 
 :::{.fragment}
-#### 4. Formal Class Test  &ndash; 35%
+#### 5. Formal Class Test  &ndash; 35%
 
 ::: {.notes}
 The class test will be online and based on content covered in the
