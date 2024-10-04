@@ -125,7 +125,7 @@ An example of how the status register works
 
 ---
 
-### Status Register Demonstration
+### Status Register Demonstration {#sec-week2-sr-examples}
 
 :::: {.columns}
 
@@ -149,7 +149,7 @@ Record status of SREG at line 3.
 
 ---
 
-#### Examples{.center .unnumbered}
+#### Examples {.center .unnumbered }
 
 ---
 
@@ -274,9 +274,92 @@ During reset, all I/O Registers are set to their initial values, and the program
 
 ### Program Counter Demonstration
 
-TODO: add video demo
+| Instruction | Number of words |
+|:------------|:----------------|
+| `ADD`       | 1               | 
+| `LDI`       | 1               | 
+| `LDS`       | 2               | 
+| `STS`       | 2               | 
+: A selection of instructions and the number of 16-bit words they need for storage. {#tbl-counter-example} 
+
+When executing these instructions, the program counter advances by the number of words in each instruction.
+We will demonstrate this later.
+
+::: {.notes}
+Consider the instructions `LDI` (load immediate) and `LDS` (load from store).
+
+Refering to the data manual [@avr_instruction_set] we see that the LDI instruction is a one word instruction (@fig-ldi-instruction) taking the opcode and the 8-bit data value. We also see that the `LDS` instruction (@fig-lds-instruction) is a two word instruction: taking a 16 bit memory address as its operand. 
+:::
 
 ---
+
+#### `LDI` instruction
+
+::: {#fig-ldi-instruction}
+![](pictures/wk2_ldi_instruction.png){fig-alt="An extract from the Atmel ATmega328 data manual for the LDI instruction."} 
+
+The `LDI` instruction: takes a four bit opcode, a 4-bit register number (0-31) and an 8-bit value. The program counter is incremented by one when this instruction is executed. [@avr_instruction_set p.92].
+:::
+
+
+---
+
+#### `LDS` instruction
+
+::: {#fig-lds-instruction}
+![](pictures/wk2_lds_instruction.png){fig-alt="An extract from the Atmel ATmega328 data manual for the LDS instruction."} 
+
+The `LDS` instruction: takes an  bit opcode, an 12-bit opcode, a 4-bit register number (0-31) and an 16-bit value which represents a data location on memory (0-65535). The program counter is incremented by two when this instruction is executed. [@avr_instruction_set p.93].
+:::
+
+::: {.notes}
+You can lookup `ADD` and `STS` (store to store) to confirm the details given in @tbl-counter-example. 
+:::
+
+---
+
+#### Example program
+
+::: {.notes}
+The assembly program shown in @lst-week2-addition illustrates the use of the registers, program counter and the `ADC` instruction. By changing the values of the data at lines 14 nd 15, you can verify the final state of the status register explored in @sec-week2-sr-examples.
+:::
+
+```{.asm lst-cap="Assembly program illustrating the use of registers, the ADC function and the status register" #lst-week2-addition code-line-numbers="|14|15|23|24|25|27|28|30|31|32|33"}
+;
+; Assembly - simple addition.asm
+;
+; Created: 11/10/2022 14:14:16
+; Author : Ben Clifford
+;
+
+		.device ATmega32
+
+    .equ    VARIABLES   = 0x0100        ;Start address in internal RAM for variables (default)
+		.equ    PROGRAMME   = 0x0000        ;Start address in Flash for programme (default)
+		.equ    STACK       = 0x08FF		;Last address in RAM to be used for the Stack (default)
+
+		.equ    num1 = 110
+		.equ    num2 = 227
+
+		.DSEG
+		.org VARIABLES
+
+		.CSEG
+		.org PROGRAMME					
+
+MAIN:		
+		LDI R16, num1
+		STS 0x0100, R16;
+
+		LDI R16, num2
+		STS 0x0101, R16;
+
+		LDS R16, 0x0100;
+		LDS R17, 0x0101;
+		ADC R16, R17
+		STS 0x0100, R16;
+```
+
 
 ::: {.center}
 ## The Stack Pointer{background-image="pictures/wallpaper.png" fig-alt="decorative image used for slide background" #sec-week02-stack-pointer}
@@ -345,6 +428,48 @@ Illustration of the operation of a stack.
 ::: {.notes}
 Like a box of Pringles, when you pop an item of the stack, it comes from the top. The pringle below the one you have just taken off becomes the new top. If you were to put the Pringle back, it becomes the new top. When the pringles box is empty, there is nothing on the stack and the stack pointer will be pointing at the memory address of the bottom of the stack.
 :::
+
+---
+
+### Stack Pointer Demonstration
+
+::: {.notes}
+An example of the use of the stack is given in @lst-week2-stack. We will demonstrate this program in class.
+:::
+
+```{.asm lst-cap="Example of the use of the stack" #lst-week2-stack code-line-numbers="|21|22|23|24|25|26|27|29|30|31"}
+;
+; Assembly - Stack pointer example.asm
+;
+; Created: 11/10/2022 14:14:16
+; Author : Ben Clifford
+;
+
+		.device ATmega32
+
+    .equ    VARIABLES   = 0x0100        ;Start address in internal RAM for variables (default)
+		.equ    PROGRAMME   = 0x0000        ;Start address in Flash for programme (default)
+		.equ    STACK       = 0x08FF		;Last address in RAM to be used for the Stack (default)
+		
+
+		.DSEG
+		.org VARIABLES
+
+		.CSEG
+		.org PROGRAMME					
+
+MAIN:	
+		LDI R16, 1;
+		LDI R17, 2;
+		LDI R18, 3
+		PUSH R16
+		PUSH R17
+		PUSH R18
+
+		POP R16
+		POP R17
+		POP R18
+```
 
 ::: {.center}
 ## Introduction to Microcontroller I/O{background-image="pictures/wallpaper.png" fig-alt="decorative image used for slide background [wallpaper.dog/microcontroller-wallpapers](https://wallpaper.dog/microcontroller-wallpapers)" #sec-week02-io}
@@ -524,11 +649,98 @@ Providing a port is configured as an input.
 
 ### Basic I/O Demonstration
 
+::: {.notes}
+Code listing @lst-week2-simple-io is an example program written in assembly that illustrates simple IO. We will demonstrate this in class. Please refer to @fig-week2-basic-io-demosntration which shows what the demo looks like.
+
 ::: {#fig-week2-basic-io-demonstration} 
 ![](pictures/ide_for_demo.png){fig-alt="Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O."}
 
 Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O
 :::
+:::
+
+```{.asm lst-cap="Demonstration of simple I/O" #lst-week2-simple-io code-line-numbers="|"}
+.EQU DDRB = 0x04
+.EQU PORTB = 0x05
+
+.EQU PIND = 0x09
+.EQU DDRD = 0x0A
+.EQU PORTD = 0x0B
+
+.CSEG
+.ORG 0x0200
+	;setup bits 2 and 3 of port D as inputs
+	IN R16, DDRD
+	ANDI R16, 0b11110011
+	OUT DDRD, R16
+
+	;setup bits 0 and 1 of port B as outputs
+	IN R16, DDRB
+	ORI R16, 0b00000011
+	OUT DDRB, R16
+
+	;both pins B0 (D8) and B1 (D9) start low
+	IN	R16, PORTB
+    ANDI R16, 0b11111100
+    OUT PORTB, R16
+
+	;Enable the pull up resistor for bits 2 and 3 of port D
+	IN	R16, PORTD
+    ORI	R16, 0b00001100
+    OUT PORTD, R16
+
+LOOP:
+	SBIC PIND, 2
+	RJMP LED1
+
+	SBIC PIND, 3
+	RJMP LED2
+
+	IN R16, PORTB
+	ANDI R16, 0b11111100
+	OUT PORTB, R16
+	RJMP LOOP
+
+LED1:
+	SBI PORTB, 0
+	RJMP LOOP
+
+LED2:
+	SBI PORTB, 1
+	RJMP LOOP
+
+.EXIT
+
+LOOP:
+	IN R16, PIND
+	ANDI R16, 0b00000100
+	LDI R17, 0x00
+	CP R16, R17
+	BREQ LED1
+
+	IN R16, PIND
+	ANDI R16, 0b00001000
+	LDI R17, 0x00
+	CP R16, R17
+	BREQ LED2
+
+	IN R16, PORTB
+	ANDI R16, 0b11111100
+	OUT PORTB, R16
+	RJMP LOOP
+
+LED1:
+	IN R16, PORTB
+	ORI R16, 0b00000001
+	OUT PORTB, R16
+	RJMP LOOP
+
+LED2:
+	IN R16, PORTB
+	ORI R16, 0b00000010
+	OUT PORTB, R16
+	RJMP LOOP
+```
 
 ---
 
