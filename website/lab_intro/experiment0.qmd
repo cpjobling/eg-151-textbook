@@ -134,13 +134,13 @@ When the traces are displayed to your satisfaction, the next step is to superimp
 6. Rotate NAVIGATION until cursor 2 is at the end of the same cycle. Press NAVIGATION.
 7. Rotate NAVIGATION until cursor 3 is at the top of the yellow trace. Press NAVIGATION.
 8. Rotate NAVIGATION until cursor 4 is at the bottom of the yellow trace. Press NAVIGATION.
-9. Read off the period of the square wave and its amplitude from the on-screen display. The difference between C1 and C2 appears as $\Delta t$ and the difference between C3 and C4 appears as $\Delta t$.
+9. Read off the period of the square wave and its amplitude from the on-screen display. The difference between C1 and C2 appears as $\Delta t$ and the difference between C3 and C4 appears as $\Delta V$.
 
 Record $\Delta t$ and $\Delta V$ as text in your lab diary. The oscilloscope traces can be saved in your lab diary document using one of the methods outlined in @sec-lab-intro-screen-capture. Use this procedure to record the waveforms at test points TP1 and TP4. Make sure that the maximum amount of information is on the screen, including vertical and horizontal cursors and voltage and time readings along the lower edge of the screen.
 
 Next, move the oscilloscope probe on TP4 to TP2. Now, instead of two square waves, the oscilloscope will display a square wave and a complex waveform showing the charging of one of the capacitors. Again, use the cursors to measure times and voltages and record them as text in your lab diary. Copy the screen to the PC and paste it into the lab diary
 
-Now try varying the supply voltage. On the Rohde &amp; Schwarz power supply, press the soft key Voltage so that the voltage field is selected, then carefully turn the navigation control to reduce the supply to 1.5V. If necessary, adjust the vertical scale of the oscilloscope channels to enlarge the traces. Use the horizontal cursors to measure and record the period (and hence frequency) of the square wave. Repeat the measurements for TP1, TP4 and TP3, and TP4 and copy the screens to the PC and your lab diary as before.
+Now try varying the supply voltage. On the Rohde &amp; Schwarz power supply, press the soft key Voltage so that the voltage field is selected, then carefully turn the navigation control to reduce the supply to 1.5V. If necessary, adjust the vertical scale of the oscilloscope channels to enlarge the traces. Use the horizontal cursors to measure and record the period (and hence frequency) of the square wave. Repeat the measurements for TP1 and TP2 and TP3 and TP4 and copy the screens to the PC and your lab diary as before.
 
 Finally, turn on all four input channels of the Rohde &amp; Schwarz oscilloscope, and connect them to TP1, TP2, TP3, TP4 respectively. Copy the screen to your lab diary.
 
