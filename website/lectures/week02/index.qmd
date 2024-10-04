@@ -650,7 +650,7 @@ Providing a port is configured as an input.
 ### Basic I/O Demonstration
 
 ::: {.notes}
-Code listing @lst-week2-simple-io is an example program written in assembly that illustrates simple IO. We will demonstrate this in class. Please refer to @fig-week2-basic-io-demosntration which shows what the demo looks like.
+Code listing @lst-week2-simple-io is an example program written in assembly that illustrates simple IO. We will demonstrate this in class. Please refer to @fig-week2-basic-io-demonstration which shows what the demo looks like.
 
 ::: {#fig-week2-basic-io-demonstration} 
 ![](pictures/ide_for_demo.png){fig-alt="Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O."}
