@@ -514,7 +514,7 @@ Schematic diagram showing the I/O provided by the Atmel ATmega328 microcontrolle
 
 Consider a switch which on one side is connected to a 5V power source and on the other side to a microntroller input.
 
-![](pictures/switch.png)
+![](pictures/wk2_switch.png)
 
 ::: {.fragment}
 What voltage is read at the I/O port when the switch is closed and when it is open?

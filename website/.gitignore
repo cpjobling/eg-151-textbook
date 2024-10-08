@@ -1,4 +1,5 @@
 /.quarto/
+*.html
 _build
 *.swp
 _slides
