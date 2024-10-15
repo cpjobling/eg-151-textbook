@@ -412,9 +412,9 @@ In short flow charts should look visually tidy and the program flow should be ob
 #### Microsoft Visio (Windows and web only)
 
 ::: {#fig-week03-visio}
-![](pictures/visio.png){fig-alt="A screenshot of the Microsoft Vision program being used to draw a flowchart."}
+![](pictures/visio.png){fig-alt="A screenshot of the Microsoft visio program being used to draw a flowchart."}
 
-A screenshot of the Microsoft Vision program being used to draw a flowchart.
+A screenshot of the Microsoft Visio program being used to draw a flowchart.
 :::
 
 :::
