@@ -89,7 +89,7 @@ int main(void) {
  }
 ```
 
-Hello World Program written in C (Code reproduced from: [en.wikipedia.org/wiki/File:C_Hello_World_Program.png](https://en.wikipedia.org/wiki/File:C_Hello_World_Program.png))
+Hello World Program written in C (Code reproduced from: [en.wikipedia.org/wiki/File:C_Hello_World_Program.png](https://en.wikipedia.org/wiki/File:C_Hello_World_Program.png)). Run this programme by following this link [hello_world.c](https://onlinegdb.com/6M8mL90DS).
 :::
 
 ::: {.notes}
