@@ -660,12 +660,13 @@ Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O
 :::
 
 ```{.asm lst-cap="Demonstration of simple I/O" #lst-week2-simple-io code-line-numbers="|"}
-.EQU DDRB = 0x04
-.EQU PORTB = 0x05
 
-.EQU PIND = 0x09
-.EQU DDRD = 0x0A
-.EQU PORTD = 0x0B
+;.EQU DDRB = 0x04
+;.EQU PORTB = 0x05
+
+;.EQU PIND = 0x09
+;.EQU DDRD = 0x0A
+;.EQU PORTD = 0x0B
 
 .CSEG
 .ORG 0x0200
@@ -690,10 +691,10 @@ Screen shot of the Atmel IDE taken during the rehersal for the demo of I/O
     OUT PORTD, R16
 
 LOOP:
-	SBIC PIND, 2
+	SBIC PIND, 2 ; skip RJMP if bit 2 is set (button pressed)
 	RJMP LED1
 
-	SBIC PIND, 3
+	SBIC PIND, 3 ; skip RJMP if bit 3 is set (button pressed)
 	RJMP LED2
 
 	IN R16, PORTB
@@ -710,36 +711,6 @@ LED2:
 	RJMP LOOP
 
 .EXIT
-
-LOOP:
-	IN R16, PIND
-	ANDI R16, 0b00000100
-	LDI R17, 0x00
-	CP R16, R17
-	BREQ LED1
-
-	IN R16, PIND
-	ANDI R16, 0b00001000
-	LDI R17, 0x00
-	CP R16, R17
-	BREQ LED2
-
-	IN R16, PORTB
-	ANDI R16, 0b11111100
-	OUT PORTB, R16
-	RJMP LOOP
-
-LED1:
-	IN R16, PORTB
-	ORI R16, 0b00000001
-	OUT PORTB, R16
-	RJMP LOOP
-
-LED2:
-	IN R16, PORTB
-	ORI R16, 0b00000010
-	OUT PORTB, R16
-	RJMP LOOP
 ```
 
 ---
