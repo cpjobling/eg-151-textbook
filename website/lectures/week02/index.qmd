@@ -741,6 +741,6 @@ Please use the [Course Question Board](https://canvas.swansea.ac.uk/courses/5290
 
 ### Next time{.unnumbered}
 
-* [Introduction to Programming and Program Development](../week03)
+* [Introduction to Programming and Program Development](/lectures/week03)
 
 ---

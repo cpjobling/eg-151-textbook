@@ -725,3 +725,9 @@ We have provided notes and videos that introduce other commonly used data repres
 This chapter and [Appendix A](/appendix/appendix_a.html) are examinable and you should study both as part of your preparation for the class test.
 :::
 
+### Next {.unnumbered}
+
+In the next lecture we will look at the [Architecture of the Atmel ATmega 328 Microcontroller](/lectures/week2/).
+
+---
+

@@ -789,6 +789,6 @@ There is a [Canvas quiz](https://canvas.swansea.ac.uk/courses/52902/assignments/
 
 ### Next week{.unnumbered}
 
-Next week we will look at [Data Representation](https://cpjobling.github.io/eg-151-textbook/lectures/data_representation/).
+Next week we will look at [Data Representation](/lectures/data_representation/).
 
 ---
