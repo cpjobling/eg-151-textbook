@@ -1,9 +1,12 @@
 ---
 author: 
-  name: "Dr Timothy Davies"
-  affiliation: "Department of Electronic and Electrical Engineering"
-date: "10/03/2024"
+  - name: "Dr Timothy Davies"
+    affiliation: "Department of Electronic and Electrical Engineering"
+  - name: "Dr Chris P. Jobling"
+    affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/21/2024"
 number-sections: false
+code-line-numbers: true
 ---
 
 # Experiment 1: Binary Counter {#sec-lab-1}
@@ -14,7 +17,7 @@ The microcontroller on the Nano board has a number of *parallel ports*, which ca
 
 ## Parallel ports and data direction registers
 
-In most microcontrollers, including the Atmel ATMega32 used in the Arduini Nano board, we set the digital poirt to be either an input or an output by setting a value in a special register, associated with the parellel port, which is called the *Data Direction Register* (DDR). 
+In most microcontrollers, including the Atmel ATMega32 used in the Arduini Nano board, we set the digital port to be either an input or an output by setting a value in a special register, associated with the parallel port, which is called the *Data Direction Register* (DDR). 
 
 The DDR settings that provide the six outputs that we need for this experiment are shown in @tbl-1-ddr.
 
@@ -24,7 +27,7 @@ The DDR settings that provide the six outputs that we need for this experiment a
 : DDR for setting six outputs {#tbl-1-ddr}
 
 
-There are two ways of setting the bits in the DDR. Individual bits can be set using an Arduino specific command, pinmode. For this experiment, we shall write directly to the DDR corresponding to Port C, which is designated `DDRC` in our programme. In the example shown above, the top two bits of Port C will be inputs (`DDRC7=0`, `DDRC6 = 0`) and all the remaining bits will be outputs. This is a more general way of setting a DDR in different versions of embedded "C".
+There are two ways of setting the bits in the DDR. Individual bits can be set using an Arduino specific command, `pinMode`. For this experiment, we shall write directly to the DDR corresponding to Port C, which is designated `DDRC` in our programme. In the example shown above, the top two bits of Port C will be inputs (`DDRC7=0`, `DDRC6 = 0`) and all the remaining bits will be outputs. This is a more general way of setting a DDR in different versions of embedded "C".
 
 Writing a number to the port register itself will cause a binary pattern to appear on the corresponding pins of the designated port, according to their binary weights. For example, bit 0 has a binary weight of $2^0 = 1$, bit 1 has a binary weight of $2^1 = 2$, bit 2 has a binary weight of $2^2 = 4$, all the way up to bit 7 which has a binary weight of $2^7 = 128$.
 
@@ -70,40 +73,66 @@ If the above are wrong, then the upload will fail. Ask a demonstrator for help!
 
 ## Lets make a decision
 
-The example program counts from zero to 255 and then back to zero, though we see the LEDs being illuminated from zero to 63 as there are only six LEDs. The counts from 64 to 127 look just the same as zero to 63! Supposing we need a counter that counts from zero to 59, and then back to zero. This is often required, for example in time-keeping programmes (60 seconds in a minute, 60 seconds in an hour). The number of count values (60 in this case) is called a Modulus.
+The flow-charts for @lst-listing1 is given in @fig-lab1-ex1-setup and @fig-lab1-ex1-loop. Note that the codes are similar to the flow-charts given in [Getting Started](../get_started/index). There are just a couple of steps in the setup sub-process and one less output task in the loop. Note also that we have used english statements rather than code in the block labels.
 
-There are several ways we can add a modulus to our counter programme. One way would be to use a "for" loop. Another way would be to make a decision. For example, if we add the following lines to the existing programme:
+:::{#fig-lab1-ex1-setup}
+![](pictures/lab1-ex1-setup.png){fig-alt="Flow-chart of the setup sub-process for the first program" width="25%"}
+
+Flow-chart of the setup sub-process for the first program
+:::
+
+:::{#fig-lab1-ex1-loop}
+![](pictures/lab1-ex1-loop.png){fig-alt="Flow-chart of the loop sub-process for the first program." width="25%"}
+
+Flow-chart of the loop sub-process for the first program
+:::
+
+The example program counts from zero to 255 and then back to zero, though we see the LEDs being illuminated from zero to 63 as there are only six LEDs. The counts from 64 to 127 look just the same as zero to 63! As the counter is only 8 bits, when we get to 255, the counter is reset to 0. This behaviour is not obvious from the flow-chart for the loop subprocess.
+
+Supposing we need a counter that counts from zero to 59, and then back to zero. This is often required, for example in time-keeping programmes (60 seconds in a minute, 60 seconds in an hour). The number of count values (60 in this case) is called a Modulus.
+
+There are several ways we can add a modulus to our counter programme. Here we will use a decision.
+
+If we add a decision block to the flow chart for the loop, as shown in @fig-lab1-ex2-loop, we can control the maximum count that can occur.
+
+:::{#fig-lab1-ex2-loop}
+![](pictures/lab1-ex2-loop.png){fig-alt="Flow-chart of the loop sub-process with a decision block used to limit the maximum value of the counter to 59." width="25%"}
+
+Flow-chart of the loop sub-process with a decision block used to limit the maximum value of the counter to 59
+:::
+
+The code that corresponds to the decision block in @fig-lab1-ex2-loop is
 
 ```c
-counter1 = counter1 + 1;
-if (counter1 >= 60) {
-  counter1 = 0;
+counter = counter + 1;
+if (counter > 59) {
+  counter = 0;
 }
 ```
 
-In this code, we have made a decision! If the value of the variable `counter1` is increased beyond 59, then it will be set back to zero, so the LEDs never advance beyond 59. 
+In this code, we have made a decision! If the value of the variable `counter` is increased beyond 59, then it will be set back to zero, so the LEDs never advance beyond 59. 
 
 Why bother with counts greater than 60? Well, if the program is not properly initialised then there will be a number of false counts. 
 
-If you are not familiar with "C" programming, then you will notice that there are two kinds of "equals" in the extra line. The "greater than or equals" (`>=`) is a comparison and does not change any values. In other words the value of the variable `counter1` is compared with the fixed value of 60. If the condition is true, then the contents of the "braces" (squiggly brackets) are executed. The single equals (`=`) is an *assignment* and forces the value of the variable to the fixed value zero.
+If you are not familiar with "C" programming, then you will notice that there are two kinds of "equals" in the extra line. The "greater than" (`>`) is a comparison and does not change any values. In other words the value of the variable `counter` is compared with the fixed value of 59. If the condition is true, then the contents of the "braces" (squiggly brackets) are executed. The single equals (`=`) is an *assignment* and forces the value of the variable to the fixed value zero.
 
 Just to make life more interesting, in "C" there is a "double equals" `==`). This can be a source of confusion when starting to program in the "C" language. It is used to compare two numbers, for example as follows:
 
 ```c
-counter1 = counter1 + 1;
-if (counter1 == 60) {
-  counter1 = 0;
+counter = counter + 1;
+if (counter == 60) {
+  counter = 0;
 }
 ```
 <p>There are lots of "C" commands which reduce the amount of text that you have to write. For example, instead of adding 1 to the variable `counter1` we can use the *increment operator* (`++`) to increment a variable by 1:
     
 ```c
-counter1++;
+counter++;
 ```
 
-This has the same effect as adding "1" to the variable `counter1` and reassigning the new value to `counter1` which is what:
+This has the same effect as adding "1" to the variable `counter` and reassigning the new value to `counter` which is what:
 ```c
-counter1 = counter1 + 1;
+counter = counter + 1;
 ```
 does.
 
@@ -168,74 +197,87 @@ Modify the program as shown in @lst-listing3, compile and upload, and check that
 
 Open the document you are using as a laboratory diary and add a new section "Experiment 1".
 
+Create a flow-chart of the cascaded counter from the code given in @lst-listing2.
+
 Take a photograph of the completed breadboard, with the twelve LEDs and resistors fitted. Include in your photo some means of identification, such as your student card.
 
 When you have finished modifying the program to correspond with @lst-listing3, add some comments (preceded by the double oblique stroke "//") and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
 
-We shall be looking for comments which show your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the program, the comments aid understanding. Also, if you return to working on a program after a couple of weeks, it is much easier to pick up where you left off. A program without comments is incomplete!
+Redraw the flow chart to reflect the order of operation of the for loops. Comment on any differences in flow-charts between that for @lst-listing2 and that for @lst-listing3.
+
+We shall be expecting the flow-charts and code comments to demonstrate your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the program, the comments aid understanding. Also, if you return to working on a program after a couple of weeks, it is much easier to pick up where you left off. A program without comments is incomplete!
+
+Don't forget to add to your lab diary entry some discussion of the results and a reflection on the outcomes of this first experimeent.
 
 ## Code Listings
 
 ### Basic counter
 ```{.c #lst-listing1 lst-cap="Basic counter."}
-// the setup function runs once when you press reset or power the board
+// Declare variable to be used as a counter.
+  // This has to be done outside `setup` and `loop` so that `counter` is visible
+  // inside both functions
+byte counter;
 
-byte counter1 = 0; // we need to define the variable counter1
+// The setup function runs once when you press reset or power the board
+void setup() {
+    // initialize counter
+    counter = 0; 
 
-void setup()
-{
-    // initialize Port C pins 0-5 as outputs.
+    // Set pins 0-5 of Port C as outputs.
     DDRC = 0b00111111; // the prefix &ldquo;0b&rdquo; qualifies the number as binary
     PORTC = 0; // so all the LEDs are off initially
 }
 
-// the loop function runs over and over again forever
+// The loop function runs repeatedly forever
 void loop() {
-    PORTC = counter1;
-    // we could replace the next line with: counter1++;
-    // or the previous line with PORTC = counter1++;
-    counter1 = counter1 + 1;
+    PORTC = counter;
+    
+    // increment counter
+      // we could replace the next line with: counter1++;
+      // or the previous line with PORTC = counter1++;
+    counter = counter + 1;
 
-    // Uncomment the following 3 lines for a modulus of 60: 
-    // if (counter1 > 59) {
-    //     counter1 = 0;
+   // Uncomment the following three lines for a modulus of 60: 
+    // if (counter > 59) {
+    //     counter = 0;
     // }
-
     delay(1000); // reduce the delay if you get bored waiting!
+
 }
 ```
-View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b).
+View and download the code from GitHub gist [counter.ino](https://gist.github.com/cpjobling/8803a24e00f15237057dfdbb566a461b). 
+
+### Wokwi simulation of basic counter
+
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [task 1](https://wokwi.com/projects/412364423303635969). You can copy and edit this to create your own simulations of Tasks 2 and 3. 
+
+If you do, it would be useful to provide links to the simulations in your lab diary.
 
 ### Cascaded counter
 ```{.c #lst-listing2 lst-cap="Cascaded counter."}
+// Declare variables to be used as counters.
+byte counter1, counter2;
+
 // the setup function runs once when you press reset or power the board
-
-byte counter1 = 0; // define variables
-byte counter2 = 0;
-
 void setup() {
+    // define counters
+    counter1 = counter2 = 0; // initialize counters
 
     // initialize Ports B and C pins 0-5 as outputs.
-    DDRB = 0b00111111;
-    DDRC = 0b00111111;
+    DDRB = DDRC = 0b00111111;
 
-    PORTB = 0; // both ports start from zero
-    PORTC = 0;
+    PORTB = PORTC = 0; // both ports start from zero
 }
 
-// the loop function runs over and over again forever
-
+// the loop function runs repeatedly forever
 void loop() {
-
     PORTB = counter2; // counter2 is our "seconds" counter
     PORTC = counter1; // counter1 is our "minutes" counter
 
     counter2++; // using the tip we learnt earlier
-
     if (counter2 > 59) {
         counter2 = 0;
         counter1++;
-
         if (counter1 > 59) {
             counter1 = 0;
         }
@@ -249,20 +291,21 @@ View and download the code from GitHub gist [counter2.ino](https://gist.github.c
 
 ### Counter using for loop
 ```{.c #lst-listing3 lst-cap="Counter using for-loop."}
+// declare counters
+byte counter1, counter2;
+
 // the setup function runs once when you press reset or power the board
-
-byte counter1 = 0; // define variables
-byte counter2 = 0;
-
 void setup() {
+    // initialize counters
+    counter1 = counter2 = 0; 
+
     // initialize Ports B and C pins 0-5 as outputs.
-    DDRB = 0b00111111;
-    DDRC = 0b00111111;
-    PORTB = 0; // both ports start from zero
-    PORTC = 0;
+    DDRB = DDRC = 0b00111111;
+
+    PORTB = PORTC = 0; // both ports start from zero
 }
 
-// the loop function runs over and over again forever
+// the loop function runs repeatedly forever
 
 void loop() {
 

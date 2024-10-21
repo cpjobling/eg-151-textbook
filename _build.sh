@@ -8,6 +8,8 @@ quarto render website --to html
 
 echo "Building slides"
 quarto render slides --to revealjs
+echo "Removing left-over files folders"
+rm -rf slides/lecture*_files
 
 echo "Building PDF version of the book"
 quarto render book --to pdf

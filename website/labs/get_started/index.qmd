@@ -145,7 +145,7 @@ Blink program (Arduino sketch blink.ino) loaded in the Arduino IDE 2.
 
 ### Flowchart for Blink
 
-The flowcharts for the blink program are shown in @fig-blink-startup and @fig-blink-loop. These are the contents of the Arduino sketch suprocesses *setup* and *loop* shown in @fig-lab0-sketch-flow.
+The flowcharts for the blink program are shown in @fig-blink-setup and @fig-blink-loop. These are the contents of the Arduino sketch suprocesses *setup* and *loop* shown in @fig-lab0-sketch-flow.
 
 In *setup* (@fig-blink-setup), the pin that is connected to the built-in on-board LED (`LED_BUILTIN`), is setup as an output[^note-blink-builtin-led-pin].
 
