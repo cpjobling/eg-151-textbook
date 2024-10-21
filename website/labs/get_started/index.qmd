@@ -228,6 +228,6 @@ Congratulations! You have successfully edited the program.
 
 You should save the edited program by clicking on File, selecting "Save As" and when the dialogue appears, give the program a new name, for example "myblink".
 
-How would you change the flow chart in @fig-blink-loop to document the change you made in the code? Put a copy of your modified flow-chart and a code listing in your lab diary. You will find a copy of the PowerPoint that we used to create the flow charts in this chapter online by following this link. 
+How would you change the flow chart in @fig-blink-loop to document the change you made in the code? Put a copy of your modified flow-chart and a code listing in your lab diary. You will find a copy of the PowerPoint that we used to create the flow charts in this chapter on-line by following this link: [eg-151-textbook/website/labs/get_started/pictures/flow-charts.pptx](https://github.com/cpjobling/eg-151-textbook/blob/main/website/labs/get_started/pictures/flow-charts.pptx). You can use the diagrams in that PowerPoint file as a template for your own flow-charts.
 
 You are now ready to attempt the first laboratory exercise: @sec-lab-1.
