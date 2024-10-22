@@ -216,7 +216,7 @@ Header files may contain custom function definitions, common functions, secondar
   The pre-processor searches for a file named in a 
   standard list of system directories
 */
-#include <header_file.h`>
+#include <header_file.h>
 ```
 
 :::
@@ -468,7 +468,7 @@ The order of arithmetic operations follow the [BODMAS (BIDMAS)](https://en.wikip
 
 ##### Examples
 
-Assume `a`, `b` and `c` are defined as variable of type integer (`int`)[^integer_type].
+Assume `a`, `b`, `c` and `r = 2` are defined as variable of type integer (`int`)[^integer_type].
 
 ::: {.fragment}
 ```c
@@ -530,7 +530,7 @@ Logical operators are used in expressions which return *true* (`1`) or *false* (
 | **Operator** | **Meaning**   |
 |--------------|---------------|
 | `&&`         | Logical *and* |
-| `\|\|`       | Logical *or*  |
+| `||`       | Logical *or*  |
 | `!` .        | Logical *not* |
 :::
 
@@ -604,7 +604,7 @@ b = 0xA3 & 0xD5; // -> b = 0x81
 ::: {.fragment}
 $$
 \begin{array}{lrr}
-   & 1010 & 0111 \\
+   & 1010 & 0011 \\
 \& & 1101 & 0101 \\\hline
    & 1000 & 0001
 \end{array}
@@ -624,7 +624,7 @@ c = 0xA3 | 0xD5; // -> b = 0xF7
 ::: {.fragment}
 $$
 \begin{array}{lrr}
-   & 1010 & 0111 \\
+   & 1010 & 0011 \\
 |  & 1101 & 0101 \\\hline
    & 1111 & 0111
 \end{array}
@@ -647,7 +647,7 @@ c = ~0xA3; // -> c = 0x5C
 
 $$
 \begin{array}{lrr}
-\sim & 1010 & 0111 \\\hline
+\sim & 1010 & 0011 \\\hline
      & 0101 & 1100
 \end{array}
 $$
