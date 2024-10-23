@@ -890,13 +890,13 @@ Statement;
 switch (expression1) { // branch according to the value of the expression
     case case_1 :
         code_block_1;
-
+        break; // break is needed to avoid drop through to next case
     case case_2 :
         code_block_2;
-        
+        break; // break is needed to avoid drop through to next case
     case case_3 :
         code_block_3;
-
+        break; // break is needed to avoid drop through to default case
     // you can have any number of case statements
     
     default : // optional
@@ -976,10 +976,12 @@ The equivalent of the *while* statement illustrated in the @fig-wk4-while-statem
 
 ::: {.fragment}
 ```{.c code-line-numbers="|1|2|1|2|1|4"}
-while (condition) {
-    statements;
+Statement;
+while (expression) {
+    Statement2;
 }
 // end of while-loop
+Statement3;
 ```
 :::
 
@@ -1013,11 +1015,13 @@ The equivalent of the *do-while* statement illustrated in the @fig-wk4-do-while-
 
 ::: {.fragment}
 ```{.c code-line-numbers="|1|2|4|2|4|2|4|5"}
+Statement;
 do {
-    statements;
+    Statement2;
 }
-while (condition);
+while (expression);
 // end of do-while loop
+Statement3;
 ```
 :::
 
@@ -1070,8 +1074,11 @@ for (initialize counter; counter < final value; increment counter) {
 }
 statement;
 ```
+::: {.notes}
+::: {.callout-note}
+The initialization and increment expressions in the *for-loop* are implicit in the *for* statement, but have to be drawn explicitly in the equivalent flow-chart.
 :::
-
+:::
 ---
 
 #### Example for loop{.unnumbered}
