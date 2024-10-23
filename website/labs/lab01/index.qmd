@@ -249,7 +249,7 @@ View and download the code from GitHub gist [counter.ino](https://gist.github.co
 
 ### Wokwi simulation of basic counter
 
-You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [task 1](https://wokwi.com/projects/412364423303635969). You can copy and edit this to create your own simulations of Tasks 2 and 3. 
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [task 1](https://wokwi.com/projects/412520814281244673). You can copy and edit this to create your own simulations of Tasks 2 and 3. 
 
 If you do, it would be useful to provide links to the simulations in your lab diary.
 
@@ -261,12 +261,12 @@ byte counter1, counter2;
 // the setup function runs once when you press reset or power the board
 void setup() {
     // define counters
-    counter1 = counter2 = 0; // initialize counters
+    counter1 = 0; counter2 = 0; // initialize counters
 
     // initialize Ports B and C pins 0-5 as outputs.
-    DDRB = DDRC = 0b00111111;
+    DDRB = 0b00111111; DDRC = 0b00111111;
 
-    PORTB = PORTC = 0; // both ports start from zero
+    PORTB = 0; PORTC = 0; // both ports start from zero
 }
 
 // the loop function runs repeatedly forever
@@ -297,12 +297,12 @@ byte counter1, counter2;
 // the setup function runs once when you press reset or power the board
 void setup() {
     // initialize counters
-    counter1 = counter2 = 0; 
+    counter1 = 0; counter2 = 0; 
 
     // initialize Ports B and C pins 0-5 as outputs.
-    DDRB = DDRC = 0b00111111;
+    DDRB = 0b00111111; DDRC = 0b00111111;
 
-    PORTB = PORTC = 0; // both ports start from zero
+    PORTB = 0; PORTC = 0; // both ports start from zero
 }
 
 // the loop function runs repeatedly forever

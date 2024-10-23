@@ -25,7 +25,7 @@ Referring to @tbl-1-ddr-inputs, the bits set to logic "1" in `DDRC` correspond t
 ***Answer***: The physical ports are inputs, and can be connected to devices outside
 the microcontroller, for example switches and sensors.
 
-**Question**: *How is the logic state of a port accessed by the microcontroller?
+**Question**: *How is the logic state of a port accessed by the microcontroller?*
 
 ***Answer***: By reading from the corresponding port number. The ports on our Nano board are a maximum of 8 bits wide, so a read from the port returns a value
 between 0 and 255 ($2^8 - 1$).
@@ -105,12 +105,13 @@ enable" registers to perform the same task.
 
 ## Using a switch in a programme
 
-The demonstration programin @lst-ex2-1 is, in fact, the very first
-programwe tried in Experiment 1. There is one refinement; a switch is
+The demonstration program illustrated as a flow-chart in @fig-lab2-flow-chart 
+in @lst-ex2-1 is, in fact, the very first
+program we tried in Experiment 1. There is one refinement; a switch is
 tested and if the logic input is "0", the counter does not advance.
-Notice the `pinmode()` instruction in setup, which turns on the internal
+Notice the `pinMode()` instruction in `setup()`, which turns on the internal
 pull-up resistor. This is a one-off instruction at the start of
-programexecution.
+program execution.
 
 Create an Arduino sketch, and copy/paste the code from @lst-ex2-1 into
 it.
@@ -210,37 +211,37 @@ This follows the pattern set in Experiment 1.
 
 -   A photograph of the modified breadboard, with some form of
     identification.
--   A listing of your final program (as specified in @sec-section-5 above)
-    with suitable comments.
+-   A flow-chart of your final program as specified in @sec-section-5 above.
+-   A listing of your final program with suitable comments.
 
-## Code Listings
+## Code Listings and Flow-Charts
 
 ### Binary counter with stop/start control
 
+::: {#fig-lab2-flow-chart }
+![](pictures/lab2-flow-chart.png){fig-alt="Flow-chart for binary counter with stop/start control. a) Is the setup sub-process. b) is the loop subprocess." with="25%"}
+
+Flow-chart for binary counter with stop/start control.
+:::
+
 ```{.c #lst-ex2-1 lst-cap="Binary counter with stop/start control." code-line-numbers="true"}
+// define variables
+byte counter1, counter2; // counter2 is not used in this program
+
 // the setup function runs once when you press reset or power the board
-
-byte counter1 = 0; // define variables
-
-byte counter2 = 0; // not used in this programme
-
 void setup() {
 
+    counter1 = 0;  // Initialize counter 1
+    
     // initialize Ports B and C pins 0-5 as outputs.
+    DDRB = 0b00111111; DDRC = 0b00111111;
 
-    DDRB = 0b00111111;
-
-    DDRC = 0b00111111;
-
-    PORTB = 0; // both ports start from zero
-
-    PORTC = 0;
+    PORTB = 0; PORTC = 0; // both ports start from zero
 
     pinMode(2, INPUT_PULLUP); // Make bit 2 of Port D an input
 }
 
-// the loop function runs over and over again forever
-
+// the loop function runs repeatedly forever
 void loop() {
 
     PORTC = counter1;
@@ -264,25 +265,25 @@ View and download code as a GitHub gist:
 ### Binary counter with stop/start and turbo button
 
 ```{.c #lst-ex2-2 lst-cap="Binary counter with stop/start and turbo button."}
+// define variables
+byte counter1,counter2; // counter2 is not used in this programme
+
 // the setup function runs once when you press reset or power the board
-
-byte counter1 = 0; // define variables
-byte counter2 = 0; // not used in this programme
-
 void setup() {
-    // initialize Ports B and C pins 0-5 as outputs.
+    // initialize counter
+    counter1 = 0;
 
-    DDRB = 0b00111111;
-    DDRC = 0b00111111;
-    PORTB = 0; // both ports start from zero
-    PORTC = 0;
+    // initialize Ports B and C pins 0-5 as outputs.
+    DDRB = 0b00111111; DDRC = 0b00111111;
+    
+    // both ports start from zero
+    PORTB = 0; PORTC = 0;
 
     pinMode(2, INPUT_PULLUP); // Make bit 2 of Port D an input
     pinMode(3, INPUT_PULLUP); // Make bit 3 of Port D an input
 }
 
-// the loop function runs over and over again forever
-
+// the loop function runs repeatedly forever
 void loop() {
 
     PORTC = counter1;
