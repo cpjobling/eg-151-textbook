@@ -1074,6 +1074,8 @@ for (initialize counter; counter < final value; increment counter) {
 }
 statement;
 ```
+:::
+
 ::: {.notes}
 ::: {.callout-note}
 The initialization and increment expressions in the *for-loop* are implicit in the *for* statement, but have to be drawn explicitly in the equivalent flow-chart.
