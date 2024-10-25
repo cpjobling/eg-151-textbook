@@ -47,9 +47,10 @@ Now you are familiar with the Arduino IDE from running "Blink" in section [on th
 
 @lst-listing1 shows the text of a program which will illuminate the LEDs in a binary sequence, starting from zero (all LEDs off) to 63 (all LEDs on). Then the LEDs will go back to zero. The time it takes to count is controlled by a "time wasting" delay, using the Arduino specific command `delay()`.
 
-First connect your Arduino Nano board to your PC with the cable provided. Next open Arduino IDE 2 and select the connection and board as described in section [initial set up](../get_started/#sec-set-up-arduino). From the file menu select "New Sketch". Press the `view raw` button to view the code without line numbers, copy the whole of the code given in Listing 1 and paste it into the code window of the new sketch. Save the  sketch file as `counter1`.
+First connect your Arduino Nano board to your PC with the cable provided. Next open Arduino IDE 2 and select the connection and board as described in section [initial set up](../get_started/#sec-set-up-arduino). From the file menu select "New Sketch". Click on the small clipboard icon
+at the top-right corner of the code listing @lst-listing1 (![](pictures/clipboard.png)) to copy the code and paste it into the code window of the new sketch. Save the sketch file as `counter1`.
 
-Arduion IDE will close then reopen with the code for a new Sketch project called `counter1.ino` loaded in the code editor as shown in @fig-ex1-1.
+THE Arduio IDE will close then reopen with the code for a new Sketch project called `counter1.ino` loaded in the code editor as shown in @fig-ex1-1.
 
 ::: {#fig-ex1-1} 
 ![](pictures/fig2.png){fig-alt="Screenshot of Arduino IDE 2 with the code for counter1 loaded and saved."}
@@ -203,11 +204,23 @@ Take a photograph of the completed breadboard, with the twelve LEDs and resistor
 
 When you have finished modifying the program to correspond with @lst-listing3, add some comments (preceded by the double oblique stroke "//") and copy the text from the Arduino IDE and paste it into your laboratory diary as a code listing.
 
-Redraw the flow chart to reflect the order of operation of the for loops. Comment on any differences in flow-charts between that for @lst-listing2 and that for @lst-listing3.
+Redraw the flow chart to reflect the order of operation of the for loops. *Hint*: A flow chart for a nested *for-loop* like the one used in @lst-listing3 is given in @fig-wk4-nested-for-statement. Comment on any differences in flow-charts between that for @lst-listing2 and that for @lst-listing3.
 
-We shall be expecting the flow-charts and code comments to demonstrate your understanding of the way the nested `for(;;)` loop works. Why are comments so important? If someone else reads the program, the comments aid understanding. Also, if you return to working on a program after a couple of weeks, it is much easier to pick up where you left off. A program without comments is incomplete!
+We shall be expecting the flow-charts and code comments to demonstrate your understanding of the way the nested `for(;;)` loop works. 
+
+Why are comments so important? If someone else reads the program, the comments aid understanding. Also, if you return to working on a program after a couple of weeks, it is much easier to pick up where you left off. 
+
+A program without comments is incomplete!
 
 Don't forget to add to your lab diary entry some discussion of the results and a reflection on the outcomes of this first experimeent.
+
+::: {.callout-warning}
+Lab 1 **cannot** be signed off unless the lab diary contains the two flow-charts for @lst-listing2 and @lst-listing2, the code listing for @lst-listing3 with added comments, and a photograph of the completed modular-60 counter. 
+:::
+
+::: {.callout-note}
+Discussion, conclusions and reflection are not needed for the experiment sign-off but *are* required for the final lab-diary submission.
+::: 
 
 ## Code Listings
 

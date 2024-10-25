@@ -142,13 +142,13 @@ The actual definition of these functions lies elsewhere in the Arduino core libr
 
 The [wiring_digital.c](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c) file contains the definitions for the `pinMode`, `digitalWrite` and `digitalRead` functions.
 
-See @lst-wk5-pinmode, @lst-wk5-digital-write and @lst-wk5-digital-read for extracts from this library file.
+See @lst-wk5-pinMode, @lst-wk5-digital-write and @lst-wk5-digital-read for extracts from this library file.
 
 ---
 
 ##### `pinMode`{.unnumbered}
 
-```{.c #lst-wk5-pinmode lst-cap="Function [pinMode](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c#L29) (wiring_digital.c line 29)"}
+```{.c #lst-wk5-pinMode lst-cap="Function [pinMode](https://github.com/arduino/ArduinoCore-avr/blob/master/cores/arduino/wiring_digital.c#L29) (wiring_digital.c line 29)"}
 void pinMode(uint8_t pin, uint8_t mode)
 {
 	uint8_t bit = digitalPinToBitMask(pin);

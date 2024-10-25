@@ -134,7 +134,7 @@ between the illuminated and dark pixels. The other potentiometer sets
 the voltage on analogue input `A7`.
 
 Two push buttons are provided, connected to digital inputs `D10` and
-`D11`. Note the use of `pinmode` in `setup()`, which turns on the
+`D11`. Note the use of `pinMode` in `setup()`, which turns on the
 pull-up resistors associated with inputs `D10` and `D11`.
 
 Copy the text of the demonstration program into a new Arduino sketch,

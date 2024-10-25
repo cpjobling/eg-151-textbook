@@ -40,7 +40,7 @@ When setting up the ports/pins, first set the data direction using the pre-defin
 pinMode(pin, mode)
 ```
 
-where mode can be `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. More information on this function can be found in the [pinMode](https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/) section of the Arduino reference library.
+where mode can be `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. More information on this function can be found in the [pinMode](https://www.arduino.cc/reference/en/language/functions/digital-io/pinMode/) section of the Arduino reference library.
 
 Implementing the setup we described @sec-programming-in-c-3 and using the names defined in @sec-pin-defs, the data direction/`pinMode` for the connections can be written as follows:
 

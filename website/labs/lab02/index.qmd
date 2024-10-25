@@ -99,7 +99,7 @@ bits of the port to be "tied" to logic "1" through a high-value
 resistor. Different families of microcontrollers have different
 mechanisms for achieving this. In the demonstration programthat
 follows, the input pull-up resistors are enabled by a Arduino specific
-instruction, `pinmode().` Another microcontroller used in our
+instruction, `pinMode().` Another microcontroller used in our
 undergraduate labs, the "AW60", has special registers called "pull-up
 enable" registers to perform the same task.
 
