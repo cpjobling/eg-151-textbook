@@ -1,8 +1,10 @@
 ---
 author: 
-  name: "Dr Timothy Davies"
-  affiliation: "Department of Electronic and Electrical Engineering"
-date: "10/03/2024"
+  - name: "Dr Timothy Davies"
+    affiliation: "Department of Electronic and Electrical Engineering"
+  - name: "Dr Chris P. Jobling"
+    affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/25/2024"
 number-sections: false
 ---
 
@@ -136,14 +138,25 @@ ADC = 684 to 853: five LEDs lit.
 
 ADC = 854 to 1023: six LEDs lit.
 
-How are we to make this set of decisions? One solution would be to use a
+
+How are we to implement this set of decisions in code? One solution would be to use a
 series of `if()` statements, however some slight additions are needed.
 We actually need an` if() … else` statement, so that only one of the
 conditions causes a write to the LEDs. If you look at the program in
 @lst-listing7, you will see that it begins its tests with the highest
 threshold and progresses down in steps of 170 until zero.
 
-Copy/paste the program into an Arduino sketch, compile and test. As
+A flow-chart of this *decision tree* which is inside the *loop* subprocess in @lst-listing7 is given in @fig-lab3-ex2-loop. 
+
+The *setup* subprocess is almost the same as that used in @fig-lab1-ex1-setup and is not reproduced here.
+
+::: {#fig-lab3-ex2-loop}
+![](pictures/lab3-decision-tree.png){fig-alt="The partially complete decision tree for the bar-chart display." width="100%"}
+
+The partially complete decision tree for the bar-chart display.
+:::
+
+Copy/paste the program in @lst-listing7 into an Arduino sketch, compile and test. As
 you rotate the wheel on the potentiometer clockwise, progressively more
 LEDs will light. If you balance the setting so that it is just changing
 over from three LEDs to four, this is exactly halfway on the
@@ -180,8 +193,12 @@ following:
 
 -   A photo of the modified breadboard, with the potentiometer added.
     Don't forget to include identification.
+-   A truncated flow-chart of the modified decision tree for 12 LEDs which should include the decision at    
+    the centre[^what-is-the-centre-point] of the range.
 -   A listing of your program for @sec-ex3-exercise above, with comments as
     appropriate.
+
+[^what-is-the-centre-point]: At the centre point `PORTC = 0b00000000` and `PORTB = 0b11111111`.
 
 ## Code listings
 
@@ -217,7 +234,7 @@ View or download code from GitHub Gist
 ```{.c #lst-listing7 lst-cap="Bar Graph display with six LEDs"}
 // the setup function runs once when you press reset or power the board
 
-word ADCval = 0;
+word ADCval;
 
 void setup() {
 

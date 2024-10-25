@@ -1,8 +1,10 @@
 ---
 author: 
-  name: "Dr Timothy Davies"
-  affiliation: "Department of Electronic and Electrical Engineering"
-date: "10/03/2024"
+  - name: "Dr Timothy Davies"
+    affiliation: "Department of Electronic and Electrical Engineering"
+  - name: "Dr Chris P. Jobling"
+    affiliation: "Department of Electronic and Electrical Engineering"
+date: "10/25/2024"
 number-sections: false
 ---
 
