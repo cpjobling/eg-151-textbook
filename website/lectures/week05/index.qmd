@@ -301,7 +301,7 @@ These are important when working with inputs and outputs as they can be used to 
 
 ### Truth tables for the bitwise logical operators.
 
-The truth tables for bitwise logical operators are given for AND (`&`) in @tbl-truth-table-AND, OR (`|`) in @tbl-truth-table-OR, XOR (`^`) in @tbl-truth-table-XOR, and NOT (`!`) in @tbl-truth-table-NOT.
+The truth tables for bitwise logical operators are given for AND (`&`) in @tbl-truth-table-AND, OR (`|`) in @tbl-truth-table-OR, XOR (`^`) in @tbl-truth-table-XOR, and NOT (`~`) in @tbl-truth-table-NOT.
 
 ---
 
@@ -335,7 +335,7 @@ The truth tables for bitwise logical operators are given for AND (`&`) in @tbl-t
 
 ---
 
-| A | `!A` |
+| A | `~A` |
 |---|:----:|
 | 0 | 1    |
 | 1 | 0    |
@@ -581,7 +581,7 @@ We need to map a port to the address used by the port. We use `#define` for this
 ::: {.incremental}
 1. Preprocessor directive: `#define`
 2. Convenient name that the processor can use in code: `PORTD`
-3. The size is an 8 bit unsigned integer: `unit8_t`
+3. The size is an 8 bit unsigned integer: `uint8_t`
 4. Memory address of the specific register from the datasheet (reproduced here as @fig-wk5-io-mem-map): `0x2B`.
 :::
 
@@ -589,7 +589,7 @@ We need to map a port to the address used by the port. We use `#define` for this
 The full command is[^volatile]:
 
 ```c
-#define PORTD(*(volatile unint8_t *)(0x2B))
+#define PORTD(*(volatile uint8_t *)(0x2B))
 ```
 
 [^volatile]: In this definition we use the qualifier volatile to inform the compiler that the variable value can be changed any time without any task given by the source code. Without this qualifier, depending on the optimisation level of the compiler this may result in code that doesn’t work as it doesn’t know the value can be changed by external sources. The asterisk symbol is used to denote a pointer, for now you do not need to know what this explicitly mean but in short a pointer is a variable whose value is the address of another variable, i.e., direct address of the memory location rather than a value.
@@ -735,6 +735,12 @@ if ((PIND & 0b00001000) == 0)
 ### The full program
 
 The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883). You will need a fully featured IDE, such as [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio), to compile and upload the code to the Ardino nano board.
+
+:::{.incremental}
+#### Exercise
+
+Draw a flow-chart for the full program. Use subprocesses for the `init()` and `loop()` blocks.
+:::
 
 
 ## Summary{.unnumbered}
