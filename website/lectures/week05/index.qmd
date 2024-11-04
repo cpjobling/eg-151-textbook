@@ -737,7 +737,15 @@ if ((PIND & 0b00001000) == 0)
 The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/07585093f8eafe69a4eeff1186110883). You will need a fully featured IDE, such as [Microchip Studio](https://www.microchip.com/en-us/tools-resources/develop/microchip-studio), to compile and upload the code to the Ardino nano board.
 
 :::{.incremental}
-#### Exercise
+
+### Simulation
+
+> Wokwi is an online Electronics simulator. You can use it to simulate Arduino, ESP32, STM32, and many other popular boards, parts and sensors.
+-- [Welcome to Wokwi!](https://docs.wokwi.com/?utm_source=wokwi)
+
+My 2024-2025 EG-353 Individual Engineering Project student, Yousef Alsayegh, has created Wokwi simulations of Ben Clifford's demonstration programs. Here is the simulation of this week's simulation [Week 5: Interfacing to digital I/O with C](https://wokwi.com/projects/413182046836258817). You can run the simulation and play with the code.
+
+### Exercise
 
 Draw a flow-chart for the full program. Use subprocesses for the `init()` and `loop()` blocks.
 :::

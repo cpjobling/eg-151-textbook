@@ -60,6 +60,8 @@ Compile and upload the programme, then check that the digits of your
 student number are displayed in order and that the sum of the digits is
 correct. You do not need to make any changes to the plug-in breadboard.
 
+Draw a flow-chart of the program listed in @lst-listing8.
+
 ## Exercise
 
 Now that you have the program from @lst-listing8 as a model, write a
@@ -86,7 +88,7 @@ When you are satisfied with the programme, copy and paste it into you
 lab diary. Don't forget to put in plenty of comments (preceded by the
 double oblique stroke, "//".)
 
-
+Draw a flow chart of the program with two arrays.
 
 ## Code Listing
 
@@ -95,11 +97,11 @@ double oblique stroke, "//".)
 ```{.c #lst-listing8 lst-cap="Program using an array."}
 // the setup function runs once when you press reset or power the board
 
-int total = 0; // This variable will contain the running total.
+int total; // This variable will contain the running total.
 
 int numbers[7] = {2, 9, 5, 4, 5, 6, 7}; // Create an integer array and preload.
 
-byte index = 0;
+byte index;
 
 void setup() {
 
@@ -139,3 +141,11 @@ void loop() {
 View or
 download code from GitHub
 Gist [arrays.ino](https://gist.github.com/cpjobling/2170231c0092f07d3aa0495f8220098d).
+
+### Wokwi simulation of program using an array
+
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 4: Program using an array](https://wokwi.com/projects/413615221414666241) and it uses the code from @lst-listing8. You can copy and edit this to create your own simulation of the assessed program with two arrays. 
+
+If you do, it would be useful to provide links to the simulations in your lab diary.
+
+

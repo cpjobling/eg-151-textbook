@@ -261,8 +261,13 @@ void loop() {
 ```
 
 View and download code as a GitHub gist:
-[digi_input1.ino).](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f).
+[digi_input1.ino](https://gist.github.com/cpjobling/c3ad4ae874ad7b77605aa7929468d04f).
 
+### Wokwi simulation of binary counter with stop/start control
+
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 2: Binary counter with stop/start control](https://wokwi.com/projects/413613900477042689) and it uses the code from @lst-ex2-1. You can copy and edit this to create your own simulation the binary counter with stop/start and turbo button using the code from @lst-ex2-2. 
+
+If you do, it would be useful to provide links to the simulations in your lab diary.
 
 ### Binary counter with stop/start and turbo button
 

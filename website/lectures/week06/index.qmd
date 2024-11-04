@@ -832,7 +832,7 @@ We showed how we use the `#define` function to map our program variables to the 
 
 ---
 
-We now define some unsigned integers as either 8  or 16 bits:
+We now define some unsigned integers as either 8 or 16 bits:
 
 ::: {.incremental}
 
@@ -908,6 +908,13 @@ for(;;)
 ### Example - the full program
 
 The full program is available as a GitHub gist: [main.c](https://gist.github.com/cpjobling/db5e3e157b6e6153f7cb75157dae1e94). You will need a fully featured IDE, such as Microchip Studio, to compile and upload the code to the Ardino nano board.
+
+### Simulation of the full program
+
+> Wokwi is an online Electronics simulator. You can use it to simulate Arduino, ESP32, STM32, and many other popular boards, parts and sensors.
+-- [Welcome to Wokwi!](https://docs.wokwi.com/?utm_source=wokwi)
+
+My 2024-2025 EG-353 Individual Engineering Project student, Yousef Alsayegh, has created Wokwi simulations of Ben Clifford's demonstration programs. Here is the simulation of this week's simulation [Week 6: Interfacing to analogue I/O with C](https://wokwi.com/projects/413612952684749825). You can run the simulation and play with the code.
 
 ## Summary{.unnumbered}
 
