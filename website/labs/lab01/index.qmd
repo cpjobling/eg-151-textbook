@@ -262,9 +262,9 @@ View and download the code from GitHub gist [counter.ino](https://gist.github.co
 
 ### Wokwi simulation of basic counter
 
-You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [task 1](https://wokwi.com/projects/412520814281244673). You can copy and edit this to create your own simulations of Tasks 2 and 3. 
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 1: Basic counter](https://wokwi.com/projects/412520814281244673). You can extend the circuit by adding 6 further LEDs connected as in @fig-ex1-3 and use @lst-listing2 to implement the cascased modulo 60 counter. You can then paste your commented version of @lst-listing3 into the simulator's code window to simulate final example. 
 
-If you do, it would be useful to provide links to the simulations in your lab diary.
+If you succeed, it would be useful to provide links to the simulations in your lab diary.
 
 ### Cascaded counter
 ```{.c #lst-listing2 lst-cap="Cascaded counter."}
