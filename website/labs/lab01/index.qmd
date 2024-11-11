@@ -23,7 +23,7 @@ The DDR settings that provide the six outputs that we need for this experiment a
 
 | DDRC7 | DDRC6 | DDRC5 | DDRC4 | DDRC3 | DDRC2 | DDRC1 | DDRC0 |
 |-------|-------|-------|-------|-------|-------|-------|-------|
-| 0 | 0 | 1 | 1 | 1 | 1 | 1 | 1 |
+| 0     |     0 |     1 |     1 |     1 |     1 | 1     | 1     |
 : DDR for setting six outputs {#tbl-1-ddr}
 
 

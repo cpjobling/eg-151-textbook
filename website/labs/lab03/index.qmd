@@ -283,7 +283,7 @@ or download code from GitHub Gist
 
 ### Wokwi simulation of bar graph display with six LEDs
 
-You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 6: Bar graph display with six LEDs](https://wokwi.com/projects/413614767755521025) and it uses the code from @lst-listing7. You can copy and edit this to create your own simulation the bar Graph display with twelve LEDs. 
+You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 6: Bar graph display with six LEDs](https://wokwi.com/projects/414259954064541697) and it uses the code from @lst-listing7. You can copy and edit this to create your own simulation the bar Graph display with twelve LEDs. 
 
 If you do, it would be useful to provide links to the simulations in your lab diary.
 

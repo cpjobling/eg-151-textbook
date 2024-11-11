@@ -190,7 +190,7 @@ An example of an assembly code instruction `ADC` - Add with carry. Extracted fro
 ### A Short history of assembly languages
 
 ::: {.fragment}
-Assembly languages were first developed in the 1950s and were referred to as **2nd generation programming languageis**. 
+Assembly languages were first developed in the 1950s and were referred to as **2nd generation programming languages**. 
 :::
 
 ::: {.fragment}
@@ -207,7 +207,7 @@ Assembly language is commonly called just assembly, ASM, or symbolic machine cod
 
 ---
 
-Despite the giant leap from machine code to assembly language, by the 1980s its use had largely been overtaken by higher-level languages such as Fortran and C and more recently Python for many applications.
+Despite the giant leap from machine code to assembly language, by the 1980s its use had largely been overtaken by higher-level languages, such as Fortran and C, and more recently Python, for many applications.
 
 ---
 
@@ -246,7 +246,7 @@ In short:
 
 ::: {.incremental}
 
-* **Speed** - assembly language programs are generally the fastest programs around (up to ten times faster that optimized HLL programs ([@hyde2010])[^warning].
+* **Speed** - assembly language programs are generally the fastest programs around (up to ten times faster that optimized HLL programs [@hyde2010][^warning].
 * **Space** - assembly language programs are often the smallest.
 * **Capability** - you can do things in assembly which are difficult or impossible in HLLs.
 * **Knowledge** - your knowledge of assembly language will help you write better programs, even when using HLLs.
@@ -279,8 +279,8 @@ An assembly language program consists of a series of instructions to an assemble
 A program is written as a sequence of statements - one statement per line:
 
 ::: {.incremental}
-* Lines can be empty to separate sections of code
-* Statements cannot span multiple lines
+* Lines can be empty to separate sections of code.
+* Statements cannot span multiple lines.
 :::
 
 :::
@@ -310,11 +310,7 @@ The label field is used to create a reference point in the program than can be u
 ::: {.fragment}
 Examples:
 ```{asm}
-LOOP        operator
 
-  COUNTER:  operator
-
-MY_CODE     operator
 
 SECTION1    operator
 ```
