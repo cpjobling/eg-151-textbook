@@ -55,7 +55,7 @@ We will also revisit the **Direct Port Manipulation in C** example from [Digital
 
 * @sec-wk7-sect1: [Machine Code and Assembly Language](#sec-wk7-sect1)
 * @sec-wk7-sect2: [Introduction to Assembly Language](#sec-wk7-sect2)
-* @sec-wk7-sect3: [](#sec-wk7-sect3)
+* @sec-wk7-sect3: [Interfacing with Digital I/O example](#sec-wk7-sect3)
 
 :::
 
@@ -135,9 +135,9 @@ Otherwise ... if you're a human...[^source-image-2]
 ---
 
 ::: {.incremental}
-* Write
-* Read
-* Understand
+* Write,
+* Read,
+* Understand,
 * Debug,
 :::
 
@@ -164,7 +164,7 @@ Instead, instructions can be written in a mnemonic form termed **assembly langua
 ### Assembly Language
 
 ::: {.fragment}
-Every CPU (or family of CPU’s) has an instruction set where each operation that can be performed is represented by a certain binary combination.
+Every CPU (or family of CPUs) has an instruction set where each operation that can be performed is represented by a certain binary combination.
 :::
 
 ::: {.fragment}
@@ -198,7 +198,7 @@ Assembly language is a low level language that uses mnemonic codes (symbols) to 
 :::
 
 ::: {.fragment}
-Essentially, assembly langauges are a much more readable but directly translatable representation of machine code. 
+Essentially, assembly languages are a much more readable but directly translatable representation of machine code. 
 :::
 
 ::: {.fragment}
@@ -287,7 +287,7 @@ A program is written as a sequence of statements - one statement per line:
 
 ---
 
-Each statement contains up to four fields each separated by a space or tab character as shown below:
+Each statement contains up to four fields each separated by one or more space or tab characters as shown below:
 
 ::: {.fragment}
 ```asm
@@ -386,7 +386,7 @@ For this module we have been working  with an Atmel ATmega328 microcontroller wh
 The **operator field** contains either an **assembly directive** or a **mnemonic/instruction**.
 
 ::: {.frament}
-Assembly directives, sometimes termed pseudo-operations are **directives to the assembler** that will not be translated to machine code but provide information critical to the programs function that is **required by the assembler**.
+Assembly directives, sometimes termed pseudo-operations are **directives to the assembler** that will not be translated to machine code but provide information critical to the program's function that is **required by the assembler**.
 :::
 
 ---
@@ -495,7 +495,7 @@ The assembly process
 The assembler processes the assembly language file and generates an object file and listing file(s)
 
 ::: {.incremental}
-- An object file is essentially a one-to-one mapping of mnemonics against the binary (sometimes hexadecimal) instruction set
+- An object file is essentially a one-to-one mapping of mnemonics against the binary (sometimes hexadecimal) instruction set.
 - The listing file shows each line of the assembly language input along with the memory addresses resolved by the assembler, resulting machine code or data and other diagnostic information.
 :::
 
@@ -723,7 +723,7 @@ Using the C language, we created an infinite loop as follows:
 	
 ::: {.fragment}
 ```c
-for (;;) {
+for (;;;) {
   // Program code
 }
 ```
@@ -856,7 +856,7 @@ In @fig-wk7-comp-asm-with-c we compare the C program with the equivalent assembl
 ::: {#fig-wk7-comp-asm-with-c} 
 ![](pictures/comp_asm_with_c.png){fig-alt="Comparing an I/O program written in C with an equvalent assembly program."}
 
-Comparing an I/O program written in C with an equvalent assembly program. The assembly code is available for study as a GIST [main.asm](https://gist.github.com/cpjobling/e72f37ff363353b6ed10ecdbeaa970af).
+Comparing an I/O program written in C with an equvalent assembly program. The assembly code is available for study as a Gist [main.asm](https://gist.github.com/cpjobling/e72f37ff363353b6ed10ecdbeaa970af).
 :::
 
 ---
