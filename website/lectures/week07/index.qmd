@@ -723,7 +723,7 @@ Using the C language, we created an infinite loop as follows:
 	
 ::: {.fragment}
 ```c
-for (;;;) {
+for (;;) {
   // Program code
 }
 ```
@@ -797,7 +797,7 @@ LOOP:
 	BREQ LED1
 
     IN R16, PIND
-	ANDI R16, 0b00000100
+	ANDI R16, 0b00001000
 	LDI R17, 0x00
 	CP R16, R17
 	BREQ LED1 
