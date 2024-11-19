@@ -457,7 +457,7 @@ This occurs by placing an address on the address bus and then reading the instru
 ---
 
 #### Execute
-- ***Execute** the instruction on the necessary operands.
+- **Execute** the instruction on the necessary operands.
 
 ---
 
@@ -710,12 +710,12 @@ which in words is *read I/O register 0x0A into register 24*.
 ### Assembly to Machine Code
 
 ::: {.notes}
-The assembly/machine code instructions equivalent to the program given in @lst-wk8-add-code above is tabulated in @tbl-wk8-table2. Refer also to [Introduction to Assembly Language](/lectures/week07/index.html#wk7-assembler).
+The assembly/machine code instructions equivalent to the program given in @sec-wk8-add-code is tabulated in @tbl-wk8-table2. Refer also to [Introduction to Assembly Language](/lectures/week07/index.html#wk7-assembler).
 :::
 
 | Assembler | Machine Code | Documentation |
 |:----------|:-------------|:--------------|
-|  `ldi r16, 0b01111001` | 1110 0110 0001 0111 | ![LDI - Load immediate documentation](pictures/ldi_opcode.png) |
+|  `ldi r16, 0b01111001` | 1110 0111 0000 1001 | ![LDI - Load immediate documentation](pictures/ldi_opcode.png) |
 |  `ldi r17, 0b01100111` | 1110 0110 0001 0111 | See cell above |
 |  `add r16, r17` | 0000 1111 0000 0001 | ![ADD - Add without carry](pictures/add_opcode.png) |
 |  `sts 0xFF00, r16` | 1001 0011 0000 0000 1111 1111 0000 0000 | ![STS - Store direct to data space](pictures/sts_opcode.png) |
