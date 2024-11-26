@@ -41,7 +41,7 @@ A copy of the data sheet for the
 display and a list of ASCII characters]
 can be found on [Canvas](https://canvas.swansea.ac.uk/courses/44971/files/4630684?module_item_id=2258159).
 
-## Pinout of the Alphanumeric Display module
+## Pinout of the Alphanumeric Display module{#refer-back}
 
 ::: {#fig-ex5-1} 
 ![](pictures/lcd_panel.png){fig-alt="LCD Display Panel and its pinout."}
@@ -75,6 +75,9 @@ data.
 
 **Pins 16 to 18**: zero volts for backlights red, green, blue respectively.
 
+The 22$\Omega$ resistor shown in the diagram is a safety feature designed to prevent damage to the Arduino nano should the potentiometers be wired-up incorrectly. It ensures that if the supply is shorted to ground by mistake, there will be insufficient current to damage the microcontroller or the display.
+
+Once the sample program has been uploaded and the LCD panel is shown to be working, the resistor can be replaced by a wire link.
 
 
 ## Library for LCD
@@ -146,6 +149,8 @@ board was reset. The remainder of the second line shows the message "ADC
 determined by the setting of the potentiometer. Pressing the push
 buttons should result in the characters "R" or "L" being displayed near
 the end of the first line of the display.
+
+If the range of the ADC is for not to be in the range 0 to 1023 (it is typically limited to around 940), then replace the 22$\Omega$ resistor by a wire link as noted in @refer-back.
 
 The example code provides examples of how to set the display and write
 messages and variables. The example code can form the basis of the
