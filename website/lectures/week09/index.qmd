@@ -210,7 +210,7 @@ Remember the operand represents the data so this addressing mode is accessing or
 #### Two Register Addressing (`Rd`, `Rr`)
 
 ::: {.fragment}
-For instructions that use **direct register addressing with two registers**, the operand is *contained* in the source and destination registers `Rr`[^Rr] and `Rd` respectively. The result of this that the data in `Rd` is overwritten. This is illustrated in @fig-wk9-rda-with-2-regs.
+For instructions that use **direct register addressing with two registers**, the operand is *contained* in the source and destination registers `Rr`[^Rr] and `Rd` respectively. As a result of these operations is that the data in `Rd` is overwritten. This is illustrated in @fig-wk9-rda-with-2-regs.
 :::
 
 ---
@@ -226,15 +226,17 @@ Illustrating register direct addressing with two registers: d is the source of t
 ##### Examples{.unnumbered}
 
 ```{.asm #lst-wk9-rda-with-2-regs lst-cap="Examples of direct register addressing with two registers." code-line-numbers="|1|2|3"}
-ADD R16, R17  ;Add the contents of R16 and R17. Return sum to R16.
-CP R16, R17   ;Compare the values of R16 and R17
-MOV R16, R17  ;Copy contents of R17 into R16
+ADD R16, R17  ;Add the contents of R16 and R17. Return sum to R17.
+CP R16, R17   ;Compare the values of R16 and R17 - sets the Z, N flags in SR
+MOV R16, R17  ;Copy contents of R16 into R17
 ```
 
 ::: {.notes}
 
 ::: {.callout-note}
 As with the previous addressing mode, this one is accessing or acting on the data in two of the general purpose registers and although it overwrites the data in Rd is also does not include any write back to SRAM/EEPROM.
+
+Note that the result of `CP` is the sign of R16 - R17. If the difference is zero the `Z` flag is set in the status register. If the difference is a negative number, the `S` (sign) flag will be set. If the difference is positive, no flags are set. Carry and half-carry flags are also set as appropriate. The `CP` operation is typically followed by one of the branch operations `BEQ` (branch if equal to zero), `BLT` (branch if less than zero), `BGT` (branch if greater than zero), etc. The operation `CP` plus branch is typically used in the compilation of logical comparisons in C's `if`, `else if`, `while`, and `for` statements.
 :::
 
 :::
