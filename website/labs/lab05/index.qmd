@@ -41,7 +41,7 @@ A copy of the data sheet for the
 display and a list of ASCII characters]
 can be found on [Canvas](https://canvas.swansea.ac.uk/courses/44971/files/4630684?module_item_id=2258159).
 
-## Pinout of the Alphanumeric Display module{#refer-back}
+## Pinout of the Alphanumeric Display module {#refer-back}
 
 ::: {#fig-ex5-1} 
 ![](pictures/lcd_panel.png){fig-alt="LCD Display Panel and its pinout."}
@@ -150,7 +150,7 @@ determined by the setting of the potentiometer. Pressing the push
 buttons should result in the characters "R" or "L" being displayed near
 the end of the first line of the display.
 
-If the range of the ADC is for not to be in the range 0 to 1023 (it is typically limited to around 940), then replace the 22$\Omega$ resistor by a wire link as noted in @refer-back.
+If the range of the ADC is for not to be in the range 0 to 1023 (it is typically limited to around 940), then replace the 22$\Omega$ resistor by a wire link as noted earlier.
 
 The example code provides examples of how to set the display and write
 messages and variables. The example code can form the basis of the
@@ -325,7 +325,7 @@ void loop() {
 View and download the code from GitHub gist
 [lcd_panel.ino](https://gist.github.com/cpjobling/cff735994646fd281d53b72199174462).
 
-### Wokwi simulation of program using an array
+### Wokwi simulation of program using the LCD panel
 
 You can run a [**wokwi**](https://wokwi.com) simulation of this circuit which was created by EEE project student Yousef Alsayegh (class of 2024-2025). The link is [Lab 5: LCD Panel Demonstration Program](https://wokwi.com/projects/413615880878927873) and it uses the code from @lst-listing9. You can copy and edit this to create your own simulation of the assessed program. 
 
