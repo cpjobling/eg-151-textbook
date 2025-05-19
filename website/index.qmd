@@ -12,7 +12,7 @@ During the first class meeting we will introduce this online textbook and how th
 ## PDF Version of this Web Site {.unnumbered}
 
 There is a version of this site that is published as a textbook in PDF form. It can be downloaded from my shared OneDrive files as
-[EG-151-Microcontrollers-2024-2025.pdf](https://swanseauniversity-my.sharepoint.com/:b:/g/personal/c_p_jobling_swansea_ac_uk/EcK5Url-0ktGld4PwkwTfQ8B3Z22cahvyj2pBEDaogkr7A?e=TwdKGK).
+[EG-151-Microcontrollers-2025-2026.pdf](https://swanseauniversity-my.sharepoint.com/:b:/g/personal/c_p_jobling_swansea_ac_uk/EcK5Url-0ktGld4PwkwTfQ8B3Z22cahvyj2pBEDaogkr7A?e=TwdKGK).
 
 The PDF file linked to this page is updated automatically when the website is updated. It is also linked to the Canvas site. Please be aware that once downloaded, the PDF will no longer tack the website so you should always download the latest version before using it.
 
